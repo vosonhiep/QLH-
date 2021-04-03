@@ -1,0 +1,21 @@
+﻿@using QLHD.Models;
+@model List<QLHD.Models.LOAI_HD_SUB>
+@{
+    int row = 0;
+    foreach (var item in Model)
+    {
+    <tr>
+        <td>@(row += 1)</td>
+        <td>@item.TEN_HD_SUB</td>
+        <td>@item.LOAIHD.TEN_LOAIHD</td>
+        <td>
+            <a href="#" data-toggle="modal" data-target="#"><i class="fa fa-edit" title="Sửa" style="font-size: 20px"></i></a>
+        </td>
+        <td>
+            <a href="#" data-toggle="modal" data-target="#"><i class="fa fa-trash-o" title="Xóa" style="font-size: 20px"></i></a>
+        </td>
+        <td>Ghi chú</td>
+    </tr>
+    }
+    <h2 style="color:red">@ViewBag.thongbao</h2>
+}

@@ -1,0 +1,118 @@
+﻿@model IEnumerable<QLHD.Models.THANHLY_HDDOANHTHU>
+@{
+    ViewBag.Title = "Thanh lý hợp đồng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Thanh lý HĐ</h3>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    @using (Html.BeginForm("ThanhLyHDDoanhThu", "HDDoanhThu", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel" style="">
+                    <div class="x_title">
+                        <h2>Loại hợp đồng và số hợp đồng</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                     <div class="x_content">
+                         <div class="col-md-6" style="display:none">
+                            <div class="form-group" >
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Hợp đồng ID:</label>
+                                </div>
+                                <div class="col-md-8" >
+                                    <input type="text" class="form-control" name="HOPDONG_DOANHTHU_ID" required="required" value="@ViewBag.id"/>
+                                </div>
+                            </div>
+                        </div>
+                       <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Loại hợp đồng:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" value="@ViewBag.loaihd"  disabled/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Số biên bản thanh lý:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control" name="SOBIENBAN_TL" required="required"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Ngày lập biên bản:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="date" class="form-control" name="NGAYLAP_BBTL" required="required" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Người lập biên bản thanh lý:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="NGUOILAP_BBTL" required="required"/>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Ngày hiệu lực thanh lý:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="date" class="form-control" name="NGAY_HIEULUC_TL"/>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-12" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-2">
+                                    <label style="float: right">Nội dung thanh lý:</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <textarea class="form-control" name="NOIDUNG_TL" rows="3" placeholder="Nội dung thanh lý"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-2">
+                                    <label style="float: right">Ghi chú:</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <textarea class="form-control" name="GHICHU" rows="3" placeholder="Ghi chú"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <input type="submit" class="btn btn-success btn-lg" value="Thanh lý" />
+                @*<input type="button" class="btn btn-default btn-lg" value="Hủy" />*@
+                <a href="@Url.Action("ShowHDDoanhThu", "HDDoanhThu", new {@maHD = @ViewBag.id })" class="btn btn-default btn-lg">Hủy
+                </a>
+            </div>
+        </div>
+    }
+</div>

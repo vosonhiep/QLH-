@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLHDModelStoreContainer" CdmEntityContainer="QLHD2Entities">
+    <EntitySetMapping Name="BENTHUE_TAM">
+      <EntityTypeMapping TypeName="QLHDModel.BENTHUE_TAM">
+        <MappingFragment StoreEntitySet="BENTHUE_TAM">
+          <ScalarProperty Name="BENTHUE_TAM_ID" ColumnName="BENTHUE_TAM_ID" />
+          <ScalarProperty Name="TEN" ColumnName="TEN" />
+          <ScalarProperty Name="DAIDIEN" ColumnName="DAIDIEN" />
+          <ScalarProperty Name="CHUCVU" ColumnName="CHUCVU" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
+          <ScalarProperty Name="NGAYCAP_CMND" ColumnName="NGAYCAP_CMND" />
+          <ScalarProperty Name="NOICAP_CMND" ColumnName="NOICAP_CMND" />
+          <ScalarProperty Name="MS_THUE" ColumnName="MS_THUE" />
+          <ScalarProperty Name="DIENTHOAI" ColumnName="DIENTHOAI" />
+          <ScalarProperty Name="TAIKHOAN" ColumnName="TAIKHOAN" />
+          <ScalarProperty Name="NGANHANG" ColumnName="NGANHANG" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+          <ScalarProperty Name="TRINHDO" ColumnName="TRINHDO" />
+          <ScalarProperty Name="CONGVIEC" ColumnName="CONGVIEC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHUKY_TT">
+      <EntityTypeMapping TypeName="QLHDModel.CHUKY_TT">
+        <MappingFragment StoreEntitySet="CHUKY_TT">
+          <ScalarProperty Name="CHUKY_ID" ColumnName="CHUKY_ID" />
+          <ScalarProperty Name="CHUKY" ColumnName="CHUKY" />
+          <ScalarProperty Name="THANG" ColumnName="THANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DM_VANBAN">
+      <EntityTypeMapping TypeName="QLHDModel.DM_VANBAN">
+        <MappingFragment StoreEntitySet="DM_VANBAN">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
+          <ScalarProperty Name="FILE_ID" ColumnName="FILE_ID" />
+          <ScalarProperty Name="NGAY_UPLOAD" ColumnName="NGAY_UPLOAD" />
+          <ScalarProperty Name="NGAY_TAO_VB" ColumnName="NGAY_TAO_VB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DONVIs">
+      <EntityTypeMapping TypeName="QLHDModel.DONVI">
+        <MappingFragment StoreEntitySet="DONVI">
+          <ScalarProperty Name="DONVI_ID" ColumnName="DONVI_ID" />
+          <ScalarProperty Name="TEN_DV" ColumnName="TEN_DV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DS_QUYEN_MENU">
+      <EntityTypeMapping TypeName="QLHDModel.DS_QUYEN_MENU">
+        <MappingFragment StoreEntitySet="DS_QUYEN_MENU">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_MENU_CON" ColumnName="ID_MENU_CON" />
+          <ScalarProperty Name="ID_MENU_CHA" ColumnName="ID_MENU_CHA" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HETHONGs">
+      <EntityTypeMapping TypeName="QLHDModel.HETHONG">
+        <MappingFragment StoreEntitySet="HETHONG">
+          <ScalarProperty Name="HETHONG_ID" ColumnName="HETHONG_ID" />
+          <ScalarProperty Name="TENHETHONG" ColumnName="TENHETHONG" />
+          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HISTORY_CHANGE">
+      <EntityTypeMapping TypeName="QLHDModel.HISTORY_CHANGE">
+        <MappingFragment StoreEntitySet="HISTORY_CHANGE">
+          <ScalarProperty Name="ID_HISTORY" ColumnName="ID_HISTORY" />
+          <ScalarProperty Name="LOAI_HD" ColumnName="LOAI_HD" />
+          <ScalarProperty Name="ID_HD" ColumnName="ID_HD" />
+          <ScalarProperty Name="ID_TAIKHOAN" ColumnName="ID_TAIKHOAN" />
+          <ScalarProperty Name="NGAY_CHINHSUA" ColumnName="NGAY_CHINHSUA" />
+          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOPDONG_CHIPHI">
+      <EntityTypeMapping TypeName="QLHDModel.HOPDONG_CHIPHI">
+        <MappingFragment StoreEntitySet="HOPDONG_CHIPHI">
+          <ScalarProperty Name="HOPDONG_CHIPHI_ID" ColumnName="HOPDONG_CHIPHI_ID" />
+          <ScalarProperty Name="HTTT_ID" ColumnName="HTTT_ID" />
+          <ScalarProperty Name="CHUKY_ID" ColumnName="CHUKY_ID" />
+          <ScalarProperty Name="CHUKY2_ID" ColumnName="CHUKY2_ID" />
+          <ScalarProperty Name="NAM_HD_ID" ColumnName="NAM_HD_ID" />
+          <ScalarProperty Name="ID_LOAIHD_SUB" ColumnName="ID_LOAIHD_SUB" />
+          <ScalarProperty Name="THOIHAN_TT_ID" ColumnName="THOIHAN_TT_ID" />
+          <ScalarProperty Name="SO_HD" ColumnName="SO_HD" />
+          <ScalarProperty Name="NGAY_HD" ColumnName="NGAY_HD" />
+          <ScalarProperty Name="TEN_BT" ColumnName="TEN_BT" />
+          <ScalarProperty Name="DIACHI_BT" ColumnName="DIACHI_BT" />
+          <ScalarProperty Name="DIENTHOAI_BT" ColumnName="DIENTHOAI_BT" />
+          <ScalarProperty Name="FAX_BT" ColumnName="FAX_BT" />
+          <ScalarProperty Name="TAIKHOAN_BT" ColumnName="TAIKHOAN_BT" />
+          <ScalarProperty Name="NGANHANG_BT" ColumnName="NGANHANG_BT" />
+          <ScalarProperty Name="MSTHUE_BT" ColumnName="MSTHUE_BT" />
+          <ScalarProperty Name="DAIDIEN_BT" ColumnName="DAIDIEN_BT" />
+          <ScalarProperty Name="CMND_BT" ColumnName="CMND_BT" />
+          <ScalarProperty Name="NGAYCAP_CMND_BT" ColumnName="NGAYCAP_CMND_BT" />
+          <ScalarProperty Name="NOICAP_BT" ColumnName="NOICAP_BT" />
+          <ScalarProperty Name="CHUCVU_BT" ColumnName="CHUCVU_BT" />
+          <ScalarProperty Name="LOAI_CT" ColumnName="LOAI_CT" />
+          <ScalarProperty Name="TEN_CT" ColumnName="TEN_CT" />
+          <ScalarProperty Name="DIACHI_CT" ColumnName="DIACHI_CT" />
+          <ScalarProperty Name="CMND_CT" ColumnName="CMND_CT" />
+          <ScalarProperty Name="NGAYCAP_CT" ColumnName="NGAYCAP_CT" />
+          <ScalarProperty Name="NOICAP_CT" ColumnName="NOICAP_CT" />
+          <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+          <ScalarProperty Name="DIENTHOAI_CT" ColumnName="DIENTHOAI_CT" />
+          <ScalarProperty Name="DAIDIEN_CT" ColumnName="DAIDIEN_CT" />
+          <ScalarProperty Name="CHUCVU_CT" ColumnName="CHUCVU_CT" />
+          <ScalarProperty Name="TAIKHOAN_CT" ColumnName="TAIKHOAN_CT" />
+          <ScalarProperty Name="NGANHANG_CT" ColumnName="NGANHANG_CT" />
+          <ScalarProperty Name="MSTHUE_CT" ColumnName="MSTHUE_CT" />
+          <ScalarProperty Name="HOPDONG_DT" ColumnName="HOPDONG_DT" />
+          <ScalarProperty Name="SOLUONG_DT" ColumnName="SOLUONG_DT" />
+          <ScalarProperty Name="DIENTICH_DT" ColumnName="DIENTICH_DT" />
+          <ScalarProperty Name="CONGSUAT_DT" ColumnName="CONGSUAT_DT" />
+          <ScalarProperty Name="CHUNGLOAI_DT" ColumnName="CHUNGLOAI_DT" />
+          <ScalarProperty Name="CONGVIEC_DT" ColumnName="CONGVIEC_DT" />
+          <ScalarProperty Name="TRAM_DT" ColumnName="TRAM_DT" />
+          <ScalarProperty Name="NOIDUNGKHAC_DT" ColumnName="NOIDUNGKHAC_DT" />
+          <ScalarProperty Name="THANG_GT" ColumnName="THANG_GT" />
+          <ScalarProperty Name="TONG_GT" ColumnName="TONG_GT" />
+          <ScalarProperty Name="NGAY_BD" ColumnName="NGAY_BD" />
+          <ScalarProperty Name="NGAY_KT" ColumnName="NGAY_KT" />
+          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+          <ScalarProperty Name="File" ColumnName="File" />
+          <ScalarProperty Name="USER" ColumnName="USER" />
+          <ScalarProperty Name="DONVI_ID" ColumnName="DONVI_ID" />
+          <ScalarProperty Name="THANG" ColumnName="THANG" />
+          <ScalarProperty Name="VAT" ColumnName="VAT" />
+          <ScalarProperty Name="SO_CHUKY" ColumnName="SO_CHUKY" />
+          <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+          <ScalarProperty Name="BTS_ID" ColumnName="BTS_ID" />
+          <ScalarProperty Name="THANG_GT_NHA" ColumnName="THANG_GT_NHA" />
+          <ScalarProperty Name="THANG_GT_ANTEN" ColumnName="THANG_GT_ANTEN" />
+          <ScalarProperty Name="THANG_GT_MPD" ColumnName="THANG_GT_MPD" />
+          <ScalarProperty Name="THANG_GT_KHAC" ColumnName="THANG_GT_KHAC" />
+          <ScalarProperty Name="THANG_GT_NHA_ANTEN" ColumnName="THANG_GT_NHA_ANTEN" />
+          <ScalarProperty Name="FILE_ID" ColumnName="FILE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOPDONG_DOANHTHU">
+      <EntityTypeMapping TypeName="QLHDModel.HOPDONG_DOANHTHU">
+        <MappingFragment StoreEntitySet="HOPDONG_DOANHTHU">
+          <ScalarProperty Name="HOPDONG_DOANHTHU_ID" ColumnName="HOPDONG_DOANHTHU_ID" />
+          <ScalarProperty Name="CHUKY_ID" ColumnName="CHUKY_ID" />
+          <ScalarProperty Name="HTTT_ID" ColumnName="HTTT_ID" />
+          <ScalarProperty Name="NAM_HD_ID" ColumnName="NAM_HD_ID" />
+          <ScalarProperty Name="ID_LOAIHD_SUB" ColumnName="ID_LOAIHD_SUB" />
+          <ScalarProperty Name="THOIHAN_TT_ID" ColumnName="THOIHAN_TT_ID" />
+          <ScalarProperty Name="SO_HD" ColumnName="SO_HD" />
+          <ScalarProperty Name="NGAY_HD" ColumnName="NGAY_HD" />
+          <ScalarProperty Name="TEN_BT" ColumnName="TEN_BT" />
+          <ScalarProperty Name="LOAI_BENTHUE" ColumnName="LOAI_BENTHUE" />
+          <ScalarProperty Name="DIACHI_BT" ColumnName="DIACHI_BT" />
+          <ScalarProperty Name="CMND_BT" ColumnName="CMND_BT" />
+          <ScalarProperty Name="NGAYCAP_BT" ColumnName="NGAYCAP_BT" />
+          <ScalarProperty Name="NOICAP_BT" ColumnName="NOICAP_BT" />
+          <ScalarProperty Name="NGAYSINH_BT" ColumnName="NGAYSINH_BT" />
+          <ScalarProperty Name="DIENTHOAI_BT" ColumnName="DIENTHOAI_BT" />
+          <ScalarProperty Name="DAIDIEN_BT" ColumnName="DAIDIEN_BT" />
+          <ScalarProperty Name="CHUCVU_BT" ColumnName="CHUCVU_BT" />
+          <ScalarProperty Name="TAIKHOAN_BT" ColumnName="TAIKHOAN_BT" />
+          <ScalarProperty Name="NGANHANG_BT" ColumnName="NGANHANG_BT" />
+          <ScalarProperty Name="MSTHUE_BT" ColumnName="MSTHUE_BT" />
+          <ScalarProperty Name="TEN_CT" ColumnName="TEN_CT" />
+          <ScalarProperty Name="DIACHI_CT" ColumnName="DIACHI_CT" />
+          <ScalarProperty Name="DIENTHOAI_CT" ColumnName="DIENTHOAI_CT" />
+          <ScalarProperty Name="FAX_CT" ColumnName="FAX_CT" />
+          <ScalarProperty Name="TAIKHOAN_CT" ColumnName="TAIKHOAN_CT" />
+          <ScalarProperty Name="NGANHANG_CT" ColumnName="NGANHANG_CT" />
+          <ScalarProperty Name="MSTHUE_CT" ColumnName="MSTHUE_CT" />
+          <ScalarProperty Name="DAIDIEN_CT" ColumnName="DAIDIEN_CT" />
+          <ScalarProperty Name="CMND_Ct" ColumnName="CMND_Ct" />
+          <ScalarProperty Name="NGAYCAP_CMND_CT" ColumnName="NGAYCAP_CMND_CT" />
+          <ScalarProperty Name="NOICAP_CT" ColumnName="NOICAP_CT" />
+          <ScalarProperty Name="CHUCVU_CT" ColumnName="CHUCVU_CT" />
+          <ScalarProperty Name="HOPDONG_DT" ColumnName="HOPDONG_DT" />
+          <ScalarProperty Name="SOLUONG_DT" ColumnName="SOLUONG_DT" />
+          <ScalarProperty Name="DIENTICH_DT" ColumnName="DIENTICH_DT" />
+          <ScalarProperty Name="CONGSUAT_DT" ColumnName="CONGSUAT_DT" />
+          <ScalarProperty Name="CHUNGLOAI_DT" ColumnName="CHUNGLOAI_DT" />
+          <ScalarProperty Name="CONGVIEC_DT" ColumnName="CONGVIEC_DT" />
+          <ScalarProperty Name="TRAM_DT" ColumnName="TRAM_DT" />
+          <ScalarProperty Name="NOIDUNGKHAC_DT" ColumnName="NOIDUNGKHAC_DT" />
+          <ScalarProperty Name="THANG_GT" ColumnName="THANG_GT" />
+          <ScalarProperty Name="TONG_GT" ColumnName="TONG_GT" />
+          <ScalarProperty Name="NGAY_BD" ColumnName="NGAY_BD" />
+          <ScalarProperty Name="NGAY_KT" ColumnName="NGAY_KT" />
+          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+          <ScalarProperty Name="FILE" ColumnName="FILE" />
+          <ScalarProperty Name="USER" ColumnName="USER" />
+          <ScalarProperty Name="DONVI_ID" ColumnName="DONVI_ID" />
+          <ScalarProperty Name="THANG" ColumnName="THANG" />
+          <ScalarProperty Name="VAT" ColumnName="VAT" />
+          <ScalarProperty Name="SO_CHUKY" ColumnName="SO_CHUKY" />
+          <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOPDONG_NHANCONG">
+      <EntityTypeMapping TypeName="QLHDModel.HOPDONG_NHANCONG">
+        <MappingFragment StoreEntitySet="HOPDONG_NHANCONG">
+          <ScalarProperty Name="HOPDONG_NHANCONG_ID" ColumnName="HOPDONG_NHANCONG_ID" />
+          <ScalarProperty Name="HTTT_ID" ColumnName="HTTT_ID" />
+          <ScalarProperty Name="CHUKY_ID" ColumnName="CHUKY_ID" />
+          <ScalarProperty Name="NAM_HD_ID" ColumnName="NAM_HD_ID" />
+          <ScalarProperty Name="ID_LOAIHD_SUB" ColumnName="ID_LOAIHD_SUB" />
+          <ScalarProperty Name="THOIHAN_TT_ID" ColumnName="THOIHAN_TT_ID" />
+          <ScalarProperty Name="SO_HD" ColumnName="SO_HD" />
+          <ScalarProperty Name="NGAY_HD" ColumnName="NGAY_HD" />
+          <ScalarProperty Name="TEN_BT" ColumnName="TEN_BT" />
+          <ScalarProperty Name="DIACHI_BT" ColumnName="DIACHI_BT" />
+          <ScalarProperty Name="DIENTHOAI_BT" ColumnName="DIENTHOAI_BT" />
+          <ScalarProperty Name="FAX_BT" ColumnName="FAX_BT" />
+          <ScalarProperty Name="TAIKHOAN_BT" ColumnName="TAIKHOAN_BT" />
+          <ScalarProperty Name="NGANHANG_BT" ColumnName="NGANHANG_BT" />
+          <ScalarProperty Name="MSTHUE_BT" ColumnName="MSTHUE_BT" />
+          <ScalarProperty Name="DAIDIEN_BT" ColumnName="DAIDIEN_BT" />
+          <ScalarProperty Name="CMND_BT" ColumnName="CMND_BT" />
+          <ScalarProperty Name="NGAYCAP_CMND_BT" ColumnName="NGAYCAP_CMND_BT" />
+          <ScalarProperty Name="NOICAP_BT" ColumnName="NOICAP_BT" />
+          <ScalarProperty Name="CHUCVU_BT" ColumnName="CHUCVU_BT" />
+          <ScalarProperty Name="TEN_CT" ColumnName="TEN_CT" />
+          <ScalarProperty Name="DIACHI_CT" ColumnName="DIACHI_CT" />
+          <ScalarProperty Name="CMND_CT" ColumnName="CMND_CT" />
+          <ScalarProperty Name="NGAYCAP_CT" ColumnName="NGAYCAP_CT" />
+          <ScalarProperty Name="NOICAP_CT" ColumnName="NOICAP_CT" />
+          <ScalarProperty Name="NGAYSINH_CT" ColumnName="NGAYSINH_CT" />
+          <ScalarProperty Name="DIENTHOAI_CT" ColumnName="DIENTHOAI_CT" />
+          <ScalarProperty Name="TRINHDO_CT" ColumnName="TRINHDO_CT" />
+          <ScalarProperty Name="MSTHUE_CT" ColumnName="MSTHUE_CT" />
+          <ScalarProperty Name="CONGVIEC_CT" ColumnName="CONGVIEC_CT" />
+          <ScalarProperty Name="NOIO_CT" ColumnName="NOIO_CT" />
+          <ScalarProperty Name="NOILAMVIEC_CT" ColumnName="NOILAMVIEC_CT" />
+          <ScalarProperty Name="THANG_GT" ColumnName="THANG_GT" />
+          <ScalarProperty Name="TONG_GT" ColumnName="TONG_GT" />
+          <ScalarProperty Name="NGAY_BD" ColumnName="NGAY_BD" />
+          <ScalarProperty Name="NGAY_KT" ColumnName="NGAY_KT" />
+          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+          <ScalarProperty Name="FIle" ColumnName="FIle" />
+          <ScalarProperty Name="USER" ColumnName="USER" />
+          <ScalarProperty Name="DONVI_ID" ColumnName="DONVI_ID" />
+          <ScalarProperty Name="THANG" ColumnName="THANG" />
+          <ScalarProperty Name="VAT" ColumnName="VAT" />
+          <ScalarProperty Name="SO_CHUKY" ColumnName="SO_CHUKY" />
+          <ScalarProperty Name="SLTRAM_KYTHUAT" ColumnName="SLTRAM_KYTHUAT" />
+          <ScalarProperty Name="TENTRAM_KYTHUAT" ColumnName="TENTRAM_KYTHUAT" />
+          <ScalarProperty Name="LUONG_KYTHUAT" ColumnName="LUONG_KYTHUAT" />
+          <ScalarProperty Name="SLTRAM_TAISAN" ColumnName="SLTRAM_TAISAN" />
+          <ScalarProperty Name="TENTRAM_TAISAN" ColumnName="TENTRAM_TAISAN" />
+          <ScalarProperty Name="LUONG_TAISAN" ColumnName="LUONG_TAISAN" />
+          <ScalarProperty Name="SLTRAM_MPD" ColumnName="SLTRAM_MPD" />
+          <ScalarProperty Name="TENTRAM_MPD" ColumnName="TENTRAM_MPD" />
+          <ScalarProperty Name="LUONG_MPD" ColumnName="LUONG_MPD" />
+          <ScalarProperty Name="SLTRAM_BAOVE" ColumnName="SLTRAM_BAOVE" />
+          <ScalarProperty Name="TENTRAM_BAOVE" ColumnName="TENTRAM_BAOVE" />
+          <ScalarProperty Name="LUONG_BAOVE" ColumnName="LUONG_BAOVE" />
+          <ScalarProperty Name="THULAO" ColumnName="THULAO" />
+          <ScalarProperty Name="SOTIEN_BAOHIEM" ColumnName="SOTIEN_BAOHIEM" />
+          <ScalarProperty Name="SO_SOBAOHIEM" ColumnName="SO_SOBAOHIEM" />
+          <ScalarProperty Name="VTT_KHONGHOTRO" ColumnName="VTT_KHONGHOTRO" />
+          <ScalarProperty Name="ID_TRANGTHAI" ColumnName="ID_TRANGTHAI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HTTTs">
+      <EntityTypeMapping TypeName="QLHDModel.HTTT">
+        <MappingFragment StoreEntitySet="HTTT">
+          <ScalarProperty Name="HTTT_ID" ColumnName="HTTT_ID" />
+          <ScalarProperty Name="TEN_HTTT" ColumnName="TEN_HTTT" />
+          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LICHSU_DANGNHAP">
+      <EntityTypeMapping TypeName="QLHDModel.LICHSU_DANGNHAP">
+        <MappingFragment StoreEntitySet="LICHSU_DANGNHAP">
+          <ScalarProperty Name="LICHSU_ID" ColumnName="LICHSU_ID" />
+          <ScalarProperty Name="TENTRUYCAP" ColumnName="TENTRUYCAP" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAI_HD_SUB">
+      <EntityTypeMapping TypeName="QLHDModel.LOAI_HD_SUB">
+        <MappingFragment StoreEntitySet="LOAI_HD_SUB">
+          <ScalarProperty Name="ID_LOAIHD_SUB" ColumnName="ID_LOAIHD_SUB" />
+          <ScalarProperty Name="TEN_HD_SUB" ColumnName="TEN_HD_SUB" />
+          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+          <ScalarProperty Name="LOAIHD" ColumnName="LOAIHD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MENU_CHA">
+      <EntityTypeMapping TypeName="QLHDModel.MENU_CHA">
+        <MappingFragment StoreEntitySet="MENU_CHA">
+          <ScalarProperty Name="ID_MENU_CHA" ColumnName="ID_MENU_CHA" />
+          <ScalarProperty Name="TEN_MENU_CHA" ColumnName="TEN_MENU_CHA" />
+          <ScalarProperty Name="LINK" ColumnName="LINK" />
+          <ScalarProperty Name="ICON" ColumnName="ICON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MENU_CON">
+      <EntityTypeMapping TypeName="QLHDModel.MENU_CON">
+        <MappingFragment StoreEntitySet="MENU_CON">
+          <ScalarProperty Name="ID_MENU_CON" ColumnName="ID_MENU_CON" />
+          <ScalarProperty Name="ID_MENU_CHA" ColumnName="ID_MENU_CHA" />
+          <ScalarProperty Name="TEN_MENU" ColumnName="TEN_MENU" />
+          <ScalarProperty Name="LINK" ColumnName="LINK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NAM_HD">
+      <EntityTypeMapping TypeName="QLHDModel.NAM_HD">
+        <MappingFragment StoreEntitySet="NAM_HD">
+          <ScalarProperty Name="NAM_HD_ID" ColumnName="NAM_HD_ID" />
+          <ScalarProperty Name="NAM" ColumnName="NAM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHULUCs">
+      <EntityTypeMapping TypeName="QLHDModel.PHULUC">
+        <MappingFragment StoreEntitySet="PHULUC">
+          <ScalarProperty Name="ID_PHULUC" ColumnName="ID_PHULUC" />
+          <ScalarProperty Name="HOPDONG_ID" ColumnName="HOPDONG_ID" />
+          <ScalarProperty Name="SOHD_PHULUC" ColumnName="SOHD_PHULUC" />
+          <ScalarProperty Name="NGAYHD_PHULUC" ColumnName="NGAYHD_PHULUC" />
+          <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHULUC_HDCP">
+      <EntityTypeMapping TypeName="QLHDModel.PHULUC_HDCP">
+        <MappingFragment StoreEntitySet="PHULUC_HDCP">
+          <ScalarProperty Name="PHULUC_HDCP_ID" ColumnName="PHULUC_HDCP_ID" />
+          <ScalarProperty Name="HOPDONG_CHIPHI_ID" ColumnName="HOPDONG_CHIPHI_ID" />
+          <ScalarProperty Name="CHUKY_ID" ColumnName="CHUKY_ID" />
+          <ScalarProperty Name="CHUKY2_ID" ColumnName="CHUKY2_ID" />
+          <ScalarProperty Name="SO_PHULUC" ColumnName="SO_PHULUC" />
+          <ScalarProperty Name="TEN_CT" ColumnName="TEN_CT" />
+          <ScalarProperty Name="NGAY_KY_PL" ColumnName="NGAY_KY_PL" />
+          <ScalarProperty Name="NGAY_BD_PL" ColumnName="NGAY_BD_PL" />
+          <ScalarProperty Name="NGAY_KT_PL" ColumnName="NGAY_KT_PL" />
+          <ScalarProperty Name="THANG_GT" ColumnName="THANG_GT" />
+          <ScalarProperty Name="VAT" ColumnName="VAT" />
+          <ScalarProperty Name="TONG_GT" ColumnName="TONG_GT" />
+          <ScalarProperty Name="SOCHUKY" ColumnName="SOCHUKY" />
+          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+          <ScalarProperty Name="THANG" ColumnName="THANG" />
+          <ScalarProperty Name="FILE" ColumnName="FILE" />
+          <ScalarProperty Name="NGAY_HIEU_LUC_PL" ColumnName="NGAY_HIEU_LUC_PL" />
+          <ScalarProperty Name="FILE_ID" ColumnName="FILE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_FILE">
+      <EntityTypeMapping TypeName="QLHDModel.TBL_FILE">
+        <MappingFragment StoreEntitySet="TBL_FILE">
+          <ScalarProperty Name="file_id" ColumnName="file_id" />
+          <ScalarProperty Name="file_name" ColumnName="file_name" />
+          <ScalarProperty Name="file_ext" ColumnName="file_ext" />
+          <ScalarProperty Name="file_base6" ColumnName="file_base6" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THANHLY_HDCHIPHI">
+      <EntityTypeMapping TypeName="QLHDModel.THANHLY_HDCHIPHI">
+        <MappingFragment StoreEntitySet="THANHLY_HDCHIPHI">
+          <ScalarProperty Name="THANHLY_CHIPHI_ID" ColumnName="THANHLY_CHIPHI_ID" />
+          <ScalarProperty Name="HOPDONG_CHIPHI_ID" ColumnName="HOPDONG_CHIPHI_ID" />
+          <ScalarProperty Name="SOBIENBAN_TL" ColumnName="SOBIENBAN_TL" />
+          <ScalarProperty Name="NGAYLAP_BBTL" ColumnName="NGAYLAP_BBTL" />
+          <ScalarProperty Name="NGUOILAP_BBTL" ColumnName="NGUOILAP_BBTL" />
+          <ScalarProperty Name="NOIDUNG_TL" ColumnName="NOIDUNG_TL" />
+          <ScalarProperty Name="NGAY_HIEULUC_TL" ColumnName="NGAY_HIEULUC_TL" />
+          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THANHLY_HDDOANHTHU">
+      <EntityTypeMapping TypeName="QLHDModel.THANHLY_HDDOANHTHU">
+        <MappingFragment StoreEntitySet="THANHLY_HDDOANHTHU">
+          <ScalarProperty Name="THANHLY_DOANHTHU_ID" ColumnName="THANHLY_DOANHTHU_ID" />
+          <ScalarProperty Name="HOPDONG_DOANHTHU_ID" ColumnName="HOPDONG_DOANHTHU_ID" />
+          <ScalarProperty Name="SOBIENBAN_TL" ColumnName="SOBIENBAN_TL" />
+          <ScalarProperty Name="NGAYLAP_BBTL" ColumnName="NGAYLAP_BBTL" />
+          <ScalarProperty Name="NGUOILAP_BBTL" ColumnName="NGUOILAP_BBTL" />
+          <ScalarProperty Name="NOIDUNG_TL" ColumnName="NOIDUNG_TL" />
+          <ScalarProperty Name="NGAY_HIEULUC_TL" ColumnName="NGAY_HIEULUC_TL" />
+          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THANHLY_HDNHANCONG">
+      <EntityTypeMapping TypeName="QLHDModel.THANHLY_HDNHANCONG">
+        <MappingFragment StoreEntitySet="THANHLY_HDNHANCONG">
+          <ScalarProperty Name="THANHLY_HDNHANCONG1" ColumnName="THANHLY_HDNHANCONG" />
+          <ScalarProperty Name="HOPDONG_NHANCONG_ID" ColumnName="HOPDONG_NHANCONG_ID" />
+          <ScalarProperty Name="SOBIENBAN_TL" ColumnName="SOBIENBAN_TL" />
+          <ScalarProperty Name="NGAYLAP_BBTL" ColumnName="NGAYLAP_BBTL" />
+          <ScalarProperty Name="TEN_CTV" ColumnName="TEN_CTV" />
+          <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
+          <ScalarProperty Name="NGAY_HIEULUC_TL" ColumnName="NGAY_HIEULUC_TL" />
+          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THANHTOAN_CHIPHI">
+      <EntityTypeMapping TypeName="QLHDModel.THANHTOAN_CHIPHI">
+        <MappingFragment StoreEntitySet="THANHTOAN_CHIPHI">
+          <ScalarProperty Name="ID_TT" ColumnName="ID_TT" />
+          <ScalarProperty Name="HOPDONG_CHIPHI_ID" ColumnName="HOPDONG_CHIPHI_ID" />
+          <ScalarProperty Name="TUNGAY_TT" ColumnName="TUNGAY_TT" />
+          <ScalarProperty Name="DENNGAY_TT" ColumnName="DENNGAY_TT" />
+          <ScalarProperty Name="NGAY_TT" ColumnName="NGAY_TT" />
+          <ScalarProperty Name="SOTIEN_TT" ColumnName="SOTIEN_TT" />
+          <ScalarProperty Name="SOUYNHIEMCHI_TT" ColumnName="SOUYNHIEMCHI_TT" />
+          <ScalarProperty Name="CHUTK_TT" ColumnName="CHUTK_TT" />
+          <ScalarProperty Name="SOTK_TT" ColumnName="SOTK_TT" />
+          <ScalarProperty Name="NGANHANG_TT" ColumnName="NGANHANG_TT" />
+          <ScalarProperty Name="GHICHU_TT" ColumnName="GHICHU_TT" />
+          <ScalarProperty Name="USER" ColumnName="USER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THANHTOAN_DOANHTHU">
+      <EntityTypeMapping TypeName="QLHDModel.THANHTOAN_DOANHTHU">
+        <MappingFragment StoreEntitySet="THANHTOAN_DOANHTHU">
+          <ScalarProperty Name="ID_TT" ColumnName="ID_TT" />
+          <ScalarProperty Name="HOPDONG_DOANHTHU_ID" ColumnName="HOPDONG_DOANHTHU_ID" />
+          <ScalarProperty Name="TUNGAY_TT" ColumnName="TUNGAY_TT" />
+          <ScalarProperty Name="DENNGAY_TT" ColumnName="DENNGAY_TT" />
+          <ScalarProperty Name="NGAY_TT" ColumnName="NGAY_TT" />
+          <ScalarProperty Name="SOTIEN_TT" ColumnName="SOTIEN_TT" />
+          <ScalarProperty Name="SOUYNHIEMCHI_TT" ColumnName="SOUYNHIEMCHI_TT" />
+          <ScalarProperty Name="CHUTK_TT" ColumnName="CHUTK_TT" />
+          <ScalarProperty Name="SOTK_TT" ColumnName="SOTK_TT" />
+          <ScalarProperty Name="NGANHANG_TT" ColumnName="NGANHANG_TT" />
+          <ScalarProperty Name="GHICHU_TT" ColumnName="GHICHU_TT" />
+          <ScalarProperty Name="USER" ColumnName="USER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THANHTOAN_NHANCONG">
+      <EntityTypeMapping TypeName="QLHDModel.THANHTOAN_NHANCONG">
+        <MappingFragment StoreEntitySet="THANHTOAN_NHANCONG">
+          <ScalarProperty Name="ID_TT" ColumnName="ID_TT" />
+          <ScalarProperty Name="HOPDONG_NHANCONG_ID" ColumnName="HOPDONG_NHANCONG_ID" />
+          <ScalarProperty Name="TUNGAY_TT" ColumnName="TUNGAY_TT" />
+          <ScalarProperty Name="DENNGAY_TT" ColumnName="DENNGAY_TT" />
+          <ScalarProperty Name="NGAY_TT" ColumnName="NGAY_TT" />
+          <ScalarProperty Name="SOTIEN_TT" ColumnName="SOTIEN_TT" />
+          <ScalarProperty Name="SOUYNHIEMCHI_TT" ColumnName="SOUYNHIEMCHI_TT" />
+          <ScalarProperty Name="CHUTK_TT" ColumnName="CHUTK_TT" />
+          <ScalarProperty Name="SOTK_TT" ColumnName="SOTK_TT" />
+          <ScalarProperty Name="NGANHANG_TT" ColumnName="NGANHANG_TT" />
+          <ScalarProperty Name="GHICHU_TT" ColumnName="GHICHU_TT" />
+          <ScalarProperty Name="USER" ColumnName="USER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THANHVIENs">
+      <EntityTypeMapping TypeName="QLHDModel.THANHVIEN">
+        <MappingFragment StoreEntitySet="THANHVIEN">
+          <ScalarProperty Name="ID_THANHVIEN" ColumnName="ID_THANHVIEN" />
+          <ScalarProperty Name="HETHONG_ID" ColumnName="HETHONG_ID" />
+          <ScalarProperty Name="TEN_THANHVIEN" ColumnName="TEN_THANHVIEN" />
+          <ScalarProperty Name="CHUCVU" ColumnName="CHUCVU" />
+          <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="TRINHDO" ColumnName="TRINHDO" />
+          <ScalarProperty Name="TONGIAO" ColumnName="TONGIAO" />
+          <ScalarProperty Name="DANTOC" ColumnName="DANTOC" />
+          <ScalarProperty Name="DIENTHOAI" ColumnName="DIENTHOAI" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
+          <ScalarProperty Name="NOICAP" ColumnName="NOICAP" />
+          <ScalarProperty Name="NGAYCAP" ColumnName="NGAYCAP" />
+          <ScalarProperty Name="TENTRUYCAP" ColumnName="TENTRUYCAP" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+          <ScalarProperty Name="IMG" ColumnName="IMG" />
+          <ScalarProperty Name="DONVI_ID" ColumnName="DONVI_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THOIHAN_TT">
+      <EntityTypeMapping TypeName="QLHDModel.THOIHAN_TT">
+        <MappingFragment StoreEntitySet="THOIHAN_TT">
+          <ScalarProperty Name="THOIHAN_TT_ID" ColumnName="THOIHAN_TT_ID" />
+          <ScalarProperty Name="TEN_THOIHAN_TT" ColumnName="TEN_THOIHAN_TT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TINHTRANG_SD_CHIPHI">
+      <EntityTypeMapping TypeName="QLHDModel.TINHTRANG_SD_CHIPHI">
+        <MappingFragment StoreEntitySet="TINHTRANG_SD_CHIPHI">
+          <ScalarProperty Name="TINHTRANG_ID" ColumnName="TINHTRANG_ID" />
+          <ScalarProperty Name="HOPDONG_CHIPHI_ID" ColumnName="HOPDONG_CHIPHI_ID" />
+          <ScalarProperty Name="TEN_TB" ColumnName="TEN_TB" />
+          <ScalarProperty Name="TINHTRANG_SD" ColumnName="TINHTRANG_SD" />
+          <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRAM_BTS">
+      <EntityTypeMapping TypeName="QLHDModel.TRAM_BTS">
+        <MappingFragment StoreEntitySet="TRAM_BTS">
+          <ScalarProperty Name="MA_TRAM" ColumnName="MA_TRAM" />
+          <ScalarProperty Name="TEN_TRAM" ColumnName="TEN_TRAM" />
+          <ScalarProperty Name="DIA_CHI_TRAM" ColumnName="DIA_CHI_TRAM" />
+          <ScalarProperty Name="LONG_TRAM" ColumnName="LONG_TRAM" />
+          <ScalarProperty Name="LAT_TRAM" ColumnName="LAT_TRAM" />
+          <ScalarProperty Name="TRAM_ID" ColumnName="TRAM_ID" />
+          <ScalarProperty Name="TRANG_THAI" ColumnName="TRANG_THAI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRANGTHAI_HD">
+      <EntityTypeMapping TypeName="QLHDModel.TRANGTHAI_HD">
+        <MappingFragment StoreEntitySet="TRANGTHAI_HD">
+          <ScalarProperty Name="id_trangthai" ColumnName="id_trangthai" />
+          <ScalarProperty Name="trangthai" ColumnName="trangthai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

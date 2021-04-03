@@ -1,0 +1,79 @@
+﻿@using QLHD.Models;
+@model List<QLHD.Models.BENTHUE_TAM>
+@{
+    ViewBag.Title = "Bên Thuê";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Quản lý bên thuê</h3>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav navbar-left">
+                <form class="form-horizontal">
+                    
+                </form>
+            </div>
+            <div class="nav navbar-right">
+                    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addBT"><i class="fa fa-plus"></i>Thêm mới</button>
+                </div>
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh mục bên thuê </h2>
+                    <div class="clearfix"></div>
+                </div>
+              
+                <div class="x_content">
+                    <table class="table table-bordered table-striped table-hover">
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên bên thuê</th>
+                            <th>Địa chỉ</th>
+                            <th>Số điện thoại</th>
+                            <th>MS thuế</th>
+                            <th>Tài khoản</th>
+                            <th>Ngân hàng</th>
+                            <th>Đại diện</th>
+                            <th>Chức vụ</th>
+                            <th>Sửa</th>
+                            <th>Xóa</th>
+                        </tr>
+                          @{int rowNo=0;}
+                        @foreach(var item in Model)
+                        {
+                            <tr>
+                                <td>@(rowNo+=1)</td>
+                                <td>@item.TEN</td>
+                                <td>@item.DIACHI</td>
+                                <td>@item.DIENTHOAI</td>
+                                <td>@item.MS_THUE</td>
+                                <td>@item.TAIKHOAN</td>
+                                <td>@item.NGANHANG</td>
+                                <td>@item.DAIDIEN</td>
+                                <td>@item.CHUCVU</td>
+                                <td>
+                                    @*<button type="button" data-toggle="modal" data-target="#@item.MA_NCC">
+                                        <i class="fa fa-edit" style="font-size:20px"></i>
+                                    </button>*@
+                                   @*@Html.ActionLink(" ","EditBenThue", "Edit", new { @benthueid = item.BENTHUE_TAM_ID }, new {@class ="fa fa-edit",@style="font-size: 20px" })*@
+                                    @Html.Action("EditBenThue", "Edit", new {@benthueid = @item.BENTHUE_TAM_ID })
+                                </td>
+                                <td>
+                                    @Html.Action("xoaBenThue", "HeThong", new {@ID = @item.BENTHUE_TAM_ID })
+                                   
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("addBenThue","Partial")

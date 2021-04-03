@@ -1,0 +1,13 @@
+﻿@using QLHD.Models;
+@model List<QLHD.Models.MENU_CON>
+
+@foreach (var n in Model)
+{
+    <tr>
+        <td>@n.MENU_CHA.TEN_MENU_CHA</td>
+        <td>@n.TEN_MENU</td>
+        <td>@n.LINK</td>
+        <td>@Html.Action("EditMenuCon", "HeThong", new {@IDMenu = @n.ID_MENU_CON })</td>
+        <td>@Html.Action("XoaMenuCon", "HeThong", new {@IDMenu = @n.ID_MENU_CON })</td>
+    </tr>
+}

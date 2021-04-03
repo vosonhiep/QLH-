@@ -1,0 +1,9 @@
+﻿@using QLHD.Models;
+@model QLHD.Models.THANHVIEN
+<div class="profile_pic">
+    <img src="~/Images/@Model.IMG" alt="..." class="img-circle profile_img" style="height:70px; width:70px"/>
+</div>
+<div class="profile_info">
+    <span>Xin chào,</span>
+    <h2>@Model.TEN_THANHVIEN</h2>
+</div>

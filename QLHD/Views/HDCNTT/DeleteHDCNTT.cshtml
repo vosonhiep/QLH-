@@ -1,0 +1,17 @@
+﻿@model QLHD.Models.HOPDONG_DOANHTHU
+
+@{
+    ViewBag.Title = "Xác nhận xoá";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xác nhận xóa</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Xóa" class="btn btn-default" /> |
+        @Html.ActionLink("Trở về", "Index")
+    </div>
+}

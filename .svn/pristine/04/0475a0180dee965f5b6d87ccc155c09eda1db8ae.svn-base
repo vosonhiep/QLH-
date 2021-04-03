@@ -1,0 +1,215 @@
+﻿@model QLHD.Models.PHULUC_HDCP
+@{
+    ViewBag.Title = "Chi tiết phụ lục HĐ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Chi tiết phụ lục hợp đồng (số HĐ: @Model.HOPDONG_CHIPHI.SO_HD)</h3>            
+            <span style="color: red">@ViewBag.baoloi</span>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel" style="">
+                    <div class="x_title">
+                        <h2>Chi tiết phụ lục hợp đồng</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        @*<div class="col-md-6" style="display: none">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Hợp đồng ID:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="HOPDONG_CHIPHI_ID" required="required" value="@ViewBag.hdid"/>
+                                </div>
+                            </div>
+                        </div>*@
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Số phụ lục hợp đồng:</label>
+                                </div>
+                                <div class="col-md-5 noidung">
+                                    <h5>@Model.SO_PHULUC</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Ngày ký phụ lục:</label>
+                                </div>
+                                <div class="col-md-5 noidung">
+                                    <h5>@if (Model.NGAY_KY_PL.HasValue)
+                                        {
+                                            @Model.NGAY_KY_PL.Value.ToString("dd/MM/yyyy")
+                                        }
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Tên chủ đầu tư (bên cho thuê):</label>
+                                </div>
+                                <div class="col-md-5 noidung">
+                                    <h5>@Model.TEN_CT</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Ngày hiệu lực:</label>
+                                </div>
+                                <div class="col-md-5 noidung">
+                                    <h5>
+                                        @if (Model.NGAY_HIEU_LUC_PL.HasValue)
+                                    {
+                                        @Model.NGAY_HIEU_LUC_PL.Value.ToString("dd/MM/yyyy")
+                                    }
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Giá trị hợp đồng</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="control-label col-md-4 ">
+                                    <label style="float: left">Giá trị thuê/tháng (chưa có VAT):</label>
+                                </div>
+                                <div class="col-md-8  noidung">
+                                    <h5><span id="thang">@Model.THANG</span> VNĐ</h5>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: left">Thuế VAT:</label>
+                                </div>
+                                <div class="col-md-8  noidung">
+                                    <h5>@Model.VAT %</h5>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: left">Tổng giá trị thuê/tháng:</label>
+                                </div>
+                                <div class="col-md-8  noidung">
+                                    <h5><span id="thang_gt">@Model.THANG_GT</span> VNĐ</h5>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: left">Chu kỳ thanh toán đầu:</label>
+                                </div>
+                                <div class="col-md-8  noidung">
+                                    <h5>@Model.CHUKY_TT.CHUKY</h5>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: left">Các chu kỳ thanh toán còn lại:</label>
+                                </div>
+                                <div class="col-md-8  noidung">
+                                    <h5>@Model.CHUKY_TT1.CHUKY</h5>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: left">Hạn hợp đồng: </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="control-label col-md-3" style="text-align:left">
+                                        <label>Từ ngày:</label>
+                                    </div>
+                                    <div class="col-md-9 noidung">
+                                        <h5>@if (Model.NGAY_BD_PL.HasValue)
+                                            {
+                                                 @Model.NGAY_BD_PL.Value.ToString("dd/MM/yyyy")
+                                            }
+                                        </h5>
+                                    </div>
+                                    <div class="control-label col-md-3" style="text-align:left">
+                                        <label>Đến ngày:</label>
+                                    </div>
+                                    <div class="col-md-9 noidung">
+                                        <h5>@if (Model.NGAY_KT_PL.HasValue)
+                                            {
+                                                 @Model.NGAY_KT_PL.Value.ToString("dd/MM/yyyy")
+                                            }
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: left">Số chu kỳ thanh toán:</label>
+                                </div>
+                                <div class="col-md-8  noidung">
+                                    <h5>@Model.SOCHUKY</h5>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: left">Tổng giá trị hợp đồng:</label>
+                                </div>
+                                <div class="col-md-8  noidung">
+                                    <h5><span id="thang_gt">@Model.TONG_GT</span> VNĐ</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Ghi chú</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="form-horizontal">
+                             <div class="col-md-12  noidung">
+                                    <h5>@Model.GHICHU</h5>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    <div style="text-align: center;">
+                
+                <a href="@Url.Action("ShowHDChiPhi", "HDChiPhi", new { @maHD = Model.HOPDONG_CHIPHI_ID })" class="btn btn-default btn-lg">Quay lại</a>
+            </div>
+</div>
+
+@Scripts.Render("~/Scripts/numeric/jquery.js")
+@Scripts.Render("~/Scripts/numeric/jquery.number.js")
+<script type="text/javascript">
+    $(function () {
+        // Set up the number formatting.
+        $('#thang').number(true, 0);
+        
+        $('#thang_gt').number(true, 0);
+        $('#tong_gt').number(true, 0);
+
+    });
+</script>

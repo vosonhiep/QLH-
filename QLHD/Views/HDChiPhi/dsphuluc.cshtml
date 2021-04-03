@@ -1,0 +1,84 @@
+﻿@using QLHD.Models;
+@model List<QLHD.Models.PHULUC_HDCP>
+
+<button type="button" data-toggle="modal" data-target="#dsphuluc" title="Danh sách phụ lục hợp đồng" class="btn btn-info btn-lg">
+                Phụ lục hợp đồng
+             </button>
+<div class="modal fade" id="dsphuluc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Danh sách phụ lục hợp đồng</h4>
+                </div>     
+                <div class="modal-body">
+                    <div class="nav navbar-right">
+                        <a href="@Url.Action("addPhuLucHD", "HDChiPhi", new {@HDid = ViewBag.hdid })" class="btn btn-info btn-lg">Thêm phụ lục hợp đồng
+                            <span class="glyphicon glyphicon-plus" />
+                        </a>
+                    </div>
+                    <table class="table table-bordered table-striped table-hover">
+                        <tr class="noidung">
+                            <th>Số phục lục HĐ</th>
+                            <th>Ngày lập PLHĐ</th>
+                            @*<th>Đại diện bên thuê</th>*@
+                            <th>Đại diện bên cho thuê</th>
+                            <th>Ngày hiệu lực</th>
+                            <th>Ngày bắt đầu</th>
+                            <th>Ngày kết thúc</th>
+                            <th>Chi phí thuê</th>
+                            @*<th>Tổng giá trị</th>*@
+                            <th>File PLHĐ</th>
+                            <th>Xóa PL</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="noidunghd">
+                                <td><a href="@Url.Action("showPLHD","HDChiPhi",new {@PLid = item.PHULUC_HDCP_ID })"> @item.SO_PHULUC</a></td>
+                                <td>@if (item.NGAY_KY_PL.HasValue)
+                                    {
+                                        @item.NGAY_KY_PL.Value.ToString("dd/MM/yyyy")
+                                    }
+                                    @*@item.NGAY_KY_PL</td>*@
+                                @*<td>@item.HOPDONG_CHIPHI.TEN_BT</td>*@
+                                <td>@item.TEN_CT</td>
+                                <td>
+                                    @if (item.NGAY_HIEU_LUC_PL.HasValue)
+                                {
+                                    @item.NGAY_HIEU_LUC_PL.Value.ToString("dd/MM/yyyy")
+                                }
+                                </td>
+
+                                <td>@if (item.NGAY_BD_PL.HasValue)
+                                    {
+                                        @item.NGAY_BD_PL.Value.ToString("dd/MM/yyyy")
+                                    }</td>
+                                <td>@if (item.NGAY_KT_PL.HasValue)
+                                    {
+                                        @item.NGAY_KT_PL.Value.ToString("dd/MM/yyyy")
+                                    }</td>
+                                <td class="no">@item.THANG_GT</td>
+                                <td>
+                                    @if (item.FILE_ID != null)
+                                    {
+                                        @Html.ActionLink(" ", "ExportDataPL", "HDChiPhi", new { @PLid = item.PHULUC_HDCP_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 20px" })
+                                    }
+                                </td>
+                                <td>@Html.Action("xoaPL", "HDChiPhi", new { @PLid = @item.PHULUC_HDCP_ID })</td>
+                            </tr>
+                        }
+                        <p style="color:red; font-size:15px">@ViewBag.thongbao</p>
+                    </table>
+                    <div class="clearfix"></div>
+                </div>             
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+                </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.no').number(true, 0);
+    });
+</script>

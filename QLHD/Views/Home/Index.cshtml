@@ -1,0 +1,251 @@
+﻿@{
+    ViewBag.Title = "Quản lý hợp đồng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Trang chủ</h3>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row top_tiles">
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12"
+             onclick="location.href='@Url.Action("Index","HDChiPhi")';">
+            <div class="tile-stats">
+                <div class="icon">
+                    <i class="fa fa-file-text-o"></i>
+                </div>
+                <div class="count">@ViewBag.HDChiPhi</div>
+                <h3><a href="@Url.Action("Index","HDChiPhi")"> Hợp đồng chi phí</a></h3>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12"
+             onclick="location.href='@Url.Action("Index","HDDoanhThu")';">
+            <div class="tile-stats">
+                <div class="icon">
+                    <i class="fa fa-building-o"></i>
+                </div>
+                <div class="count">@ViewBag.HDDoanhThu</div>
+
+                <h3><a href="@Url.Action("Index","HDDoanhThu")">Hợp đồng doanh thu</a></h3>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12"
+             onclick="location.href='@Url.Action("Index","HDNhanCong")';">
+            <div class="tile-stats">
+                <div class="icon">
+                    <i class="fa fa-clipboard"></i>
+                </div>
+                <div class="count">@ViewBag.HDNhanCong</div>
+
+                <h3><a href="@Url.Action("Index","HDNhanCong")">Hợp đồng nhân công</a></h3>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12"
+             onclick="location.href='@Url.Action("Index","HDCNTT")';">
+            <div class="tile-stats">
+                <div class="icon">
+                    <i class="fa fa-clipboard"></i>
+                </div>
+                <div class="count">@ViewBag.HDCNTT</div>
+
+                <h3><a href="@Url.Action("Index","HDCNTT")">Hợp đồng CNTT</a></h3>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="count">@ViewBag.ThanhVien</div>
+
+                <h3>Thành Viên</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        @*<div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="x_panel" style="height: 600px;">
+                <div class="x_title">
+                    <h2>Biểu đồ số lượng hợp đồng</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <canvas id="canvas_pie"></canvas>
+                </div>
+            </div>
+        </div>*@
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="x_panel" style="height: 600px;">
+                <div class="x_title">
+                    <h2>Biểu đồ số tiền thanh toán</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div id="echart_donut" style="height:350px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="x_panel" style="height: 600px;">
+                <div class="x_title">
+                    <h2>Biểu đồ số lượng hợp đồng</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div id="echart_pie" style="height:350px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/js/echart/echarts-all.js"></script>
+    <script src="~/Scripts/js/echart/green.js"></script> 
+<script>
+   
+    //Biểu đồ thanh toán
+    var myChart = echarts.init(document.getElementById('echart_donut'), theme);
+    myChart.setOption({
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} VNĐ ({d}%)"
+        },
+        calculable: true,
+        legend: {
+            //orient: 'vertical',
+            //x: 'left',
+            x: 'center',
+            y: 'bottom',
+            data: ['Thanh toán HĐ Chi phí', 'Thanh toán HĐ doanh thu', 'Thanh toán HĐ nhân công']
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                magicType: {
+                    show: true,
+                    type: ['pie', 'funnel'],
+                    option: {
+                        funnel: {
+                            x: '25%',
+                            width: '50%',
+                            funnelAlign: 'center',
+                            max: 1548
+                        }
+                    }
+                },
+                restore: {
+                    show: true
+                },
+                saveAsImage: {
+                    show: true
+                }
+            }
+        },
+        series: [
+            {
+                name: 'Tổng tiền thanh tóan',
+                type: 'pie',
+                radius: ['35%', '55%'],
+                itemStyle: {
+                    normal: {
+                        label: {
+                            show: true
+                        },
+                        labelLine: {
+                            show: true
+                        }
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '14',
+                                fontWeight: 'normal'
+                            }
+                        }
+                    }
+                },
+                data: [
+                    {
+                        value: @ViewBag.TTHDChiPhi,
+                        name: 'Thanh toán HĐ Chi phí'
+                    },
+                    {
+                        value: @ViewBag.TTHDDoanhThu,
+                        name: 'Thanh toán HĐ doanh thu'
+                    },
+                    {
+                        value: @ViewBag.TTNhanCong,
+                        name: 'Thanh toán HĐ nhân công'
+                    }
+                 
+                ]
+            }
+        ]
+    });
+    //Biểu đồ 2
+    var myChart = echarts.init(document.getElementById('echart_pie'), theme); 
+    myChart.setOption({
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            //orient: 'vertical',
+            //x: 'left',
+            x: 'center',
+            y: 'bottom',
+            data: ['HĐ Chi Phí', 'HĐ Doanh Thu', 'HĐ Nhân Công']
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                magicType: {
+                    show: true,
+                    type: ['pie', 'funnel'],
+                    option: {
+                        funnel: {
+                            x: '25%',
+                            width: '50%',
+                            funnelAlign: 'left',
+                            max: 1548
+                        }
+                    }
+                },
+                restore: {
+                    show: true
+                },
+                saveAsImage: {
+                    show: true
+                }
+            }
+        },
+        calculable: true,
+        series: [
+            {
+                name: 'Số lượng',
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '48%'], //left,top
+                data: [
+                    {
+                        value: @ViewBag.HDChiPhi,
+                        name: 'HĐ Chi Phí'
+                    },
+                    {
+                        value: @ViewBag.HDDoanhThu,
+                        name: 'HĐ Doanh Thu'
+                    },
+                    {
+                        value: @ViewBag.HDNhanCong,
+                        name: 'HĐ Nhân Công'
+                    }
+                ]
+            }
+        ]
+    });
+</script>

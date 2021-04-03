@@ -1,0 +1,38 @@
+﻿@model QLHD.Models.HTTT
+
+<button type="button" data-toggle="modal" data-target="#@ViewBag.id" title="Xóa" class="btn btn-danger btn-sm">
+    <i class="fa fa-remove" style="font-size: 15px"></i>
+</button>
+<div class="modal fade" id="@ViewBag.id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("xacnhanxoaHTTT", "HeThong", new { htttID = @Model.HTTT_ID }, FormMethod.Post, null))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Xác nhận xóa</h4>
+                </div>     
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        @*Bạn có chắc muốn xóa lịch sử thanh toán này không? @Model.HTTT_ID<br />*@
+                        <span id="thongbao" style="color:red">@ViewBag.thongbaoxoa</span>
+                        <span id="" style="color:red">@ViewBag.thongbaoxoa1</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>             
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Xóa" />
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if ($('#thongbao').val().length != 0) {
+                $("#xoa").attr("disabled", true);
+            }
+});
+</script>

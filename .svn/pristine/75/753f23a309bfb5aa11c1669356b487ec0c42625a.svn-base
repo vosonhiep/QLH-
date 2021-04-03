@@ -1,0 +1,129 @@
+﻿@model QLHD.Models.THANHVIEN
+<button type="button" class="btn btn-danger btn-xs btn-round" data-toggle="modal" data-target="#@ViewBag.edit" title="Xóa">
+    <span class="fa fa-edit"></span>
+</button>
+<div class="modal fade" id="@ViewBag.edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Chỉnh sửa thông tin cá nhân</h4>
+                </div>     
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Tên thành viên:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="TEN_THANHVIEN" required="required" value="@Model.TEN_THANHVIEN">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Chức vụ:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="CHUCVU" value="@Model.CHUCVU"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Ngày sinh:</b>
+                            </div>
+                            <div class="col-md-8">
+                                @if(Model.NGAYSINH.HasValue){
+                                <input type="datetime" class="form-control" name="NGAYSINH" value="@Model.NGAYSINH.Value.ToString("dd/MM/yyyy")"/>}
+                                else
+                                    {
+                                        <input type="date" class="form-control" name="NGAYSINH" />
+                                    }
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Địa chỉ:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="DIACHI" value="@Model.DIACHI"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Trình độ:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="TRINHDO" value="@Model.TRINHDO"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Tôn giáo:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="TONGIAO" value="@Model.TONGIAO"/>
+                            </div>
+                        </div>
+                            </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Dân tộc:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="DANTOC" value="@Model.DANTOC"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Điện thoại:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="DIENTHOAI" value="@Model.DIENTHOAI"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>EMAIL:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="EMAIL" value="@Model.EMAIL"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Số CMND:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control" name="CMND" value="@Model.CMND"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Nơi cấp:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="NOICAP" value="@Model.NOICAP"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Ngày cấp:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="datetime" class="form-control" name="NGAYCAP" value="@Model.NGAYCAP"/>
+                            </div>
+                        </div>
+                            </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>             
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Cập nhật" />
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy" />
+                </div>
+        </div>
+    </div>
+</div>

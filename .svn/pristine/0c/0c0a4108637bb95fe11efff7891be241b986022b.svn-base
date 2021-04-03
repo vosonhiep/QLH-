@@ -1,0 +1,653 @@
+F:\QLHD\QLHD\QLHD\bin\QLHD.dll.config
+F:\QLHD\QLHD\QLHD\bin\QLHD.dll
+F:\QLHD\QLHD\QLHD\bin\QLHD.pdb
+F:\QLHD\QLHD\QLHD\bin\Antlr3.Runtime.dll
+F:\QLHD\QLHD\QLHD\bin\DotNetOpenAuth.AspNet.dll
+F:\QLHD\QLHD\QLHD\bin\DotNetOpenAuth.Core.dll
+F:\QLHD\QLHD\QLHD\bin\DotNetOpenAuth.OAuth.Consumer.dll
+F:\QLHD\QLHD\QLHD\bin\DotNetOpenAuth.OAuth.dll
+F:\QLHD\QLHD\QLHD\bin\DotNetOpenAuth.OpenId.dll
+F:\QLHD\QLHD\QLHD\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+F:\QLHD\QLHD\QLHD\bin\EntityFramework.dll
+F:\QLHD\QLHD\QLHD\bin\EntityFramework.SqlServer.dll
+F:\QLHD\QLHD\QLHD\bin\Microsoft.Data.Edm.dll
+F:\QLHD\QLHD\QLHD\bin\Microsoft.Data.OData.dll
+F:\QLHD\QLHD\QLHD\bin\Microsoft.Web.Infrastructure.dll
+F:\QLHD\QLHD\QLHD\bin\Microsoft.Web.WebPages.OAuth.dll
+F:\QLHD\QLHD\QLHD\bin\Newtonsoft.Json.dll
+F:\QLHD\QLHD\QLHD\bin\System.Net.Http.Extensions.dll
+F:\QLHD\QLHD\QLHD\bin\System.Net.Http.Formatting.dll
+F:\QLHD\QLHD\QLHD\bin\System.Net.Http.Primitives.dll
+F:\QLHD\QLHD\QLHD\bin\System.Spatial.dll
+F:\QLHD\QLHD\QLHD\bin\System.Web.Helpers.dll
+F:\QLHD\QLHD\QLHD\bin\System.Web.Http.dll
+F:\QLHD\QLHD\QLHD\bin\System.Web.Http.OData.dll
+F:\QLHD\QLHD\QLHD\bin\System.Web.Http.WebHost.dll
+F:\QLHD\QLHD\QLHD\bin\System.Web.Mvc.dll
+F:\QLHD\QLHD\QLHD\bin\System.Web.Optimization.dll
+F:\QLHD\QLHD\QLHD\bin\System.Web.Razor.dll
+F:\QLHD\QLHD\QLHD\bin\System.Web.WebPages.Deployment.dll
+F:\QLHD\QLHD\QLHD\bin\System.Web.WebPages.dll
+F:\QLHD\QLHD\QLHD\bin\System.Web.WebPages.Razor.dll
+F:\QLHD\QLHD\QLHD\bin\WebGrease.dll
+F:\QLHD\QLHD\QLHD\bin\WebMatrix.Data.dll
+F:\QLHD\QLHD\QLHD\bin\WebMatrix.WebData.dll
+F:\QLHD\QLHD\QLHD\bin\Org.Mentalis.Security.Cryptography.dll
+F:\QLHD\QLHD\QLHD\bin\Mono.Math.dll
+F:\QLHD\QLHD\QLHD\bin\Antlr3.Runtime.pdb
+F:\QLHD\QLHD\QLHD\bin\DotNetOpenAuth.AspNet.xml
+F:\QLHD\QLHD\QLHD\bin\DotNetOpenAuth.Core.xml
+F:\QLHD\QLHD\QLHD\bin\DotNetOpenAuth.OAuth.xml
+F:\QLHD\QLHD\QLHD\bin\DotNetOpenAuth.OAuth.Consumer.xml
+F:\QLHD\QLHD\QLHD\bin\DotNetOpenAuth.OpenId.xml
+F:\QLHD\QLHD\QLHD\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+F:\QLHD\QLHD\QLHD\bin\EntityFramework.xml
+F:\QLHD\QLHD\QLHD\bin\EntityFramework.SqlServer.xml
+F:\QLHD\QLHD\QLHD\bin\Microsoft.Data.Edm.xml
+F:\QLHD\QLHD\QLHD\bin\Microsoft.Data.OData.xml
+F:\QLHD\QLHD\QLHD\bin\Microsoft.Web.WebPages.OAuth.xml
+F:\QLHD\QLHD\QLHD\bin\Newtonsoft.Json.xml
+F:\QLHD\QLHD\QLHD\bin\System.Net.Http.Extensions.xml
+F:\QLHD\QLHD\QLHD\bin\System.Net.Http.Formatting.xml
+F:\QLHD\QLHD\QLHD\bin\System.Net.Http.Primitives.xml
+F:\QLHD\QLHD\QLHD\bin\System.Spatial.xml
+F:\QLHD\QLHD\QLHD\bin\System.Web.Helpers.xml
+F:\QLHD\QLHD\QLHD\bin\System.Web.Http.xml
+F:\QLHD\QLHD\QLHD\bin\System.Web.Http.OData.xml
+F:\QLHD\QLHD\QLHD\bin\System.Web.Http.WebHost.xml
+F:\QLHD\QLHD\QLHD\bin\System.Web.Mvc.xml
+F:\QLHD\QLHD\QLHD\bin\System.Web.Optimization.xml
+F:\QLHD\QLHD\QLHD\bin\System.Web.Razor.xml
+F:\QLHD\QLHD\QLHD\bin\System.Web.WebPages.xml
+F:\QLHD\QLHD\QLHD\bin\System.Web.WebPages.Deployment.xml
+F:\QLHD\QLHD\QLHD\bin\System.Web.WebPages.Razor.xml
+F:\QLHD\QLHD\QLHD\bin\WebMatrix.Data.xml
+F:\QLHD\QLHD\QLHD\bin\WebMatrix.WebData.xml
+F:\QLHD\QLHD\QLHD\bin\Org.Mentalis.Security.Cryptography.xml
+F:\QLHD\QLHD\QLHD\bin\Mono.Math.xml
+F:\QLHD\QLHD\QLHD\bin\de\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD\QLHD\bin\es\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD\QLHD\bin\fr\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD\QLHD\bin\it\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD\QLHD\bin\ja\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD\QLHD\bin\ko\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD\QLHD\bin\ru\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD\QLHD\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD\QLHD\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD\QLHD\bin\de\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD\QLHD\bin\es\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD\QLHD\bin\fr\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD\QLHD\bin\it\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD\QLHD\bin\ja\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD\QLHD\bin\ko\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD\QLHD\bin\ru\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD\QLHD\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD\QLHD\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD\QLHD\bin\de\System.Spatial.resources.dll
+F:\QLHD\QLHD\QLHD\bin\es\System.Spatial.resources.dll
+F:\QLHD\QLHD\QLHD\bin\fr\System.Spatial.resources.dll
+F:\QLHD\QLHD\QLHD\bin\it\System.Spatial.resources.dll
+F:\QLHD\QLHD\QLHD\bin\ja\System.Spatial.resources.dll
+F:\QLHD\QLHD\QLHD\bin\ko\System.Spatial.resources.dll
+F:\QLHD\QLHD\QLHD\bin\ru\System.Spatial.resources.dll
+F:\QLHD\QLHD\QLHD\bin\zh-Hans\System.Spatial.resources.dll
+F:\QLHD\QLHD\QLHD\bin\zh-Hant\System.Spatial.resources.dll
+F:\QLHD\QLHD\QLHD\obj\Debug\QLHD.csproj.App.config
+F:\QLHD\QLHD\QLHD\obj\Debug\QLHD.dll
+F:\QLHD\QLHD\QLHD\obj\Debug\QLHD.pdb
+F:\QLHD\QLHD\QLHD\bin\PagedList.dll
+F:\QLHD\QLHD\QLHD\bin\PagedList.Mvc.dll
+F:\QLHD\QLHD\QLHD\bin\PagedList.xml
+F:\QLHD\QLHD\QLHD\bin\PagedList.Mvc.xml
+F:\QLHD\QLHD\QLHD\obj\Debug\QLHD.csprojResolveAssemblyReference.cache
+F:\QLHD\QLHD2\QLHD\obj\Debug\QLHD.csproj.App.config
+F:\QLHD\QLHD2\QLHD\obj\Debug\QLHD.csprojResolveAssemblyReference.cache
+F:\QLHD\QLHD2\QLHD\obj\Debug\QLHD.dll
+F:\QLHD\QLHD2\QLHD\bin\QLHD.dll.config
+F:\QLHD\QLHD2\QLHD\bin\QLHD.dll
+F:\QLHD\QLHD2\QLHD\bin\QLHD.pdb
+F:\QLHD\QLHD2\QLHD\bin\Antlr3.Runtime.dll
+F:\QLHD\QLHD2\QLHD\bin\DotNetOpenAuth.AspNet.dll
+F:\QLHD\QLHD2\QLHD\bin\DotNetOpenAuth.Core.dll
+F:\QLHD\QLHD2\QLHD\bin\DotNetOpenAuth.OAuth.Consumer.dll
+F:\QLHD\QLHD2\QLHD\bin\DotNetOpenAuth.OAuth.dll
+F:\QLHD\QLHD2\QLHD\bin\DotNetOpenAuth.OpenId.dll
+F:\QLHD\QLHD2\QLHD\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+F:\QLHD\QLHD2\QLHD\bin\EntityFramework.dll
+F:\QLHD\QLHD2\QLHD\bin\EntityFramework.SqlServer.dll
+F:\QLHD\QLHD2\QLHD\bin\Microsoft.Data.Edm.dll
+F:\QLHD\QLHD2\QLHD\bin\Microsoft.Data.OData.dll
+F:\QLHD\QLHD2\QLHD\bin\Microsoft.Web.Infrastructure.dll
+F:\QLHD\QLHD2\QLHD\bin\Microsoft.Web.WebPages.OAuth.dll
+F:\QLHD\QLHD2\QLHD\bin\Newtonsoft.Json.dll
+F:\QLHD\QLHD2\QLHD\bin\PagedList.dll
+F:\QLHD\QLHD2\QLHD\bin\PagedList.Mvc.dll
+F:\QLHD\QLHD2\QLHD\bin\System.Net.Http.Extensions.dll
+F:\QLHD\QLHD2\QLHD\bin\System.Net.Http.Formatting.dll
+F:\QLHD\QLHD2\QLHD\bin\System.Net.Http.Primitives.dll
+F:\QLHD\QLHD2\QLHD\bin\System.Spatial.dll
+F:\QLHD\QLHD2\QLHD\bin\System.Web.Helpers.dll
+F:\QLHD\QLHD2\QLHD\bin\System.Web.Http.dll
+F:\QLHD\QLHD2\QLHD\bin\System.Web.Http.OData.dll
+F:\QLHD\QLHD2\QLHD\bin\System.Web.Http.WebHost.dll
+F:\QLHD\QLHD2\QLHD\bin\System.Web.Mvc.dll
+F:\QLHD\QLHD2\QLHD\bin\System.Web.Optimization.dll
+F:\QLHD\QLHD2\QLHD\bin\System.Web.Razor.dll
+F:\QLHD\QLHD2\QLHD\bin\System.Web.WebPages.Deployment.dll
+F:\QLHD\QLHD2\QLHD\bin\System.Web.WebPages.dll
+F:\QLHD\QLHD2\QLHD\bin\System.Web.WebPages.Razor.dll
+F:\QLHD\QLHD2\QLHD\bin\WebGrease.dll
+F:\QLHD\QLHD2\QLHD\bin\WebMatrix.Data.dll
+F:\QLHD\QLHD2\QLHD\bin\WebMatrix.WebData.dll
+F:\QLHD\QLHD2\QLHD\bin\Org.Mentalis.Security.Cryptography.dll
+F:\QLHD\QLHD2\QLHD\bin\Mono.Math.dll
+F:\QLHD\QLHD2\QLHD\bin\Antlr3.Runtime.pdb
+F:\QLHD\QLHD2\QLHD\bin\DotNetOpenAuth.AspNet.xml
+F:\QLHD\QLHD2\QLHD\bin\DotNetOpenAuth.Core.xml
+F:\QLHD\QLHD2\QLHD\bin\DotNetOpenAuth.OAuth.xml
+F:\QLHD\QLHD2\QLHD\bin\DotNetOpenAuth.OAuth.Consumer.xml
+F:\QLHD\QLHD2\QLHD\bin\DotNetOpenAuth.OpenId.xml
+F:\QLHD\QLHD2\QLHD\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+F:\QLHD\QLHD2\QLHD\bin\EntityFramework.xml
+F:\QLHD\QLHD2\QLHD\bin\EntityFramework.SqlServer.xml
+F:\QLHD\QLHD2\QLHD\bin\Microsoft.Data.Edm.xml
+F:\QLHD\QLHD2\QLHD\bin\Microsoft.Data.OData.xml
+F:\QLHD\QLHD2\QLHD\bin\Microsoft.Web.WebPages.OAuth.xml
+F:\QLHD\QLHD2\QLHD\bin\Newtonsoft.Json.xml
+F:\QLHD\QLHD2\QLHD\bin\PagedList.xml
+F:\QLHD\QLHD2\QLHD\bin\PagedList.Mvc.xml
+F:\QLHD\QLHD2\QLHD\bin\System.Net.Http.Extensions.xml
+F:\QLHD\QLHD2\QLHD\bin\System.Net.Http.Formatting.xml
+F:\QLHD\QLHD2\QLHD\bin\System.Net.Http.Primitives.xml
+F:\QLHD\QLHD2\QLHD\bin\System.Spatial.xml
+F:\QLHD\QLHD2\QLHD\bin\System.Web.Helpers.xml
+F:\QLHD\QLHD2\QLHD\bin\System.Web.Http.xml
+F:\QLHD\QLHD2\QLHD\bin\System.Web.Http.OData.xml
+F:\QLHD\QLHD2\QLHD\bin\System.Web.Http.WebHost.xml
+F:\QLHD\QLHD2\QLHD\bin\System.Web.Mvc.xml
+F:\QLHD\QLHD2\QLHD\bin\System.Web.Optimization.xml
+F:\QLHD\QLHD2\QLHD\bin\System.Web.Razor.xml
+F:\QLHD\QLHD2\QLHD\bin\System.Web.WebPages.xml
+F:\QLHD\QLHD2\QLHD\bin\System.Web.WebPages.Deployment.xml
+F:\QLHD\QLHD2\QLHD\bin\System.Web.WebPages.Razor.xml
+F:\QLHD\QLHD2\QLHD\bin\WebMatrix.Data.xml
+F:\QLHD\QLHD2\QLHD\bin\WebMatrix.WebData.xml
+F:\QLHD\QLHD2\QLHD\bin\Org.Mentalis.Security.Cryptography.xml
+F:\QLHD\QLHD2\QLHD\bin\Mono.Math.xml
+F:\QLHD\QLHD2\QLHD\bin\de\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\es\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\fr\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\it\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\ja\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\ko\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\ru\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\de\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\es\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\fr\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\it\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\ja\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\ko\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\ru\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\de\System.Spatial.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\es\System.Spatial.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\fr\System.Spatial.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\it\System.Spatial.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\ja\System.Spatial.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\ko\System.Spatial.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\ru\System.Spatial.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\zh-Hans\System.Spatial.resources.dll
+F:\QLHD\QLHD2\QLHD\bin\zh-Hant\System.Spatial.resources.dll
+F:\QLHD\QLHD2\QLHD\obj\Debug\QLHD.pdb
+F:\QLHD\QLHD2\QLHD\bin\PagedList.Net.dll
+F:\QLHD\QLHD2\QLHD\bin\Microsoft.AspNet.Identity.Core.dll
+F:\QLHD\QLHD2\QLHD\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\QLHD\QLHD2\QLHD\bin\Microsoft.AspNet.Identity.Core.xml
+F:\QLHD\QLHD2\QLHD\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\QLHD\svn_QLHD\QLHD\bin\QLHD.dll.config
+F:\QLHD\svn_QLHD\QLHD\bin\QLHD.dll
+F:\QLHD\svn_QLHD\QLHD\bin\QLHD.pdb
+F:\QLHD\svn_QLHD\QLHD\bin\Antlr3.Runtime.dll
+F:\QLHD\svn_QLHD\QLHD\bin\DotNetOpenAuth.AspNet.dll
+F:\QLHD\svn_QLHD\QLHD\bin\DotNetOpenAuth.Core.dll
+F:\QLHD\svn_QLHD\QLHD\bin\DotNetOpenAuth.OAuth.Consumer.dll
+F:\QLHD\svn_QLHD\QLHD\bin\DotNetOpenAuth.OAuth.dll
+F:\QLHD\svn_QLHD\QLHD\bin\DotNetOpenAuth.OpenId.dll
+F:\QLHD\svn_QLHD\QLHD\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+F:\QLHD\svn_QLHD\QLHD\bin\EntityFramework.dll
+F:\QLHD\svn_QLHD\QLHD\bin\EntityFramework.SqlServer.dll
+F:\QLHD\svn_QLHD\QLHD\bin\Microsoft.AspNet.Identity.Core.dll
+F:\QLHD\svn_QLHD\QLHD\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\QLHD\svn_QLHD\QLHD\bin\Microsoft.Data.Edm.dll
+F:\QLHD\svn_QLHD\QLHD\bin\Microsoft.Data.OData.dll
+F:\QLHD\svn_QLHD\QLHD\bin\Microsoft.Web.Infrastructure.dll
+F:\QLHD\svn_QLHD\QLHD\bin\Microsoft.Web.WebPages.OAuth.dll
+F:\QLHD\svn_QLHD\QLHD\bin\Newtonsoft.Json.dll
+F:\QLHD\svn_QLHD\QLHD\bin\PagedList.dll
+F:\QLHD\svn_QLHD\QLHD\bin\PagedList.Mvc.dll
+F:\QLHD\svn_QLHD\QLHD\bin\PagedList.Net.dll
+F:\QLHD\svn_QLHD\QLHD\bin\System.Net.Http.Extensions.dll
+F:\QLHD\svn_QLHD\QLHD\bin\System.Net.Http.Formatting.dll
+F:\QLHD\svn_QLHD\QLHD\bin\System.Net.Http.Primitives.dll
+F:\QLHD\svn_QLHD\QLHD\bin\System.Spatial.dll
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.Helpers.dll
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.Http.dll
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.Http.OData.dll
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.Http.WebHost.dll
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.Mvc.dll
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.Optimization.dll
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.Razor.dll
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.WebPages.Deployment.dll
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.WebPages.dll
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.WebPages.Razor.dll
+F:\QLHD\svn_QLHD\QLHD\bin\WebGrease.dll
+F:\QLHD\svn_QLHD\QLHD\bin\WebMatrix.Data.dll
+F:\QLHD\svn_QLHD\QLHD\bin\WebMatrix.WebData.dll
+F:\QLHD\svn_QLHD\QLHD\bin\Org.Mentalis.Security.Cryptography.dll
+F:\QLHD\svn_QLHD\QLHD\bin\Mono.Math.dll
+F:\QLHD\svn_QLHD\QLHD\bin\Antlr3.Runtime.pdb
+F:\QLHD\svn_QLHD\QLHD\bin\DotNetOpenAuth.AspNet.xml
+F:\QLHD\svn_QLHD\QLHD\bin\DotNetOpenAuth.Core.xml
+F:\QLHD\svn_QLHD\QLHD\bin\DotNetOpenAuth.OAuth.xml
+F:\QLHD\svn_QLHD\QLHD\bin\DotNetOpenAuth.OAuth.Consumer.xml
+F:\QLHD\svn_QLHD\QLHD\bin\DotNetOpenAuth.OpenId.xml
+F:\QLHD\svn_QLHD\QLHD\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+F:\QLHD\svn_QLHD\QLHD\bin\EntityFramework.xml
+F:\QLHD\svn_QLHD\QLHD\bin\EntityFramework.SqlServer.xml
+F:\QLHD\svn_QLHD\QLHD\bin\Microsoft.AspNet.Identity.Core.xml
+F:\QLHD\svn_QLHD\QLHD\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\QLHD\svn_QLHD\QLHD\bin\Microsoft.Data.Edm.xml
+F:\QLHD\svn_QLHD\QLHD\bin\Microsoft.Data.OData.xml
+F:\QLHD\svn_QLHD\QLHD\bin\Microsoft.Web.WebPages.OAuth.xml
+F:\QLHD\svn_QLHD\QLHD\bin\Newtonsoft.Json.xml
+F:\QLHD\svn_QLHD\QLHD\bin\PagedList.xml
+F:\QLHD\svn_QLHD\QLHD\bin\PagedList.Mvc.xml
+F:\QLHD\svn_QLHD\QLHD\bin\System.Net.Http.Extensions.xml
+F:\QLHD\svn_QLHD\QLHD\bin\System.Net.Http.Formatting.xml
+F:\QLHD\svn_QLHD\QLHD\bin\System.Net.Http.Primitives.xml
+F:\QLHD\svn_QLHD\QLHD\bin\System.Spatial.xml
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.Helpers.xml
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.Http.xml
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.Http.OData.xml
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.Http.WebHost.xml
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.Mvc.xml
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.Optimization.xml
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.Razor.xml
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.WebPages.xml
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.WebPages.Deployment.xml
+F:\QLHD\svn_QLHD\QLHD\bin\System.Web.WebPages.Razor.xml
+F:\QLHD\svn_QLHD\QLHD\bin\WebMatrix.Data.xml
+F:\QLHD\svn_QLHD\QLHD\bin\WebMatrix.WebData.xml
+F:\QLHD\svn_QLHD\QLHD\bin\Org.Mentalis.Security.Cryptography.xml
+F:\QLHD\svn_QLHD\QLHD\bin\Mono.Math.xml
+F:\QLHD\svn_QLHD\QLHD\bin\de\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\es\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\fr\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\it\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\ja\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\ko\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\ru\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\de\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\es\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\fr\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\it\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\ja\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\ko\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\ru\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\de\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\es\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\fr\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\it\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\ja\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\ko\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\ru\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\zh-Hans\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD\QLHD\bin\zh-Hant\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD\QLHD\obj\Debug\QLHD.csproj.App.config
+F:\QLHD\svn_QLHD\QLHD\obj\Debug\QLHD.csprojResolveAssemblyReference.cache
+F:\QLHD\svn_QLHD\QLHD\obj\Debug\QLHD.dll
+F:\QLHD\svn_QLHD\QLHD\obj\Debug\QLHD.pdb
+F:\QLHD\svn_QLHD1\QLHD\bin\QLHD.dll.config
+F:\QLHD\svn_QLHD1\QLHD\bin\QLHD.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\QLHD.pdb
+F:\QLHD\svn_QLHD1\QLHD\bin\Antlr3.Runtime.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\DotNetOpenAuth.AspNet.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\DotNetOpenAuth.Core.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\DotNetOpenAuth.OAuth.Consumer.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\DotNetOpenAuth.OAuth.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\DotNetOpenAuth.OpenId.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\EntityFramework.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\EntityFramework.SqlServer.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\Microsoft.AspNet.Identity.Core.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\Microsoft.Data.Edm.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\Microsoft.Data.OData.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\Microsoft.Web.Infrastructure.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\Microsoft.Web.WebPages.OAuth.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\Newtonsoft.Json.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\PagedList.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\PagedList.Mvc.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\PagedList.Net.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Net.Http.Extensions.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Net.Http.Formatting.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Net.Http.Primitives.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Spatial.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.Helpers.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.Http.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.Http.OData.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.Http.WebHost.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.Mvc.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.Optimization.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.Razor.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.WebPages.Deployment.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.WebPages.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.WebPages.Razor.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\WebGrease.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\WebMatrix.Data.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\WebMatrix.WebData.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\Org.Mentalis.Security.Cryptography.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\Mono.Math.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\Antlr3.Runtime.pdb
+F:\QLHD\svn_QLHD1\QLHD\bin\DotNetOpenAuth.AspNet.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\DotNetOpenAuth.Core.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\DotNetOpenAuth.OAuth.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\DotNetOpenAuth.OAuth.Consumer.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\DotNetOpenAuth.OpenId.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\EntityFramework.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\EntityFramework.SqlServer.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\Microsoft.AspNet.Identity.Core.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\Microsoft.Data.Edm.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\Microsoft.Data.OData.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\Microsoft.Web.WebPages.OAuth.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\Newtonsoft.Json.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\PagedList.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\PagedList.Mvc.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Net.Http.Extensions.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Net.Http.Formatting.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Net.Http.Primitives.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Spatial.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.Helpers.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.Http.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.Http.OData.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.Http.WebHost.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.Mvc.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.Optimization.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.Razor.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.WebPages.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.WebPages.Deployment.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\System.Web.WebPages.Razor.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\WebMatrix.Data.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\WebMatrix.WebData.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\Org.Mentalis.Security.Cryptography.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\Mono.Math.xml
+F:\QLHD\svn_QLHD1\QLHD\bin\de\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\es\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\fr\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\it\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\ja\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\ko\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\ru\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\de\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\es\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\fr\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\it\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\ja\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\ko\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\ru\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\de\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\es\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\fr\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\it\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\ja\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\ko\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\ru\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\zh-Hans\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\bin\zh-Hant\System.Spatial.resources.dll
+F:\QLHD\svn_QLHD1\QLHD\obj\Debug\QLHD.csproj.App.config
+F:\QLHD\svn_QLHD1\QLHD\obj\Debug\QLHD.csprojResolveAssemblyReference.cache
+F:\QLHD\svn_QLHD1\QLHD\obj\Debug\QLHD.dll
+F:\QLHD\svn_QLHD1\QLHD\obj\Debug\QLHD.pdb
+E:\QLHD\QLHD\bin\QLHD.dll.config
+E:\QLHD\QLHD\bin\QLHD.dll
+E:\QLHD\QLHD\bin\QLHD.pdb
+E:\QLHD\QLHD\bin\Antlr3.Runtime.dll
+E:\QLHD\QLHD\bin\DotNetOpenAuth.AspNet.dll
+E:\QLHD\QLHD\bin\DotNetOpenAuth.Core.dll
+E:\QLHD\QLHD\bin\DotNetOpenAuth.OAuth.Consumer.dll
+E:\QLHD\QLHD\bin\DotNetOpenAuth.OAuth.dll
+E:\QLHD\QLHD\bin\DotNetOpenAuth.OpenId.dll
+E:\QLHD\QLHD\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+E:\QLHD\QLHD\bin\EntityFramework.dll
+E:\QLHD\QLHD\bin\EntityFramework.SqlServer.dll
+E:\QLHD\QLHD\bin\Microsoft.AspNet.Identity.Core.dll
+E:\QLHD\QLHD\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\QLHD\QLHD\bin\Microsoft.Data.Edm.dll
+E:\QLHD\QLHD\bin\Microsoft.Data.OData.dll
+E:\QLHD\QLHD\bin\Microsoft.Web.Infrastructure.dll
+E:\QLHD\QLHD\bin\Microsoft.Web.WebPages.OAuth.dll
+E:\QLHD\QLHD\bin\Newtonsoft.Json.dll
+E:\QLHD\QLHD\bin\PagedList.dll
+E:\QLHD\QLHD\bin\PagedList.Mvc.dll
+E:\QLHD\QLHD\bin\PagedList.Net.dll
+E:\QLHD\QLHD\bin\System.Net.Http.Extensions.dll
+E:\QLHD\QLHD\bin\System.Net.Http.Formatting.dll
+E:\QLHD\QLHD\bin\System.Net.Http.Primitives.dll
+E:\QLHD\QLHD\bin\System.Spatial.dll
+E:\QLHD\QLHD\bin\System.Web.Helpers.dll
+E:\QLHD\QLHD\bin\System.Web.Http.dll
+E:\QLHD\QLHD\bin\System.Web.Http.OData.dll
+E:\QLHD\QLHD\bin\System.Web.Http.WebHost.dll
+E:\QLHD\QLHD\bin\System.Web.Mvc.dll
+E:\QLHD\QLHD\bin\System.Web.Optimization.dll
+E:\QLHD\QLHD\bin\System.Web.Razor.dll
+E:\QLHD\QLHD\bin\System.Web.WebPages.Deployment.dll
+E:\QLHD\QLHD\bin\System.Web.WebPages.dll
+E:\QLHD\QLHD\bin\System.Web.WebPages.Razor.dll
+E:\QLHD\QLHD\bin\WebGrease.dll
+E:\QLHD\QLHD\bin\WebMatrix.Data.dll
+E:\QLHD\QLHD\bin\WebMatrix.WebData.dll
+E:\QLHD\QLHD\bin\Org.Mentalis.Security.Cryptography.dll
+E:\QLHD\QLHD\bin\Mono.Math.dll
+E:\QLHD\QLHD\bin\Antlr3.Runtime.pdb
+E:\QLHD\QLHD\bin\DotNetOpenAuth.AspNet.xml
+E:\QLHD\QLHD\bin\DotNetOpenAuth.Core.xml
+E:\QLHD\QLHD\bin\DotNetOpenAuth.OAuth.xml
+E:\QLHD\QLHD\bin\DotNetOpenAuth.OAuth.Consumer.xml
+E:\QLHD\QLHD\bin\DotNetOpenAuth.OpenId.xml
+E:\QLHD\QLHD\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+E:\QLHD\QLHD\bin\EntityFramework.xml
+E:\QLHD\QLHD\bin\EntityFramework.SqlServer.xml
+E:\QLHD\QLHD\bin\Microsoft.AspNet.Identity.Core.xml
+E:\QLHD\QLHD\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\QLHD\QLHD\bin\Microsoft.Data.Edm.xml
+E:\QLHD\QLHD\bin\Microsoft.Data.OData.xml
+E:\QLHD\QLHD\bin\Microsoft.Web.WebPages.OAuth.xml
+E:\QLHD\QLHD\bin\Newtonsoft.Json.xml
+E:\QLHD\QLHD\bin\PagedList.xml
+E:\QLHD\QLHD\bin\PagedList.Mvc.xml
+E:\QLHD\QLHD\bin\System.Net.Http.Extensions.xml
+E:\QLHD\QLHD\bin\System.Net.Http.Formatting.xml
+E:\QLHD\QLHD\bin\System.Net.Http.Primitives.xml
+E:\QLHD\QLHD\bin\System.Spatial.xml
+E:\QLHD\QLHD\bin\System.Web.Helpers.xml
+E:\QLHD\QLHD\bin\System.Web.Http.xml
+E:\QLHD\QLHD\bin\System.Web.Http.OData.xml
+E:\QLHD\QLHD\bin\System.Web.Http.WebHost.xml
+E:\QLHD\QLHD\bin\System.Web.Mvc.xml
+E:\QLHD\QLHD\bin\System.Web.Optimization.xml
+E:\QLHD\QLHD\bin\System.Web.Razor.xml
+E:\QLHD\QLHD\bin\System.Web.WebPages.xml
+E:\QLHD\QLHD\bin\System.Web.WebPages.Deployment.xml
+E:\QLHD\QLHD\bin\System.Web.WebPages.Razor.xml
+E:\QLHD\QLHD\bin\WebMatrix.Data.xml
+E:\QLHD\QLHD\bin\WebMatrix.WebData.xml
+E:\QLHD\QLHD\bin\Org.Mentalis.Security.Cryptography.xml
+E:\QLHD\QLHD\bin\Mono.Math.xml
+E:\QLHD\QLHD\bin\de\Microsoft.Data.Edm.resources.dll
+E:\QLHD\QLHD\bin\es\Microsoft.Data.Edm.resources.dll
+E:\QLHD\QLHD\bin\fr\Microsoft.Data.Edm.resources.dll
+E:\QLHD\QLHD\bin\it\Microsoft.Data.Edm.resources.dll
+E:\QLHD\QLHD\bin\ja\Microsoft.Data.Edm.resources.dll
+E:\QLHD\QLHD\bin\ko\Microsoft.Data.Edm.resources.dll
+E:\QLHD\QLHD\bin\ru\Microsoft.Data.Edm.resources.dll
+E:\QLHD\QLHD\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+E:\QLHD\QLHD\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+E:\QLHD\QLHD\bin\de\Microsoft.Data.OData.resources.dll
+E:\QLHD\QLHD\bin\es\Microsoft.Data.OData.resources.dll
+E:\QLHD\QLHD\bin\fr\Microsoft.Data.OData.resources.dll
+E:\QLHD\QLHD\bin\it\Microsoft.Data.OData.resources.dll
+E:\QLHD\QLHD\bin\ja\Microsoft.Data.OData.resources.dll
+E:\QLHD\QLHD\bin\ko\Microsoft.Data.OData.resources.dll
+E:\QLHD\QLHD\bin\ru\Microsoft.Data.OData.resources.dll
+E:\QLHD\QLHD\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+E:\QLHD\QLHD\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+E:\QLHD\QLHD\bin\de\System.Spatial.resources.dll
+E:\QLHD\QLHD\bin\es\System.Spatial.resources.dll
+E:\QLHD\QLHD\bin\fr\System.Spatial.resources.dll
+E:\QLHD\QLHD\bin\it\System.Spatial.resources.dll
+E:\QLHD\QLHD\bin\ja\System.Spatial.resources.dll
+E:\QLHD\QLHD\bin\ko\System.Spatial.resources.dll
+E:\QLHD\QLHD\bin\ru\System.Spatial.resources.dll
+E:\QLHD\QLHD\bin\zh-Hans\System.Spatial.resources.dll
+E:\QLHD\QLHD\bin\zh-Hant\System.Spatial.resources.dll
+E:\QLHD\QLHD\obj\Debug\QLHD.csproj.App.config
+E:\QLHD\QLHD\obj\Debug\QLHD.dll
+E:\QLHD\QLHD\obj\Debug\QLHD.pdb
+E:\QLHD\QLHD\bin\ClosedXML.dll
+E:\QLHD\QLHD\bin\DocumentFormat.OpenXml.dll
+E:\QLHD\QLHD\bin\ClosedXML.xml
+E:\QLHD\QLHD\bin\Aspose.Words.dll
+E:\QLHD\QLHD\bin\Aspose.Words.xml
+E:\QLHD\QLHD\obj\Debug\QLHD.csprojResolveAssemblyReference.cache
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\QLHD.dll.config
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\QLHD.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\QLHD.pdb
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Antlr3.Runtime.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\AutoMapper.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\ClosedXML.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\DocumentFormat.OpenXml.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\DotNetOpenAuth.AspNet.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\DotNetOpenAuth.Core.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\DotNetOpenAuth.OAuth.Consumer.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\DotNetOpenAuth.OAuth.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\DotNetOpenAuth.OpenId.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\EntityFramework.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\EntityFramework.SqlServer.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Microsoft.Data.Edm.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Microsoft.Data.OData.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Microsoft.Web.Infrastructure.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Microsoft.Web.WebPages.OAuth.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Newtonsoft.Json.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Oracle.ManagedDataAccess.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Oracle.ManagedDataAccess.EntityFramework.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\PagedList.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\PagedList.Mvc.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\PagedList.Net.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Net.Http.Extensions.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Net.Http.Formatting.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Net.Http.Primitives.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Spatial.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.Helpers.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.Http.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.Http.OData.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.Http.WebHost.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.Mvc.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.Optimization.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.Razor.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.WebPages.Deployment.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.WebPages.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.WebPages.Razor.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\WebGrease.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\WebMatrix.Data.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\WebMatrix.WebData.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Org.Mentalis.Security.Cryptography.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Mono.Math.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Antlr3.Runtime.pdb
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Aspose.Words.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\AutoMapper.pdb
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\AutoMapper.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\ClosedXML.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\DotNetOpenAuth.AspNet.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\DotNetOpenAuth.Core.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\DotNetOpenAuth.OAuth.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\DotNetOpenAuth.OAuth.Consumer.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\DotNetOpenAuth.OpenId.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\EntityFramework.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\EntityFramework.SqlServer.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Microsoft.Data.Edm.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Microsoft.Data.OData.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Microsoft.Web.WebPages.OAuth.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Newtonsoft.Json.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\PagedList.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\PagedList.Mvc.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Net.Http.Extensions.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Net.Http.Formatting.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Net.Http.Primitives.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Spatial.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.Helpers.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.Http.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.Http.OData.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.Http.WebHost.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.Mvc.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.Optimization.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.Razor.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.WebPages.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.WebPages.Deployment.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\System.Web.WebPages.Razor.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\WebMatrix.Data.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\WebMatrix.WebData.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Org.Mentalis.Security.Cryptography.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\Mono.Math.xml
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\de\Microsoft.Data.Edm.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\es\Microsoft.Data.Edm.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\it\Microsoft.Data.Edm.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\de\Microsoft.Data.OData.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\es\Microsoft.Data.OData.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\fr\Microsoft.Data.OData.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\it\Microsoft.Data.OData.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\ja\Microsoft.Data.OData.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\ko\Microsoft.Data.OData.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\ru\Microsoft.Data.OData.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\de\System.Spatial.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\es\System.Spatial.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\fr\System.Spatial.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\it\System.Spatial.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\ja\System.Spatial.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\ko\System.Spatial.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\ru\System.Spatial.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\zh-Hans\System.Spatial.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\zh-Hant\System.Spatial.resources.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\obj\Debug\QLHD.csproj.App.config
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\obj\Debug\QLHD.csprojResolveAssemblyReference.cache
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\obj\Debug\QLHD.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\obj\Debug\QLHD.pdb
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\log4net.dll
+D:\Working\VNPT\CNTT Project\QLHD_PROJECT\Source\QLHD\bin\log4net.xml

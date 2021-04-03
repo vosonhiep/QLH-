@@ -1,0 +1,8 @@
+﻿@using QLHD.Models;
+@model List<QLHD.Models.LOAIHD>
+
+@{
+    foreach(var item in Model){
+        <li><a href="@Url.Action("LoaiHD", new {@loaiHD = item.IDLOAI_HD })" style="font-size:17px"><i class="fa fa-tag"></i> @item.TEN_LOAIHD</a><hr /></li>
+    }
+}

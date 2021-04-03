@@ -1,0 +1,18 @@
+﻿@using QLHD.Models;
+@model List<QLHD.Models.MENU_CHA>
+<div class="container">
+<div class="list-group">
+    <a href="@Url.Action("AddMenu", "HeThong", new {id_menu = 0 })" class="list-group-item">Tất cả</a>
+@{
+    foreach(var item in Model)
+    {
+    <a href="@Url.Action("AddMenu", "HeThong", new { id_menu = @item.ID_MENU_CHA })" class="list-group-item">
+        <i class="@item.ICON"></i>@item.TEN_MENU_CHA
+        @*<div class="nav navbar-right">
+            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#edit"><i class="fa fa-plus"></i></button>
+        </div>*@
+    </a>
+    }
+}
+</div>
+</div>

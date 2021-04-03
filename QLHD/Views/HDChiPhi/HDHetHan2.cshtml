@@ -1,0 +1,65 @@
+﻿@using QLHD.Models;
+@model List<QLHD.Models.HOPDONG_CHIPHI>
+
+<div class="modal fade" id="dshd2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Danh sách menu sắp hết hạn</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-striped table-hover">
+                    <tr class="noidung">
+                        <th>Số HĐ</th>
+                        <th>Loại HĐ</th>
+                        <th>Ngày lập HĐ</th>
+                        <th>Đại diện bên thuê</th>
+                        <th>Đại diện bên cho thuê</th>
+                        <th>Ngày bắt đầu</th>
+                        <th>Ngày kết thúc</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="noidunghd">
+                            <td><a href="@Url.Action("ShowHDChiPhi", "HDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">
+                                @item.SO_HD
+                            </a></td>
+                            <td><a href="@Url.Action("ShowHDChiPhi", "HDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">
+                                @item.LOAI_HD_SUB.TEN_HD_SUB
+                            </a></td>
+                            <td><a href="@Url.Action("ShowHDChiPhi", "HDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">
+                                @if (item.NGAY_HD.HasValue)
+                                {
+                                    @item.NGAY_HD.Value.ToString("dd/MM/yyyy")
+                                }
+                            </a></td>
+                            <td><a href="@Url.Action("ShowHDChiPhi", "HDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">
+                                @item.TEN_BT
+                            </a></td>
+                            <td><a href="@Url.Action("ShowHDChiPhi", "HDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">
+                                @item.TEN_CT
+                            </a></td>
+                            <td><a href="@Url.Action("ShowHDChiPhi", "HDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">
+                                @if (item.NGAY_BD.HasValue)
+                                {
+                                    @item.NGAY_BD.Value.ToString("dd/MM/yyyy")
+                                }
+                            </a></td>
+                            <td><a href="@Url.Action("ShowHDChiPhi", "HDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">
+                                @if (item.NGAY_KT.HasValue)
+                                {
+                                    @item.NGAY_KT.Value.ToString("dd/MM/yyyy")
+                                }
+                            </a></td>
+                        </tr>
+                    }
+                </table>
+                <div class="clearfix"></div>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+            </div>
+        </div>
+    </div>
+</div>

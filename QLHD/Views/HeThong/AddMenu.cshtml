@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "Quản lý menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Quản lý danh mục menu</h3>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh sách nhóm menu</h2>
+                    <div class="nav navbar-right">
+                        <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addMenuCha"><i class="fa fa-plus"></i></button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    @Html.Action("dsmenu_cha", "HeThong")
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh mục menu con </h2>
+                    <div class="nav navbar-right">
+                        <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addMenuCon"><i class="fa fa-plus"></i>Thêm menu</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Tên nhóm menu</th>
+                            <th>Tên menu con</th>
+                            <th>Link</th>
+                            <th>Sửa</th>
+                            <th>Xóa</th>
+                        </tr>
+                        @Html.Action("dsmenucon", "HeThong")
+                    </table>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="addMenuCha" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("addMenuCha", "HeThong", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Thêm nhóm menu mới</h4>
+                </div>     
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Tên nhóm menu:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="TEN_MENU_CHA" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Link menu:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="LINK" placeholder="vd: href=/HDChiPhi/Index">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Icon menu:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="ICON" required="required" placeholder="vd: fa fa-file-text-o">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="clearfix"></div>
+                </div>             
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Tạo mới" />
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@Html.Action("addmenucon", "HeThong")

@@ -1,0 +1,28 @@
+﻿@model QLHD.Models.PHULUC_HDCP
+<button type="button" data-toggle="modal" data-target="#@ViewBag.delete" title="Xóa" class="btn btn-danger btn-sm">
+    <i class="glyphicon glyphicon-trash" style="font-size: 15px"></i>
+</button>
+<div class="modal fade" id="@ViewBag.delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("xacnhanxoaPL", "HDChiPhi", new { PLid = @Model.PHULUC_HDCP_ID }, FormMethod.Post, null))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Xác nhận xóa</h4>
+                </div>     
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        Bạn có chắc muốn xóa phụ lục hợp đồng này không? (số phụ lục: <span style="color: red">@Model.SO_PHULUC</span>)
+                    </div>
+                    <div class="clearfix"></div>
+                </div>             
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Xóa" />
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model QLHD.Models.THANHVIEN
+<button type="button" class="btn btn-info btn-xs btn-round" data-toggle="modal" data-target="#@ViewBag.idTV" title="Reset mật khẩu">
+    <i class="fa fa-refresh"></i>
+</button>
+<div class="modal fade" id="@ViewBag.idTV" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("resetMK", "Account", new { @maTK = @Model.ID_THANHVIEN }, FormMethod.Post, null))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Xác nhận reset mật khẩu</h4>
+                </div>     
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        Xác nhận reset mật khẩu của tài khoản @Model.TENTRUYCAP về mặc định
+                        <p style="color: red">"123456"</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>             
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Reset" />
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

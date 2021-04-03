@@ -1,0 +1,50 @@
+﻿@model IEnumerable<QLHD.Models.HOPDONG_NHANCONG>
+
+@{int row = 0;}
+@{
+    foreach (var n in Model)
+    {
+    <tr class="noidunghd">
+        <td>@(row += 1)</td>
+        <td>
+            <a href="@Url.Action("ShowHDNhanCong", "HDNhanCong", new { @HDNhanCong_ID = n.HOPDONG_NHANCONG_ID })">
+                @n.SO_HD
+            </a>
+        </td>
+        <td>
+            <a href="@Url.Action("ShowHDNhanCong", "HDNhanCong", new { @HDNhanCong_ID = n.HOPDONG_NHANCONG_ID })">@n.LOAI_HD_SUB.TEN_HD_SUB </a>
+        </td>
+
+        <td>
+            <a href="@Url.Action("ShowHDNhanCong", "HDNhanCong", new { @HDNhanCong_ID = n.HOPDONG_NHANCONG_ID })">@n.NGAY_HD</a>
+        </td>
+        <td>
+            <a href="@Url.Action("ShowHDNhanCong", "HDNhanCong", new { @HDNhanCong_ID = n.HOPDONG_NHANCONG_ID })">@n.DAIDIEN_BT</a>
+        </td>
+
+        <td><a href="@Url.Action("ShowHDNhanCong", "HDNhanCong", new { @HDNhanCong_ID = n.HOPDONG_NHANCONG_ID })">@n.TEN_CT</a></td>
+        <td><a href="@Url.Action("ShowHDNhanCong", "HDNhanCong", new { @HDNhanCong_ID = n.HOPDONG_NHANCONG_ID })"><span class="no">@n.TONG_GT</span></a></td>
+        <td><a href="@Url.Action("ShowHDNhanCong", "HDNhanCong", new { @HDNhanCong_ID = n.HOPDONG_NHANCONG_ID })">@n.CHUKY_TT.CHUKY</a></td>
+        <td><a href="@Url.Action("ShowHDNhanCong", "HDNhanCong", new { @HDNhanCong_ID = n.HOPDONG_NHANCONG_ID })">@n.HTTT.TEN_HTTT</a></td>
+        <td>
+            @Html.ActionLink(" ", "EditHDNhanCong", new { @HDNhanCong_ID = n.HOPDONG_NHANCONG_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
+        </td>
+        <td>
+            @Html.Action("deleteHDNC", "HDNhanCong", new { @idHDNC = n.HOPDONG_NHANCONG_ID })
+        </td>
+        <td>
+            @if (n.FIle != null)
+            {
+                @Html.ActionLink(" ", "ExportData", "HDNhanCong", new { @HDid = n.HOPDONG_NHANCONG_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 20px" })
+            }</td>
+        <td>
+            @if (@n.NGAY_KT <= @System.DateTime.Now)
+            {
+                <span id="canhbao">
+                    <img src="~/Images/canhbao.gif" title="Hợp đồng đã tới hạn. Cần ký lại hộp đồng mới!" height="40px" width="30px" />
+                </span>
+            }
+        </td>
+    </tr>
+    }
+ }

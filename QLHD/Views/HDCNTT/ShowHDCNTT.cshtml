@@ -1,0 +1,506 @@
+﻿@model QLHD.Models.HOPDONG_DOANHTHU
+
+@{
+    ViewBag.Title = "Thông tin HĐ CNTT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Thông tin chi tiết hợp đồng (Số HĐ: @Model.SO_HD)</h3>
+            <span style="color:red">@ViewBag.baoloi</span>
+
+        </div>
+        <div class="nav navbar-right">
+            @*<a href="@Url.Action("baoloi", "Home", new {@HDid = @Model.HOPDONG_DOANHTHU_ID })" class="btn btn-info btn-lg" style="float:right">Thanh toán HĐ
+                    <span class="fa fa-dollar" />
+                </a>*@
+            @if (@Model.TRANGTHAI == 0)
+            {
+                <a href="@Url.Action("ThanhLyHDCNTT", "HDCNTT", new {@HDid = @Model.HOPDONG_DOANHTHU_ID })" class="btn btn-info btn-lg" style="float:right">
+                    Thanh lý HĐ
+                    @*<span class="fa fa-dollar" />*@
+                </a>
+            }
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel" style="">
+                <div class="x_title">
+                    <h2>Loại hợp đồng và số hợp đồng</h2>
+                    <div class="clearfix"></div>
+
+                </div>
+                <div class="x_content">
+                    @*<div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Loại hợp đồng:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    @Html.DropDownList("ID_LOAIHD", (IEnumerable<SelectListItem>)ViewBag.MALOAIHD,"--Chọn--", new { @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                        </div>*@
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <label style="float: right">Hợp đồng:</label>
+                            </div>
+                            <div class="col-md-5 noidung">
+                                <h5>@Model.LOAI_HD_SUB.TEN_HD_SUB</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" @*style="margin-top: 15px"*@>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <label style="float: right">Năm hợp đồng:</label>
+                            </div>
+                            <div class="col-md-5 noidung">
+                                <h5>@Model.NAM_HD.NAM</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="margin-top: 15px">
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <label style="float: right">Số hợp đồng:</label>
+                            </div>
+                            <div class="col-md-5 noidung">
+                                <h5>@Model.SO_HD</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6" style="margin-top: 15px">
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <label style="float: right">Ngày lập hợp đồng:</label>
+                            </div>
+                            <div class="col-md-5 noidung">
+                                <h5>
+                                    @if (Model.NGAY_HD.HasValue)
+                                    {
+                                        @Model.NGAY_HD.Value.ToString("dd/MM/yyyy")
+                                    }
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" style="margin-top: 15px">
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            <label style="float: right">Đơn vị lập hợp đồng:</label>
+                        </div>
+                        <div class="col-md-5 noidung">
+                            <h5>@Model.DONVI.TEN_DV</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Bên thuê</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="form-horizontal">
+                        @*<div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: left">Bên thuê:</label>
+                                </div>
+                                <div class="col-md-8 noidung">
+                                    <select class="form-control" name="THUE_CT" id="loai_bt">
+                                        <option value="0">--Chọn bên thuê--</option>
+                                        <option value="1">Doanh nghiệp</option>
+                                        <option value="2">Cá nhân</option>
+                                        <option value="3">Hộ gia đình</option>
+                                    </select>
+                                </div>
+                            </div>*@
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <label style="float: left">Tên thuê:</label>
+                            </div>
+                            <div class="col-md-8 noidung">
+                                <h5>@Model.TEN_BT</h5>
+                            </div>
+                        </div>
+                        <div class="form-group" id="daidien_bt">
+                            <div class="control-label col-md-4">
+                                <label style="float: left">Đại diện:</label>
+                            </div>
+                            <div class="col-md-8 noidung">
+                                <h5>@Model.DAIDIEN_BT</h5>
+                            </div>
+                        </div>
+                        <div class="form-group" id="chucvu_bt">
+                            <div class="control-label col-md-4">
+                                <label style="float: left">Chức vụ:</label>
+                            </div>
+                            <div class="col-md-8 noidung">
+                                <h5>@Model.CHUCVU_BT</h5>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <label style="float: left">Địa chỉ:</label>
+                            </div>
+                            <div class="col-md-8 noidung">
+                                <h5>@Model.DIACHI_BT</h5>
+                            </div>
+                        </div>
+                        <div class="form-group" id="cmnd_bt">
+                            <div class="control-label col-md-4">
+                                <label style="float: left">CMND:</label>
+                            </div>
+                            <div class="col-md-8 noidung">
+                                <h5>@Model.CMND_BT</h5>
+                            </div>
+                        </div>
+                        <div class="form-group" id="ngaycap_bt">
+                            <div class="control-label col-md-4">
+                                <label style="float: left">Ngày cấp:</label>
+                            </div>
+                            <div class="col-md-8 noidung">
+                                <h5>
+                                    @if (Model.NGAYCAP_BT.HasValue)
+                                    {
+                                        @Model.NGAYCAP_BT.Value.ToString("dd/MM/yyyy")
+                                    }
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="form-group" id="ngaysinh_bt">
+                            <div class="control-label col-md-4">
+                                <label style="float: left">Ngày sinh:</label>
+                            </div>
+                            <div class="col-md-8 noidung">
+                                <h5>
+                                    @if (Model.NGAYSINH_BT.HasValue)
+                                    {
+                                        @Model.NGAYSINH_BT.Value.ToString("dd/MM/yyyy")
+                                    }
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="form-group" id="noicap_bt">
+                        <div class="control-label col-md-4">
+                            <label style="float: left">Nơi cấp:</label>
+                        </div>
+                        <div class="col-md-8 noidung">
+                            <h5>@Model.NOICAP_BT</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            <label style="float: left">Số điện thoại/FAX:</label>
+                        </div>
+                        <div class="col-md-8 noidung">
+                            <h5>@Model.DIENTHOAI_BT</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            <label style="float: left">Mã số thuế:</label>
+                        </div>
+                        <div class="col-md-8 noidung">
+                            <h5>@Model.MSTHUE_BT</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            <label style="float: left">Tài khoản:</label>
+                        </div>
+                        <div class="col-md-8 noidung">
+                            <h5>@Model.TAIKHOAN_BT</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            <label style="float: left">Ngân hàng:</label>
+                        </div>
+                        <div class="col-md-8 noidung">
+                            <h5>@Model.NGANHANG_BT</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Bên cho thuê</h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            <label style="float: left">Tên bên cho thuê:</label>
+                        </div>
+                        <div class="col-md-8 noidung">
+                            <h5>@Model.TEN_CT</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            <label style="float: left">Địa chỉ:</label>
+                        </div>
+                        <div class="col-md-8 noidung">
+                            <h5>@Model.DIACHI_CT</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            <label style="float: left">Số điện thoại/FAX:</label>
+                        </div>
+                        <div class="col-md-8 noidung">
+                            <h5>@Model.DIENTHOAI_CT</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            <label style="float: left">Mã số thuế:</label>
+                        </div>
+                        <div class="col-md-8 noidung">
+                            <h5>@Model.MSTHUE_CT</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            <label style="float: left">Tài khoản:</label>
+                        </div>
+                        <div class="col-md-8 noidung">
+                            <h5>@Model.TAIKHOAN_CT</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            <label style="float: left">Ngân hàng:</label>
+                        </div>
+                        <div class="col-md-8 noidung">
+                            <h5>@Model.NGANHANG_CT</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            <label style="float: left">Đại diện:</label>
+                        </div>
+                        <div class="col-md-8 noidung">
+                            <h5>@Model.DIENTHOAI_CT</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            <label style="float: left">Chức vụ:</label>
+                        </div>
+                        <div class="col-md-8 noidung">
+                            <h5>@Model.CHUCVU_CT</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Đối tượng hợp đồng</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        <label style="float: left">Số lượng:</label>
+                    </div>
+                    <div class="col-md-8 noidung">
+                        <h5>@Model.SOLUONG_DT</h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        <label style="float: left">Diện tích:</label>
+                    </div>
+                    <div class="col-md-8 noidung">
+                        <h5>@Model.DIENTICH_DT</h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        <label style="float: left">Công suất:</label>
+                    </div>
+                    <div class="col-md-8 noidung">
+                        <h5>@Model.CONGSUAT_DT</h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        <label style="float: left">Chủng loại:</label>
+                    </div>
+                    <div class="col-md-8 noidung">
+                        <h5>@Model.CHUNGLOAI_DT</h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        <label style="float: left">Công việc:</label>
+                    </div>
+                    <div class="col-md-8 noidung">
+                        <h5>@Model.CONGVIEC_DT</h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        <label style="float: left">Tên trạm:</label>
+                    </div>
+                    <div class="col-md-8 noidung">
+                        <h5>@Model.TRAM_DT</h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        <label style="float: left">Nội dung khác:</label>
+                    </div>
+                    <div class="col-md-8 noidung">
+                        <h5>@Model.NOIDUNGKHAC_DT</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Giá trị hợp đồng</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        <label style="float: left">Giá trị thuê/tháng (chưa có VAT):</label>
+                    </div>
+                    <div class="col-md-8 noidung">
+                        <h5>@Model.THANG VNĐ</h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        <label style="float: left">Thuế VAT:</label>
+                    </div>
+                    <div class="col-md-8 noidung">
+                        <h5>@Model.VAT VNĐ</h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        <label style="float: left">Tổng giá trị thuê/tháng:</label>
+                    </div>
+                    <div class="col-md-8 noidung">
+                        <h5>@Model.THANG_GT VNĐ</h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        <label style="float: left">Tổng giá trị hợp đồng:</label>
+                    </div>
+                    <div class="col-md-8 noidung">
+                        <h5>@Model.TONG_GT</h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        <label style="float: left">Chu kỳ thanh toán:</label>
+                    </div>
+                    <div class="col-md-8 noidung">
+                        <h5>@Model.CHUKY_TT.CHUKY</h5>
+                        @*<select class="form-control" id="chuky" name="CHUKY_ID" onchange="testfuntion();">
+                                <option value="1">Tháng</option>
+                                <option value="2">Quý</option>
+                                <option value="3">Năm</option>
+                            </select>*@
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        <label style="float: left">Hình thức thanh toán:</label>
+                    </div>
+                    <div class="col-md-8 noidung">
+                        <h5>@Model.HTTT.TEN_HTTT</h5>
+                        @*@Html.DropDownList("THUE_BT", (IEnumerable<SelectListItem>)ViewBag.BENTHUEID,"--Chọn bên thuê--", new { @class = "form-control", required = "required", @id = "THUE_BT" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        <label style="float: left">Hạn hợp đồng: </label>
+                    </div>
+                    <div class="col-md-8 noidung">
+                        <div class="control-label col-md-4">
+                            <label>Từ ngày:</label>
+                        </div>
+                        <div class="col-md-8 noidung">
+                            <h5>
+                                @if (Model.NGAY_BD.HasValue)
+                                {
+                                    @Model.NGAY_BD.Value.ToString("dd/MM/yyyy")
+                                }
+                        </h5>
+                    </div>
+                    <div class="control-label col-md-4">
+                        <label>Đến ngày:</label>
+                    </div>
+                    <div class="col-md-8 noidung">
+                        <h5>
+                            @if (Model.NGAY_KT.HasValue)
+                            {
+                                @Model.NGAY_KT.Value.ToString("dd/MM/yyyy")
+                            }
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="col-md-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Ghi chú</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-12 noidung">
+                        <h5>@Model.GHICHU</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div style="text-align: center;">
+        <input type="submit" class="btn btn-success btn-lg" value="Lưu" />
+        <input type="button" class="btn btn-default btn-lg" value="Hủy" />
+    </div>*@
+</div>
+</div>

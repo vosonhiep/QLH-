@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c4a081583db94c23b3303d472341ac25" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="QLHDModel.BENTHUE_TAM" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.CHUKY_TT" Width="1.5" PointX="0.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.DM_VANBAN" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.DONVI" Width="1.5" PointX="3.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.DS_QUYEN_MENU" Width="1.5" PointX="10.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.HETHONG" Width="1.5" PointX="5.75" PointY="53.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.HISTORY_CHANGE" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.HOPDONG_CHIPHI" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.HOPDONG_DOANHTHU" Width="1.5" PointX="6" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.HOPDONG_NHANCONG" Width="1.5" PointX="9" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.HTTT" Width="1.5" PointX="3.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.LICHSU_DANGNHAP" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.LOAI_HD_SUB" Width="1.5" PointX="3.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.MENU_CHA" Width="1.5" PointX="5.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.MENU_CON" Width="1.5" PointX="8" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.NAM_HD" Width="1.5" PointX="3.75" PointY="45.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.PHULUC" Width="1.5" PointX="5.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.PHULUC_HDCP" Width="1.5" PointX="11.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.TBL_FILE" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.THANHLY_HDCHIPHI" Width="1.5" PointX="5.25" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.THANHLY_HDDOANHTHU" Width="1.5" PointX="8.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.THANHLY_HDNHANCONG" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.THANHTOAN_CHIPHI" Width="1.5" PointX="5.25" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.THANHTOAN_DOANHTHU" Width="1.5" PointX="8.25" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.THANHTOAN_NHANCONG" Width="1.5" PointX="11.25" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.THANHVIEN" Width="1.5" PointX="8" PointY="51.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.THOIHAN_TT" Width="1.5" PointX="3.75" PointY="48.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.TINHTRANG_SD_CHIPHI" Width="1.5" PointX="5.25" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.TRAM_BTS" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHDModel.TRANGTHAI_HD" Width="1.5" PointX="0.75" PointY="21.875" IsExpanded="true" />
+        <AssociationConnector Association="QLHDModel.FK__HOPDONG_D__CHUKY__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.fk_chuky12" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.fk_PHULUC" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.fk_PHULUC2" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.HDCHIPHI_CHUKY_TT" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.HDNHANCONG_CHUKY_TT" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK__HOPDONG_C__DONVI__589C25F3" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK__HOPDONG_D__DONVI__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK__HOPDONG_N__DONVI__5A846E65" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK__DS_QUYEN___ID_ME__26CFC035" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK__DS_QUYEN___USER___27C3E46E" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.fk_menucha" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK_THANHVIE_THANHVIEN_HETHONG" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK__THANHTOAN__HOPDO__59904A2C" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.fk_group" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.fk_group21" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK_HOPDONG__HDCHIPHI__NAM_HD" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK_HOPDONG__HDCHIPHI__THOIHAN_" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK_HOPDONG_CHIPHI_TRANGTHAI_HD" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK_PHULUC_PHULUC_HD_HOPDONG_" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.fk_tinhtrang1" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.HDCHIPHI_HTTT" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.HDCHIPHI_LOAI_HD" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK__HOPDONG_D__HTTT___52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK__HOPDONG_D__ID_LO__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK__HOPDONG_D__NAM_H__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK__HOPDONG_D__THOIH__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK__THANHLY_H__HOPDO__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK_THANHTOA_TTDOANHTH_HOPDONG_" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK__HOPDONG_N__ID_TR__3DB3258D" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK_HOPDONG__HDNHANCON_NAM_HD" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK_HOPDONG__HDNHANCON_THOIHAN_" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK_THANHTOA_TTNHANCON_HOPDONG_" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.HDNHANCONG_HTTT" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.HDNHANCONG_LOAI_HD" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHDModel.FK__MENU_CON__ID_MEN__5CD6CB2B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

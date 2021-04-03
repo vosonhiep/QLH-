@@ -1,0 +1,136 @@
+﻿@using QLHD.Models;
+@model List<QLHD.Models.THANHTOAN_CHIPHI>
+
+@{
+    foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.SOUYNHIEMCHI_TT</td>
+        <td>@if (item.NGAY_TT.HasValue)
+            {
+            @item.NGAY_TT.Value.ToString("dd/MM/yyyy")
+            }
+        </td>
+        <td>@item.SOTIEN_TT</td>
+        <td>@item.CHUTK_TT</td>
+        <td>@item.SOTK_TT</td>
+        <td>
+            @*@Html.ActionLink(" ", "editThanhToan", "HDChiPhi", new { @thanhtoanID = item.ID_TT }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })*@
+            @Html.Action("editTT", "HDChiPhi", new { @IDTT = @item.ID_TT })
+            |
+                                                    <button type="button" data-toggle="modal" data-target="#@item.ID_TT" title="Hiện chi tiết thanh toán" class="btn btn-info btn-sm">
+                                                        <i class="fa fa-book" style="font-size: 15px"></i>
+                                                    </button>
+            <div class="modal fade" id="@item.ID_TT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Chi tiết lịch sử thanh toán</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <b>Số hợp đồng:</b>
+                                    </div>
+                                    <div class="col-md-8" style="margin-top: 8px">
+                                        @ViewBag.hopdong.SO_HD
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <b>Ngày thanh toán:</b>
+                                    </div>
+                                    <div class="col-md-8" style="margin-top: 8px">
+                                        @if (item.NGAY_TT.HasValue)
+                                        {
+                                            @item.NGAY_TT.Value.ToString("dd/MM/yyyy")
+                                        }
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-2">
+                                        <b>Từ ngày:</b>
+                                    </div>
+                                    <div class="col-md-4" style="margin-top: 8px">
+                                        @if (item.TUNGAY_TT.HasValue)
+                                        {
+                                            @item.TUNGAY_TT.Value.ToString("dd/MM/yyyy")
+                                        }
+                                    </div>
+                                    <div class="control-label col-md-2">
+                                        <b>Đến ngày:</b>
+                                    </div>
+                                    <div class="col-md-4" style="margin-top: 8px">
+                                        @if (item.DENNGAY_TT.HasValue)
+                                        {
+                                            @item.DENNGAY_TT.Value.ToString("dd/MM/yyyy")
+                                        }
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <b>Số tiền thanh toán:</b>
+                                    </div>
+                                    <div class="col-md-8" style="margin-top: 8px">
+                                        @item.SOTIEN_TT
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <b>Số ủy nhiệm chi:</b>
+                                    </div>
+                                    <div class="col-md-8" style="margin-top: 8px">
+                                        @item.SOUYNHIEMCHI_TT
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <b>Chủ tài khoản:</b>
+                                    </div>
+                                    <div class="col-md-8" style="margin-top: 8px">
+                                        @item.CHUTK_TT
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <b>Số tài khoản:</b>
+                                    </div>
+                                    <div class="col-md-8" style="margin-top: 8px">
+                                        @item.SOTK_TT
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <b>Ngân hàng:</b>
+                                    </div>
+                                    <div class="col-md-8" style="margin-top: 8px">
+                                        @item.NGANHANG_TT
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <b>Ghi chú:</b>
+                                    </div>
+                                    <div class="col-md-8" style="margin-top: 8px">
+                                        @item.GHICHU_TT
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="modal-footer">
+
+                            @Html.Action("editTT", "HDChiPhi", new { @IDTT = @item.ID_TT })
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            |
+                                                    @Html.Action("xoaTT", "HDChiPhi", new { @IDTT = @item.ID_TT })
+        </td>
+    </tr>
+    }
+}

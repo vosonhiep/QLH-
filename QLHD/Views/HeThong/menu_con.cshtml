@@ -1,0 +1,8 @@
+﻿@using QLHD.Models;
+@model List<QLHD.Models.MENU_CON>
+
+@{
+    foreach(var a in Model){
+        <li><a href="@a.LINK">@a.TEN_MENU</a></li>
+    }
+}

@@ -1,0 +1,44 @@
+﻿@model QLHD.Models.CHUKY_TT
+
+<button type="button" data-toggle="modal" data-target="#@ViewBag.edit" title="Chỉnh sửa chu kỳ thanh toán" class="btn btn-warning btn-sm">
+                                                        <i class="fa fa-pencil" style="font-size: 15px"></i>
+                                                    </button>
+<div class="modal fade" id="@ViewBag.edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("EditChuKyTTPost", "Edit", new { machuky = @Model.CHUKY_ID }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Sửa chu kỳ thanh toán</h4>
+                </div>     
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Tên chu kỳ:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="CHUKY" value="@Model.CHUKY" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Số tháng:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control" name="THANG" value="@Model.THANG" required="required">
+                            </div>
+                        </div>            
+                    </div>
+                    <div class="clearfix"></div>
+                </div>             
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Lưu" />
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

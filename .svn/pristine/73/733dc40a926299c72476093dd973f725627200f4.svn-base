@@ -1,0 +1,7 @@
+﻿@using QLHD.Models;
+@model QLHD.Models.THANHVIEN
+
+<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    <img src="~/Images/@Model.IMG" alt=""><span style="color: red"><b>@Model.TEN_THANHVIEN  </b></span>
+    <span class=" fa fa-angle-down"></span>
+</a>

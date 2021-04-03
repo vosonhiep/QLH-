@@ -1,0 +1,274 @@
+﻿@using QLHD.Models;
+@model QLHD.Models.THANHVIEN
+@{
+    ViewBag.Title = "Thông tin cá nhân";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="">
+    @*<div class="page-title">
+                        <div class="title_left">
+                            <h3>Thông tin cá nhân</h3>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>*@
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thông tin cá nhân</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+
+                        <div class="profile_img">
+                            <div id="crop-avatar">
+                                <div class="avatar-view" title="Change the avatar">
+                                    <img src="~/Images/@Model.IMG" alt="Avatar">
+                                </div>
+                            </div>
+                        </div>
+                        <h3>@Model.TEN_THANHVIEN</h3>
+
+                        <ul class="list-unstyled user_data" style="font-size: 15px">
+                            <li>
+                                <i class="fa fa-briefcase user-profile-icon"></i> <b>Chức vụ: </b><span class="phuc-user">@Model.CHUCVU</span>
+                            </li>
+
+                            <li class="m-top-xs">
+                                <i class="fa fa-book user-profile-icon"></i>
+                                <b>Trình độ: </b><span class="phuc-user">@Model.TRINHDO</span>
+                            </li>
+                        </ul>
+
+                        @*<a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Cập nhật thông tin cá nhân</a>*@
+                        <a class="btn btn-round btn-primary" id="editUser"><i class="fa fa-edit m-right-xsh"></i>Cập nhật thông tin cá nhân</a>
+                        @*<button type="file" class="btn btn-round btn-success" id="upIMG" style="text-align:center">
+                            <i class="fa fa-file-image-o"></i> Thay đổi ảnh bìa</button>*@
+                        <br />
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-12" id="profile">
+                        <div class="profile_title" style="margin-bottom: 15px">
+                            <div class="col-md-6">
+                                <h2>Chi tiết</h2>
+                            </div>
+                        </div>
+                        <!-- start of user-activity-graph -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="tieude1">Họ và tên:</span>
+                                    @Model.TEN_THANHVIEN
+                                </div>
+                                <div class="form-group">
+                                    <span class="tieude1">Năm sinh:</span>
+                                    @Model.NGAYSINH
+                                </div>
+                                <div class="form-group">
+                                    <span class="tieude1">Địa chỉ:</span>
+                                    @Model.DIACHI
+                                </div>
+                                <div class="form-group">
+                                    <span class="tieude1">Trình độ:</span>
+                                    @Model.TRINHDO
+                                </div>
+                                <div class="form-group">
+                                    <span class="tieude1">Tôn giáo:</span>
+                                    @Model.TONGIAO
+                                </div>
+                                <div class="form-group">
+                                    <span class="tieude1">Dân tộc:</span>
+                                    @Model.DANTOC
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="tieude1">Chức vụ:</span>
+                                    @Model.CHUCVU
+                                </div>
+                                <div class="form-group">
+                                    <span class="tieude1">Điện thoại:</span>
+                                    @Model.DIENTHOAI
+                                </div>
+                                <div class="form-group">
+                                    <span class="tieude1">Email:</span>
+                                    @Model.EMAIL
+                                </div>
+                                <div class="form-group">
+                                    <span class="tieude1">Số CMND:</span>
+                                    @Model.CMND
+                                </div>
+                                <div class="form-group">
+                                    <span class="tieude1">Nơi cấp:</span>
+                                    @Model.NOICAP
+                                </div>
+                                <div class="form-group">
+                                    <span class="tieude1">Ngày cấp:</span>
+                                    @Model.NGAYCAP
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     @using (Html.BeginForm("EditUserPost", "HeThong", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                    {
+                            @Html.AntiForgeryToken()
+                    <div class="col-md-9 col-sm-9 col-xs-12" id="editProfile" style="display:none">
+                        <div class="profile_title" style="margin-bottom: 15px">
+                            <div class="col-md-6">
+                                <h2>Chỉnh sửa thông tin cá nhân</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-horizontal">
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Họ và tên:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="TEN_THANHVIEN" required="required" value="@Model.TEN_THANHVIEN" readonly/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Năm sinh:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="datetime" class="form-control" name="NGAYSINH" required="required" value="@Model.NGAYSINH"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Địa chỉ:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="DIACHI" required="required" value="@Model.DIACHI"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Trình độ:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="TRINHDO" required="required" value="@Model.TRINHDO"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Tôn giáo:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="TONGIAO" required="required" value="@Model.TONGIAO"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Dân tộc:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="DANTOC" required="required" value="@Model.DANTOC"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-horizontal">
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Chức vụ:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="CHUCVU" required="required" value="@Model.CHUCVU"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Điện thoại:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="number" class="form-control" name="DIENTHOAI" required="required" value="@Model.DIENTHOAI"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Email:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="EMAIL" required="required" value="@Model.EMAIL"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Số CMND:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="CMND" required="required" value="@Model.CMND"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Nơi cấp:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="NOICAP" required="required" value="@Model.NOICAP"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Ngày cấp:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="datetime" class="form-control" name="NGAYCAP" required="required" value="@Model.NGAYCAP"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Ảnh đại diện:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="file" class="form-control" name="IMG" value="@Model.IMG"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <input type="submit" class="btn btn-success btn-lg" value="Lưu" />
+                                <input type="button" class="btn btn-warning btn-lg" value="Hủy" id="huy">
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#upIMG').hide();
+    $(document).ready(function () {
+        $('#editUser').on('click', function () {
+            $('#profile').hide();
+            $('#editProfile').show();
+            $('#upIMG').show();
+            $('#editUser').hide();
+        });
+        $('#huy').on('click', function () {
+            $('#profile').show();
+            $('#editProfile').hide();
+            $('#upIMG').hide();
+            $('#editUser').show();
+        });
+    });
+    $('INPUT[type="file"]').change(function () {
+        var ext = this.value.match(/\.(.+)$/)[1];
+        switch (ext) {
+            case 'jpg':
+            case 'jpeg':
+            case 'png':
+            case 'gif':
+                $('#uploadButton').attr('disabled', false);
+                break;
+            default:
+                alert('Định dạng file không đúng, vui lòng chọn file định dạng .jpg, .jpeg, .png, .gif !!!');
+                this.value = '';
+        }
+    });
+</script>

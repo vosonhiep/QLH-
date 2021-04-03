@@ -1,0 +1,71 @@
+﻿@using QLHD.Models;
+@model List<QLHD.Models.THANHVIEN>
+@{
+    ViewBag.Title = "Quản lý thành viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Quản lý thành viên</h3>            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav navbar-left">
+                <form class="form-horizontal">
+                    <h4 style="color:red">@ViewBag.thongbao</h4>
+                </form>
+            </div>
+            <div class="nav navbar-right">
+                    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addTV"><i class="fa fa-plus"></i>Thêm mới</button>
+                </div>
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh mục thành viên </h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên thành viên</th>
+                            <th>Tên truy cập</th>
+                            
+                            <th>Sửa</th>
+                            <th>Xóa</th>
+                            <th>Reset mật khẩu</th>
+                        </tr>
+                        @{int row = 0;}
+                        @foreach(var item in Model){
+                        <tr>                            
+                                <td>@(row+=1)</td>
+                                <td>@item.TEN_THANHVIEN</td>
+                                <td>@item.TENTRUYCAP</td>
+                                
+                                <td>
+                                    @*<button type="button" data-toggle="modal" data-target="#@item.MA_NCC">
+                                        <i class="fa fa-edit" style="font-size:20px"></i>
+                                    </button>*@
+                                    @Html.Action("EditUser", "Partial", new {@idTV = @item.ID_THANHVIEN })
+
+                                </td>
+                                <td>
+                                    @Html.Action("deleteTV", "Account", new {@maTK = @item.ID_THANHVIEN })
+                                </td>
+                                <td>
+                                    
+                                    @Html.Action("getResetMK", "Account", new {@maTK = @item.ID_THANHVIEN })
+                                </td>     
+                        </tr>
+                        }
+                    </table>
+                    <div class="clearfix"></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("addThanhVien","Partial")

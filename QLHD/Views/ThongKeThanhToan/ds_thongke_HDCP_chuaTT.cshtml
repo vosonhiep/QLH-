@@ -1,0 +1,27 @@
+﻿@using QLHD.Models;
+@model List<QLHD.Models.HOPDONG_CHIPHI>
+@{int row = 0;}
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@(row += 1)</td>
+        <td>@item.SO_HD</td>        
+        <td>@item.LOAI_HD_SUB.TEN_HD_SUB</td>
+        <td>@if (item.NGAY_HD.HasValue)
+            {
+            @item.NGAY_HD.Value.ToString("dd/MM/yyyy")
+                                }</td>
+        <td>@item.TEN_BT</td>
+        <td>@item.TEN_CT</td>
+        <td>@if (item.NGAY_BD.HasValue)
+            {
+            @item.NGAY_BD.Value.ToString("dd/MM/yyyy")
+                                }</td>
+        <td>@if (item.NGAY_KT.HasValue)
+            {
+            @item.NGAY_KT.Value.ToString("dd/MM/yyyy")
+                                }</td>
+        <td>@item.SO_CHUKY</td>
+        <td>@item.THANHTOAN_CHIPHI.Count()</td>
+    </tr>
+}

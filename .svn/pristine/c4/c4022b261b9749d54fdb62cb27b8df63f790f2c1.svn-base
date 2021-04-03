@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - Quản lý hợp đồng</title>
+    <link href="~/Images/logo-vnpt.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="@Url.Content("~/Content/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/fonts/css/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/animate.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/custom.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/icheck/flat/green.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/normalize.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/bootstrap-multiselect.css")" rel="stylesheet" />
+    <link href="~/Content/css/floatexamples.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Lobster&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+    @*<script type="text/javascript" src="http://rawgit.com/BobKnothe/autoNumeric/master/autoNumeric.js"></script>*@
+    @*<script type="text/javascript">
+        jQuery(function ($) {
+            $('.auto').autoNumeric('init');
+        });
+    </script>*@
+    <script src="~/Scripts/js/moris/morris.js"></script>
+    <script src="~/Scripts/js/nprogress.js"></script>
+    <style type="text/css">
+        .tieude {
+            width: 800px;
+            text-align: center;
+            font-family: 'Lobster', cursive;
+            font-size: 35px;
+            color: #0C83D1;
+            text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
+        }
+
+        a:focus {
+            text-decoration: none;
+        }
+
+        table {
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="/Home/index" class="site_title">
+                            <img src="~/Images/logo-vnpt.png" height="30px" /><span>VNPT An Giang</span>
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- menu prile quick info -->
+                    <div class="profile" onclick="location.href='@Url.Action("ThongTinCaNhan", "HeThong")';">
+                        @Html.Action("avarta", "Partial")
+                        @*<div class="profile_pic">
+                            <img src="~/Images/user.png" alt="..." class="img-circle profile_img"/>
+                        </div>
+                        <div class="profile_info">
+                            <span>Xin chào,</span>
+                            <h2>@User.Identity.Name</h2>
+                        </div>*@
+                    </div>
+                    <!-- /menu prile quick info -->
+
+                    <br />
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>Menu</h3>
+                            <ul class="nav side-menu">
+
+                                @Html.Action("menu_cha", "HeThong")
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav class="" role="navigation">
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <div class="nav navbar-nav navbar-center">
+                            <h3 class="tieude">Quản lý hợp đồng
+                            </h3>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right" style="width: 230px">
+                            <li class="">
+                                @Html.Action("avarta2", "Partial")
+
+                                <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                                    <li><a href="@Url.Action("ThongTinCaNhan", "HeThong")">Thông tin cá nhân</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("hotro", "Home")">
+                                            <span>Hỗ trợ</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="@Url.Action("DangXuat", "Account")"><i class="fa fa-sign-out pull-right"></i>Đăng xuất</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <div class="right_col" role="main">
+                @RenderBody()
+                <!-- footer content -->
+                <footer>
+                    <div class="">
+                        <p class="pull-right">
+                            Copyright © 2017, VNPT An Giang. |
+                            <span>Số 2 Lê Lợi Mỹ Bình TP Long Xuyên</span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </footer>
+                <!-- /footer content -->
+            </div>
+            <!-- /page content -->
+        </div>
+
+    </div>
+
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/chartjs/chart.min.js"></script>
+
+
+    <script src="~/Scripts/js/progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="~/Scripts/js/chartjs/chart.min.js"></script>
+    <script src="~/Scripts/js/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="~/Scripts/js/icheck/icheck.min.js"></script>
+    <script src="~/Scripts/js/custom.js"></script>
+    <script src="~/Scripts/js/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="~/Scripts/js/input_mask/jquery.inputmask.js"></script>
+    <script src="~/Scripts/js/moris/raphael-min.js"></script>
+    <script src="~/Scripts/js/moris/morris.js"></script>
+    <script src="~/Scripts/js/bootstrap-multiselect.js"></script>
+
+    @*<script src="~/Scripts/js/moris/example.js"></script>*@
+    @*<script src="~/Scripts/js/moris/jquery.number.js"></script>*@
+</body>
+</html>

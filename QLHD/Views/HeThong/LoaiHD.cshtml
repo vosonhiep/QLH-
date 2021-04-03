@@ -1,0 +1,81 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<QLHD.Models.LOAI_HD_SUB>
+@{
+    ViewBag.Title = "Loại hợp đồng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Danh mục loại HĐ</h3>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav navbar-left">
+                <form class="form-horizontal">
+                    
+                </form>
+            </div>
+            <div class="nav navbar-right">
+                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addLoaiHD"><i class="fa fa-plus"></i>Thêm mới</button>
+                @*<button type="button" class="btn btn-info btn-lg"><i class="fa fa-download"></i>In danh mục</button>*@
+                <a href="@Url.Action("Expor_LoaiHD", "HeThong")" class="btn btn-info btn-lg">In danh mục HĐ
+                    <span class="fa fa-download" />
+                </a>
+            </div>
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh mục loại HĐ </h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên loại HĐ</th>
+                            <th>Ghi chú</th>
+                            <th>Sửa</th>
+                            <th>Xóa</th>
+                        </tr>
+                        @{int row = (@Model.PageNumber * 10) - 10;}
+                        @foreach(var item in Model){
+                        <tr>
+                            
+                                <td>@(row+=1)</td>
+                                
+                                <td>@item.TEN_HD_SUB</td>
+                                <td>@item.GHICHU</td>
+                                <td>
+                                    @*<button type="button" data-toggle="modal" data-target="#@item.MA_NCC">
+                                        <i class="fa fa-edit" style="font-size:20px"></i>
+                                    </button>*@
+                                    @Html.Action("editLoaiHD", "Partial", new {@idHD = @item.ID_LOAIHD_SUB })
+
+                                </td>
+                                <td>
+                                     @Html.Action("xoaLoaiHD", "Partial", new {@idHD = @item.ID_LOAIHD_SUB })
+                                </td>      
+                        </tr>
+                        }
+                    </table>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+            <div class="MenuTrang">
+                @Html.PagedListPager(Model, page => Url.Action("LoaiHD","HeThong", new { page = page, @sTuKhoa = ViewBag.TuKhoa }))
+            </div>
+            <style>
+                .MenuTrang li {
+                    display: inline;
+                }
+            </style>
+        </div>
+        </div>
+    </div>
+</div>
+@Html.Action("addLoaiHD","Partial")

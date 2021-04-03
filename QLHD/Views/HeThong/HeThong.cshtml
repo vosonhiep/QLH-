@@ -1,0 +1,62 @@
+﻿@using QLHD.Models;
+@model List<QLHD.Models.HETHONG>
+@{
+    ViewBag.Title = "HeThong";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Quản lý hệ thống</h3>
+            <span style="color:red">@ViewBag.thongbao</span>
+        </div>
+
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav navbar-left">
+                <form class="form-horizontal">
+                    
+                </form>
+            </div>
+            <div class="nav navbar-right">
+                    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addHT"><i class="fa fa-plus"></i>Thêm mới</button>
+                </div>
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh mục hệ thống </h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên hệ thống</th>
+                            <th>Ghi chú</th>
+                            <th>Xóa</th>
+                        </tr>
+                        @{int row = 0;}
+                        @foreach(var item in Model){
+                        <tr>
+                            
+                                <td>@(row+=1)</td>
+                                <td>@item.TENHETHONG</td>
+                                <td>@item.GHICHU</td>
+                                
+                                <td>
+                                    <a href="#" data-toggle="" data-target=""><i class="fa fa-trash-o" title="Xóa" style="font-size:20px"></i></a>
+                                </td>
+   
+                        </tr>
+                        }
+                    </table>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("addHT","Partial")
+

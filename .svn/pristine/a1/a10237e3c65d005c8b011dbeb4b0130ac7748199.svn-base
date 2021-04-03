@@ -1,0 +1,72 @@
+﻿@model QLHD.Models.TRAM_BTS
+<button type="button" data-toggle="modal" data-target="#@ViewBag.edit" title="Hiện chi tiết thanh toán" class="btn btn-warning btn-sm">
+    <i class="fa fa-pencil" style="font-size: 15px"></i>
+</button>
+<div class="modal fade" id="@ViewBag.edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("editTramHTTTPost", "Partial", new { idTram = @Model.TRAM_ID }, FormMethod.Post, null))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Cập nhật thông tin Trạm</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Mã trạm:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="MA_TRAM" value="@Model.MA_TRAM" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Tên trạm:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="TEN_TRAM" placeholder="Tên trạm" required="required" value="@Model.TEN_TRAM">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Long:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="LONG_TRAM" placeholder="Tọa độ Long" value="@Model.LONG_TRAM">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Lat:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="LAT_TRAM" placeholder="Tọa độ Lat" value="@Model.LAT_TRAM">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Địa chỉ:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <textarea class="form-control" name="DIA_CHI_TRAM" rows="4" placeholder="Địa chỉ">@Model.DIA_CHI_TRAM</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Lưu" />
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#@Model.TRAM_ID').val(@Model.TRAM_ID);
+    });
+</script>

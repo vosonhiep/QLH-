@@ -1,0 +1,129 @@
+﻿@model QLHD.Models.THANHTOAN_DOANHTHU
+
+<button type="button" data-toggle="modal" data-target="#@ViewBag.edit" title="Hiện chi tiết thanh toán">
+    <i class="fa fa-book" style="font-size: 20px"></i>
+</button>
+@using (Html.BeginForm("editLichSuTTPost", "HDDoanhThu", new { IDTT = @Model.ID_TT }, FormMethod.Post, null))
+            {
+                @Html.AntiForgeryToken()
+<div class="modal fade" id="@ViewBag.edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Chỉnh sửa lịch sử thanh toán</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Hợp đồng ID:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="HOPDONG_DOANHTHU_ID" required="required" value="@Model.HOPDONG_DOANHTHU_ID" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Ngày thanh toán:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="date" class="form-control" name="NGAY_TT" required="required" value="@Model.NGAY_TT.Value.ToString("dd-mm-yyyy")"/>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Từ ngày:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="datetime" class="form-control" name="TUNGAY_TT" required="required" value="@Model.TUNGAY_TT"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Đến ngày:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="datetime" class="form-control" name="DENNGAY_TT" required="required" value="@Model.DENNGAY_TT"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Số tiền thanh toán:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="number" id="sotien_tt" class="form-control" name="SOTIEN_TT" required="required" value="@Model.SOTIEN_TT"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Số ủy nhiệm chi:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="SOUYNHIEMCHI_TT" value="@Model.SOUYNHIEMCHI_TT"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Chủ tài khoản:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="CHUTK_TT" value="@Model.CHUTK_TT"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Số tài khoản:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="SOTK_TT" value="@Model.SOTK_TT"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Ngân hàng:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="NGANHANG_TT" value="@Model.NGANHANG_TT"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Ghi chú:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="GHICHU_TT" value="@Model.GHICHU_TT"/>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" value="Lưu"/>
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng" />
+            </div>
+        </div>
+    </div>
+</div>
+}

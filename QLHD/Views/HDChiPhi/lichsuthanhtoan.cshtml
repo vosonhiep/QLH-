@@ -1,0 +1,25 @@
+﻿@using QLHD.Models;
+@model List<QLHD.Models.THANHTOAN>
+                        @{
+                            foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.HOPDONG_CHIPHI.SO_HD
+                                </td>
+                                <td>
+                                    @item.NGAY_TT
+                                </td>
+
+                                <td>
+                                   @item.SOTIEN_TT
+                                </td>
+                                <td>
+                                   @item.GHICHU_TT
+                                </td>
+
+                              
+                            </tr>
+                        }
+
+                    

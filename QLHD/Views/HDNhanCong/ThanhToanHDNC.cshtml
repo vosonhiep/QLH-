@@ -1,0 +1,198 @@
+﻿@model IEnumerable<QLHD.Models.THANHTOAN_NHANCONG>
+@{
+    ViewBag.Title = "Thanh toán HĐ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Thanh toán HĐ (số HĐ: @ViewBag.hopdong.SO_HD)</h3>
+            <span style="color: red">@ViewBag.baoloi</span>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    @using (Html.BeginForm("ThanhToanHDNC", "HDNhanCong", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel" style="">
+                    <div class="x_title">
+                        <h2>Loại hợp đồng và số hợp đồng</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="col-md-6" style="display:none">
+                            <div class="form-group" >
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Hợp đồng ID:</label>
+                                </div>
+                                <div class="col-md-5" >
+                                    <input type="text" class="form-control" name="HOPDONG_NHANCONG_ID" required="required" value="@ViewBag.hdid"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" >
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Số HĐ:</label>
+                                </div>
+                                <div class="col-md-5" >
+                                    <input type="text" class="form-control" required="required" value="@ViewBag.hopdong.SO_HD" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Ngày thanh toán:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="date" class="form-control" name="NGAY_TT" required="required" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Từ ngày:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="date" class="form-control" name="TUNGAY_TT" required="required" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Đến ngày:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="date" class="form-control" name="DENNGAY_TT" required="required" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Số tiền thanh toán:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="number" id="sotien_tt" class="form-control" name="SOTIEN_TT" required="required"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Số ủy nhiệm chi:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="SOUYNHIEMCHI_TT" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Chủ tài khoản:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="CHUTK_TT" value="@ViewBag.hopdong.DAIDIEN_BT"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Số tài khoản:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="SOTK_TT" value="@ViewBag.hopdong.TAIKHOAN_BT"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Ngân hàng:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="NGANHANG_TT" value="@ViewBag.hopdong.NGANHANG_BT"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Ghi chú:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="GHICHU_TT" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <input type="submit" class="btn btn-success btn-lg" value="Tạo mới" />
+                @*<input type="button" class="btn btn-default btn-lg" value="Hủy" />*@
+                <a href="@Url.Action("DSThanhToan_HDNC", "HDNhanCong")" class="btn btn-default btn-lg">Hủy
+                </a>
+            </div>
+            
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Lịch sử thanh toán của HĐ</h2>
+                        <h4>@ViewBag.sohd</h4>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <table class="table table-bordered table-striped table-hover">
+                                        <tr>
+                                            <th>Số ủy nhiệm chi</th>
+                                            <th>Ngày thanh toán</th>
+                                            <th>Số tiền thanh toán</th>
+                                            <th>Chủ tài khoản</th>
+                                            <th>Số tài khoản</th>
+                                            <th></th>
+
+                                        </tr>
+                                        @*@Html.Action("lichsuthanhtoan", "HDChiPhi", new { @HDid = @Model.HOPDONG_CHIPHI_ID })*@
+                                        
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.SOUYNHIEMCHI_TT</td>
+                                                <td>@item.NGAY_TT</td>
+                                                <td>@item.SOTIEN_TT</td>
+                                                <td>@item.CHUTK_TT</td>
+                                                <td>@item.SOTK_TT</td>
+                                                <td>
+                                                    @Html.Action("editTT", "HDNhanCong", new { @IDTT = @item.ID_TT })
+                                                    |
+                                                    @Html.Action("detailTT", "HDNhanCong", new { @IDTT = @item.ID_TT })
+                                                    |
+                                                    @Html.Action("xoaTT", "HDNhanCong", new { @IDTT = @item.ID_TT })
+                                                </td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<QLHD.Models.LICHSU_DANGNHAP>
+@{
+    ViewBag.Title = "Lịch sử đăng nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Lịch sử đăng nhập</h3>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12">
+            
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Lịch sử đăng nhập </h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>STT</th>
+                            <th>Account đăng nhập</th>
+                            <th>Tên người đăng nhập</th>
+                            <th>Thời gian đăng nhập</th>
+                            <th>Trạng thái</th>
+                            
+                        </tr>
+                        
+                        @{int row = 0 + (@Model.PageNumber - 1)*10;}
+                        @foreach(var item in Model)
+                        {
+                            <tr>
+
+                                <td>@(row += 1)</td>
+                                <td>@item.TENTRUYCAP</td>
+                                <td>@ViewBag.tennd</td>
+                                <td>@if (item.DATE.HasValue)
+                                    {
+                                    @item.DATE.Value.ToString("dd/MM/yyyy HH:mm:ss")
+                                    }
+                                </td>
+                                <td>@item.TRANGTHAI</td>
+                            </tr>
+                        }
+                    </table>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+            <div class="MenuTrang">
+                @Html.PagedListPager(Model, page => Url.Action("lichsudangnhap","HeThong", new { page = page, @sTuKhoa = ViewBag.TuKhoa }))
+            </div>
+            <style>
+                .MenuTrang li {
+                    display: inline;
+                }
+            </style>
+        </div>
+        </div>
+    </div>
+</div>
+@Html.Action("addLoaiHD","Partial")

@@ -1,0 +1,48 @@
+﻿<div class="modal fade" id="addMenuCon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("addMenuCon", "HeThong", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Thêm nhóm menu mới</h4>
+                </div>     
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Tên menu:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="TEN_MENU" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Thuộc nhóm menu:</b>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DropDownList("ID_MENU_CHA", (IEnumerable<SelectListItem>)ViewBag.nhommenu,"--Chọn--", new { @class = "form-control", required = "required" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Link menu:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="LINK" placeholder="vd: href=/HDChiPhi/Index">
+                            </div>
+                        </div>                       
+                              
+                    </div>
+                    <div class="clearfix"></div>
+                </div>             
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Tạo mới" />
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

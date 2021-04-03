@@ -1,0 +1,17 @@
+﻿@using QLHD.Models;
+@model List<QLHD.Models.MENU_CHA>
+
+@{
+foreach(var item in Model){
+<li>
+    <a @item.LINK><i class="@item.ICON"></i>@item.TEN_MENU_CHA<span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu" style="display: none">
+            @Html.Action("menu_con", "HeThong", new {@id_menucha = item.ID_MENU_CHA })
+
+            @*<li><a href="/HDChiPhi/Index">Danh sách HĐ chi phí</a></li>
+            <li><a href="/HDChiPhi/Create">Tạo mới HĐ chi phí</a></li>
+            <li><a href="/HDChiPhi/danhsachthanhtoan">Thanh toán HĐ chi phí</a></li>*@
+        </ul>
+</li>
+}
+}

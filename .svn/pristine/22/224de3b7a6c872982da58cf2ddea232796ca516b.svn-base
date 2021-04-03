@@ -1,0 +1,65 @@
+﻿@using QLHD.Models;
+@model List<QLHD.Models.THANHVIEN>
+@{
+    ViewBag.Title = "Phân quyền menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Phân quyền menu</h3>            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-5">
+            @Html.DropDownList("ID_THANHVIEN", (IEnumerable<SelectListItem>)ViewBag.user,"--Chọn--", new { @class = "form-control"})
+            </div>
+    </div>
+    <div class="row"> 
+        <div class="col-md-5">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh mục quyền menu chưa gán</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div id="chuagan">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">          
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh mục quyền menu đã gán</h2>
+                    <div id="dagan"></div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="">
+                        b
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#ID_THANHVIEN').change(function () {
+            var idtv = $('#ID_THANHVIEN').val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("getquyen_chuagan", "HeThong")',
+                data: { idtv: idtv },
+                success: function (data) {
+                    $('#chuagan').append('<p>'+data.TEN_THANHVIEN +'</p>')
+                }
+            });
+        });
+    });
+</script>

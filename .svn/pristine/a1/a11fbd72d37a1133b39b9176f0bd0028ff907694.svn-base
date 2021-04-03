@@ -1,0 +1,31 @@
+﻿@model QLHD.Models.HOPDONG_NHANCONG
+
+<button type="button" data-toggle="modal" data-target="#@ViewBag.hdnc" title="Xóa" class="buttonxoa">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </button>
+<div class="modal fade" id="@ViewBag.hdnc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("xacnhanxoaHDNC", "HDNhanCong", new { idHDNC = @Model.HOPDONG_NHANCONG_ID }, FormMethod.Post, null))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Xác nhận xóa</h4>
+                </div>     
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        Bạn có chắc muốn xóa hợp đồng này không? <span style="color:red">(Số HĐ: @Model.SO_HD)</span>
+                        
+                    </div>
+                    <div class="clearfix"></div>
+                </div>             
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Xóa" />
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

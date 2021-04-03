@@ -1,0 +1,56 @@
+﻿@model QLHD.Models.LOAI_HD_SUB
+<div class="modal fade" id="addLoaiHD" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("addLoaiHD", "Partial", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Thêm loại HĐ mới</h4>
+                </div>     
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Tên loại HĐ:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="TEN_HD_SUB" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Nhóm HĐ:</b>
+                            </div>
+                            <div class="col-md-8">
+                                @*<input type="text" class="form-control" name="TEN_HD_SUB" required="required">*@
+                                <select name="LOAIHD" class="form-control">
+                                    <option value="1">Hợp đồng chi phí</option>
+                                    <option value="2">Hợp đồng doanh thu</option>
+                                    <option value="3">Hợp đồng nhân công</option>
+                                </select>
+                            </div>
+                        </div>  
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Ghi chú:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <textarea class="form-control" name="GHICHU" rows="4" placeholder="Ghi chú"></textarea>
+                            </div>
+                        </div>          
+                    </div>
+                    <div class="clearfix"></div>
+                </div>             
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Tạo mới" />
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy" />
+                    
+                    @*<button type="button" class="btn btn-default" data-dismiss="modal">Trở lại</button>*@
+                    @*<button type="button" class="btn btn-primary">OK</button>*@
+                </div>
+            }
+        </div>
+    </div>
+</div>

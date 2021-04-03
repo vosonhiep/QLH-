@@ -1,0 +1,151 @@
+﻿@model QLHD.Models.BENTHUE_TAM
+<div class="modal fade" id="addBT" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("addBenThue", "Partial", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Thêm bên thuê mới</h4>
+                </div>     
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Tên bên thuê:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="TEN" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Địa chỉ:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="DIACHI" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Điện thoại:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control" name="DIENTHOAI" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>FAX:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control" name="FAX">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Mã số thuế:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="MS_THUE" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Tài khoản:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="TAIKHOAN" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Ngân hàng:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="NGANHANG" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Đại diện:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="DAIDIEN" >
+                            </div>
+                        </div>
+                            </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Chức vụ:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="CHUCVU" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Trình độ:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="TRINHDO" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Công việc:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="CONGVIEC" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Số CMND:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control" name="CMND" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Ngày cấp CMND:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="date" class="form-control" name="NGAYCAP_CMND" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Nơi cấp CMND:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="NOICAP_CMND" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-md-4">
+                                <b>Ngày sinh:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="date" class="form-control" name="NGAYSINH" >
+                            </div>
+                        </div>
+                            </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>             
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Tạo mới" />
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy" />
+                    
+                    @*<button type="button" class="btn btn-default" data-dismiss="modal">Trở lại</button>*@
+                    @*<button type="button" class="btn btn-primary">OK</button>*@
+                </div>
+            }
+        </div>
+    </div>
+</div>

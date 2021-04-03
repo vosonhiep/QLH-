@@ -1,0 +1,262 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<QLHD.Models.HOPDONG_CHIPHI>
+
+@{
+    ViewBag.Title = "HĐ Chi Phí";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/Scripts/js/notify/pnotify.core.js")
+@Scripts.Render("~/Scripts/js/notify/pnotify.buttons.js")
+@Scripts.Render("~/Scripts/js/notify/pnotify.nonblock.js")
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Quản lý hợp đồng chi phí</h3>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav navbar-left">
+                @using (Html.BeginForm("KetQuaTimKiem", "HDChiPhi", FormMethod.Post))
+                {
+                    @Html.Action("partialSearch", "HDChiPhi")
+                }
+            </div>
+            <div class="nav navbar-right">
+                <a href="@Url.Action("Create", "HDChiPhi")" class="btn btn-info btn-lg" style="float:right">Thêm HĐ mới
+                    <span class="glyphicon glyphicon-plus" />
+                </a>
+            </div>
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh sách HĐ chi phí</h2>
+                    <a href="@Url.Action("tk_hdcp", "ThongKe")" class="btn btn-warning" style="float:right">Xuất thống kê HĐ
+                        <span class="glyphicon glyphicon-download" style="color:white"/>
+                    </a>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#tab_content1" id="hopdong-tab" role="tab" data-toggle="tab" aria-expanded="true">DS Hợp Đồng</a>
+                            </li>
+                            <li role="presentation" class=""><a href="#tab_content2" role="tab" id="thanhly-tab" data-toggle="tab" aria-expanded="false">Hợp đồng đã thanh lý</a>
+                            </li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="hopdong-tab">
+                                <table class="table table-bordered table-striped table-hover" style="font-size:11px">
+                                    <tr class="noidung">
+                                        <th style="width: 30px" rowspan="2">STT</th>
+                                        <th rowspan="2">Số HĐ
+                                        </th>
+                                        @*<th rowspan="2">Loại HĐ
+                                        </th>*@
+                                        <th rowspan="2">Ngày lập HĐ
+                                        </th>
+                                        <th rowspan="2">Ngày bắt đầu</th>
+                                        <th rowspan="2">Ngày hết hạn</th>
+                                        <th rowspan="2">Thời hạn HĐ (Năm)</th>
+                                        @*<th rowspan="2">Đại diện bên thuê
+                                        </th>*@
+                                        <th rowspan="2">Đại diện bên cho thuê
+                                        </th>
+                                        <th colspan="2">Tiền thuê/tháng (Không VAT)</th>
+                                                                                
+                                        @*<th rowspan="2">Tổng giá trị HĐ
+                                        </th>*@
+                                        @*<th rowspan="2">Chu kỳ thanh toán</th>*@
+                                        @*<th rowspan="2">Hình thức thanh toán
+                                        </th>*@
+                                        @*<th>Sửa|Xóa</th>*@
+                                        <th rowspan="2">File HĐ</th>
+                                        <th rowspan="2">Cảnh báo</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Giá trị</th>
+                                        <th>Thuế</th>
+                                    </tr>
+                                    @{int row = (@Model.PageNumber * 10) - 10;}
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="noidunghd">
+                                            <td>@(row += 1)</td>
+                                            <td>
+                                                <a href="@Url.Action("ShowHDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })" >
+                                                    @item.SO_HD
+                                                </a>
+                                            </td>
+                                            @*<td>
+                                                <a href="@Url.Action("ShowHDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">@item.LOAI_HD_SUB.TEN_HD_SUB </a>
+                                            </td>*@
+
+                                            <td>
+                                                <a href="@Url.Action("ShowHDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">
+
+                                                    @if (item.NGAY_HD.HasValue)
+                                                    {
+                                                        @item.NGAY_HD.Value.ToString("dd/MM/yyyy")
+                                                    }
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("ShowHDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">
+                                                    @if(item.NGAY_BD.HasValue){
+                                                        @item.NGAY_BD.Value.ToString("dd/MM/yyyy")
+                                                    }
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("ShowHDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">
+                                                    @if(item.NGAY_KT.HasValue){
+                                                        @item.NGAY_KT.Value.ToString("dd/MM/yyyy")
+                                                    }
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("ShowHDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">
+                                                    @if (item.NGAY_KT.HasValue && item.NGAY_BD.HasValue)
+                                                    {
+                                                        @(Math.Round((item.NGAY_KT.Value - item.NGAY_BD.Value).TotalDays/365.242199,0))
+                                                    }
+                                                </a>
+                                            </td>
+                                            @*<td>
+                                                <a href="@Url.Action("ShowHDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">@item.TEN_BT</a>
+                                            </td>*@
+
+                                            <td><a href="@Url.Action("ShowHDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">
+                                                @if(item.LOAI_CT == 1){
+                                                    @item.DAIDIEN_CT
+                                                }
+                                                else {@item.TEN_CT}
+                                                </a></td>
+                                            <td><a href="@Url.Action("ShowHDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })"><span class="no">@item.THANG_GT</span></a></td>
+                                            <td><a href="@Url.Action("ShowHDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">@item.VAT %</a></td>
+                                            
+                                            @*<td><a href="@Url.Action("ShowHDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })"><span class="no">@item.TONG_GT</span></a></td>*@
+                                            @*<td><a href="@Url.Action("ShowHDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">@item.CHUKY_TT.CHUKY</a></td>*@
+                                            @*<td><a href="@Url.Action("ShowHDChiPhi", new { @maHD = item.HOPDONG_CHIPHI_ID })">@item.HTTT.TEN_HTTT</a></td>*@
+                                            @*<td>
+                                                @Html.ActionLink(" ", "EditHDChiPhi", "HDChiPhi", new { @HDCHIPHI_ID = item.HOPDONG_CHIPHI_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
+                                                |
+                                                @Html.ActionLink(" ", "DeleteHDChiPhi", new { @HDCHIPHI_ID = item.HOPDONG_CHIPHI_ID }, new { @class = "glyphicon glyphicon-trash", @style = "font-size: 20px", title = "Xóa" })
+                                            </td>*@
+                                            <td>@if (item.File != null)
+                                                {
+                                                @Html.ActionLink(" ", "ExportData", "HDChiPhi", new { @HDid = item.HOPDONG_CHIPHI_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 20px" })
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (@item.NGAY_KT <= @System.DateTime.Now)
+                                                {
+                                                    <span id="canhbao">
+                                                        <img src="~/Images/canhbao.gif" title="Hợp đồng đã tới hạn. Cần ký lại hộp đồng mới!" height="40px" width="30px" />
+                                                    </span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+                                <div class="MenuTrang">
+                                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, @sTuKhoa = ViewBag.TuKhoa }))
+                                </div>
+                                <style>
+                                    .MenuTrang li {
+                                        display: inline;
+                                    }
+                                </style>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="thanhly-tab">
+                                <table class="table table-bordered table-striped table-hover" style="font-size:11px">
+                                    <tr class="noidung">
+                                        <th style="width: 30px" rowspan="2">STT</th>
+                                        <th rowspan="2">Số HĐ
+                                        </th>
+                                        <th rowspan="2">Loại HĐ
+                                        </th>
+                                        <th rowspan="2">Ngày lập HĐ
+                                        </th>
+                                        <th rowspan="2">Ngày bắt đầu</th>
+                                        <th rowspan="2">Ngày bên thuê</th>
+                                        <th rowspan="2">Đại diện bên thuê
+                                        </th>
+                                        <th rowspan="2">Đại diện bên cho thuê
+                                        </th>
+                                        <th colspan="2">Giá trị HĐ/tháng (đồng)</th>
+                                                                                
+                                        <th rowspan="2">Tổng giá trị HĐ
+                                        </th>
+                                        <th rowspan="2">Chu kỳ thanh toán</th>
+                                        <th rowspan="2">Hình thức thanh toán
+                                        </th>
+                                        @*<th>Sửa|Xóa</th>*@
+                                        <th rowspan="2">File HĐ</th>
+                                        <th rowspan="2">Cảnh báo</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Giá trị</th>
+                                        <th>Thuế</th>
+                                    </tr>
+                                    @Html.Action("DSHDThanhLy", "HDChiPhi")
+                                    </table>
+                                <a href="@Url.Action("export_thanhly", "HDChiPhi")" class="btn btn-info" style="float:right">Xuất thống kê thanh lý HĐ
+                    <span class="glyphicon glyphicon-download" /></a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                @*END x_content*@
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts/numeric/jquery.js")
+@Scripts.Render("~/Scripts/numeric/jquery.number.js")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.no').number(true, 0);
+    });
+</script>
+@Scripts.Render("~/Scripts/js/notify/pnotify.core.js")
+@Scripts.Render("~/Scripts/js/notify/pnotify.buttons.js")
+@Scripts.Render("~/Scripts/js/notify/pnotify.nonblock.js")
+<script type="text/javascript">
+    $.ajax({
+        type: 'GET',
+        url: '@Url.Action("getHD_HetHan", "HDChiPhi")',
+        success: function (data) {
+            if (data.hd != 0) {
+                new PNotify({
+                    title: "Cảnh báo",
+                    //type: "error",
+                    text: "Hiện tại có " + data.hd + " hợp đồng sắp hết hạn! <button type='button' data-toggle='modal' data-target='#dshd' class='btn btn-default btn-sm noidung'>Xem danh sách</button>",
+                    hide: false
+                });
+            }
+            //alert(data.hd);
+            //alert(data.hd_hethan);
+
+            if (data.hd_hethan != 0) {
+                new PNotify({
+                    title: "Hợp đồng hết hạn",
+                    //type: "error",
+                    text: "Hiện tại có " + data.hd_hethan + " hợp đồng hết hạn! <button type='button' data-toggle='modal' data-target='#dshd2' class='btn btn-default btn-sm noidung'>Xem danh sách</button>",
+                    type: "error",
+                    hide: false
+                });
+            }
+        }
+    });
+</script>
+@Html.Action("HDHetHan", "HDChiPhi")
+@Html.Action("HDHetHan2", "HDChiPhi")
