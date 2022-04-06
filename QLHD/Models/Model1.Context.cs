@@ -43,7 +43,6 @@ namespace QLHD.Models
         public virtual DbSet<NAM_HD> NAM_HD { get; set; }
         public virtual DbSet<PHULUC> PHULUCs { get; set; }
         public virtual DbSet<PHULUC_HDCP> PHULUC_HDCP { get; set; }
-        public virtual DbSet<TBL_FILE> TBL_FILE { get; set; }
         public virtual DbSet<THANHLY_HDCHIPHI> THANHLY_HDCHIPHI { get; set; }
         public virtual DbSet<THANHLY_HDDOANHTHU> THANHLY_HDDOANHTHU { get; set; }
         public virtual DbSet<THANHLY_HDNHANCONG> THANHLY_HDNHANCONG { get; set; }
@@ -55,5 +54,6 @@ namespace QLHD.Models
         public virtual DbSet<TINHTRANG_SD_CHIPHI> TINHTRANG_SD_CHIPHI { get; set; }
         public virtual DbSet<TRAM_BTS> TRAM_BTS { get; set; }
         public virtual DbSet<TRANGTHAI_HD> TRANGTHAI_HD { get; set; }
+        public virtual DbSet<TBL_FILE> TBL_FILE { get; set; }
     }
 }

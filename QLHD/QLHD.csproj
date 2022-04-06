@@ -406,6 +406,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLHDDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\TienTrinh.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\animate.min.css" />
@@ -442,6 +443,7 @@
     <Content Include="Content\css\editor\external\google-code-prettify\prettify.css" />
     <Content Include="Content\css\editor\index.css" />
     <Content Include="Content\css\floatexamples.css" />
+    <Content Include="Content\css\HDCNTT\quytrinhhopdong.css" />
     <Content Include="Content\css\icheck\flat\aero%402x.png" />
     <Content Include="Content\css\icheck\flat\aero.css" />
     <Content Include="Content\css\icheck\flat\aero.png" />
@@ -1447,6 +1449,7 @@
     <Content Include="Views\ThongKe\ThongKe_HDCNTT.cshtml" />
     <Content Include="Views\ThongKe\export_hdcntt.cshtml" />
     <Content Include="Views\ThongKe\ketquathongke_HDCNTT.cshtml" />
+    <Content Include="Views\HDCNTT\QuyTrinhHDCNTT.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\HD_CHIPHI\" />

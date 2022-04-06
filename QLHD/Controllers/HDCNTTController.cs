@@ -14,6 +14,7 @@ using PagedList;
 using PagedList.Mvc;
 using System.Globalization;
 using System.IO;
+using QLHD.ViewModel;
 
 namespace QLHD.Controllers
 {
@@ -409,5 +410,17 @@ namespace QLHD.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult QuyTrinhHDCNTT()
+        {
+            var dsTienTrinh = new List<TienTrinh>()
+            {
+                new TienTrinh("Mua thiết bị lắp đặt IOC TCU", "Nguyễn Quốc Khang", "Chủ trì", DateTime.Now, DateTime.Now, true),
+                new TienTrinh("Thi công lắp đặt1", "Phan Thanh Triều", "Chủ trì", DateTime.Now, DateTime.Now, true),
+                new TienTrinh("Thi công lắp đặt2", "Phan Thanh Triều", "Chủ trì", DateTime.Now, DateTime.Now, true),
+                new TienTrinh("Ký hợp đồng", "Khách hàng TCU", "Chủ trì", DateTime.Now, DateTime.Now, false)
+            };
+            return View(dsTienTrinh);
+        }
     }
 }

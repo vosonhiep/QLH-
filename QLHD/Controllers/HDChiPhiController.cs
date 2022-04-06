@@ -11,7 +11,7 @@ using System.Data.Entity.Infrastructure;
 using System.IO;
 using System.Web.UI.WebControls;
 using System.Web.UI;
-using log4net;
+//using log4net;
 using System.Security.AccessControl;
 using System.Threading.Tasks;
 
@@ -1106,7 +1106,7 @@ namespace QLHD.Controllers
                     {
                         //If co file, them file_id vao PLHD
                         phuluc.FILE_ID = result_upload.file_id;
-                        phuluc.FILE = result_upload.file_name;
+                        //phuluc.FILE = result_upload.file_name;
                     }
                 }
                 //them moi PL HD

@@ -62,12 +62,12 @@
                     <div class="profile" onclick="location.href='@Url.Action("ThongTinCaNhan", "HeThong")';">
                         @Html.Action("avarta", "Partial")
                         @*<div class="profile_pic">
-                            <img src="~/Images/user.png" alt="..." class="img-circle profile_img"/>
-                        </div>
-                        <div class="profile_info">
-                            <span>Xin chào,</span>
-                            <h2>@User.Identity.Name</h2>
-                        </div>*@
+                                <img src="~/Images/user.png" alt="..." class="img-circle profile_img"/>
+                            </div>
+                            <div class="profile_info">
+                                <span>Xin chào,</span>
+                                <h2>@User.Identity.Name</h2>
+                            </div>*@
                     </div>
                     <!-- /menu prile quick info -->
 
@@ -94,7 +94,8 @@
                             <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                         </div>
                         <div class="nav navbar-nav navbar-center">
-                            <h3 class="tieude">Quản lý hợp đồng
+                            <h3 class="tieude">
+                                Quản lý hợp đồng
                             </h3>
                         </div>
                         <ul class="nav navbar-nav navbar-right" style="width: 230px">
@@ -102,14 +103,16 @@
                                 @Html.Action("avarta2", "Partial")
 
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                                    <li><a href="@Url.Action("ThongTinCaNhan", "HeThong")">Thông tin cá nhân</a>
+                                    <li>
+                                        <a href="@Url.Action("ThongTinCaNhan", "HeThong")">Thông tin cá nhân</a>
                                     </li>
                                     <li>
                                         <a href="@Url.Action("hotro", "Home")">
                                             <span>Hỗ trợ</span>
                                         </a>
                                     </li>
-                                    <li><a href="@Url.Action("DangXuat", "Account")"><i class="fa fa-sign-out pull-right"></i>Đăng xuất</a>
+                                    <li>
+                                        <a href="@Url.Action("DangXuat", "Account")"><i class="fa fa-sign-out pull-right"></i>Đăng xuất</a>
                                     </li>
                                 </ul>
                             </li>
@@ -122,7 +125,6 @@
 
             </div>
             <!-- /top navigation -->
-
             <!-- page content -->
             <div class="right_col" role="main">
                 @RenderBody()
@@ -160,5 +162,7 @@
 
     @*<script src="~/Scripts/js/moris/example.js"></script>*@
     @*<script src="~/Scripts/js/moris/jquery.number.js"></script>*@
+
+    @RenderSection("partial_script", required: false)
 </body>
 </html>
