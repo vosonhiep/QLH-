@@ -22,6 +22,7 @@ body {
 .timeline {
     position: relative;
     padding: 2%;
+    display: grid;
 }
 
 .timeline-nodes {
@@ -34,11 +35,11 @@ body {
     border-radius: 0 0 10px 10px;
     box-shadow: 0px 3px 25px 0px rgba(10, 55, 90, 0.2)
 }
-/*.timeline-nodes h3, .timeline-nodes p {
+/*.timeline-nodes h4, .timeline-nodes p {
     text-align: right;
 }*/
 
-.h3-revert {
+.h4-revert {
     text-align: left;
 }
 
@@ -46,7 +47,7 @@ body {
     text-align: left;
 }
 
-.timeline-nodes-revert h3, .timeline-nodes-revert p {
+.timeline-nodes-revert h4, .timeline-nodes-revert p {
     
 }
 
@@ -64,7 +65,7 @@ body {
     margin: 0;
 }
 
-.timeline h3 {
+.timeline h4 {
     font-weight: lighter;
     background: var(--blue);
     color: white;
@@ -126,6 +127,7 @@ body {
 .timeline-image {
     position: relative;
     z-index: 100;
+    margin-left: 9px;
 }
 
 .timeline-image::before {
@@ -136,7 +138,7 @@ body {
     border-radius: 50%;
     display: block;
     position: absolute;
-    top: 13%;
+    top: 50px;
     left: 50%;
     transform: translate(-50%,-50%);
     background-color: #fff;
@@ -157,7 +159,7 @@ body {
 }
 /*small device style*/
 @media (max-width: 767px) {
-    .timeline-nodes:nth-child(odd) h3, .timeline-nodes:nth-child(odd) p {
+    .timeline-nodes:nth-child(odd) h4, .timeline-nodes:nth-child(odd) p {
         text-align: left
     }
 
@@ -178,7 +180,7 @@ body {
         transform: translateX(-50%);
     }
 
-    .timeline h3 {
+    .timeline h4 {
         font-size: 1.7rem;
     }
 

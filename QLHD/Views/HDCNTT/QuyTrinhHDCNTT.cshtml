@@ -11,42 +11,113 @@
             </div>
         </div>
         <div class="clearfix"></div>
-        <div class="container">
+        <div class="container" style="height: 101vh">
             <div class="timeline">
                 @foreach (var item in Model)
                 {
-                <div class='show-image @(item.VTT == true ?  "row timeline-nodes " : "row timeline-nodes revert")' style='display: flex; @(item.VTT == true ? "margin-left: 24.5%; " : "margin-right: 24.5%; ") margin-bottom: 30px '>
-                   
-                    <div class="col-10 col-md-5 order-3 order-md-1 timeline-content" style='width: 29.5%; position: relative; @(item.VTT == true ? "text-align: right; " : "text-align: left;")'>
-                        <i class="fa fa-plus" style="@(item.VTT == true ?  "right: 0" : "left:0")"></i>
-                        <h3 class="text-light">@item.TenTienTrinh</h3>
-                        <p>Người thực hiện: @item.NguoiPhuTrach</p>
-                        @if (item.TienDo == 1)
-                        {
-                            <p style="color: green">Tiến độ: Hoàn thành</p>
-                        }
-                        else if (item.TienDo == 2)
-                        {
-                            <p style="color:orange">Tiến độ: Đang thực hiện</p>
-                        }
-                        else
-                        {
-                            <p style="color: red">Tiến độ: Trễ deadline</p>
-                        }
-                        @if (item.FILE != null)
-                        {
-                            @Html.ActionLink(" " + item.FILE, "ExportData_TienTrinh", "HDCNTT", new { @HDid = item.TienTrinh_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 13px; margin-bottom: 10px; text-decoration: underline; color: #0c67d9" })
-                        }
+                    <div class="col-md-12">
+                        <div class="col-md-12 row  @(item.VTT == true ?  "timeline-nodes " : "timeline-nodes revert")">
+                            @if (item.VTT == true)
+                            {
+                                <div class="col-md-5" style="position: relative;">
+                                    <div class="col-md-9 timeline-content" style="text-align: right; float:right; max-width: 350px; margin-right: -12%">
+                                        <h4 class="text-light">@item.TenTienTrinh</h4>
+                                        <p>Người thực hiện: @item.NguoiPhuTrach</p>
+                                        @if (item.TienDo == 1)
+                                        {
+                                            <p style="color: green">Tiến độ: Hoàn thành</p>
+                                        }
+                                        else if (item.TienDo == 2)
+                                        {
+                                            <p style="color:orange">Tiến độ: Đang thực hiện</p>
+                                        }
+                                        else
+                                        {
+                                            <p style="color: red">Tiến độ: Trễ deadline</p>
+                                        }
+                                        @if (item.FILE != null)
+                                        {
+                                            @Html.ActionLink(" " + item.FILE, "ExportData_TienTrinh", "HDCNTT", new { @HDid = item.TienTrinh_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 13px; margin-bottom: 10px; text-decoration: underline; color: #0c67d9" })
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-2 timeline-image text-md-center">
+
+                                </div>
+                                <div class="col-md-4 timeline-date">
+                                    <div class="time" style="margin-left: -15%;">Ngày giao: @item.NgayGiao</div>
+                                    <div class="time" style="margin-left: -15%;">Deadline: @item.Deadline</div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-5 timeline-date-revert">
+                                    <div class="time" style="margin-right: -12%;">Ngày giao: @item.NgayGiao</div>
+                                    <div class="time" style="margin-right: -12%;">Deadline: @item.Deadline</div>
+                                </div>
+                                <div class="col-md-2 timeline-image text-md-center">
+
+                                </div>
+                                <div class="col-md-4" style="position: relative;">
+                                    <div class="col-md-11 timeline-content" style="text-align: left; float:left; max-width: 350px; margin-left: -13%">
+                                        <h4 class="text-light">@item.TenTienTrinh</h4>
+                                        <p>Người thực hiện: @item.NguoiPhuTrach</p>
+                                        @if (item.TienDo == 1)
+                                        {
+                                            <p style="color: green">Tiến độ: Hoàn thành</p>
+                                        }
+                                        else if (item.TienDo == 2)
+                                        {
+                                            <p style="color:orange">Tiến độ: Đang thực hiện</p>
+                                        }
+                                        else
+                                        {
+                                            <p style="color: red">Tiến độ: Trễ deadline</p>
+                                        }
+                                        @if (item.FILE != null)
+                                        {
+                                            @Html.ActionLink(" " + item.FILE, "ExportData_TienTrinh", "HDCNTT", new { @HDid = item.TienTrinh_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 13px; margin-bottom: 10px; text-decoration: underline; color: #0c67d9" })
+                                        }
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
                     </div>
-                    <div class="col-2 col-sm-1 px-md-3 order-2 timeline-image text-md-center">
-                        <img src="~/Images/check_green.png" class="img-fluid" alt="img" style="width: 60px;" />
-                        @*<div class="time">2018-02-23</div>*@
-                    </div>
-                    <div class='@(item.VTT == true ? "col-10 col-md-5 order-1 order-md-3 py-3 timeline-date" : "col-10 col-md-5 order-1 order-md-3 py-3 timeline-date-revert")'>
-                        <div class="time">@item.NgayGiao</div>
-                        <div class="time">@item.Deadline</div>
-                    </div>
-                </div>
+
+
+                    @*<div class='show-image @(item.VTT == true ?  "row timeline-nodes " : "row timeline-nodes revert")' style='display: flex; @(item.VTT == true ? "margin-left: 24.5%; " : "margin-right: 24.5%; ") margin-bottom: 30px '>
+
+                            <div class="col-10 col-md-5 order-3 order-md-1 timeline-content" style='width: 29.5%; position: relative; @(item.VTT == true ? "text-align: right; " : "text-align: left;")'>
+                                <i class="fa fa-plus" style="@(item.VTT == true ?  "right: 0" : "left:0")"></i>
+                                <h3 class="text-light">@item.TenTienTrinh</h3>
+                                <p>Người thực hiện: @item.NguoiPhuTrach</p>
+                                @if (item.TienDo == 1)
+                                {
+                                    <p style="color: green">Tiến độ: Hoàn thành</p>
+                                }
+                                else if (item.TienDo == 2)
+                                {
+                                    <p style="color:orange">Tiến độ: Đang thực hiện</p>
+                                }
+                                else
+                                {
+                                    <p style="color: red">Tiến độ: Trễ deadline</p>
+                                }
+                                @if (item.FILE != null)
+                                {
+                                    @Html.ActionLink(" " + item.FILE, "ExportData_TienTrinh", "HDCNTT", new { @HDid = item.TienTrinh_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 13px; margin-bottom: 10px; text-decoration: underline; color: #0c67d9" })
+                                }
+                            </div>
+                            <div class="col-2 col-sm-1 px-md-3 order-2 timeline-image text-md-center">
+                                <img src="~/Images/check_green.png" class="img-fluid" alt="img" style="width: 60px;" />
+                                <div class="time">2018-02-23</div>
+                            </div>
+                            <div class='@(item.VTT == true ? "col-10 col-md-5 order-1 order-md-3 py-3 timeline-date" : "col-10 col-md-5 order-1 order-md-3 py-3 timeline-date-revert")'>
+                                <div class="time">@item.NgayGiao</div>
+                                <div class="time">@item.Deadline</div>
+                            </div>
+                        </div>*@
                 }
 
 
