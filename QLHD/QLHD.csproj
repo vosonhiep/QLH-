@@ -70,9 +70,6 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Aspose.Words">
-      <HintPath>C:\Users\Quach Hoang Phuc\Downloads\Compressed\Aspose.Words_16.6.0\net4.0_ClientProfile\Aspose.Words.dll</HintPath>
-    </Reference>
     <Reference Include="AutoMapper, Version=8.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.8.1.0\lib\netstandard2.0\AutoMapper.dll</HintPath>
       <Private>True</Private>
@@ -115,10 +112,6 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\VNPT_PROJECT\project\SVN-QLDH\QuanLyDieuHanh\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -576,6 +569,7 @@
     <Content Include="Images\bg1.jpg" />
     <Content Include="Images\canhbao.gif" />
     <Content Include="Images\canhbao2.png" />
+    <Content Include="Images\check_green.png" />
     <Content Include="Images\hoangphuc1.jpg" />
     <Content Include="Images\login.png" />
     <Content Include="Images\logo-vnpt.ico" />
@@ -1456,6 +1450,7 @@
     <Folder Include="App_Data\HD_DOANHTHU\" />
     <Folder Include="App_Data\HD_NHANCONG\" />
     <Folder Include="Content\HD_CHIPHI\" />
+    <Folder Include="Content\HD_CNTT\" />
     <Folder Include="Content\HD_DOANHTHU\" />
     <Folder Include="Content\HD_NHANCONG\" />
     <Folder Include="Views\DMTram\" />

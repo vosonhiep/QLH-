@@ -410,17 +410,51 @@ namespace QLHD.Controllers
             return View();
         }
 
+
+        public static List<TienTrinh> dsTienTrinh = new List<TienTrinh>()
+            {
+                new TienTrinh(1, "Mua thiết bị lắp đặt IOC TCU", "Nguyễn Quốc Khang", 1, DateTime.Now, DateTime.Now, true),
+                new TienTrinh(2, "Thi công lắp đặt1", "Phan Thanh Triều", 1, DateTime.Now, DateTime.Now, true),
+                new TienTrinh(3, "Thi công lắp đặt2", "Phan Thanh Triều", 1, DateTime.Now, DateTime.Now, true),
+                new TienTrinh(4, "Ký hợp đồng", "Khách hàng TCU", 1, DateTime.Now, DateTime.Now, false),
+                new TienTrinh(5, "Ký hợp đồng", "Khách hàng TCU", 2, DateTime.Now, DateTime.Now, false),
+                new TienTrinh(6, "Ký hợp đồng", "Khách hàng TCU", 3, DateTime.Now, DateTime.Now, true)
+            };
+
         [HttpGet]
         public ActionResult QuyTrinhHDCNTT()
         {
-            var dsTienTrinh = new List<TienTrinh>()
-            {
-                new TienTrinh("Mua thiết bị lắp đặt IOC TCU", "Nguyễn Quốc Khang", "Chủ trì", DateTime.Now, DateTime.Now, true),
-                new TienTrinh("Thi công lắp đặt1", "Phan Thanh Triều", "Chủ trì", DateTime.Now, DateTime.Now, true),
-                new TienTrinh("Thi công lắp đặt2", "Phan Thanh Triều", "Chủ trì", DateTime.Now, DateTime.Now, true),
-                new TienTrinh("Ký hợp đồng", "Khách hàng TCU", "Chủ trì", DateTime.Now, DateTime.Now, false)
-            };
+            
             return View(dsTienTrinh);
         }
+
+        public ActionResult ExportData_TienTrinh(int TTid)
+        {
+            TienTrinh tt = dsTienTrinh.Where(x=> x.TienTrinh_ID == TTid).SingleOrDefault();
+            String filename = tt.FILE;
+            if (filename == null)
+            {
+                ViewBag.baoloi = "Hợp đồng này chưa lưu file!!";
+                return RedirectToAction("Index");
+            }
+            string filepath = AppDomain.CurrentDomain.BaseDirectory + "/Content/HD_CNTT/" + filename;
+
+
+            byte[] filedata = System.IO.File.ReadAllBytes(filepath);
+
+            string contentType = MimeMapping.GetMimeMapping(filepath);
+
+            var cd = new System.Net.Mime.ContentDisposition
+            {
+                FileName = filename,
+                Inline = true,
+            };
+
+            Response.AppendHeader("Content-Disposition", cd.ToString());
+
+            return File(filedata, contentType);
+            //return RedirectToAction("Index");
+        }
+
     }
 }

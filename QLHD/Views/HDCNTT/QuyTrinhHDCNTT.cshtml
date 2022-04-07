@@ -13,11 +13,48 @@
         <div class="clearfix"></div>
         <div class="container">
             <div class="timeline">
-                @foreach(var item in Model)
+                @foreach (var item in Model)
                 {
-                    <div class="row timeline-nodes" style='@(item.VTT == true ? "margin-left: 19.5%; display: flex" : "margin-right: 19.5%; display: flex")'>
+                <div class='show-image @(item.VTT == true ?  "row timeline-nodes " : "row timeline-nodes revert")' style='display: flex; @(item.VTT == true ? "margin-left: 24.5%; " : "margin-right: 24.5%; ") margin-bottom: 30px '>
+                   
+                    <div class="col-10 col-md-5 order-3 order-md-1 timeline-content" style='width: 29.5%; position: relative; @(item.VTT == true ? "text-align: right; " : "text-align: left;")'>
+                        <i class="fa fa-plus" style="@(item.VTT == true ?  "right: 0" : "left:0")"></i>
+                        <h3 class="text-light">@item.TenTienTrinh</h3>
+                        <p>Người thực hiện: @item.NguoiPhuTrach</p>
+                        @if (item.TienDo == 1)
+                        {
+                            <p style="color: green">Tiến độ: Hoàn thành</p>
+                        }
+                        else if (item.TienDo == 2)
+                        {
+                            <p style="color:orange">Tiến độ: Đang thực hiện</p>
+                        }
+                        else
+                        {
+                            <p style="color: red">Tiến độ: Trễ deadline</p>
+                        }
+                        @if (item.FILE != null)
+                        {
+                            @Html.ActionLink(" " + item.FILE, "ExportData_TienTrinh", "HDCNTT", new { @HDid = item.TienTrinh_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 13px; margin-bottom: 10px; text-decoration: underline; color: #0c67d9" })
+                        }
+                    </div>
+                    <div class="col-2 col-sm-1 px-md-3 order-2 timeline-image text-md-center">
+                        <img src="~/Images/check_green.png" class="img-fluid" alt="img" style="width: 60px;" />
+                        @*<div class="time">2018-02-23</div>*@
+                    </div>
+                    <div class='@(item.VTT == true ? "col-10 col-md-5 order-1 order-md-3 py-3 timeline-date" : "col-10 col-md-5 order-1 order-md-3 py-3 timeline-date-revert")'>
+                        <div class="time">@item.NgayGiao</div>
+                        <div class="time">@item.Deadline</div>
+                    </div>
+                </div>
+                }
+
+
+
+
+                @*<div class="row no-gutters justify-content-end justify-content-md-around align-items-start  timeline-nodes" style="margin-right: 19.5%; display: flex">
                         <div class="col-10 col-md-5 order-3 order-md-1 timeline-content" style="width: 33.5%;">
-                            <h3 class=" text-light">@item.TenTienTrinh</h3>
+                            <h3 class=" text-light">Timeline Heading</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, eaque amet deleniti hic quas qui cumque delectus aliquid, eius quia quod, quae, aliquam aspernatur facilis. Minima quod corporis dignissimos porro.</p>
                         </div>
                         <div class="col-2 col-sm-1 px-md-3 order-2 timeline-image text-md-center">
@@ -26,24 +63,7 @@
                         <div class="col-10 col-md-5 order-1 order-md-3 py-3 timeline-date">
                             <time>2018-02-23</time>
                         </div>
-                    </div>
-                }
-
-
-
-
-                @*<div class="row no-gutters justify-content-end justify-content-md-around align-items-start  timeline-nodes" style="margin-right: 19.5%; display: flex">
-                    <div class="col-10 col-md-5 order-3 order-md-1 timeline-content" style="width: 33.5%;">
-                        <h3 class=" text-light">Timeline Heading</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, eaque amet deleniti hic quas qui cumque delectus aliquid, eius quia quod, quae, aliquam aspernatur facilis. Minima quod corporis dignissimos porro.</p>
-                    </div>
-                    <div class="col-2 col-sm-1 px-md-3 order-2 timeline-image text-md-center">
-                        <img src="img/img13.png" class="img-fluid" alt="img">
-                    </div>
-                    <div class="col-10 col-md-5 order-1 order-md-3 py-3 timeline-date">
-                        <time>2018-02-23</time>
-                    </div>
-                </div>*@
+                    </div>*@
             </div>
         </div>
 
