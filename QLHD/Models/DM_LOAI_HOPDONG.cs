@@ -14,9 +14,18 @@ namespace QLHD.Models
     
     public partial class DM_LOAI_HOPDONG
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DM_LOAI_HOPDONG()
+        {
+            this.HOPDONG_DT_CNTT = new HashSet<HOPDONG_DT_CNTT>();
+        }
+    
         public int LOAI_HOPDONG_ID { get; set; }
         public int HOPDONG_DT_CNTT_ID { get; set; }
         public string TEN_LOAI_HOPDONG { get; set; }
         public string GHICHU { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HOPDONG_DT_CNTT> HOPDONG_DT_CNTT { get; set; }
     }
 }

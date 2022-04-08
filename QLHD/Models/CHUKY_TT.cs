@@ -17,20 +17,21 @@ namespace QLHD.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CHUKY_TT()
         {
+            this.HOPDONG_DT_CNTT = new HashSet<HOPDONG_DT_CNTT>();
             this.HOPDONG_DOANHTHU = new HashSet<HOPDONG_DOANHTHU>();
             this.HOPDONG_CHIPHI = new HashSet<HOPDONG_CHIPHI>();
             this.PHULUC_HDCP = new HashSet<PHULUC_HDCP>();
             this.PHULUC_HDCP1 = new HashSet<PHULUC_HDCP>();
             this.HOPDONG_CHIPHI1 = new HashSet<HOPDONG_CHIPHI>();
             this.HOPDONG_NHANCONG = new HashSet<HOPDONG_NHANCONG>();
-            this.HOPDONG_DT_CNTT = new HashSet<HOPDONG_DT_CNTT>();
-            this.HOPDONG_DT_CNTT1 = new HashSet<HOPDONG_DT_CNTT>();
         }
     
         public int CHUKY_ID { get; set; }
         public string CHUKY { get; set; }
         public Nullable<int> THANG { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HOPDONG_DT_CNTT> HOPDONG_DT_CNTT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOPDONG_DOANHTHU> HOPDONG_DOANHTHU { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -43,9 +44,5 @@ namespace QLHD.Models
         public virtual ICollection<HOPDONG_CHIPHI> HOPDONG_CHIPHI1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOPDONG_NHANCONG> HOPDONG_NHANCONG { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOPDONG_DT_CNTT> HOPDONG_DT_CNTT { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOPDONG_DT_CNTT> HOPDONG_DT_CNTT1 { get; set; }
     }
 }

@@ -14,6 +14,15 @@ namespace QLHD.Models
     
     public partial class DM_CHUTHE_HOPDONG
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DM_CHUTHE_HOPDONG()
+        {
+            this.HOPDONG_DT_CNTT = new HashSet<HOPDONG_DT_CNTT>();
+            this.HOPDONG_DT_CNTT1 = new HashSet<HOPDONG_DT_CNTT>();
+            this.PL_HD_DOANHTHU_CNTT = new HashSet<PL_HD_DOANHTHU_CNTT>();
+            this.PL_HD_DOANHTHU_CNTT1 = new HashSet<PL_HD_DOANHTHU_CNTT>();
+        }
+    
         public int CHUTHE_HOPDONG_ID { get; set; }
         public string TEN_CHUTHE { get; set; }
         public string DIACHI { get; set; }
@@ -24,5 +33,14 @@ namespace QLHD.Models
         public string TEN_NGANHANG { get; set; }
         public string MSTHUE { get; set; }
         public string GHICHU { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HOPDONG_DT_CNTT> HOPDONG_DT_CNTT { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HOPDONG_DT_CNTT> HOPDONG_DT_CNTT1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PL_HD_DOANHTHU_CNTT> PL_HD_DOANHTHU_CNTT { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PL_HD_DOANHTHU_CNTT> PL_HD_DOANHTHU_CNTT1 { get; set; }
     }
 }

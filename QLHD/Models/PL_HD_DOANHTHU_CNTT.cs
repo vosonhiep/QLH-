@@ -28,5 +28,9 @@ namespace QLHD.Models
         public string file { get; set; }
         public Nullable<System.DateTime> NGAY_HIEU_LUC_PL { get; set; }
         public Nullable<int> FILE_ID { get; set; }
+    
+        public virtual DM_CHUTHE_HOPDONG DM_CHUTHE_HOPDONG { get; set; }
+        public virtual DM_CHUTHE_HOPDONG DM_CHUTHE_HOPDONG1 { get; set; }
+        public virtual HOPDONG_DT_CNTT HOPDONG_DT_CNTT { get; set; }
     }
 }

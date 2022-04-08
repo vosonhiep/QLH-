@@ -14,6 +14,13 @@ namespace QLHD.Models
     
     public partial class HOPDONG_DT_CNTT
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public HOPDONG_DT_CNTT()
+        {
+            this.DT_CNTT_TIENDO_TT = new HashSet<DT_CNTT_TIENDO_TT>();
+            this.PL_HD_DOANHTHU_CNTT = new HashSet<PL_HD_DOANHTHU_CNTT>();
+        }
+    
         public int HOPDONG_DT_CNTT_ID { get; set; }
         public string SO_HOPDONG { get; set; }
         public string TEN_HOPDONG { get; set; }
@@ -47,14 +54,16 @@ namespace QLHD.Models
         public Nullable<int> TRANGTHAI { get; set; }
     
         public virtual CHUKY_TT CHUKY_TT { get; set; }
-        public virtual CHUKY_TT CHUKY_TT1 { get; set; }
+        public virtual DM_CHUTHE_HOPDONG DM_CHUTHE_HOPDONG { get; set; }
+        public virtual DM_CHUTHE_HOPDONG DM_CHUTHE_HOPDONG1 { get; set; }
+        public virtual DM_LOAI_HOPDONG DM_LOAI_HOPDONG { get; set; }
         public virtual DONVI DONVI { get; set; }
-        public virtual DONVI DONVI1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DT_CNTT_TIENDO_TT> DT_CNTT_TIENDO_TT { get; set; }
         public virtual HTTT HTTT { get; set; }
-        public virtual HTTT HTTT1 { get; set; }
         public virtual NAM_HD NAM_HD { get; set; }
-        public virtual NAM_HD NAM_HD1 { get; set; }
         public virtual THOIHAN_TT THOIHAN_TT { get; set; }
-        public virtual THOIHAN_TT THOIHAN_TT1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PL_HD_DOANHTHU_CNTT> PL_HD_DOANHTHU_CNTT { get; set; }
     }
 }

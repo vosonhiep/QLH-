@@ -24,8 +24,9 @@ namespace QLHD.Controllers
         QLHD2Entities db = new QLHD2Entities();
         public ActionResult Index(int? page)
         {
-            var hdCNTT = db.HOPDONG_DOANHTHU.Where(n => !db.THANHLY_HDDOANHTHU.Where(m => m.HOPDONG_DOANHTHU_ID == n.HOPDONG_DOANHTHU_ID).Any())
-                .ToList().OrderByDescending(n => n.HOPDONG_DOANHTHU_ID);
+            var hdCNTT = db.HOPDONG_DT_CNTT.ToList().OrderByDescending(n => n.HOPDONG_DT_CNTT_ID);
+            ViewBag.BENTHUEID = new SelectList(db.DM_CHUTHE_HOPDONG.ToList().OrderBy(n => n.CHUTHE_HOPDONG_ID), "CHUTHE_HOPDONG_ID", "TEN_CHUTHE");
+
             int pageNumber = (page ?? 1);
             int pageSize = 10;
 
@@ -75,14 +76,21 @@ namespace QLHD.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-
-            ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
-            ViewBag.BENTHUEID = new SelectList(db.BENTHUE_TAM.ToList().OrderBy(n => n.BENTHUE_TAM_ID), "BENTHUE_TAM_ID", "TEN");
-            ViewBag.HINHTHUCTT = new SelectList(db.HTTTs.ToList().OrderBy(n => n.HTTT_ID), "HTTT_ID", "TEN_HTTT");
-            ViewBag.MALOAIHD = new SelectList(db.LOAI_HD_SUB.Where(n => n.LOAIHD == 2).ToList().OrderBy(n => n.ID_LOAIHD_SUB), "ID_LOAIHD_SUB", "TEN_HD_SUB");
             ViewBag.CHUKYTT = new SelectList(db.CHUKY_TT.ToList().OrderBy(n => n.CHUKY_ID), "CHUKY_ID", "CHUKY");
+            ViewBag.BENCHOTHUE = new SelectList(db.DM_CHUTHE_HOPDONG.ToList().OrderBy(n => n.CHUTHE_HOPDONG_ID), "CHUTHE_HOPDONG_ID", "TEN_CHUTHE");
+            ViewBag.BENTHUEID = new SelectList(db.DM_CHUTHE_HOPDONG.ToList().OrderBy(n => n.CHUTHE_HOPDONG_ID), "CHUTHE_HOPDONG_ID", "TEN_CHUTHE");
+            ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
+            ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
+            ViewBag.HINHTHUCTT = new SelectList(db.HTTTs.ToList().OrderBy(n => n.HTTT_ID), "HTTT_ID", "TEN_HTTT");
             ViewBag.NamHD = new SelectList(db.NAM_HD.ToList().OrderByDescending(n => n.NAM_HD_ID), "NAM_HD_ID", "NAM");
             ViewBag.THOIHAN_TT = new SelectList(db.THOIHAN_TT.ToList().OrderBy(n => n.THOIHAN_TT_ID), "THOIHAN_TT_ID", "TEN_THOIHAN_TT");
+
+            //ViewBag.BENTHUEID = new SelectList(db.BENTHUE_TAM.ToList().OrderBy(n => n.BENTHUE_TAM_ID), "BENTHUE_TAM_ID", "TEN");
+            
+            //ViewBag.MALOAIHD = new SelectList(db.LOAI_HD_SUB.Where(n => n.LOAIHD == 2).ToList().OrderBy(n => n.ID_LOAIHD_SUB), "ID_LOAIHD_SUB", "TEN_HD_SUB");
+            
+            
+           
             return View();
 
         }
@@ -260,7 +268,6 @@ namespace QLHD.Controllers
         }
 
 
-
         [HttpGet]
         public ActionResult ThanhLyHDCNTT(int HDid)
         {
@@ -427,6 +434,8 @@ namespace QLHD.Controllers
                 new LOAITIENTRINH(false, "Khách hàng")
             };
 
+        /*Quy trình */
+        /*
         [HttpGet]
         public ActionResult QuyTrinhHDCNTT(int? HDid)
         {
@@ -520,6 +529,6 @@ namespace QLHD.Controllers
             return File(filedata, contentType);
             //return RedirectToAction("Index");
         }
-
+        */
     }
 }

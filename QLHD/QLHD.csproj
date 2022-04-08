@@ -304,6 +304,9 @@
     <Compile Include="Models\DS_QUYEN_MENU.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DT_CNTT_TIENDO_TT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\HETHONG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -364,6 +367,9 @@
     <Compile Include="Models\PL_HD_DOANHTHU_CNTT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TBL_FILE.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -389,12 +395,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\THOIHAN_TT.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TIENDO.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TIENTRINH.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TINHTRANG_SD_CHIPHI.cs">

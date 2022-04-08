@@ -27,13 +27,17 @@ namespace QLHD.Models
     
         public virtual DbSet<BENTHUE_TAM> BENTHUE_TAM { get; set; }
         public virtual DbSet<CHUKY_TT> CHUKY_TT { get; set; }
+        public virtual DbSet<DM_CHUTHE_HOPDONG> DM_CHUTHE_HOPDONG { get; set; }
+        public virtual DbSet<DM_LOAI_HOPDONG> DM_LOAI_HOPDONG { get; set; }
         public virtual DbSet<DM_VANBAN> DM_VANBAN { get; set; }
         public virtual DbSet<DONVI> DONVIs { get; set; }
         public virtual DbSet<DS_QUYEN_MENU> DS_QUYEN_MENU { get; set; }
+        public virtual DbSet<DT_CNTT_TIENDO_TT> DT_CNTT_TIENDO_TT { get; set; }
         public virtual DbSet<HETHONG> HETHONGs { get; set; }
         public virtual DbSet<HISTORY_CHANGE> HISTORY_CHANGE { get; set; }
         public virtual DbSet<HOPDONG_CHIPHI> HOPDONG_CHIPHI { get; set; }
         public virtual DbSet<HOPDONG_DOANHTHU> HOPDONG_DOANHTHU { get; set; }
+        public virtual DbSet<HOPDONG_DT_CNTT> HOPDONG_DT_CNTT { get; set; }
         public virtual DbSet<HOPDONG_NHANCONG> HOPDONG_NHANCONG { get; set; }
         public virtual DbSet<HTTT> HTTTs { get; set; }
         public virtual DbSet<LICHSU_DANGNHAP> LICHSU_DANGNHAP { get; set; }
@@ -43,6 +47,8 @@ namespace QLHD.Models
         public virtual DbSet<NAM_HD> NAM_HD { get; set; }
         public virtual DbSet<PHULUC> PHULUCs { get; set; }
         public virtual DbSet<PHULUC_HDCP> PHULUC_HDCP { get; set; }
+        public virtual DbSet<PL_HD_DOANHTHU_CNTT> PL_HD_DOANHTHU_CNTT { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TBL_FILE> TBL_FILE { get; set; }
         public virtual DbSet<THANHLY_HDCHIPHI> THANHLY_HDCHIPHI { get; set; }
         public virtual DbSet<THANHLY_HDDOANHTHU> THANHLY_HDDOANHTHU { get; set; }
@@ -55,11 +61,5 @@ namespace QLHD.Models
         public virtual DbSet<TINHTRANG_SD_CHIPHI> TINHTRANG_SD_CHIPHI { get; set; }
         public virtual DbSet<TRAM_BTS> TRAM_BTS { get; set; }
         public virtual DbSet<TRANGTHAI_HD> TRANGTHAI_HD { get; set; }
-        public virtual DbSet<TIENDO> TIENDOes { get; set; }
-        public virtual DbSet<TIENTRINH> TIENTRINHs { get; set; }
-        public virtual DbSet<HOPDONG_DT_CNTT> HOPDONG_DT_CNTT { get; set; }
-        public virtual DbSet<DM_CHUTHE_HOPDONG> DM_CHUTHE_HOPDONG { get; set; }
-        public virtual DbSet<DM_LOAI_HOPDONG> DM_LOAI_HOPDONG { get; set; }
-        public virtual DbSet<PL_HD_DOANHTHU_CNTT> PL_HD_DOANHTHU_CNTT { get; set; }
     }
 }

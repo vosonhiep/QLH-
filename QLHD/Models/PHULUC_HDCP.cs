@@ -29,8 +29,9 @@ namespace QLHD.Models
         public Nullable<int> SOCHUKY { get; set; }
         public string GHICHU { get; set; }
         public Nullable<decimal> THANG { get; set; }
-        public string FILE { get; set; }
+        public string file { get; set; }
         public Nullable<System.DateTime> NGAY_HIEU_LUC_PL { get; set; }
+        public string BTS_ID { get; set; }
         public Nullable<int> FILE_ID { get; set; }
     
         public virtual CHUKY_TT CHUKY_TT { get; set; }
