@@ -20,6 +20,8 @@ namespace QLHD.Models
             this.HOPDONG_CHIPHI = new HashSet<HOPDONG_CHIPHI>();
             this.HOPDONG_DOANHTHU = new HashSet<HOPDONG_DOANHTHU>();
             this.HOPDONG_NHANCONG = new HashSet<HOPDONG_NHANCONG>();
+            this.HOPDONG_DT_CNTT = new HashSet<HOPDONG_DT_CNTT>();
+            this.HOPDONG_DT_CNTT1 = new HashSet<HOPDONG_DT_CNTT>();
         }
     
         public int HTTT_ID { get; set; }
@@ -32,5 +34,9 @@ namespace QLHD.Models
         public virtual ICollection<HOPDONG_DOANHTHU> HOPDONG_DOANHTHU { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOPDONG_NHANCONG> HOPDONG_NHANCONG { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HOPDONG_DT_CNTT> HOPDONG_DT_CNTT { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HOPDONG_DT_CNTT> HOPDONG_DT_CNTT1 { get; set; }
     }
 }

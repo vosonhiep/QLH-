@@ -29,7 +29,7 @@ namespace QLHD.Controllers
             int pageNumber = (page ?? 1);
             int pageSize = 10;
 
-            return View(hdCNTT.ToPagedList(pageNumber,pageSize));
+            return View(hdCNTT.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpPost]
@@ -71,7 +71,7 @@ namespace QLHD.Controllers
         /// <summary>
         /// Tạo mới HĐ CNTT
         /// </summary>
-        
+
         [HttpGet]
         public ActionResult Create()
         {
@@ -217,7 +217,7 @@ namespace QLHD.Controllers
         /// <summary>
         /// Xoá HĐ CNTT
         /// </summary>
-        
+
         [HttpGet]
         public ActionResult DeleteHDCNTT(int HDDOANHTHU_ID)
         {
@@ -259,7 +259,7 @@ namespace QLHD.Controllers
             return View(hd);
         }
 
-        
+
 
         [HttpGet]
         public ActionResult ThanhLyHDCNTT(int HDid)
@@ -411,26 +411,91 @@ namespace QLHD.Controllers
         }
 
 
-        public static List<TienTrinh> dsTienTrinh = new List<TienTrinh>()
+        public static List<TIENTRINH_Model> dsTienTrinh = new List<TIENTRINH_Model>()
             {
-                new TienTrinh(1, "Mua thiết bị lắp đặt IOC TCU", "Nguyễn Quốc Khang", 1, DateTime.Now, DateTime.Now, true),
-                new TienTrinh(2, "Thi công lắp đặt1", "Phan Thanh Triều", 1, DateTime.Now, DateTime.Now, true),
-                new TienTrinh(3, "Thi công lắp đặt2", "Phan Thanh Triều", 1, DateTime.Now, DateTime.Now, true),
-                new TienTrinh(4, "Ký hợp đồng", "Khách hàng TCU", 1, DateTime.Now, DateTime.Now, false),
-                new TienTrinh(5, "Ký hợp đồng", "Khách hàng TCU", 2, DateTime.Now, DateTime.Now, false),
-                new TienTrinh(6, "Ký hợp đồng", "Khách hàng TCU", 3, DateTime.Now, DateTime.Now, true)
+                new TIENTRINH_Model(1, "Mua thiết bị lắp đặt IOC TCU", "Nguyễn Quốc Khang", 1, DateTime.Now, DateTime.Now, true),
+                new TIENTRINH_Model(2, "Thi công lắp đặt1", "Phan Thanh Triều", 1, DateTime.Now, DateTime.Now, true),
+                new TIENTRINH_Model(3, "Thi công lắp đặt2", "Phan Thanh Triều", 1, DateTime.Now, DateTime.Now, true),
+                new TIENTRINH_Model(4, "Ký hợp đồng", "Khách hàng TCU", 1, DateTime.Now, DateTime.Now, false),
+                new TIENTRINH_Model(5, "Ký hợp đồng", "Khách hàng TCU", 2, DateTime.Now, DateTime.Now, false),
+                new TIENTRINH_Model(6, "Ký hợp đồng", "Khách hàng TCU", 3, DateTime.Now, DateTime.Now, true)
+            };
+
+        public static List<LOAITIENTRINH> listLoaiTienTrinh = new List<LOAITIENTRINH>()
+            {
+                new LOAITIENTRINH(true, "Viễn thông"),
+                new LOAITIENTRINH(false, "Khách hàng")
             };
 
         [HttpGet]
-        public ActionResult QuyTrinhHDCNTT()
+        public ActionResult QuyTrinhHDCNTT(int? HDid)
         {
-            
+            List<TIENTRINH> dsTienTrinh = db.TIENTRINH.Where(x => x.HOPDONG_ID == HDid).OrderBy(x=>x.NGAYGIAO).ToList();
             return View(dsTienTrinh);
+        }
+
+        [HttpGet]
+        public ActionResult Create_TienTrinh()
+        {
+            ViewBag.MATIENDO = new SelectList(db.TIENDO.OrderBy(x=>x.TIENDO_ID).ToList(), "TIENDO_ID", "TEN_TIENDO");
+            ViewBag.MALOAITIENTRINH = new SelectList(listLoaiTienTrinh, "LOAITIENTRINH_ID", "TENLOAITIENTRINH");
+            
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Create_TienTrinh(TIENTRINH tientrinh, HttpPostedFileBase upload)
+        {
+            ViewBag.MATIENDO = new SelectList(db.TIENDO.OrderBy(x => x.TIENDO_ID).ToList(), "TIENDO_ID", "TEN_TIENDO");
+            //ViewBag.MALOAITIENTRINH = new SelectList(listLoaiTienTrinh, "LOAITIENTRINH_ID", "TENLOAITIENTRINH");
+            if (ModelState.IsValid)
+            {
+                if (upload != null && upload.ContentLength > 0)
+                    try
+                    {
+                        string path = Path.Combine(Server.MapPath("~/Content/HD_CNTT"),
+                                                   Path.GetFileName(upload.FileName));
+                        upload.SaveAs(path);
+                        ViewBag.Message = "File uploaded successfully";
+                        tientrinh.FILE = upload.FileName;
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewBag.Message = "ERROR:" + ex.Message.ToString();
+                    }
+                else
+                {
+                    ViewBag.Message = "You have not specified a file.";
+                }
+
+                tientrinh.HOPDONG_ID = 6;
+                db.TIENTRINH.Add(tientrinh);
+                db.SaveChanges();
+                return RedirectToAction("QuyTrinhHDCNTT", "HDCNTT");
+            }
+            else ViewBag.baoloi = "Lưu không thành công!";
+            return View();
+        }
+
+        //Chỉnh sửa HĐ
+        [HttpGet]
+        public ActionResult Edit_TienTrinhu(int? TTid)
+        {
+            ViewBag.MATIENDO = new SelectList(db.TIENDO.OrderBy(x => x.TIENDO_ID).ToList(), "TIENDO_ID", "TEN_TIENDO");
+            ViewBag.MALOAITIENTRINH = new SelectList(listLoaiTienTrinh, "LOAITIENTRINH_ID", "TENLOAITIENTRINH");
+
+            TIENTRINH tientrinh = db.TIENTRINH.Find(TTid);
+            if (tientrinh == null)
+            {
+                return HttpNotFound();
+            }
+            return View(tientrinh);
         }
 
         public ActionResult ExportData_TienTrinh(int TTid)
         {
-            TienTrinh tt = dsTienTrinh.Where(x=> x.TienTrinh_ID == TTid).SingleOrDefault();
+            TIENTRINH tt = db.TIENTRINH.Where(x => x.TIENTRINH_ID == TTid).SingleOrDefault();
             String filename = tt.FILE;
             if (filename == null)
             {

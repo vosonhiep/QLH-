@@ -73,6 +73,7 @@
                                         <th>Sửa</th>
                                         <th>Xóa</th>
                                         <th>File HĐ</th>
+                                        <th>Quy trình</th>
                                         <th>Cảnh báo</th>
                                     </tr>
                                     @{int row = (@Model.PageNumber * 10) - 10;}
@@ -117,6 +118,9 @@
                                                 {
                                                     @Html.ActionLink(" ", "ExportData", "HDCNTT", new { @HDid = item.HOPDONG_DOANHTHU_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 20px" })
                                                 }
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink(" ", "QuyTrinhHDCNTT","HDCNTT",  new { @HDid = item.HOPDONG_DOANHTHU_ID }, new { @class = "fa fa-sitemap text-blue", @style = "font-size: 20px" })
                                             </td>
                                             <td>
                                                 @if (@item.NGAY_KT <= @System.DateTime.Now)

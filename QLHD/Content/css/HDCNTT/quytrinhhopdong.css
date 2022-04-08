@@ -250,9 +250,9 @@ body {
         }
 }
 
-div i{
+/*div i{
     color: limegreen;
-}
+}*/
 
 div.show-image:hover i {
     display: block;

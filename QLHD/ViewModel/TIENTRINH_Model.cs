@@ -5,8 +5,9 @@ using System.Web;
 
 namespace QLHD.ViewModel
 {
-    public class TienTrinh
+    public class TIENTRINH_Model
     {
+        public int HOPDONG_ID { get; set; }
         public int TienTrinh_ID { get; set; }
         public string TenTienTrinh { get; set; }
         public string NguoiPhuTrach { get; set; }
@@ -16,8 +17,9 @@ namespace QLHD.ViewModel
         public string FILE { get; set; }
         public bool VTT { get; set; }
 
-        public TienTrinh(int idTT, string tenTienTrinh, string nguoiThucHien, int tienDo, DateTime thoigiangiao, DateTime deadline, bool vtt)
+        public TIENTRINH_Model(int idTT, string tenTienTrinh, string nguoiThucHien, int tienDo, DateTime thoigiangiao, DateTime deadline, bool vtt)
         {
+            HOPDONG_ID = 6;
             TienTrinh_ID = idTT;
             TenTienTrinh = tenTienTrinh;
             NguoiPhuTrach = nguoiThucHien;

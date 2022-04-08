@@ -30,7 +30,7 @@ namespace QLHD
             //ds.AddAccessRule(new FileSystemAccessRule("Everyone", FileSystemRights.FullControl, AccessControlType.Allow));            
             //Directory.SetAccessControl(@"C:\inetpub\wwwroot\QLHD-PUBLISH\Content", ds);
             //end
-            log4net.Config.XmlConfigurator.Configure();
+            //log4net.Config.XmlConfigurator.Configure();
         }
 
         public void ProcessRequest(HttpContext context)

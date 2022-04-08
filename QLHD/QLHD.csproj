@@ -289,6 +289,12 @@
     <Compile Include="Models\CHUKY_TT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DM_CHUTHE_HOPDONG.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DM_LOAI_HOPDONG.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DM_VANBAN.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -308,6 +314,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HOPDONG_DOANHTHU.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HOPDONG_DT_CNTT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HOPDONG_NHANCONG.cs">
@@ -352,6 +361,9 @@
     <Compile Include="Models\PHULUC_HDCP.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PL_HD_DOANHTHU_CNTT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TBL_FILE.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -379,6 +391,12 @@
     <Compile Include="Models\THOIHAN_TT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TIENDO.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TIENTRINH.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TINHTRANG_SD_CHIPHI.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -399,7 +417,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLHDDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\TienTrinh.cs" />
+    <Compile Include="ViewModel\LOAITIENTRINH.cs" />
+    <Compile Include="ViewModel\TIENDO_Model.cs" />
+    <Compile Include="ViewModel\TIENTRINH_Model.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\animate.min.css" />
@@ -1444,6 +1464,8 @@
     <Content Include="Views\ThongKe\export_hdcntt.cshtml" />
     <Content Include="Views\ThongKe\ketquathongke_HDCNTT.cshtml" />
     <Content Include="Views\HDCNTT\QuyTrinhHDCNTT.cshtml" />
+    <Content Include="Views\HDCNTT\Create_TienTrinh.cshtml" />
+    <Content Include="Views\HDCNTT\Edit_TienTrinhu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\HD_CHIPHI\" />
@@ -1454,6 +1476,7 @@
     <Folder Include="Content\HD_DOANHTHU\" />
     <Folder Include="Content\HD_NHANCONG\" />
     <Folder Include="Views\DMTram\" />
+    <Folder Include="Views\QTHopDong\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

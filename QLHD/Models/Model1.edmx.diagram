@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="82c1ba521c744f0f808ce89bbd518f9c" Name="Diagram1">
+      <Diagram DiagramId="53ba7afa66b84854b5cd616eb8b24204" Name="Diagram1" ZoomLevel="63">
         <EntityTypeShape EntityType="QLHD2Model.BENTHUE_TAM" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLHD2Model.CHUKY_TT" Width="1.5" PointX="0.75" PointY="25.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLHD2Model.DM_VANBAN" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
@@ -71,6 +71,23 @@
         <AssociationConnector Association="QLHD2Model.HDNHANCONG_HTTT" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.HDNHANCONG_LOAI_HD" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.FK__MENU_CON__ID_MEN__619B8048" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLHD2Model.TIENDO" Width="1.5" PointX="13.375" PointY="1.625" />
+        <EntityTypeShape EntityType="QLHD2Model.TIENTRINH" Width="1.5" PointX="15.625" PointY="1" />
+        <AssociationConnector Association="QLHD2Model.FK_TIENTRINH_TIENDO" />
+        <EntityTypeShape EntityType="QLHD2Model.HOPDONG_DT_CNTT" Width="1.5" PointX="14" PointY="25.25" />
+        <EntityTypeShape EntityType="QLHD2Model.DM_CHUTHE_HOPDONG" Width="1.5" PointX="13.375" PointY="4.75" />
+        <EntityTypeShape EntityType="QLHD2Model.DM_LOAI_HOPDONG" Width="1.5" PointX="13.375" PointY="8.75" />
+        <EntityTypeShape EntityType="QLHD2Model.PL_HD_DOANHTHU_CNTT" Width="1.5" PointX="13.375" PointY="11.75" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__CHUKY__2DE6D218" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__CHUKY__367C1819" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__DONVI__2EDAF651" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__DONVI__37703C52" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__HTTT___2FCF1A8A" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__HTTT___3864608B" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__NAM_H__30C33EC3" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__NAM_H__395884C4" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__THOIH__31B762FC" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__THOIH__3A4CA8FD" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

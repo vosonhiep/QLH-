@@ -1,4 +1,4 @@
-﻿@model List<QLHD.ViewModel.TienTrinh>
+﻿@model List<QLHD.Models.TIENTRINH>
     @{
         ViewBag.Title = "QuyTrinhHDCNTT";
         Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,67 +16,79 @@
                 @foreach (var item in Model)
                 {
                     <div class="col-md-12">
-                        <div class="col-md-12 row  @(item.VTT == true ?  "timeline-nodes " : "timeline-nodes revert")">
-                            @if (item.VTT == true)
+                        <div class="col-md-12 row  @(item.IsVTT == true ?  "timeline-nodes " : "timeline-nodes revert")">
+                            @if (item.IsVTT == true)
                             {
                                 <div class="col-md-5" style="position: relative;">
                                     <div class="col-md-9 timeline-content" style="text-align: right; float:right; max-width: 350px; margin-right: -12%">
-                                        <h4 class="text-light">@item.TenTienTrinh</h4>
-                                        <p>Người thực hiện: @item.NguoiPhuTrach</p>
-                                        @if (item.TienDo == 1)
+                                        <h4 class="text-light">@item.TEN_TIENTRINH</h4>
+                                        <p>Người thực hiện: @item.NGUOIPHUTRACH</p>
+                                        @if (item.TIENDO_ID == 1)
                                         {
-                                            <p style="color: green">Tiến độ: Hoàn thành</p>
+                                            <p style="color: green">Tiến độ: Khởi tạo</p>
                                         }
-                                        else if (item.TienDo == 2)
+                                        else if (item.TIENDO_ID == 2)
                                         {
                                             <p style="color:orange">Tiến độ: Đang thực hiện</p>
                                         }
-                                        else
+                                        else if (item.TIENDO_ID == 3)
                                         {
                                             <p style="color: red">Tiến độ: Trễ deadline</p>
                                         }
+                                        else
+                                        {
+                                            <p style="color: green; font-weight:bold">Tiến độ: Hoàn thành</p>
+                                        }
                                         @if (item.FILE != null)
                                         {
-                                            @Html.ActionLink(" " + item.FILE, "ExportData_TienTrinh", "HDCNTT", new { @HDid = item.TienTrinh_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 13px; margin-bottom: 10px; text-decoration: underline; color: #0c67d9" })
+                                            @Html.ActionLink(" " + item.FILE, "ExportData_TienTrinh", "HDCNTT", new { @TTid = item.TIENTRINH_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 13px; margin-bottom: 10px; text-decoration: underline; color: #0c67d9" })
                                         }
                                     </div>
                                 </div>
                                 <div class="col-md-2 timeline-image text-md-center">
+                                    <div class="col-md-12">
+
+                                    </div>
+
 
                                 </div>
                                 <div class="col-md-4 timeline-date">
-                                    <div class="time" style="margin-left: -15%;">Ngày giao: @item.NgayGiao</div>
-                                    <div class="time" style="margin-left: -15%;">Deadline: @item.Deadline</div>
+                                    <div class="time" style="margin-left: -15%;">Ngày giao: @item.NGAYGIAO</div>
+                                    <div class="time" style="margin-left: -15%;">Deadline: @item.DEADLINE</div>
                                 </div>
                             }
                             else
                             {
                                 <div class="col-md-5 timeline-date-revert">
-                                    <div class="time" style="margin-right: -12%;">Ngày giao: @item.NgayGiao</div>
-                                    <div class="time" style="margin-right: -12%;">Deadline: @item.Deadline</div>
+                                    <div class="time" style="margin-right: -12%;">Ngày giao: @item.NGAYGIAO</div>
+                                    <div class="time" style="margin-right: -12%;">Deadline: @item.DEADLINE</div>
                                 </div>
                                 <div class="col-md-2 timeline-image text-md-center">
 
                                 </div>
                                 <div class="col-md-4" style="position: relative;">
                                     <div class="col-md-11 timeline-content" style="text-align: left; float:left; max-width: 350px; margin-left: -13%">
-                                        <h4 class="text-light">@item.TenTienTrinh</h4>
-                                        <p>Người thực hiện: @item.NguoiPhuTrach</p>
-                                        @if (item.TienDo == 1)
+                                        <h4 class="text-light">@item.TEN_TIENTRINH</h4>
+                                        <p>Người thực hiện: @item.NGUOIPHUTRACH</p>
+                                        @if (item.TIENDO_ID == 1)
                                         {
-                                            <p style="color: green">Tiến độ: Hoàn thành</p>
+                                            <p style="color: green">Tiến độ: Khởi tạo</p>
                                         }
-                                        else if (item.TienDo == 2)
+                                        else if (item.TIENDO_ID == 2)
                                         {
                                             <p style="color:orange">Tiến độ: Đang thực hiện</p>
                                         }
-                                        else
+                                        else if (item.TIENDO_ID == 3)
                                         {
                                             <p style="color: red">Tiến độ: Trễ deadline</p>
                                         }
+                                        else
+                                        {
+                                            <p style="color: green; font-weight:bold">Tiến độ: Hoàn thành</p>
+                                        }
                                         @if (item.FILE != null)
                                         {
-                                            @Html.ActionLink(" " + item.FILE, "ExportData_TienTrinh", "HDCNTT", new { @HDid = item.TienTrinh_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 13px; margin-bottom: 10px; text-decoration: underline; color: #0c67d9" })
+                                            @Html.ActionLink(" " + item.FILE, "ExportData_TienTrinh", "HDCNTT", new { @TTid = item.TIENTRINH_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 13px; margin-bottom: 10px; text-decoration: underline; color: #0c67d9" })
                                         }
                                     </div>
                                 </div>

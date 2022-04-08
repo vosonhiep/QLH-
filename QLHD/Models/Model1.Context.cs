@@ -55,5 +55,11 @@ namespace QLHD.Models
         public virtual DbSet<TINHTRANG_SD_CHIPHI> TINHTRANG_SD_CHIPHI { get; set; }
         public virtual DbSet<TRAM_BTS> TRAM_BTS { get; set; }
         public virtual DbSet<TRANGTHAI_HD> TRANGTHAI_HD { get; set; }
+        public virtual DbSet<TIENDO> TIENDOes { get; set; }
+        public virtual DbSet<TIENTRINH> TIENTRINHs { get; set; }
+        public virtual DbSet<HOPDONG_DT_CNTT> HOPDONG_DT_CNTT { get; set; }
+        public virtual DbSet<DM_CHUTHE_HOPDONG> DM_CHUTHE_HOPDONG { get; set; }
+        public virtual DbSet<DM_LOAI_HOPDONG> DM_LOAI_HOPDONG { get; set; }
+        public virtual DbSet<PL_HD_DOANHTHU_CNTT> PL_HD_DOANHTHU_CNTT { get; set; }
     }
 }
