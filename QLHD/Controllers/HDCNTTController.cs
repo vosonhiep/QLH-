@@ -86,33 +86,29 @@ namespace QLHD.Controllers
             ViewBag.NamHD = new SelectList(db.NAM_HD.ToList().OrderByDescending(n => n.NAM_HD_ID), "NAM_HD_ID", "NAM");
             ViewBag.THOIHAN_TT = new SelectList(db.THOIHAN_TT.ToList().OrderBy(n => n.THOIHAN_TT_ID), "THOIHAN_TT_ID", "TEN_THOIHAN_TT");
 
-            //ViewBag.BENTHUEID = new SelectList(db.BENTHUE_TAM.ToList().OrderBy(n => n.BENTHUE_TAM_ID), "BENTHUE_TAM_ID", "TEN");
-            
-            //ViewBag.MALOAIHD = new SelectList(db.LOAI_HD_SUB.Where(n => n.LOAIHD == 2).ToList().OrderBy(n => n.ID_LOAIHD_SUB), "ID_LOAIHD_SUB", "TEN_HD_SUB");
-            
-            
-           
             return View();
-
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Create(HOPDONG_DOANHTHU hopdong, HttpPostedFileBase upload)
+        public ActionResult Create(HOPDONG_DT_CNTT hopdong, HttpPostedFileBase upload)
         {
-            ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
-            ViewBag.MALOAIHD = new SelectList(db.LOAI_HD_SUB.Where(n => n.LOAIHD == 2).ToList().OrderBy(n => n.ID_LOAIHD_SUB), "ID_LOAIHD_SUB", "TEN_HD_SUB");
-            ViewBag.BENTHUEID = new SelectList(db.BENTHUE_TAM.ToList().OrderBy(n => n.BENTHUE_TAM_ID), "BENTHUE_TAM_ID", "TEN");
-            ViewBag.HINHTHUCTT = new SelectList(db.HTTTs.ToList().OrderBy(n => n.HTTT_ID), "HTTT_ID", "TEN_HTTT");
             ViewBag.CHUKYTT = new SelectList(db.CHUKY_TT.ToList().OrderBy(n => n.CHUKY_ID), "CHUKY_ID", "CHUKY");
+            ViewBag.BENCHOTHUE = new SelectList(db.DM_CHUTHE_HOPDONG.ToList().OrderBy(n => n.CHUTHE_HOPDONG_ID), "CHUTHE_HOPDONG_ID", "TEN_CHUTHE");
+            ViewBag.BENTHUEID = new SelectList(db.DM_CHUTHE_HOPDONG.ToList().OrderBy(n => n.CHUTHE_HOPDONG_ID), "CHUTHE_HOPDONG_ID", "TEN_CHUTHE");
+            //ViewBag.BENTHUEID = new SelectList(db.BENTHUE_TAM.ToList().OrderBy(n => n.BENTHUE_TAM_ID), "BENTHUE_TAM_ID", "TEN");
+            ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
+            ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
+            ViewBag.HINHTHUCTT = new SelectList(db.HTTTs.ToList().OrderBy(n => n.HTTT_ID), "HTTT_ID", "TEN_HTTT");
             ViewBag.NamHD = new SelectList(db.NAM_HD.ToList().OrderByDescending(n => n.NAM_HD_ID), "NAM_HD_ID", "NAM");
             ViewBag.THOIHAN_TT = new SelectList(db.THOIHAN_TT.ToList().OrderBy(n => n.THOIHAN_TT_ID), "THOIHAN_TT_ID", "TEN_THOIHAN_TT");
+            
             if (ModelState.IsValid)
             {
                 if (upload != null && upload.ContentLength > 0)
                     try
                     {
-                        string path = Path.Combine(Server.MapPath("~/Content/HD_DOANHTHU"),
+                        string path = Path.Combine(Server.MapPath("~/Content/HD_CNTT"),
                                                    Path.GetFileName(upload.FileName));
                         upload.SaveAs(path);
                         ViewBag.Message = "File uploaded successfully";
@@ -128,9 +124,9 @@ namespace QLHD.Controllers
                 }
                 THANHVIEN user = db.THANHVIENs.SingleOrDefault(n => n.TENTRUYCAP == User.Identity.Name);
                 hopdong.USER = user.TENTRUYCAP;
-                db.HOPDONG_DOANHTHU.Add(hopdong);
+                db.HOPDONG_DT_CNTT.Add(hopdong);
                 db.SaveChanges();
-                return RedirectToAction("Index", "HDDoanhThu");
+                return RedirectToAction("Index", "HDCNTT");
             }
             else ViewBag.baoloi = "Lưu không thành công!";
             return View();
@@ -141,23 +137,24 @@ namespace QLHD.Controllers
         /// </summary>
         /// 
         [HttpGet]
-        public ActionResult EditHDCNTT(int? HDDOANHTHU_ID)
+        public ActionResult EditHDCNTT(int? HDCNTT_ID)
         {
-            ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
-            ViewBag.MALOAIHD = new SelectList(db.LOAI_HD_SUB.Where(n => n.LOAIHD == 2).ToList().OrderBy(n => n.ID_LOAIHD_SUB), "ID_LOAIHD_SUB", "TEN_HD_SUB");
-            ViewBag.BENTHUEID = new SelectList(db.BENTHUE_TAM.ToList().OrderBy(n => n.TEN), "BENTHUE_TAM_ID", "TEN");
-            ViewBag.HINHTHUCTT = new SelectList(db.HTTTs.ToList().OrderBy(n => n.HTTT_ID), "HTTT_ID", "TEN_HTTT");
-            ViewBag.MALOAIHD_SUB = new SelectList(db.LOAI_HD_SUB.Where(n => n.LOAIHD == 2).ToList().OrderBy(n => n.ID_LOAIHD_SUB), "ID_LOAIHD_SUB", "TEN_HD_SUB");
             ViewBag.CHUKYTT = new SelectList(db.CHUKY_TT.ToList().OrderBy(n => n.CHUKY_ID), "CHUKY_ID", "CHUKY");
-            ViewBag.NamHD = new SelectList(db.NAM_HD.ToList().OrderBy(n => n.NAM_HD_ID), "NAM_HD_ID", "NAM");
+            ViewBag.BENCHOTHUE = new SelectList(db.DM_CHUTHE_HOPDONG.ToList().OrderBy(n => n.CHUTHE_HOPDONG_ID), "CHUTHE_HOPDONG_ID", "TEN_CHUTHE");
+            ViewBag.BENTHUEID = new SelectList(db.DM_CHUTHE_HOPDONG.ToList().OrderBy(n => n.CHUTHE_HOPDONG_ID), "CHUTHE_HOPDONG_ID", "TEN_CHUTHE");
+            //ViewBag.BENTHUEID = new SelectList(db.BENTHUE_TAM.ToList().OrderBy(n => n.BENTHUE_TAM_ID), "BENTHUE_TAM_ID", "TEN");
+            ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
+            ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
+            ViewBag.HINHTHUCTT = new SelectList(db.HTTTs.ToList().OrderBy(n => n.HTTT_ID), "HTTT_ID", "TEN_HTTT");
+            ViewBag.NamHD = new SelectList(db.NAM_HD.ToList().OrderByDescending(n => n.NAM_HD_ID), "NAM_HD_ID", "NAM");
             ViewBag.THOIHAN_TT = new SelectList(db.THOIHAN_TT.ToList().OrderBy(n => n.THOIHAN_TT_ID), "THOIHAN_TT_ID", "TEN_THOIHAN_TT");
 
-            HOPDONG_DOANHTHU HDdoanhthu = db.HOPDONG_DOANHTHU.Find(HDDOANHTHU_ID);
-            if (HDdoanhthu == null)
+            HOPDONG_DT_CNTT HDcntt = db.HOPDONG_DT_CNTT.Find(HDCNTT_ID);
+            if (HDcntt == null)
             {
                 return HttpNotFound();
             }
-            return View(HDdoanhthu);
+            return View(HDcntt);
         }
 
         [HttpPost]//, ActionName("EditHDDoanhThu")]
@@ -311,17 +308,21 @@ namespace QLHD.Controllers
 
         public JsonResult getBT(int id)
         {
-            DM_CHUTHE_HOPDONG bt = db.DM_CHUTHE_HOPDONG.FirstOrDefault(n => n.CHUTHE_HOPDONG_ID == id);
-            var ten = bt.TEN_CHUTHE;
-            var diachi = bt.DIACHI;
-            var dienthoai = bt.DIENTHOAI;
-            var msthue = bt.MSTHUE;
-            var taikhoan = bt.STK_NGANHANG;
-            var nganhang = bt.TEN_NGANHANG;
-            var daidien = bt.DAIDIEN;
-            var chucvu = bt.CHUCVU;
-            //var fax = bt.FAX;
-            return Json(new { ten, diachi, dienthoai, msthue, taikhoan, nganhang, daidien, chucvu}, JsonRequestBehavior.AllowGet);
+            if(id != 0)
+            {
+                DM_CHUTHE_HOPDONG bt = db.DM_CHUTHE_HOPDONG.FirstOrDefault(n => n.CHUTHE_HOPDONG_ID == id);
+                var ten = bt.TEN_CHUTHE;
+                var diachi = bt.DIACHI;
+                var dienthoai = bt.DIENTHOAI;
+                var msthue = bt.MSTHUE;
+                var taikhoan = bt.STK_NGANHANG;
+                var nganhang = bt.TEN_NGANHANG;
+                var daidien = bt.DAIDIEN;
+                var chucvu = bt.CHUCVU;
+                //var fax = bt.FAX;
+                return Json(new { ten, diachi, dienthoai, msthue, taikhoan, nganhang, daidien, chucvu }, JsonRequestBehavior.AllowGet);
+            }
+            return null;
         }
 
         public JsonResult getChuKyTT(int chuky)

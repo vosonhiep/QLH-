@@ -106,7 +106,7 @@
 
                                                 <td>
                                                     @*<a href="@Url.Action("EditHDChiPhi", new { @HDCHIPHI_ID = item.HOPDONG_CHIPHI_ID })"><span class="glyphicon glyphicon-edit"></span></a>*@
-                                                    @Html.ActionLink(" ", "EditHDCNTT", new { @HDDOANHTHU_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
+                                                    @Html.ActionLink(" ", "EditHDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
                                                 </td>
                                                 <td>
                                                     @Html.ActionLink(" ", "DeleteHDCNTT", new { @HDDOANHTHU_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-trash", @style = "font-size: 20px", title = "Xóa" })

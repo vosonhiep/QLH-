@@ -30,7 +30,6 @@
                                 </div>
                                 <div class="col-md-5">
                                     @Html.DropDownList("LOAI_HOPDONG_ID", (IEnumerable<SelectListItem>)ViewBag.LOAIHD, "--Chọn--", new { @class = "form-control", required = "required" })
-
                                 </div>
                             </div>
                         </div>
@@ -142,7 +141,7 @@
                                         <label style="float: left">Số điện thoại/FAX:</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="number" class="form-control" name="DIENTHOAI_BT" id="DT_BT1" required="required" />
+                                        <input type="number" class="form-control" name="DIENTHOAI_BT" id="DT_BT" required="required" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -223,7 +222,7 @@
                                         <label style="float: left">Số điện thoại/FAX:</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="number" class="form-control" name="DIENTHOAI_CT" id="DT_CT1" required="required" />
+                                        <input type="number" class="form-control" name="DIENTHOAI_CT" id="DT_CT" required="required" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -271,132 +270,99 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Đối tượng hợp đồng</h2>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                        <div class="form-horizontal">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: left">Số lượng:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="SOLUONG_DT" placeholder="Nếu là cột, máy móc, thiết bị, CCDC" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: left">Diện tích:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="DIENTICH_DT" placeholder="Nếu là nhà trạm" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: left">Công suất:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="CONGSUAT_DT" placeholder="Nếu là máy móc, thiết bị, CCDC" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: left">Chủng loại:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="CHUNGLOAI_DT" placeholder="Máy móc, thiết bị, CCDC" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: left">Công việc:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="CONGVIEC_DT" placeholder="Thuê nhân công" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: left">Tên trạm:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="TRAM_DT" placeholder="(hoặc địa điểm lắp đặt, sử dụng)" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: left">Nội dung khác:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <textarea class="form-control" name="NOIDUNGKHAC_DT" rows="4" placeholder="Nội dung khác"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
+            @* Giá trị hợp đồng *@
+            <div class="col-md-12">
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Giá trị hợp đồng</h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <div class="form-horizontal">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <div class="control-label col-md-4">
-                                    <label style="float: left">Giá trị thuê/tháng (chưa có VAT):</label>
+                                    <label style="float: left">Giá trị phần cứng:</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="number" id="THANG" class="form-control" name="THANG" />
-                                    <input class="form-control" type="text" id="thang" onchange="sum_tong();" placeholder="VNĐ" />
-
+                                    <input type="number" id="GIATRI_PHANCUNG_HD" class="form-control" name="GIATRI_PHANCUNG_HD" />
+                                    <input class="form-control" type="text" id="giatri_phancung_hd" onchange="sum_tong3();" placeholder="VNĐ" />
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">Thuế VAT:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <select class="form-control" id="vat1" onchange="sum_tong();" name="VAT">
-                                        <option value="0">0 %</option>
-                                        <option value="5">5 %</option>
-                                        <option value="10">10 %</option>
-                                    </select>
-
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: left">Tổng giá trị thuê/tháng:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="number" id="THANG_GT" class="form-control" name="THANG_GT" />
-                                    <input class="form-control" type="text" id="thang_gt" name="thang_gt" value="" disabled placeholder="VNĐ" />
-                                </div>
-                            </div>
-
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <div class="control-label col-md-3">
                                     <label style="float: left">Chu kỳ TT:</label>
                                 </div>
                                 <div class="col-md-3">
                                     @Html.DropDownList("CHUKY_ID", (IEnumerable<SelectListItem>)ViewBag.CHUKYTT, "--Chọn chu kỳ TT--", new { @class = "form-control", required = "required", @id = "CHUKY_ID" })
-
                                 </div>
                                 <div class="control-label col-md-3">
                                     <label style="float: left">Thời gian TT:</label>
                                 </div>
                                 <div class="col-md-3">
                                     @Html.DropDownList("THOIHAN_TT_ID", (IEnumerable<SelectListItem>)ViewBag.THOIHAN_TT, "--Chọn--", new { @class = "form-control", required = "required", @id = "THOIHAN_TT_ID" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: left">Giá trị dịch vụ:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="number" id="GIATRI_DICHVU_HD" class="form-control" name="GIATRI_DICHVU_HD" />
+                                    <input class="form-control" type="text" id="giatri_dichvu_hd" onchange="sum_tong3();" placeholder="VNĐ" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-3">
+                                    <label style="float: left">Ngày hiệu lực HĐ:</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" name="NGAY_HIEULUC_HD" />
+                                </div>
+
+                                <div class="control-label col-md-3">
+                                    <label style="float: left">Ngày BBNT:</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" name="NGAY_BBNT" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: left">Giá trị tạm ứng:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="number" id="GIATRI_TAMUNG" class="form-control" name="GIATRI_TAMUNG" />
+                                    <input class="form-control" type="text" id="giatri_tamung" placeholder="VNĐ" />
 
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-3">
+                                    <label style="float: left">Giá trị BLTHHD:</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="number" id="GIATRI_BLTHHD" class="form-control" name="GIATRI_BLTHHD" />
+                                </div>
 
+                                <div class="control-label col-md-3">
+                                    <label style="float: left">Thời gian BLTHHD:</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="number" id="THOIGIAN_BLTHHD" onchange="sum_date()" class="form-control" name="THOIGIAN_BLTHHD" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
                             <div class="form-group">
                                 <div class="control-label col-md-4">
                                     <label style="float: left">Hình thức thanh toán:</label>
@@ -406,33 +372,24 @@
                                     @*@Html.DropDownList("THUE_BT", (IEnumerable<SelectListItem>)ViewBag.BENTHUEID,"--Chọn bên thuê--", new { @class = "form-control", required = "required", @id = "THUE_BT" })*@
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
                             <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: left">Hạn hợp đồng: </label>
+                                <div class="control-label col-md-3">
+                                    <label style="float: left">Ngày BLTHHĐ:</label>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="control-label col-md-4">
-                                        <label>Từ ngày:</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <input type="date" class="form-control" name="NGAY_BD" id="ngay_bd" />
-                                    </div>
-                                    <div class="control-label col-md-4">
-                                        <label>Đến ngày:</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <input type="date" class="form-control" name="NGAY_KT" id="ngay_kt" onchange="sum_tong2();" />
-                                    </div>
+                                <div class="col-md-3">
+                                    <input type="date" id="NGAY_BLTHHĐ" class="form-control" onchange="sum_date()" name="NGAY_BLTHHĐ" />
+                                </div>
+                                <div class="control-label col-md-3">
+                                    <label style="float: left">Ngày hết hạn BLTHHĐ:</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="date" id="NGAY_HETHAN_BLTHHĐ" class="form-control" name="NGAY_HETHAN_BLTHHĐ" disabled />
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: left">Số chu kỳ thanh toán:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="number" id="SO_CHUKY" class="form-control" name="SO_CHUKY" />
-                                </div>
-                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
                             <div class="form-group">
                                 <div class="control-label col-md-4">
                                     <label style="float: left">Tổng giá trị hợp đồng:</label>
@@ -446,7 +403,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-12">
                 <div class="x_panel">
                     <div class="x_title">
@@ -485,17 +441,19 @@
 @Scripts.Render("~/Scripts/numeric/jquery.js")
 @Scripts.Render("~/Scripts/numeric/jquery.number.js")
 <script type="text/javascript">
-    function sum_tong() {
-        var tong1 = 0;
-        var thang1 = $('#thang').val();
-        var vat1 = $('#vat1').val();
-        var vat = (vat1 * thang1) / 100;
-        tong1 = parseFloat(thang1) + parseFloat(vat);
-        $("input[name='thang_gt']").val(tong1);
-        
-        sum_tong2();
-    }
-    function sum_tong2() {
+    //function sum_tong() {
+    //    //alert("tesst");
+    //    var tong1 = 0;
+    //    var thang1 = $('#thang').val();
+    //    var vat1 = $('#vat1').val();
+    //    var vat = (vat1 * thang1) / 100;
+    //    tong1 = parseFloat(thang1) + parseFloat(vat);
+    //    $("input[name='thang_gt']").val(tong1);
+    //    //alert(tong1);
+    //    sum_tong2();
+    //}
+
+    @*function sum_tong2() {
         var bd = new Date($('#ngay_bd').val().toString('dd/MM/yyyy'));
         var kt = new Date($('#ngay_kt').val().toString('dd/MM/yyyy'));
         var sogiay = Math.abs(kt - bd);
@@ -506,26 +464,55 @@
         $.ajax({
             type: 'GET',
             url: '@Url.Action("getChuKyTT","HDCNTT")',
-                data: { chuky: chuky },
-                success: function (data) {
-                    var sochuky = Math.round(sothang / data.thang);
-                    var tong = tien * sochuky * data.thang;
-                    $('#SO_CHUKY').val(sochuky);
-                    $('#tong_gt').val(tong);
-                }
-            });
-        }
+            data: { chuky: chuky },
+            success: function (data) {
+                var sochuky = Math.round(sothang / data.thang);
+                var tong = tien * sochuky * data.thang;
+                $('#SO_CHUKY').val(sochuky);
+                $('#tong_gt').val(tong);
+            }
+        });
+    }*@
+
+    function sum_tong3() {
+        var tong1 = 0;
+        var giatri_phancung_hd = $('#giatri_phancung_hd').val();
+        var giatri_dichvu_hd = $('#giatri_dichvu_hd').val();
+
+        tong1 = parseFloat(giatri_phancung_hd) + parseFloat(giatri_dichvu_hd);
+        $('#tong_gt').val(tong1);
+    }
+
+    function sum_date() {
+        //let now = new Date();
+
+        //let day = ("0" + now.getDate()).slice(-2);
+        //let month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+        //let today = (day) + "-" + (month) + "-" + now.getFullYear();
+        //$('#THOIGIAN_BLTHHD').val(today);
+
+        var date = new Date($('#NGAY_BLTHHĐ').val());
+        var days = parseInt($('#THOIGIAN_BLTHHD').val());
+        date.setDate(date.getDate() + days);
+        document.getElementById('NGAY_HETHAN_BLTHHĐ').value = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+
+       
+        //return date;
+    }
+
 </script>
 <script type="text/javascript">
     $(function () {
         // Set up the number formatting.
         $('#THANG').hide();
-        $('#TONG_GT').hide();
         $('#THANG_GT').hide();
+        $('#GIATRI_TAMUNG').hide();
+        $('#GIATRI_PHANCUNG_HD').hide();
+        $('#GIATRI_DICHVU_HD').hide();
+        $('#TONG_GT').hide();
 
         $('#thang_gt').number(true, 0);
-        //$('#vat').number(true, 0);
-        //$('#thang').number(true, 0)
         $('#tong_gt').number(true, 0);
 
         $('#submit').on('click', function () {
@@ -549,7 +536,7 @@
                 success: function (data) {
                     $('#TEN_CT').val(data.ten);
                     $('#DIACHI_CT').val(data.diachi);
-                    $('#DT_CT1').val(data.dienthoai);
+                    $('#DT_CT').val(data.dienthoai);
                     $('#MSTHUE_CT').val(data.msthue);
                     $('#TAIKHOAN_CT').val(data.taikhoan);
                     $('#NGANHANG_CT').val(data.nganhang);
@@ -560,14 +547,14 @@
             if (id == 0) {
                 $('#TEN_CT').val("");
                 $('#DIACHI_CT').val("");
-                $('#DT_CT1').val("");
+                $('#DT_CT').val("");
                 $('#MSTHUE_CT').val("");
                 $('#TAIKHOAN_CT').val("");
                 $('#NGANHANG_CT').val("");
                 $('#DAIDIEN_CT').val("");
                 $('#CHUCVU_CT').val("");
             }
-        }); BEN_THUE
+        });
         $('#BEN_THUE').change(function () {
             var id = $('#BEN_THUE').val();
             $.ajax({
@@ -577,7 +564,7 @@
                 success: function (data) {
                     $('#TEN_BT').val(data.ten);
                     $('#DIACHI_BT').val(data.diachi);
-                    $('#DT_BT1').val(data.dienthoai);
+                    $('#DT_BT').val(data.dienthoai);
                     $('#MSTHUE_BT').val(data.msthue);
                     $('#TAIKHOAN_BT').val(data.taikhoan);
                     $('#NGANHANG_BT').val(data.nganhang);
@@ -586,34 +573,14 @@
                 }
             });
             if (id == 0) {
-                $('#TEN_CT').val("");
-                $('#DIACHI_CT').val("");
-                $('#DT_CT1').val("");
-                $('#MSTHUE_CT').val("");
-                $('#TAIKHOAN_CT').val("");
-                $('#NGANHANG_CT').val("");
-                $('#DAIDIEN_CT').val("");
-                $('#CHUCVU_CT').val("");
-            }
-        });
-
-        $('#loai_bt').change(function () {
-            var id = $('#loai_bt').val();
-            if (id == 1) {
-                $('#cmnd_bt').hide();
-                $('#ngaycap_bt').hide();
-                $('#noicap_bt').hide();
-                $('#ngaysinh_bt').hide();
-                $('#daidien_bt').show();
-                $('#chucvu_bt').show();
-            }
-            if (id == 2) {
-                $('#daidien_bt').hide();
-                $('#chucvu_bt').hide();
-                $('#cmnd_bt').show();
-                $('#ngaycap_bt').show();
-                $('#noicap_bt').show();
-                $('#ngaysinh_bt').show();
+                $('#TEN_BT').val("");
+                $('#DIACHI_BT').val("");
+                $('#DT_BT').val("");
+                $('#MSTHUE_BT').val("");
+                $('#TAIKHOAN_BT').val("");
+                $('#NGANHANG_BT').val("");
+                $('#DAIDIEN_BT').val("");
+                $('#CHUCVU_BT').val("");
             }
         });
 
