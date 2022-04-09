@@ -79,6 +79,7 @@ namespace QLHD.Controllers
             ViewBag.CHUKYTT = new SelectList(db.CHUKY_TT.ToList().OrderBy(n => n.CHUKY_ID), "CHUKY_ID", "CHUKY");
             ViewBag.BENCHOTHUE = new SelectList(db.DM_CHUTHE_HOPDONG.ToList().OrderBy(n => n.CHUTHE_HOPDONG_ID), "CHUTHE_HOPDONG_ID", "TEN_CHUTHE");
             ViewBag.BENTHUEID = new SelectList(db.DM_CHUTHE_HOPDONG.ToList().OrderBy(n => n.CHUTHE_HOPDONG_ID), "CHUTHE_HOPDONG_ID", "TEN_CHUTHE");
+            //ViewBag.BENTHUEID = new SelectList(db.BENTHUE_TAM.ToList().OrderBy(n => n.BENTHUE_TAM_ID), "BENTHUE_TAM_ID", "TEN");
             ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
             ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
             ViewBag.HINHTHUCTT = new SelectList(db.HTTTs.ToList().OrderBy(n => n.HTTT_ID), "HTTT_ID", "TEN_HTTT");
@@ -306,6 +307,21 @@ namespace QLHD.Controllers
             }
             else ViewBag.baoloi = "Lưu không thành công!";
             return RedirectToAction("Index", "HDNhanCong");
+        }
+
+        public JsonResult getBT(int id)
+        {
+            DM_CHUTHE_HOPDONG bt = db.DM_CHUTHE_HOPDONG.FirstOrDefault(n => n.CHUTHE_HOPDONG_ID == id);
+            var ten = bt.TEN_CHUTHE;
+            var diachi = bt.DIACHI;
+            var dienthoai = bt.DIENTHOAI;
+            var msthue = bt.MSTHUE;
+            var taikhoan = bt.STK_NGANHANG;
+            var nganhang = bt.TEN_NGANHANG;
+            var daidien = bt.DAIDIEN;
+            var chucvu = bt.CHUCVU;
+            //var fax = bt.FAX;
+            return Json(new { ten, diachi, dienthoai, msthue, taikhoan, nganhang, daidien, chucvu}, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult getChuKyTT(int chuky)

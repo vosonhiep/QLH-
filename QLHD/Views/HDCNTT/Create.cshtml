@@ -58,6 +58,36 @@
                         <div class="col-md-6" style="margin-top: 15px">
                             <div class="form-group">
                                 <div class="control-label col-md-4">
+                                    <label style="float: right">Tên hợp đồng:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="TEN_HOPDONG" required="required" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Tên gói thầu:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="TEN_GOITHAU" required="required" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Tên dự án:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="TEN_DUAN" required="required" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
                                     <label style="float: right">Ngày lập hợp đồng:</label>
                                 </div>
                                 <div class="col-md-5">
@@ -79,48 +109,24 @@
                 </div>
             </div>
             <div class="col-md-12">
+                @* Bên thuê *@
                 <div class="col-md-6">
                     <div class="x_panel">
                         <div class="x_title">
                             <h2>Bên thuê</h2>
+                            <div class="col-md-8" style="float:right">
+                                @Html.DropDownList("BEN_THUE_ID", (IEnumerable<SelectListItem>)ViewBag.BENTHUEID, new { @class = "form-control", @id = "BEN_THUE" })
+                            </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
                             <div class="form-horizontal">
                                 <div class="form-group">
                                     <div class="control-label col-md-4">
-                                        <label style="float: left">Bên thuê:</label>
+                                        <label style="float: left">Tên bên cho thuê:</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <select class="form-control" name="LOAI_BENTHUE" id="loai_bt">
-                                            <option value="0">--Chọn bên thuê--</option>
-                                            <option value="1">Doanh nghiệp</option>
-                                            <option value="2">Cá nhân</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: left">Tên thuê:</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" name="TEN_BT" />
-                                    </div>
-                                </div>
-                                <div class="form-group" id="daidien_bt">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: left">Đại diện:</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" name="DAIDIEN_BT" />
-                                    </div>
-                                </div>
-                                <div class="form-group" id="chucvu_bt">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: left">Chức vụ:</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" name="CHUCVU_BT" />
+                                        <input type="text" class="form-control" name="TEN_BT" required="required" id="TEN_BT" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -128,39 +134,7 @@
                                         <label style="float: left">Địa chỉ:</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" name="DIACHI_BT" />
-                                    </div>
-                                </div>
-                                <div class="form-group" id="cmnd_bt">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: left">CMND:</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <input type="number" class="form-control" name="CMND_BT" />
-                                    </div>
-                                </div>
-                                <div class="form-group" id="ngaycap_bt">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: left">Ngày cấp:</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <input type="date" class="form-control" name="NGAYCAP_BT" />
-                                    </div>
-                                </div>
-                                <div class="form-group" id="ngaysinh_bt">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: left">Ngày sinh:</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <input type="date" class="form-control" name="NGAYSINH_BT" />
-                                    </div>
-                                </div>
-                                <div class="form-group" id="noicap_bt">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: left">Nơi cấp:</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" name="NOICAP_BT" />
+                                        <input type="text" class="form-control" name="DIACHI_BT" required="required" id="DIACHI_BT" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -168,7 +142,7 @@
                                         <label style="float: left">Số điện thoại/FAX:</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="number" class="form-control" name="DIENTHOAI_BT" />
+                                        <input type="number" class="form-control" name="DIENTHOAI_BT" id="DT_BT1" required="required" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -176,7 +150,7 @@
                                         <label style="float: left">Mã số thuế:</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" name="MSTHUE_BT" />
+                                        <input type="text" class="form-control" name="MSTHUE_BT" id="MSTHUE_BT" required="required" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -184,7 +158,7 @@
                                         <label style="float: left">Tài khoản:</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" name="TAIKHOAN_BT" />
+                                        <input type="text" id="TAIKHOAN_BT" class="form-control" name="TAIKHOAN_BT" required="required" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -192,7 +166,23 @@
                                         <label style="float: left">Ngân hàng:</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" name="NGANHANG_BT" />
+                                        <input type="text" id="NGANHANG_BT" class="form-control" name="NGANHANG_BT" required="required" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: left">Đại diện:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" id="DAIDIEN_BT" class="form-control" name="DAIDIEN_BT" required="required" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: left">Chức vụ:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" id="CHUCVU_BT" class="form-control" name="CHUCVU_BT" required="required" />
                                     </div>
                                 </div>
                             </div>
@@ -200,12 +190,13 @@
                     </div>
                 </div>
 
+                @* Bên cho thuê *@
                 <div class="col-md-6">
                     <div class="x_panel">
                         <div class="x_title">
                             <h2>Bên cho thuê</h2>
                             <div class="col-md-8" style="float:right">
-                                @Html.DropDownList("THUE_BT", (IEnumerable<SelectListItem>)ViewBag.BENTHUEID, new { @class = "form-control", @id = "THUE_BT" })
+                                @Html.DropDownList("BEN_CHOTHUE_ID", (IEnumerable<SelectListItem>)ViewBag.BENTHUEID, new { @class = "form-control", @id = "BEN_CHOTHUE" })
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -549,11 +540,11 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#THUE_BT').change(function () {
-            var id = $('#THUE_BT').val();
+        $('#BEN_CHOTHUE').change(function () {
+            var id = $('#BEN_CHOTHUE').val();
             $.ajax({
                 type: 'GET',
-                url: '@Url.Action("getBT","HDChiPhi")',
+                url: '@Url.Action("getBT","HDCNTT")',
                 data: { id: id },
                 success: function (data) {
                     $('#TEN_CT').val(data.ten);
@@ -564,6 +555,34 @@
                     $('#NGANHANG_CT').val(data.nganhang);
                     $('#DAIDIEN_CT').val(data.daidien);
                     $('#CHUCVU_CT').val(data.chucvu);
+                }
+            });
+            if (id == 0) {
+                $('#TEN_CT').val("");
+                $('#DIACHI_CT').val("");
+                $('#DT_CT1').val("");
+                $('#MSTHUE_CT').val("");
+                $('#TAIKHOAN_CT').val("");
+                $('#NGANHANG_CT').val("");
+                $('#DAIDIEN_CT').val("");
+                $('#CHUCVU_CT').val("");
+            }
+        }); BEN_THUE
+        $('#BEN_THUE').change(function () {
+            var id = $('#BEN_THUE').val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("getBT","HDCNTT")',
+                data: { id: id },
+                success: function (data) {
+                    $('#TEN_BT').val(data.ten);
+                    $('#DIACHI_BT').val(data.diachi);
+                    $('#DT_BT1').val(data.dienthoai);
+                    $('#MSTHUE_BT').val(data.msthue);
+                    $('#TAIKHOAN_BT').val(data.taikhoan);
+                    $('#NGANHANG_BT').val(data.nganhang);
+                    $('#DAIDIEN_BT').val(data.daidien);
+                    $('#CHUCVU_BT').val(data.chucvu);
                 }
             });
             if (id == 0) {
@@ -602,6 +621,9 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#THUE_BT").append('<option value="0" selected>--Chọn bên thuê--</option>');
+        $("#BEN_CHOTHUE").append('<option value="0" selected>--Chọn bên thuê--</option>');
+    });
+    $(document).ready(function () {
+        $("#BEN_THUE").append('<option value="0" selected>--Chọn bên thuê--</option>');
     });
 </script>
