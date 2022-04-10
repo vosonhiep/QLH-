@@ -205,7 +205,7 @@ namespace QLHD.Controllers
                 {
                     db.SaveChanges();
                     luulichsuchinhsua(2, HDCNTT_ID, id_taikhoan);
-                    return RedirectToAction("Index", "HDDoanhThu");
+                    return RedirectToAction("Index", "HDCNTT");
                 }
                 catch (RetryLimitExceededException /* dex */)
                 {
