@@ -379,13 +379,13 @@
                                     <label style="float: left">Ngày BLTHHĐ:</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="date" id="NGAY_BLTHHĐ" class="form-control" onchange="sum_date()" name="NGAY_BLTHHĐ" />
+                                    <input type="date" id="NGAY_BLTHHD" class="form-control" onchange="sum_date()" name="NGAY_BLTHHD" />
                                 </div>
                                 <div class="control-label col-md-3">
                                     <label style="float: left">Ngày hết hạn BLTHHĐ:</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="date" id="NGAY_HETHAN_BLTHHĐ" class="form-control" name="NGAY_HETHAN_BLTHHĐ" disabled />
+                                    <input type="date" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" disabled />
                                 </div>
                             </div>
                         </div>
@@ -484,21 +484,10 @@
     }
 
     function sum_date() {
-        //let now = new Date();
-
-        //let day = ("0" + now.getDate()).slice(-2);
-        //let month = ("0" + (now.getMonth() + 1)).slice(-2);
-
-        //let today = (day) + "-" + (month) + "-" + now.getFullYear();
-        //$('#THOIGIAN_BLTHHD').val(today);
-
-        var date = new Date($('#NGAY_BLTHHĐ').val());
+        var date = new Date($('#NGAY_BLTHHD').val());
         var days = parseInt($('#THOIGIAN_BLTHHD').val());
         date.setDate(date.getDate() + days);
-        document.getElementById('NGAY_HETHAN_BLTHHĐ').value = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
-
-       
-        //return date;
+        document.getElementById('NGAY_HETHAN_BLTHHD').value = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
     }
 
 </script>
@@ -516,12 +505,12 @@
         $('#tong_gt').number(true, 0);
 
         $('#submit').on('click', function () {
-            var thang_gt = $('#thang_gt').val();
-            var thang = $('#thang').val();
-            var tong = $('#tong_gt').val();
-            $("input[name='THANG_GT']").val(thang_gt);
-            $("input[name='TONG_GT']").val(tong);
-            $("input[name='THANG']").val(thang);
+            var giatri_phancung_hd = $('#giatri_phancung_hd').val();
+            var giatri_dichvu_hd = $('#giatri_dichvu_hd').val();
+            var giatri_tamung = $('#giatri_tamung').val();
+            $("input[name='GIATRI_PHANCUNG_HD']").val(giatri_phancung_hd);
+            $("input[name='GIATRI_DICHVU_HD']").val(giatri_dichvu_hd);
+            $("input[name='GIATRI_TAMUNG']").val(giatri_tamung);
         });
     });
 </script>

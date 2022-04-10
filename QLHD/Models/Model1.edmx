@@ -268,9 +268,9 @@
           <Property Name="NGAY_HIEULUC_HD" Type="date" />
           <Property Name="NGAY_BBNT" Type="date" />
           <Property Name="GIATRI_BLTHHD" Type="numeric" Precision="38" Scale="0" />
-          <Property Name="NGAY_BLTHHĐ" Type="date" />
+          <Property Name="NGAY_BLTHHD" Type="date" />
           <Property Name="THOIGIAN_BLTHHD" Type="numeric" Precision="38" Scale="0" />
-          <Property Name="NGAY_HETHAN_BLTHHĐ" Type="date" />
+          <Property Name="NGAY_HETHAN_BLTHHD" Type="date" />
           <Property Name="GHICHU" Type="nvarchar" MaxLength="200" />
           <Property Name="FILE" Type="nvarchar" MaxLength="100" />
           <Property Name="USER" Type="nvarchar" MaxLength="100" />
@@ -1735,9 +1735,9 @@
           <Property Name="NGAY_HIEULUC_HD" Type="DateTime" Precision="0" />
           <Property Name="NGAY_BBNT" Type="DateTime" Precision="0" />
           <Property Name="GIATRI_BLTHHD" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="NGAY_BLTHHĐ" Type="DateTime" Precision="0" />
+          <Property Name="NGAY_BLTHHD" Type="DateTime" Precision="0" />
           <Property Name="THOIGIAN_BLTHHD" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="NGAY_HETHAN_BLTHHĐ" Type="DateTime" Precision="0" />
+          <Property Name="NGAY_HETHAN_BLTHHD" Type="DateTime" Precision="0" />
           <Property Name="GHICHU" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="FILE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="USER" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -3226,9 +3226,9 @@
                 <ScalarProperty Name="NGAY_HIEULUC_HD" ColumnName="NGAY_HIEULUC_HD" />
                 <ScalarProperty Name="NGAY_BBNT" ColumnName="NGAY_BBNT" />
                 <ScalarProperty Name="GIATRI_BLTHHD" ColumnName="GIATRI_BLTHHD" />
-                <ScalarProperty Name="NGAY_BLTHHĐ" ColumnName="NGAY_BLTHHĐ" />
+                <ScalarProperty Name="NGAY_BLTHHD" ColumnName="NGAY_BLTHHD" />
                 <ScalarProperty Name="THOIGIAN_BLTHHD" ColumnName="THOIGIAN_BLTHHD" />
-                <ScalarProperty Name="NGAY_HETHAN_BLTHHĐ" ColumnName="NGAY_HETHAN_BLTHHĐ" />
+                <ScalarProperty Name="NGAY_HETHAN_BLTHHD" ColumnName="NGAY_HETHAN_BLTHHD" />
                 <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
                 <ScalarProperty Name="FILE" ColumnName="FILE" />
                 <ScalarProperty Name="USER" ColumnName="USER" />

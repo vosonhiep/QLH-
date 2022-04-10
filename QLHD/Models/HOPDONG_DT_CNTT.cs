@@ -41,9 +41,9 @@ namespace QLHD.Models
         public Nullable<System.DateTime> NGAY_HIEULUC_HD { get; set; }
         public Nullable<System.DateTime> NGAY_BBNT { get; set; }
         public Nullable<decimal> GIATRI_BLTHHD { get; set; }
-        public Nullable<System.DateTime> NGAY_BLTHHĐ { get; set; }
+        public Nullable<System.DateTime> NGAY_BLTHHD { get; set; }
         public Nullable<decimal> THOIGIAN_BLTHHD { get; set; }
-        public Nullable<System.DateTime> NGAY_HETHAN_BLTHHĐ { get; set; }
+        public Nullable<System.DateTime> NGAY_HETHAN_BLTHHD { get; set; }
         public string GHICHU { get; set; }
         public string FILE { get; set; }
         public string USER { get; set; }

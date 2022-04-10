@@ -160,7 +160,7 @@ namespace QLHD.Controllers
         [HttpPost]//, ActionName("EditHDDoanhThu")]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult EditHDCNTTPost(int? HDDOANHTHU_ID, HttpPostedFileBase FILE)
+        public ActionResult EditHDCNTTPost(int? HDCNTT_ID, HttpPostedFileBase FILE)
         {
             ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
             ViewBag.MALOAIHD = new SelectList(db.LOAI_HD_SUB.Where(n => n.LOAIHD == 2).ToList().OrderBy(n => n.ID_LOAIHD_SUB), "ID_LOAIHD_SUB", "TEN_HD_SUB");
@@ -174,7 +174,7 @@ namespace QLHD.Controllers
             //{
             //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             //}
-            var HDdoanhthu = db.HOPDONG_DOANHTHU.Find(HDDOANHTHU_ID);
+            var HDCNTT = db.HOPDONG_DT_CNTT.Find(HDCNTT_ID);
 
             if (FILE != null && FILE.ContentLength > 0)
                 try
@@ -182,7 +182,7 @@ namespace QLHD.Controllers
                     var fileName = Path.GetFileName(FILE.FileName);
                     var path = Path.Combine(Server.MapPath("~/Content/HD_DOANHTHU"), fileName);
                     FILE.SaveAs(path);
-                    HDdoanhthu.FILE = FILE.FileName;
+                    HDCNTT.FILE = FILE.FileName;
                 }
                 catch (Exception ex)
                 {
@@ -195,20 +195,16 @@ namespace QLHD.Controllers
 
             THANHVIEN user = db.THANHVIENs.SingleOrDefault(n => n.TENTRUYCAP == User.Identity.Name);
             int id_taikhoan = user.ID_THANHVIEN;
-            if (TryUpdateModel(HDdoanhthu, "",
-                new string[] {"CHUKY_ID", "HTTT_ID", "SO_HD", "NGAY_HD", "TEN_BT", "DIACHI_BT","LOAI_BENTHUE",
-                            "CMND_BT", "NGAYCAP_BT", "NOICAP_BT", "NGAYSINH_BT", "DIENTHOAI_BT",
-                             "DAIDIEN_BT", "CHUCVU_BT", "TAIKHOAN_BT", "NGANHANG_BT", "MSTHUE_BT",
-                            "TEN_CT", "DIACHI_CT", "DIENTHOAI_CT", "FAX_CT", "TAIKHOAN_CT", "NGANHANG_CT",
-                            "MSTHUE_CT", "DAIDIEN_CT", "CMND_CT", "NGAYCAP_CMND_CT", "NOICAP_CT",
-                            "CHUCVU_CT", "HOPDONG_DT", "SOLUONG_DT", "DIENTICH_CT", "CONGSUAT_DT",
-                            "CHUNGLOAI_DT", "CONGVIEC_DT", "TRAM_DT","NOIDUNGKHAC_DT", "THANG_GT", "TONG_GT", "NGAY_BD",
-                            "NGAY_KT", "GHICHU", "DONVI_ID", "THANG", "VAT", "SO_CHUKY"}))
+            if (TryUpdateModel(HDCNTT, "",
+                new string[] {"TEN_DUAN", "TEN_GOITHAU", "LOAI_HOPDONG_ID", "TEN_HOPDONG", "CHUKY_ID", "HTTT_ID", "SO_HD", "NGAY_HD", "BEN_THUE_ID",
+                            "BEN_CHOTHUE_ID", "GIATRI_PHANCUNG_HD", "GIATRI_DICHVU_HD", "GIATRI_TAMUNG",
+                            "NGAY_HIEULUC_HD", "NGAY_BBNT", "GIATRI_BLTHHD", "NGAY_BLTHHD", "THOIGIAN_BLTHHD", "NGAY_HETHAN_BLTHHD",
+                            "GHICHU", "DONVI_ID", "THANG", "VAT", "SO_CHUKY"}))
             {
                 try
                 {
                     db.SaveChanges();
-                    luulichsuchinhsua(2, HDDOANHTHU_ID, id_taikhoan);
+                    luulichsuchinhsua(2, HDCNTT_ID, id_taikhoan);
                     return RedirectToAction("Index", "HDDoanhThu");
                 }
                 catch (RetryLimitExceededException /* dex */)
@@ -217,7 +213,7 @@ namespace QLHD.Controllers
                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
                 }
             }
-            return View(HDdoanhthu);
+            return View(HDCNTT);
         }
 
         /// <summary>
