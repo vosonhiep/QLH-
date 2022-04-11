@@ -221,27 +221,27 @@ namespace QLHD.Controllers
         /// </summary>
 
         [HttpGet]
-        public ActionResult DeleteHDCNTT(int HDDOANHTHU_ID)
+        public ActionResult DeleteHDCNTT(int HDCNTT_ID)
         {
-            HOPDONG_DOANHTHU HDDT = db.HOPDONG_DOANHTHU.SingleOrDefault(n => n.HOPDONG_DOANHTHU_ID == HDDOANHTHU_ID);
-            if (HDDT == null)
+            HOPDONG_DT_CNTT HDCNTT = db.HOPDONG_DT_CNTT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID);
+            if (HDCNTT == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            return View(HDDT);
+            return View(HDCNTT);
         }
 
         [HttpPost, ActionName("DeleteHDCNTT")]
-        public ActionResult XacNhanXoaHDCNTT(int HDDOANHTHU_ID)
+        public ActionResult XacNhanXoaHDCNTT(int HDCNTT_ID)
         {
-            HOPDONG_DOANHTHU HDDT = db.HOPDONG_DOANHTHU.SingleOrDefault(n => n.HOPDONG_DOANHTHU_ID == HDDOANHTHU_ID);
-            if (HDDT == null)
+            HOPDONG_DT_CNTT HDCNTT = db.HOPDONG_DT_CNTT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID);
+            if (HDCNTT == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            db.HOPDONG_DOANHTHU.Remove(HDDT);
+            db.HOPDONG_DT_CNTT.Remove(HDCNTT);
             db.SaveChanges();
             return RedirectToAction("Index", "HDCNTT");
         }
@@ -251,8 +251,8 @@ namespace QLHD.Controllers
         /// </summary>
 
         public ActionResult ShowHDCNTT(int maHD)
-        {
-            HOPDONG_DOANHTHU hd = db.HOPDONG_DOANHTHU.SingleOrDefault(n => n.HOPDONG_DOANHTHU_ID == maHD);
+        {           
+            HOPDONG_DT_CNTT hd = db.HOPDONG_DT_CNTT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == maHD);
             if (hd == null)
             {
                 return RedirectToAction("baoloi", "Home");
@@ -331,16 +331,7 @@ namespace QLHD.Controllers
             return Json(new { ten, thang }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult getHD_HetHan()
-        {
-            DateTime date = System.DateTime.Now;
-            DateTime date2 = System.DateTime.Now.AddMonths(2);
-            var hd1 = db.HOPDONG_DOANHTHU.Where(n => n.NGAY_KT > date && n.NGAY_KT < date2).ToList();
-            var hd2 = db.HOPDONG_DOANHTHU.Where(n => n.NGAY_KT < date).ToList();
-            int hd = hd1.Count();
-            int hd_hethan = hd2.Count();
-            return Json(new { hd, hd_hethan }, JsonRequestBehavior.AllowGet);
-        }
+
 
         public ActionResult ExportData(int HDid)
         {
@@ -381,6 +372,29 @@ namespace QLHD.Controllers
             db.HISTORY_CHANGE.Add(ls);
             db.SaveChanges();
             //return n;
+        }
+
+        public ActionResult DSThanhToan_HDCNTT(int? page)
+        {
+            var hd = this.db.HOPDONG_DT_CNTT.ToList();
+            if (hd == null)
+            {
+                ViewBag.thongbao = "Hiện chưa có hợp đồng nào trong CSDL!!";
+            }
+            int pagenumber = (page ?? 1);
+            int pagesize = 10;
+            return View(hd.ToPagedList(pagenumber, pagesize));
+        }
+
+        public JsonResult getHD_HetHan()
+        {
+            DateTime date = System.DateTime.Now;
+            DateTime date2 = System.DateTime.Now.AddMonths(2);
+            var hd1 = db.HOPDONG_DOANHTHU.Where(n => n.NGAY_KT > date && n.NGAY_KT < date2).ToList();
+            var hd2 = db.HOPDONG_DOANHTHU.Where(n => n.NGAY_KT < date).ToList();
+            int hd = hd1.Count();
+            int hd_hethan = hd2.Count();
+            return Json(new { hd, hd_hethan }, JsonRequestBehavior.AllowGet);
         }
 
         public PartialViewResult HDHetHan()

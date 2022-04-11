@@ -160,33 +160,35 @@
     @Scripts.Render("~/Scripts/js/notify/pnotify.core.js")
     @Scripts.Render("~/Scripts/js/notify/pnotify.buttons.js")
     @Scripts.Render("~/Scripts/js/notify/pnotify.nonblock.js")
-    <script type="text/javascript">
-    $.ajax({
-        type: 'GET',
-        url: '@Url.Action("getHD_HetHan", "HDCNTT")',
-        success: function (data) {
-            if (data.hd != 0) {
-                new PNotify({
-                    title: "Cảnh báo",
-                    //type: "error",
-                    text: "Hiện tại có " + data.hd + " hợp đồng sắp hết hạn! <button type='button' data-toggle='modal' data-target='#dshd' class='btn btn-default btn-sm noidung'>Xem danh sách</button>",
-                    hide: false
-                });
-            }
-            //alert(data.hd);
-            //alert(data.hd_hethan);
 
-            if (data.hd_hethan != 0) {
-                new PNotify({
-                    title: "Hợp đồng hết hạn",
-                    //type: "error",
-                    text: "Hiện tại có " + data.hd_hethan + " hợp đồng hết hạn! <button type='button' data-toggle='modal' data-target='#dshd2' class='btn btn-default btn-sm noidung'>Xem danh sách</button>",
-                    type: "error",
-                    hide: false
-                });
+    @* Hợp đồng hết hạn *@
+    @*<script type="text/javascript">
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("getHD_HetHan", "HDCNTT")',
+            success: function (data) {
+                if (data.hd != 0) {
+                    new PNotify({
+                        title: "Cảnh báo",
+                        //type: "error",
+                        text: "Hiện tại có " + data.hd + " hợp đồng sắp hết hạn! <button type='button' data-toggle='modal' data-target='#dshd' class='btn btn-default btn-sm noidung'>Xem danh sách</button>",
+                        hide: false
+                    });
+                }
+                //alert(data.hd);
+                //alert(data.hd_hethan);
+
+                if (data.hd_hethan != 0) {
+                    new PNotify({
+                        title: "Hợp đồng hết hạn",
+                        //type: "error",
+                        text: "Hiện tại có " + data.hd_hethan + " hợp đồng hết hạn! <button type='button' data-toggle='modal' data-target='#dshd2' class='btn btn-default btn-sm noidung'>Xem danh sách</button>",
+                        type: "error",
+                        hide: false
+                    });
+                }
             }
-        }
-    });
-    </script>
+        });
+    </script>*@
     @*@Html.Action("HDHetHan", "HDCNTT")
         @Html.Action("HDHetHan2", "HDCNTT")*@
