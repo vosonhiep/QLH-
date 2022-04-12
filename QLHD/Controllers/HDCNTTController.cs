@@ -38,25 +38,22 @@ namespace QLHD.Controllers
         {
             String loaiTK = f["txtloaiTimKiem"].ToString();
             String tukhoa = f["txtTimKiem"].ToString();
-            //String date = f["txtngayHD"].ToString();
-            //DateTime ngayHD = DateTime.ParseExact(date, "MMM dd yyyy", CultureInfo.InvariantCulture);
 
-
-            List<HOPDONG_DOANHTHU> listKQTK = db.HOPDONG_DOANHTHU.ToList();
+            List<HOPDONG_DT_CNTT> listKQTK = db.HOPDONG_DT_CNTT.ToList();
             ViewBag.tukhoa = tukhoa;
             if (loaiTK == "1")
             {
-                listKQTK = db.HOPDONG_DOANHTHU.Where(n => n.SO_HD.Contains(tukhoa)).ToList();
+                listKQTK = db.HOPDONG_DT_CNTT.Where(n => n.SO_HD.Contains(tukhoa)).ToList();
             }
             if (loaiTK == "2")
             {
                 int namHD = Int32.Parse(f["NAM_HD_ID"].ToString());
-                listKQTK = db.HOPDONG_DOANHTHU.Where(n => n.NAM_HD_ID == namHD).ToList();
+                listKQTK = db.HOPDONG_DT_CNTT.Where(n => n.NAM_HD_ID == namHD).ToList();
             }
             if (loaiTK == "3")
             {
                 int loaiHD = Int32.Parse(f["ID_LOAIHD_SUB"].ToString());
-                listKQTK = db.HOPDONG_DOANHTHU.Where(n => n.ID_LOAIHD_SUB == loaiHD).ToList();
+                listKQTK = db.HOPDONG_DT_CNTT.Where(n => n.LOAI_HOPDONG_ID == loaiHD).ToList();
             }
             int pageNumber = (page ?? 1);
             int pageSize = 9;
@@ -67,6 +64,22 @@ namespace QLHD.Controllers
             }
             ViewBag.ThongBao = "Đã tìm thấy " + listKQTK.Count + " kết quả!";
             return View(listKQTK.OrderBy(n => n.SO_HD).ToPagedList(pageNumber, pageSize));
+        }
+
+        public PartialViewResult partialSearch()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+
+            items.Add(new SelectListItem { Text = "--Chọn thông tin cần tìm--", Value = "0" });
+
+            items.Add(new SelectListItem { Text = "Số HĐ", Value = "1", Selected = true });
+            items.Add(new SelectListItem { Text = "Năm HĐ", Value = "2" });
+            items.Add(new SelectListItem { Text = "Loại HĐ", Value = "3" });
+            items.Add(new SelectListItem { Text = "Khác", Value = "4" });
+            ViewBag.loaiTK = items;
+            ViewBag.loaiHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
+            ViewBag.namHD = new SelectList(db.NAM_HD.ToList().OrderByDescending(n => n.NAM_HD_ID), "NAM_HD_ID", "NAM");
+            return PartialView();
         }
 
         /// <summary>
@@ -160,7 +173,7 @@ namespace QLHD.Controllers
         [HttpPost]//, ActionName("EditHDDoanhThu")]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult EditHDCNTTPost(int? HDCNTT_ID, HttpPostedFileBase FILE)
+        public ActionResult EditHDCNTTPost(int? HDCNTT_ID, HttpPostedFileBase upload)
         {
             ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
             ViewBag.MALOAIHD = new SelectList(db.LOAI_HD_SUB.Where(n => n.LOAIHD == 2).ToList().OrderBy(n => n.ID_LOAIHD_SUB), "ID_LOAIHD_SUB", "TEN_HD_SUB");
@@ -170,19 +183,16 @@ namespace QLHD.Controllers
             ViewBag.CHUKYTT = new SelectList(db.CHUKY_TT.ToList().OrderBy(n => n.CHUKY_ID), "CHUKY_ID", "CHUKY");
             ViewBag.NamHD = new SelectList(db.NAM_HD.ToList().OrderBy(n => n.NAM_HD_ID), "NAM_HD_ID", "NAM");
             ViewBag.THOIHAN_TT = new SelectList(db.THOIHAN_TT.ToList().OrderBy(n => n.THOIHAN_TT_ID), "THOIHAN_TT_ID", "TEN_THOIHAN_TT");
-            //if (HDDOANHTHU_ID == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
+        
             var HDCNTT = db.HOPDONG_DT_CNTT.Find(HDCNTT_ID);
 
-            if (FILE != null && FILE.ContentLength > 0)
+            if (upload != null && upload.ContentLength > 0)
                 try
                 {
-                    var fileName = Path.GetFileName(FILE.FileName);
+                    var fileName = Path.GetFileName(upload.FileName);
                     var path = Path.Combine(Server.MapPath("~/Content/HD_DOANHTHU"), fileName);
-                    FILE.SaveAs(path);
-                    HDCNTT.FILE = FILE.FileName;
+                    upload.SaveAs(path);
+                    HDCNTT.FILE = upload.FileName;
                 }
                 catch (Exception ex)
                 {
@@ -333,16 +343,16 @@ namespace QLHD.Controllers
 
 
 
-        public ActionResult ExportData(int HDid)
+        public ActionResult ExportData(int HDCNTT_ID)
         {
-            HOPDONG_DOANHTHU hd = db.HOPDONG_DOANHTHU.Find(HDid);
+            HOPDONG_DT_CNTT hd = db.HOPDONG_DT_CNTT.Find(HDCNTT_ID);
             String filename = hd.FILE;
             if (filename == null)
             {
                 ViewBag.baoloi = "Hợp đồng này chưa lưu file!!";
                 return RedirectToAction("Index");
             }
-            string filepath = AppDomain.CurrentDomain.BaseDirectory + "/Content/HD_DOANHTHU/" + filename;
+            string filepath = AppDomain.CurrentDomain.BaseDirectory + "/Content/HD_CNTT/" + filename;
 
 
             byte[] filedata = System.IO.File.ReadAllBytes(filepath);
@@ -415,18 +425,20 @@ namespace QLHD.Controllers
         [HttpGet]
         public ActionResult ThanhToanHDCNTT(int? HDid)
         {
-            if (db.HOPDONG_DOANHTHU.SingleOrDefault(n => n.HOPDONG_DOANHTHU_ID == HDid) == null)
+            if (db.HOPDONG_DT_CNTT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDid) == null)
             {
                 return RedirectToAction("baoloi", "Home");
             }
-            if (db.THANHTOAN_DOANHTHU.Where(n => n.HOPDONG_DOANHTHU_ID == HDid) == null)
+            // hiệp chưa chỉnh sửa
+            if (db.DT_CNTT_TIENDO_TT.Where(n => n.HOPDONG_DT_CNTT_ID == HDid) == null)
             {
                 ViewBag.sohd = "HĐ chưa được thanh toán !!";
             }
-            ViewBag.hopdong = db.HOPDONG_DOANHTHU.SingleOrDefault(n => n.HOPDONG_DOANHTHU_ID == HDid);
+            HOPDONG_DT_CNTT hd = db.HOPDONG_DT_CNTT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDid);
+            ViewBag.hopdong = hd;
             ViewBag.hdid = HDid;
 
-            return View(db.THANHTOAN_DOANHTHU.OrderByDescending(n => n.HOPDONG_DOANHTHU_ID == HDid));
+            return View(db.DT_CNTT_TIENDO_TT.OrderByDescending(n => n.HOPDONG_DT_CNTT_ID == HDid));
         }
 
         [HttpPost]

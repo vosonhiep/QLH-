@@ -1466,6 +1466,9 @@
     <Content Include="Views\HDCNTT\QuyTrinhHDCNTT.cshtml" />
     <Content Include="Views\HDCNTT\Create_TienTrinh.cshtml" />
     <Content Include="Views\HDCNTT\Edit_TienTrinhu.cshtml" />
+    <Content Include="Views\HDCNTT\DSThanhToan_HDCNTT.cshtml" />
+    <Content Include="Views\HDCNTT\ThanhToanHDCNTT.cshtml" />
+    <Content Include="Views\HDCNTT\partialSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\HD_CHIPHI\" />

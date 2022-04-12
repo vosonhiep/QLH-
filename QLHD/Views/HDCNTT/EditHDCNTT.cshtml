@@ -458,7 +458,7 @@
                                     <label style="float: left">File hợp đồng:</label>
                                 </div>
                                 <div class="col-md-10">
-                                    <input type="file" name="FILE" class="form-control" id="upload" value="@Model.FILE" />
+                                    <input type="file" name="upload" class="form-control" id="upload" value="@Model.FILE" />
                                     <a href="@Url.Action("ExportData", "HDCNTT",new{@HDCNTT_ID = Model.HOPDONG_DT_CNTT_ID} )"
                                        style="color:blue">
                                         @Model.FILE
@@ -483,6 +483,11 @@
 @Scripts.Render("~/Scripts/numeric/jquery.number.js")
 <script type="text/javascript">
     $(function () {
+        var giatri_phancung_hd = $('#giatri_phancung_hd').val();
+        var giatri_dichvu_hd = $('#giatri_dichvu_hd').val();
+        var giatri_tamung = $('#giatri_tamung').val();
+
+        $('#tong_gt').val(parseInt(giatri_phancung_hd) + parseInt(giatri_dichvu_hd));
         // Set up the number formatting.
         $('#THANG').hide();
         $('#THANG_GT').hide();
@@ -493,11 +498,11 @@
 
         $('#thang_gt').number(true, 0);
         $('#tong_gt').number(true, 0);
-
+        sum_date();
         $('#submit').on('click', function () {
-            var giatri_phancung_hd = $('#giatri_phancung_hd').val();
-            var giatri_dichvu_hd = $('#giatri_dichvu_hd').val();
-            var giatri_tamung = $('#giatri_tamung').val();
+            giatri_phancung_hd = $('#giatri_phancung_hd').val();
+            giatri_dichvu_hd = $('#giatri_dichvu_hd').val();
+            giatri_tamung = $('#giatri_tamung').val();
             $("input[name='GIATRI_PHANCUNG_HD']").val(giatri_phancung_hd);
             $("input[name='GIATRI_DICHVU_HD']").val(giatri_dichvu_hd);
             $("input[name='GIATRI_TAMUNG']").val(giatri_tamung);

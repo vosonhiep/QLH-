@@ -1,119 +1,120 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
-@model IPagedList<QLHD.Models.HOPDONG_DOANHTHU>
+@model IPagedList<QLHD.Models.HOPDONG_DT_CNTT>
 
-@{
-    ViewBag.Title = "KetQuaTimKiem";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    @{
+        ViewBag.Title = "KetQuaTimKiem";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 
-<div class="">
-    <div class="page-title">
-        <div class="title_left">
-            <h3>Quản lý hợp đồng CNTT</h3>
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Quản lý hợp đồng CNTT</h3>
+            </div>
         </div>
-    </div>
-    <div class="clearfix"></div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="nav navbar-left">
-                @using (Html.BeginForm("KetQuaTimKiem", "HDCNTT", FormMethod.Post))
-                {
-                    @Html.Action("partialSearch", "HDChiPhi")
-                }
-            </div>
-            <div class="nav navbar-right">
-                <a href="@Url.Action("Create", "HDCNTT")" class="btn btn-info btn-lg" style="float:right">
-                    Thêm HĐ mới
-                    <span class="glyphicon glyphicon-plus" />
-                </a>
-            </div>
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>Danh sách HĐ doanh thu</h2>
-                    <div class="clearfix"></div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="nav navbar-left">
+                    @using (Html.BeginForm("KetQuaTimKiem", "HDCNTT", FormMethod.Post))
+                    {
+                        @Html.Action("partialSearch", "HDChiPhi")
+                    }
                 </div>
+                <div class="nav navbar-right">
+                    <a href="@Url.Action("Create", "HDCNTT")" class="btn btn-info btn-lg" style="float:right">
+                        Thêm HĐ mới
+                        <span class="glyphicon glyphicon-plus" />
+                    </a>
+                </div>
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Danh sách HĐ CNTT</h2>
+                        <div class="clearfix"></div>
+                    </div>
 
-                <div class="x_content">
+                    <div class="x_content">
 
-                    <table class="table table-bordered table-striped table-hover">
-                        <tr>
-                            <th>STT</th>
-                            <th>
-                                Số HĐ
-                            </th>
-                            <th>
-                                Loại HĐ
-                            </th>
-                            <th>
-                                Ngày lập HĐ
-                            </th>
-                            <th>
-                                Đại diện bên thuê
-                            </th>
-                            <th>
-                                Đại diện bên cho thuê
-                            </th>
-                            <th>
-                                Tổng giá trị HĐ
-                            </th>
-                            <th>Chu kỳ thanh toán</th>
-                            <th>
-                                Hình thức thanh toán
-                            </th>
-                            <th>Sửa|Xóa|Thanh toán</th>
-                        </tr>
-                        @{int row = 0;}
-                        @foreach (var item in Model)
-                        {
+                        <table class="table table-bordered table-striped table-hover">
                             <tr>
-                                <td>@(row+=1)</td>
-                                <td>
-                                    <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })">
-                                        @item.SO_HD
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })">@item.LOAI_HD_SUB.TEN_HD_SUB </a>
-                                </td>
-
-                                <td>
-                                    <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })"> @item.NGAY_HD</a>
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })">  @item.DAIDIEN_BT</a>
-                                </td>
-
-                                <td><a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })"> @item.TEN_CT</a></td>
-                                <td><a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })"> @item.TONG_GT</a></td>
-                                <td><a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })"> @item.CHUKY_TT.CHUKY</a></td>
-                                <td><a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })"> @item.HTTT.TEN_HTTT</a></td>
-                                <td>
-                                    @*<a href="@Url.Action("EditHDChiPhi", new { @HDCHIPHI_ID = item.HOPDONG_CHIPHI_ID })"><span class="glyphicon glyphicon-edit"></span></a>*@
-                                    @Html.ActionLink(" ", "EditHDCNTT", new { @HDDOANHTHU_ID = item.HOPDONG_DOANHTHU_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
-                                    |
-                                    @Html.ActionLink(" ", "DeleteHDCNTT", new { @HDDOANHTHU_ID = item.HOPDONG_DOANHTHU_ID }, new { @class = "glyphicon glyphicon-trash", @style = "font-size: 20px", title = "Xóa" })
-                                    |
-                                    @Html.ActionLink(" ", "ThanhToanHDDT", new { @HDid = item.HOPDONG_DOANHTHU_ID }, new { @class = "glyphicon glyphicon-usd", @style = "font-size: 20px" })
-
-                                </td>
+                                <th>STT</th>
+                                <th>
+                                    Số HĐ
+                                </th>
+                                <th>
+                                    Loại HĐ
+                                </th>
+                                <th>
+                                    Ngày lập HĐ
+                                </th>
+                                <th>
+                                    Đại diện bên thuê
+                                </th>
+                                <th>
+                                    Đại diện bên cho thuê
+                                </th>
+                                <th>
+                                    Tổng giá trị HĐ
+                                </th>
+                                <th>Chu kỳ thanh toán</th>
+                                <th>
+                                    Hình thức thanh toán
+                                </th>
+                                <th>Sửa|Xóa</th>
+                                @*<th>Sửa|Xóa|Thanh toán</th>*@
                             </tr>
-                        }
+                            @{int row = 0;}
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@(row+=1)</td>
+                                    <td>
+                                        <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
+                                            @item.SO_HD
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.DM_LOAI_HOPDONG.TEN_LOAI_HOPDONG </a>
+                                    </td>
 
-                    </table>
-                    <div class="clearfix"></div>
-                    <h3>@ViewBag.ThongBao</h3>
+                                    <td>
+                                        <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })"> @item.NGAY_HD</a>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">  @item.DM_CHUTHE_HOPDONG.TEN_CHUTHE</a>
+                                    </td>
+
+                                    <td><a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })"> @item.DM_CHUTHE_HOPDONG1.TEN_CHUTHE</a></td>
+                                    <td><a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })"> @(item.GIATRI_PHANCUNG_HD + item.GIATRI_DICHVU_HD)</a></td>
+                                    <td><a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })"> @item.CHUKY_TT.CHUKY</a></td>
+                                    <td><a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })"> @item.HTTT.TEN_HTTT</a></td>
+                                    <td>
+                                        @*<a href="@Url.Action("EditHDChiPhi", new { @HDCHIPHI_ID = item.HOPDONG_CHIPHI_ID })"><span class="glyphicon glyphicon-edit"></span></a>*@
+                                        @Html.ActionLink(" ", "EditHDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
+                                        |
+                                        @Html.ActionLink(" ", "DeleteHDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-trash", @style = "font-size: 20px", title = "Xóa" })
+                                        @*|
+                                            @Html.ActionLink(" ", "ThanhToanHDDT", new { @HDid = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-usd", @style = "font-size: 20px" })*@
+
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                        <div class="clearfix"></div>
+                        <h3>@ViewBag.ThongBao</h3>
+                    </div>
                 </div>
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+                <div class="MenuTrang">
+                    @Html.PagedListPager(Model, page => Url.Action("KetQuaTimKiem", new { page = page, @sTuKhoa = ViewBag.TuKhoa }))
+                </div>
+                <style>
+                    .MenuTrang li {
+                        display: inline;
+                    }
+                </style>
             </div>
-            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
-            <div class="MenuTrang">
-                @Html.PagedListPager(Model, page => Url.Action("KetQuaTimKiem", new { page = page, @sTuKhoa = ViewBag.TuKhoa }))
-            </div>
-            <style>
-                .MenuTrang li {
-                    display: inline;
-                }
-            </style>
         </div>
     </div>
-</div>

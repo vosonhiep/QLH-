@@ -19,7 +19,7 @@
                     @using (Html.BeginForm("KetQuaTimKiem", "HDCNTT", FormMethod.Post))
                     {
                         // Hiệp: Tại sao lại phải gọi search ở HDChiPhi
-                        @*@Html.Action("partialSearch", "HDChiPhi")*@
+                        @Html.Action("partialSearch", "HDCNTT")
                     }
                 </div>
                 <div class="nav navbar-right">
@@ -109,12 +109,12 @@
                                                     @Html.ActionLink(" ", "EditHDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
                                                 </td>
                                                 <td>
-                                                    @Html.ActionLink(" ", "DeleteHDCNTT", new { @HDDOANHTHU_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-trash", @style = "font-size: 20px", title = "Xóa" })
+                                                    @Html.ActionLink(" ", "DeleteHDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-trash", @style = "font-size: 20px", title = "Xóa" })
                                                 </td>
                                                 <td>
                                                     @if (item.FILE != null)
                                                     {
-                                                        @Html.ActionLink(" ", "ExportData", "HDCNTT", new { @HDid = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 20px" })
+                                                        @Html.ActionLink(" ", "ExportData", "HDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 20px" })
                                                     }
                                                 </td>
                                                 @*<td>
