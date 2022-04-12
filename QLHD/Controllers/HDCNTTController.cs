@@ -189,10 +189,16 @@ namespace QLHD.Controllers
             if (upload != null && upload.ContentLength > 0)
                 try
                 {
-                    var fileName = Path.GetFileName(upload.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/HD_DOANHTHU"), fileName);
+                    string path = Path.Combine(Server.MapPath("~/Content/HD_CNTT"),
+                                                   Path.GetFileName(upload.FileName));
                     upload.SaveAs(path);
+                    ViewBag.Message = "File uploaded successfully";
                     HDCNTT.FILE = upload.FileName;
+
+                    //var fileName = Path.GetFileName(upload.FileName);
+                    //var path = Path.Combine(Server.MapPath("~/Content/HD_DOANHTHU"), fileName);
+                    //upload.SaveAs(path);
+                    //HDCNTT.FILE = upload.FileName;
                 }
                 catch (Exception ex)
                 {
