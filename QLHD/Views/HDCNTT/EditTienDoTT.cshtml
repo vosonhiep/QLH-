@@ -1,0 +1,134 @@
+﻿@model QLHD.Models.DT_CNTT_TIENDO_TT
+<button type="button" data-toggle="modal" data-target="#@ViewBag.edit" title="Chỉnh sửa lịch sử thanh toán" class="btn btn-warning btn-sm" data-dismiss="modal">
+    <i class="fa fa-pencil" style="font-size: 15px"></i>
+</button>
+<div class="modal fade" id="@Model.TIENDO_TT_ID" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("editTTPost", "HDCNTT", new { idTT = @Model.TIENDO_TT_ID }, FormMethod.Post, null))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Chỉnh sửa tiến độ thanh toán</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="col-md-6" style="display:none">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Hợp đồng ID:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="HOPDONG_DT_CNTT_ID" required="required" value="@Model.HOPDONG_DT_CNTT_ID" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Đợt thanh toán:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" required="required" value="@Model.DOT_TT" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Thời gian thanh toán:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="number" class="form-control" name="THOIGIAN_TT" value="@Model.THOIGIAN_TT" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Ngày đến hạn:</label>
+                                </div>
+                                <div class="col-md-5">
+
+                                    @if (Model.THOIHAN_TT.HasValue)
+                                    {
+                                        <input type="datetime" class="form-control" name="THOIHAN_TT" required="required" value="@Model.THOIHAN_TT.Value.ToString("dd/MM/yyyy")" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Số tiền thanh toán:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="number" class="form-control" name="THOIGIAN_TT" value="@Model.GIATRI_TT" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="control-label col-md-2">
+                                    <label style="float: left">Hồ sơ thanh toán:</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <textarea class="form-control" name="GHICHU" rows="4" placeholder="Hồ sơ thanh toán">- Biên bản nghiệm thu thanh toán đợt 1 -Hóa đơn tài chính -Công văn đề nghị thanh toán</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="control-label col-md-2">
+                                    <label style="float: left">Diễn giải:</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <textarea class="form-control" name="GHICHU" rows="4" placeholder="Hồ sơ thanh toán">- Biên bản nghiệm thu thanh toán đợt 1 -Hóa đơn tài chính -Công văn đề nghị thanh toán</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Trạng thái xuất hóa đơn:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <select class="form-control" name="TRANGTHAI_XUAT_HOADON" id="trangthai_xuat_hoadon">
+                                        <option value="0">Chưa xuất</option>
+                                        <option value="1">Đã xuất</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Số hóa đơn:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" id="SO_HOADON" class="form-control" name="SO_HOADON" value="@Model.SO_HOADON" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Ngày hóa đơn:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" id="SO_HOADON" class="form-control" name="SO_HOADON" value="@Model.SO_HOADON" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Lưu" />
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

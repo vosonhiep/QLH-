@@ -115,7 +115,7 @@ namespace QLHD.Controllers
             ViewBag.HINHTHUCTT = new SelectList(db.HTTTs.ToList().OrderBy(n => n.HTTT_ID), "HTTT_ID", "TEN_HTTT");
             ViewBag.NamHD = new SelectList(db.NAM_HD.ToList().OrderByDescending(n => n.NAM_HD_ID), "NAM_HD_ID", "NAM");
             ViewBag.THOIHAN_TT = new SelectList(db.THOIHAN_TT.ToList().OrderBy(n => n.THOIHAN_TT_ID), "THOIHAN_TT_ID", "TEN_THOIHAN_TT");
-            
+
             if (ModelState.IsValid)
             {
                 string fileContent = string.Empty;
@@ -175,6 +175,11 @@ namespace QLHD.Controllers
             ViewBag.THOIHAN_TT = new SelectList(db.THOIHAN_TT.ToList().OrderBy(n => n.THOIHAN_TT_ID), "THOIHAN_TT_ID", "TEN_THOIHAN_TT");
 
             HOPDONG_DT_CNTT HDcntt = db.HOPDONG_DT_CNTT.Find(HDCNTT_ID);
+            //List<DT_CNTT_TIENDO_TT> listTDTT = new List<DT_CNTT_TIENDO_TT>()
+            //{
+            //    new DT_CNTT_TIENDO_TT(1, HDcntt.HOPDONG_DT_CNTT_ID, 1,  3500000, 30, DateTime.Now, "HD01", "13/04/2022", 1, 1, "CT_06A.xls", "", 1),
+            //}
+            ViewBag.listTDTT = db.DT_CNTT_TIENDO_TT.Where(n => n.HOPDONG_DT_CNTT_ID == HDcntt.HOPDONG_DT_CNTT_ID).OrderBy(x => x.TIENDO_TT_ID).ToList(); ;
             if (HDcntt == null)
             {
                 return HttpNotFound();
@@ -195,7 +200,7 @@ namespace QLHD.Controllers
             ViewBag.CHUKYTT = new SelectList(db.CHUKY_TT.ToList().OrderBy(n => n.CHUKY_ID), "CHUKY_ID", "CHUKY");
             ViewBag.NamHD = new SelectList(db.NAM_HD.ToList().OrderBy(n => n.NAM_HD_ID), "NAM_HD_ID", "NAM");
             ViewBag.THOIHAN_TT = new SelectList(db.THOIHAN_TT.ToList().OrderBy(n => n.THOIHAN_TT_ID), "THOIHAN_TT_ID", "TEN_THOIHAN_TT");
-        
+
             var HDCNTT = db.HOPDONG_DT_CNTT.Find(HDCNTT_ID);
 
             string fileContent = string.Empty;
@@ -284,7 +289,7 @@ namespace QLHD.Controllers
         /// </summary>
 
         public ActionResult ShowHDCNTT(int maHD)
-        {           
+        {
             HOPDONG_DT_CNTT hd = db.HOPDONG_DT_CNTT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == maHD);
             if (hd == null)
             {
@@ -337,7 +342,7 @@ namespace QLHD.Controllers
 
         public JsonResult getBT(int id)
         {
-            if(id != 0)
+            if (id != 0)
             {
                 DM_CHUTHE_HOPDONG bt = db.DM_CHUTHE_HOPDONG.FirstOrDefault(n => n.CHUTHE_HOPDONG_ID == id);
                 var ten = bt.TEN_CHUTHE;
@@ -363,8 +368,6 @@ namespace QLHD.Controllers
 
             return Json(new { ten, thang }, JsonRequestBehavior.AllowGet);
         }
-
-
 
         public ActionResult ExportData(int HDCNTT_ID)
         {
@@ -408,6 +411,12 @@ namespace QLHD.Controllers
 
             // info.  
             return file;
+        }
+
+        [HttpGet]
+        public PartialViewResult EditTienDoTT(int? HDCNTT_ID, int? TIENDO_ID)
+        {
+            return PartialView(db.DT_CNTT_TIENDO_TT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID && n.TIENDO_TT_ID == TIENDO_ID));
         }
 
         public void luulichsuchinhsua(int? loaihd, int? idhd, int? taikhoan)

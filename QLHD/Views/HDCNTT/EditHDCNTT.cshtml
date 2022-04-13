@@ -4,7 +4,9 @@
     ViewBag.Title = "Chỉnh sửa hợp đồng CNTT";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@{
+    List<QLHD.Models.DT_CNTT_TIENDO_TT> listTDTT = ViewBag.listTDTT;
+}
 <div class="">
     <div class="page-title">
         <div class="title_left">
@@ -439,6 +441,97 @@
                         </div>
                     </div>
                 </div>
+                @* Thông tin thanh toán *@
+                <div class="col-md-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Tiến độ thanh toán hợp đồng</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="#tab_content1" id="hopdong-tab" role="tab" data-toggle="tab" aria-expanded="true">DS tiến độ</a>
+                                    </li>
+                                </ul>
+                                <div id="myTabContent" class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="hopdong-tab">
+                                        <table class=" col-md-12 table table-bordered table-striped table-hover">
+                                            <tr class="noidung">
+                                                <th class="col-md-1">
+                                                    Tiến độ thanh toán
+                                                </th>
+                                                <th class="col-md-2">
+                                                    Hồ sơ thanh toán
+                                                </th>
+                                                <th class="col-md-1">
+                                                    Thời gian thanh toán
+                                                </th>
+                                                <th class="col-md-1">
+                                                    Ngày đến hạn
+                                                </th>
+                                                <th class="col-md-1">
+                                                    Số tiền thanh toán
+                                                </th>
+                                                <th class="col-md-2">
+                                                    Diễn giải
+                                                </th>
+                                                <th class="col-md-1">Trạng thái xuất hóa đơn</th>
+                                                <th class="col-md-1">Số hóa đơn</th>
+                                                <th class="col-md-1">Ngày hóa đơn</th>
+                                                <th class="col-md-1">Sửa|Xóa</th>
+                                            </tr>
+                                            @foreach (var item in listTDTT)
+                                            {
+                                                <tr class="noidunghd">
+                                                    <td class="col-md-1">
+                                                        <input type="text" id="DOT_TT" class="form-control" name="DOT_TT" value="Thanh toán đợt @item.DOT_TT" />
+                                                    </td>
+                                                    <td class="col-md-2">
+                                                        <textarea class="form-control">- Biên bản nghiệm thu thanh toán đợt 1 -Hóa đơn tài chính -Công văn đề nghị thanh toán</textarea>
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        <input type="number" id="THOIGIAN_TT" class="form-control" name="THOIGIAN_TT" value="@item.THOIGIAN_TT" />
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        <input type="datetime" id="TIENDO_TT_ID" class="form-control" name="TIENDO_TT_ID" value="@item.THOIHAN_TT.Value.ToString("dd/MM/yyyy")" />
+
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        <input type="number" id="GIATRI_TT" class="form-control" name="GIATRI_TT" value="@item.GIATRI_TT" />
+                                                    </td>
+                                                    <td class="col-md-2">
+                                                        <textarea class="form-control" name="">Bên A thanh toán cho bên B tiền thuê 12 tháng </textarea>
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        <select class="form-control" name="TRANGTHAI_XUAT_HOADON" id="trangthai_xuat_hoadon">
+                                                            <option value="0">Chưa xuất</option>
+                                                            <option value="1">Đã xuất</option>
+                                                        </select>
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        <input type="text" id="SO_HOADON" class="form-control" name="SO_HOADON" value="@item.SO_HOADON" />
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        <input type="text" id="NGAY_HOADON" class="form-control" name="NGAY_HOADON" value="@item.NGAY_HOADON" />
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        @*@Html.ActionLink(" ", "EditTienDoTT", new { @HDCNTT_ID = @item.HOPDONG_DT_CNTT_ID, @TIENDO_ID = item.TIENDO_TT_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })*@
+                                                        @Html.Action("EditTienDoTT", "HDCNTT", new { @HDCNTT_ID = @item.HOPDONG_DT_CNTT_ID, @TIENDO_ID = @item.TIENDO_TT_ID })
+                                                        @*|
+                                                        @Html.ActionLink(" ", "DeleteTienDo", new { @HDCNTT_ID = @item.HOPDONG_DT_CNTT_ID, @TIENDO_ID = @item.TIENDO_TT_ID }, new { @class = "glyphicon glyphicon-trash", @style = "font-size: 20px", title = "Xóa" })*@
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">
@@ -508,6 +601,7 @@
             $("input[name='GIATRI_TAMUNG']").val(giatri_tamung);
         });
     });
+
     function sum_tong() {
         //alert("tesst");
         var tong1 = 0;
@@ -601,7 +695,6 @@
             var tong = thang * sochuky;
             $('#tong_gt').val(tong);
         });
-
 
     });
 </script>
