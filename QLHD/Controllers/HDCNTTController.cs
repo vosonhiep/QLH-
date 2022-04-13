@@ -118,23 +118,35 @@ namespace QLHD.Controllers
             
             if (ModelState.IsValid)
             {
+                string fileContent = string.Empty;
+                string fileContentType = string.Empty;
                 if (upload != null && upload.ContentLength > 0)
-                    try
-                    {
-                        string path = Path.Combine(Server.MapPath("~/Content/HD_CNTT"),
-                                                   Path.GetFileName(upload.FileName));
-                        upload.SaveAs(path);
-                        ViewBag.Message = "File uploaded successfully";
-                        hopdong.FILE = upload.FileName;
-                    }
-                    catch (Exception ex)
-                    {
-                        ViewBag.Message = "ERROR:" + ex.Message.ToString();
-                    }
-                else
                 {
-                    ViewBag.Message = "You have not specified a file.";
+                    //start test luu file to DB
+                    // Converting to bytes.  
+                    byte[] uploadedFile = new byte[upload.InputStream.Length];
+                    upload.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
+
+                    // Initialization.  
+                    fileContent = Convert.ToBase64String(uploadedFile);
+                    fileContentType = upload.ContentType;
+
+                    // Saving info.
+                    TBL_FILE newFile = new TBL_FILE();
+                    newFile.file_id = 0;
+                    newFile.file_name = upload.FileName;
+                    newFile.file_ext = fileContentType;
+                    newFile.file_base6 = fileContent;
+                    this.db.TBL_FILE.Add(newFile);
+                    int flag = db.SaveChanges();
+                    //end test luu file to DB
+                    if (flag == 1)
+                    {
+                        hopdong.FILE_ID = newFile.file_id;
+                        hopdong.FILE = newFile.file_name;
+                    }
                 }
+
                 THANHVIEN user = db.THANHVIENs.SingleOrDefault(n => n.TENTRUYCAP == User.Identity.Name);
                 hopdong.USER = user.TENTRUYCAP;
                 db.HOPDONG_DT_CNTT.Add(hopdong);
@@ -186,29 +198,34 @@ namespace QLHD.Controllers
         
             var HDCNTT = db.HOPDONG_DT_CNTT.Find(HDCNTT_ID);
 
+            string fileContent = string.Empty;
+            string fileContentType = string.Empty;
             if (upload != null && upload.ContentLength > 0)
-                try
-                {
-                    string path = Path.Combine(Server.MapPath("~/Content/HD_CNTT"),
-                                                   Path.GetFileName(upload.FileName));
-                    upload.SaveAs(path);
-                    ViewBag.Message = "File uploaded successfully";
-                    HDCNTT.FILE = upload.FileName;
-
-                    //var fileName = Path.GetFileName(upload.FileName);
-                    //var path = Path.Combine(Server.MapPath("~/Content/HD_DOANHTHU"), fileName);
-                    //upload.SaveAs(path);
-                    //HDCNTT.FILE = upload.FileName;
-                }
-                catch (Exception ex)
-                {
-                    ViewBag.Message = "ERROR:" + ex.Message.ToString();
-                }
-            else
             {
-                ViewBag.Message = "You have not specified a file.";
-            }
+                //start test luu file to DB
+                // Converting to bytes.  
+                byte[] uploadedFile = new byte[upload.InputStream.Length];
+                upload.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
 
+                // Initialization.  
+                fileContent = Convert.ToBase64String(uploadedFile);
+                fileContentType = upload.ContentType;
+
+                // Saving info.
+                TBL_FILE newFile = new TBL_FILE();
+                newFile.file_id = 0;
+                newFile.file_name = upload.FileName;
+                newFile.file_ext = fileContentType;
+                newFile.file_base6 = fileContent;
+                this.db.TBL_FILE.Add(newFile);
+                int flag = db.SaveChanges();
+                //end test luu file to DB
+                if (flag == 1)
+                {
+                    HDCNTT.FILE_ID = newFile.file_id;
+                    HDCNTT.FILE = newFile.file_name;
+                }
+            }
             THANHVIEN user = db.THANHVIENs.SingleOrDefault(n => n.TENTRUYCAP == User.Identity.Name);
             int id_taikhoan = user.ID_THANHVIEN;
             if (TryUpdateModel(HDCNTT, "",
@@ -352,29 +369,45 @@ namespace QLHD.Controllers
         public ActionResult ExportData(int HDCNTT_ID)
         {
             HOPDONG_DT_CNTT hd = db.HOPDONG_DT_CNTT.Find(HDCNTT_ID);
-            String filename = hd.FILE;
-            if (filename == null)
+            TBL_FILE fileInfo = new TBL_FILE();
+            // Model binding.  
+            try
             {
-                ViewBag.baoloi = "Hợp đồng này chưa lưu file!!";
-                return RedirectToAction("Index");
+                // Loading dile info.  
+                fileInfo = this.db.TBL_FILE.Where(n => n.file_id == hd.FILE_ID).FirstOrDefault();
+
+                // Info.  
+                return this.GetFile(fileInfo.file_base6, fileInfo.file_ext, fileInfo.file_name);
             }
-            string filepath = AppDomain.CurrentDomain.BaseDirectory + "/Content/HD_CNTT/" + filename;
-
-
-            byte[] filedata = System.IO.File.ReadAllBytes(filepath);
-
-            string contentType = MimeMapping.GetMimeMapping(filepath);
-
-            var cd = new System.Net.Mime.ContentDisposition
+            catch (Exception ex)
             {
-                FileName = filename,
-                Inline = true,
-            };
-
-            Response.AppendHeader("Content-Disposition", cd.ToString());
-
-            return File(filedata, contentType);
+                // Info  
+                Console.Write(ex);
+            }
+            return File(fileInfo.file_base6, fileInfo.file_ext);
             //return RedirectToAction("Index");
+        }
+
+        private FileResult GetFile(string fileContent, string fileContentType, string filename)
+        {
+            // Initialization.  
+            FileResult file = null;
+
+            try
+            {
+                // Get file.  
+                byte[] byteContent = Convert.FromBase64String(fileContent);
+                file = this.File(byteContent, fileContentType);
+                file.FileDownloadName = filename;
+            }
+            catch (Exception ex)
+            {
+                // Info.  
+                throw ex;
+            }
+
+            // info.  
+            return file;
         }
 
         public void luulichsuchinhsua(int? loaihd, int? idhd, int? taikhoan)

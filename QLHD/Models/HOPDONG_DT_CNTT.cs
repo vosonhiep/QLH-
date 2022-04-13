@@ -52,6 +52,7 @@ namespace QLHD.Models
         public Nullable<decimal> VAT { get; set; }
         public Nullable<int> SO_CHUKY { get; set; }
         public Nullable<int> TRANGTHAI { get; set; }
+        public Nullable<int> FILE_ID { get; set; }
     
         public virtual CHUKY_TT CHUKY_TT { get; set; }
         public virtual DM_CHUTHE_HOPDONG DM_CHUTHE_HOPDONG { get; set; }

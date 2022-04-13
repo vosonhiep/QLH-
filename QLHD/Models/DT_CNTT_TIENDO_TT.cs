@@ -24,8 +24,9 @@ namespace QLHD.Models
         public string NGAY_HOADON { get; set; }
         public Nullable<int> TRANGTHAI_XUAT_HOADON { get; set; }
         public Nullable<int> TRANGTHAI_TT { get; set; }
-        public string file { get; set; }
+        public string FILE { get; set; }
         public string GHICHU { get; set; }
+        public Nullable<int> FILE_ID { get; set; }
     
         public virtual HOPDONG_DT_CNTT HOPDONG_DT_CNTT { get; set; }
     }
