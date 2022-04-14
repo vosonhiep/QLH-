@@ -279,6 +279,7 @@ namespace QLHD.Controllers
                 Response.StatusCode = 404;
                 return null;
             }
+            db.DT_CNTT_TIENDO_TT.RemoveRange(db.DT_CNTT_TIENDO_TT.Where(x => x.HOPDONG_DT_CNTT_ID == HDCNTT_ID));
             db.HOPDONG_DT_CNTT.Remove(HDCNTT);
             db.SaveChanges();
             return RedirectToAction("Index", "HDCNTT");
@@ -413,11 +414,69 @@ namespace QLHD.Controllers
             return file;
         }
 
+        List<TRANGTHAI_HOADON> trangthai_hoadon = new List<TRANGTHAI_HOADON>()
+            {
+                new TRANGTHAI_HOADON(1, "Đã xuất"),
+                new TRANGTHAI_HOADON(0, "Chưa xuất")
+            };
+
         [HttpGet]
         public PartialViewResult EditTienDoTT(int? HDCNTT_ID, int? TIENDO_ID)
         {
-            return PartialView(db.DT_CNTT_TIENDO_TT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID && n.TIENDO_TT_ID == TIENDO_ID));
+            ViewBag.edit = TIENDO_ID; // + "edit";
+            ViewBag.TT_HOADON = new SelectList(trangthai_hoadon, "TRANGTHAI_XUAT_HOADON", "TRANGTHAI_HOADON_VALUE");
+            var td = db.DT_CNTT_TIENDO_TT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID && n.TIENDO_TT_ID == TIENDO_ID);
+            return PartialView(td);
         }
+
+        public ActionResult ExportDataTienDo(int HDCNTT_ID, int TIENDO_ID)
+        {
+            DT_CNTT_TIENDO_TT td = db.DT_CNTT_TIENDO_TT.Where(x => x.HOPDONG_DT_CNTT_ID == HDCNTT_ID && x.TIENDO_TT_ID == TIENDO_ID).FirstOrDefault();
+            TBL_FILE fileInfo = new TBL_FILE();
+            // Model binding.  
+            try
+            {
+                // Loading dile info.  
+                fileInfo = this.db.TBL_FILE.Where(n => n.file_id == td.FILE_ID).FirstOrDefault();
+
+                // Info.  
+                return this.GetFile(fileInfo.file_base6, fileInfo.file_ext, fileInfo.file_name);
+            }
+            catch (Exception ex)
+            {
+                // Info  
+                Console.Write(ex);
+            }
+            return File(fileInfo.file_base6, fileInfo.file_ext);
+            //return RedirectToAction("Index");
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditTienDoTTPost(int idHDCNTT, int idTD)
+        {
+            DT_CNTT_TIENDO_TT td = db.DT_CNTT_TIENDO_TT.Where(x => x.HOPDONG_DT_CNTT_ID == idHDCNTT && x.TIENDO_TT_ID == idTD).FirstOrDefault();
+            if (TryUpdateModel(td, "",
+               new string[] { "DOT_TT", "GIATRI_TT", "THOIGIAN_TT", "THOIHAN_TT", "SO_HOADON",
+                               "NGAY_HOADON", "TRANGTHAI_XUAT_HOADON", "TRANGTHAI_TT", "FILE", "GHICHU"}))
+            {
+                try
+                {
+                    db.SaveChanges();
+
+                    return RedirectToAction("EditHDCNTT", "HDCNTT", new { @HDCNTT_ID = td.HOPDONG_DT_CNTT_ID });
+                }
+                catch (RetryLimitExceededException /* dex */)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
+            }
+            return View(td);
+        }
+
+
 
         public void luulichsuchinhsua(int? loaihd, int? idhd, int? taikhoan)
         {

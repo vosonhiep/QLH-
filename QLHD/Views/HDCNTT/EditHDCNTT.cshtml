@@ -95,7 +95,7 @@
                                     <div class="col-md-5">
                                         @if (Model.NGAY_HD.HasValue)
                                         {
-                                            <input type="datetime" class="form-control" name="NGAY_HD" value="@Model.NGAY_HD.Value." />
+                                            <input type="datetime" class="form-control" name="NGAY_HD" value="@Model.NGAY_HD.Value.ToString("dd/MM/yyyy")" />
                                         }
                                         else
                                         {
@@ -416,14 +416,8 @@
                                         <label style="float: left">Ngày hết hạn BLTHHĐ:</label>
                                     </div>
                                     <div class="col-md-3">
-                                        @if (Model.NGAY_HETHAN_BLTHHD.HasValue)
-                                        {
-                                            <input type="datetime" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" disabled value="@Model.NGAY_HETHAN_BLTHHD.Value.ToString("dd/MM/yyyy")" />
-                                        }
-                                        else
-                                        {
-                                            <input type="date" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" disabled />
-                                        }
+                                        <input type="date" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" readonly />
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -434,7 +428,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <input type="number" id="TONG_GT" class="form-control" name="TONG_GT" />
-                                        <input class="form-control" type="text" id="tong_gt" placeholder="VNĐ" disabled />
+                                        <input class="form-control" type="text" id="tong_gt" placeholder="VNĐ" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -462,9 +456,7 @@
                                                 <th class="col-md-1">
                                                     Tiến độ thanh toán
                                                 </th>
-                                                <th class="col-md-2">
-                                                    Hồ sơ thanh toán
-                                                </th>
+
                                                 <th class="col-md-1">
                                                     Thời gian thanh toán
                                                 </th>
@@ -486,41 +478,52 @@
                                             {
                                                 <tr class="noidunghd">
                                                     <td class="col-md-1">
-                                                        <input type="text" id="DOT_TT" class="form-control" name="DOT_TT" value="Thanh toán đợt @item.DOT_TT" />
+                                                        @item.DOT_TT
+                                                        @*<input type="text" id="DOT_TT" class="form-control" name="DOT_TT" value="Thanh toán đợt @item.DOT_TT" />*@
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        @item.THOIGIAN_TT
+                                                        @*<input type="number" id="THOIGIAN_TT" class="form-control" name="THOIGIAN_TT" value="@item.THOIGIAN_TT" />*@
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        @item.THOIHAN_TT.Value.ToString("dd/MM/yyyy")
+                                                        @*<input type="datetime" id="TIENDO_TT_ID" class="form-control" name="TIENDO_TT_ID" value="@item.THOIHAN_TT.Value.ToString("dd/MM/yyyy")" />*@
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        @item.GIATRI_TT
+                                                        @*<input type="number" id="GIATRI_TT" class="form-control" name="GIATRI_TT" value="@item.GIATRI_TT" />*@
                                                     </td>
                                                     <td class="col-md-2">
-                                                        <textarea class="form-control">- Biên bản nghiệm thu thanh toán đợt 1 -Hóa đơn tài chính -Công văn đề nghị thanh toán</textarea>
+                                                        Bên A thanh toán cho bên B tiền thuê @item.HOPDONG_DT_CNTT.CHUKY_TT.CHUKY.ToString();
+                                                        @*<textarea class="form-control" name="">Bên A thanh toán cho bên B tiền thuê 12 tháng </textarea>*@
                                                     </td>
-                                                    <td class="col-md-1">
-                                                        <input type="number" id="THOIGIAN_TT" class="form-control" name="THOIGIAN_TT" value="@item.THOIGIAN_TT" />
-                                                    </td>
-                                                    <td class="col-md-1">
-                                                        <input type="datetime" id="TIENDO_TT_ID" class="form-control" name="TIENDO_TT_ID" value="@item.THOIHAN_TT.Value.ToString("dd/MM/yyyy")" />
 
-                                                    </td>
-                                                    <td class="col-md-1">
-                                                        <input type="number" id="GIATRI_TT" class="form-control" name="GIATRI_TT" value="@item.GIATRI_TT" />
-                                                    </td>
-                                                    <td class="col-md-2">
-                                                        <textarea class="form-control" name="">Bên A thanh toán cho bên B tiền thuê 12 tháng </textarea>
-                                                    </td>
-                                                    <td class="col-md-1">
-                                                        <select class="form-control" name="TRANGTHAI_XUAT_HOADON" id="trangthai_xuat_hoadon">
+                                                    @if (item.TRANGTHAI_XUAT_HOADON == 1)
+                                                    {
+                                                        <td class="col-md-1">Đã xuất</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="col-md-1">Chưa xuất</td>
+                                                    }
+                                                    @*<select class="form-control" name="TRANGTHAI_XUAT_HOADON" id="trangthai_xuat_hoadon">
                                                             <option value="0">Chưa xuất</option>
                                                             <option value="1">Đã xuất</option>
-                                                        </select>
+                                                        </select>*@
+                                                    
+                                                    <td class="col-md-1">
+                                                        @item.SO_HOADON
+                                                        @*<input type="text" id="SO_HOADON" class="form-control" name="SO_HOADON" value="@item.SO_HOADON" />*@
                                                     </td>
                                                     <td class="col-md-1">
-                                                        <input type="text" id="SO_HOADON" class="form-control" name="SO_HOADON" value="@item.SO_HOADON" />
+                                                        @item.NGAY_HOADON
+                                                        @*<input type="text" id="NGAY_HOADON" class="form-control" name="NGAY_HOADON" value="@item.NGAY_HOADON" />*@
                                                     </td>
-                                                    <td class="col-md-1">
-                                                        <input type="text" id="NGAY_HOADON" class="form-control" name="NGAY_HOADON" value="@item.NGAY_HOADON" />
-                                                    </td>
-                                                    <td class="col-md-1">
+                                                    <td>
                                                         @*@Html.ActionLink(" ", "EditTienDoTT", new { @HDCNTT_ID = @item.HOPDONG_DT_CNTT_ID, @TIENDO_ID = item.TIENDO_TT_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })*@
                                                         @Html.Action("EditTienDoTT", "HDCNTT", new { @HDCNTT_ID = @item.HOPDONG_DT_CNTT_ID, @TIENDO_ID = @item.TIENDO_TT_ID })
                                                         @*|
-                                                        @Html.ActionLink(" ", "DeleteTienDo", new { @HDCNTT_ID = @item.HOPDONG_DT_CNTT_ID, @TIENDO_ID = @item.TIENDO_TT_ID }, new { @class = "glyphicon glyphicon-trash", @style = "font-size: 20px", title = "Xóa" })*@
+                                                            @Html.ActionLink(" ", "DeleteTienDo", new { @HDCNTT_ID = @item.HOPDONG_DT_CNTT_ID, @TIENDO_ID = @item.TIENDO_TT_ID }, new { @class = "glyphicon glyphicon-trash", @style = "font-size: 20px", title = "Xóa" })*@
                                                     </td>
                                                 </tr>
                                             }
@@ -602,39 +605,15 @@
         });
     });
 
-    function sum_tong() {
-        //alert("tesst");
+    function sum_tong3() {
         var tong1 = 0;
-        var thang1 = $('#thang').val();
-        var vat1 = $('#vat1').val();
-        var vat = (vat1 * thang1) / 100;
-        tong1 = parseFloat(thang1) + parseFloat(vat);
-        $("input[name='thang_gt']").val(tong1);
-        sum_tong2();
+        var giatri_phancung_hd = $('#giatri_phancung_hd').val();
+        var giatri_dichvu_hd = $('#giatri_dichvu_hd').val();
+
+        tong1 = parseFloat(giatri_phancung_hd) + parseFloat(giatri_dichvu_hd);
+        $('#tong_gt').val(tong1);
     }
 
-    function sum_tong2() {
-        var kt1 = $('#ngay_kt').val();
-        var bd1 = $('#ngay_bd').val();
-        var bd = new Date(bd1.replace(/(\d{2})[-/](\d{2})[-/](\d+)/, "$2/$1/$3"));
-        var kt = new Date(kt1.replace(/(\d{2})[-/](\d{2})[-/](\d+)/, "$2/$1/$3"));
-        var sogiay = Math.abs(kt - bd);
-        var sothang = Math.round(sogiay / (86400000 * 30));
-        var tien = $('#thang_gt').val();
-        var chuky = $('#CHUKY_ID').val();
-
-        $.ajax({
-            type: 'GET',
-            url: '@Url.Action("getChuKyTT","HDCNTT")',
-            data: { chuky: chuky },
-            success: function (data) {
-                var sochuky = Math.round(sothang / data.thang);
-                var tong = tien * sochuky * data.thang;
-                $('#SO_CHUKY').val(sochuky);
-                $('#tong_gt').val(tong);
-            }
-        });
-    }
 
     function sum_date() {
         var date = $('#NGAY_BLTHHD').val();
@@ -645,7 +624,7 @@
         date1.setFullYear(parseInt(myArray[2]));
         var days = parseInt($('#THOIGIAN_BLTHHD').val());
         date1.setDate(date1.getDate() + days);
-        document.getElementById('NGAY_HETHAN_BLTHHD').value = ('0' + date1.getDate()).slice(-2) + "/" + ('0' + (date1.getMonth() + 1)).slice(-2) + "/" + date1.getFullYear(); //date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+        document.getElementById('NGAY_HETHAN_BLTHHD').value = date1.getFullYear() + '-' + ('0' + (date1.getMonth() + 1)).slice(-2) + '-' + ('0' + date1.getDate()).slice(-2);
     }
 
 </script>

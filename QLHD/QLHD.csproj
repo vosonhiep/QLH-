@@ -367,9 +367,6 @@
     <Compile Include="Models\PL_HD_DOANHTHU_CNTT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TBL_FILE.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -420,6 +417,7 @@
     <Compile Include="ViewModel\LOAITIENTRINH.cs" />
     <Compile Include="ViewModel\TIENDO_Model.cs" />
     <Compile Include="ViewModel\TIENTRINH_Model.cs" />
+    <Compile Include="ViewModel\TRANGTHAI_HOADON.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\animate.min.css" />
@@ -1469,6 +1467,7 @@
     <Content Include="Views\HDCNTT\DSThanhToan_HDCNTT.cshtml" />
     <Content Include="Views\HDCNTT\ThanhToanHDCNTT.cshtml" />
     <Content Include="Views\HDCNTT\partialSearch.cshtml" />
+    <Content Include="Views\HDCNTT\EditTienDoTT.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\HD_CHIPHI\" />

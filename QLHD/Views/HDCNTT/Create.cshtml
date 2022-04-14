@@ -90,7 +90,7 @@
                                     <label style="float: right">Ngày lập hợp đồng:</label>
                                 </div>
                                 <div class="col-md-5">
-                                    <input type="date" class="form-control" name="NGAY_HD" required="required" />
+                                    <input type="date" class="form-control" id="NGAY_HD" name="NGAY_HD" onchange="setDate()" required="required" />
                                 </div>
                             </div>
                         </div>
@@ -322,7 +322,7 @@
                                     <label style="float: left">Ngày hiệu lực HĐ:</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="date" class="form-control" name="NGAY_HIEULUC_HD" />
+                                    <input type="date" class="form-control" id="NGAY_HIEULUC_HD" name="NGAY_HIEULUC_HD" />
                                 </div>
 
                                 <div class="control-label col-md-3">
@@ -358,7 +358,7 @@
                                     <label style="float: left">Thời gian BLTHHD:</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="number" id="THOIGIAN_BLTHHD" onchange="sum_date()" class="form-control" name="THOIGIAN_BLTHHD" />
+                                    <input type="number" id="THOIGIAN_BLTHHD" onchange="sum_date()" class="form-control" name="THOIGIAN_BLTHHD" value="0" />
                                 </div>
                             </div>
                         </div>
@@ -385,7 +385,7 @@
                                     <label style="float: left">Ngày hết hạn BLTHHĐ:</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="date" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" disabled />
+                                    <input type="date" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" readonly />
                                 </div>
                             </div>
                         </div>
@@ -396,7 +396,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <input type="number" id="TONG_GT" class="form-control" name="TONG_GT" />
-                                    <input class="form-control" type="text" id="tong_gt" placeholder="VNĐ" disabled />
+                                    <input class="form-control" type="text" id="tong_gt" placeholder="VNĐ" readonly />
                                 </div>
                             </div>
                         </div>
@@ -488,8 +488,18 @@
     function sum_date() {
         var date = new Date($('#NGAY_BLTHHD').val());
         var days = parseInt($('#THOIGIAN_BLTHHD').val());
+        
         date.setDate(date.getDate() + days);
+        //var ngayhethan = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+        //$('#NGAY_HETHAN_BLTHHD').val(ngayhethan);
         document.getElementById('NGAY_HETHAN_BLTHHD').value = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+    }
+    function setDate() {
+        var date = new Date($('#NGAY_HD').val());
+        date.setDate(date.getDate() + 1);
+        document.getElementById('NGAY_BLTHHD').value = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+        document.getElementById('NGAY_HIEULUC_HD').value = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+        sum_date();
     }
 
 </script>
