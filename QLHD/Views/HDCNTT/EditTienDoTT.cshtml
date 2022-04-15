@@ -5,7 +5,7 @@
 <div class="modal fade" id="@ViewBag.edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            @using (Html.BeginForm("editTTPost", "HDCNTT", new {idHDCNTT = Model.HOPDONG_DT_CNTT_ID, idTD = @Model.TIENDO_TT_ID }, FormMethod.Post, null))
+            @using (Html.BeginForm("EditTienDoTTPost", "HDCNTT", new {@idHDCNTT = @Model.HOPDONG_DT_CNTT_ID, @idTD = @Model.TIENDO_TT_ID }, FormMethod.Post, null))
             {
                 @Html.AntiForgeryToken()
                 <div class="modal-header">
@@ -30,7 +30,7 @@
                                     <label style="float: right">Đợt thanh toán:</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" required="required" value="@Model.DOT_TT" readonly />
+                                    <input type="text" name="DOT_TT" class="form-control" required="required" value="@Model.DOT_TT" readonly />
                                 </div>
                             </div>
                         </div>
@@ -54,6 +54,10 @@
                                     {
                                         <input type="datetime" class="form-control" name="THOIHAN_TT" required="required" value="@Model.THOIHAN_TT.Value.ToString("dd/MM/yyyy")" />
                                     }
+                                    else
+                                    {
+                                        <input type="date" class="form-control" name="THOIHAN_TT" required="required" />
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -63,7 +67,7 @@
                                     <label style="float: right">Số tiền thanh toán:</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="number" class="form-control" name="THOIGIAN_TT" value="@Model.GIATRI_TT" />
+                                    <input type="number" class="form-control" name="GIATRI_TT" value="@Model.GIATRI_TT" />
                                 </div>
                             </div>
                         </div>
@@ -73,7 +77,7 @@
                                     <label style="float: right">Diễn giải:</label>
                                 </div>
                                 <div class="col-md-10">
-                                    <input class="form-control" name="GHICHU" rows="4" placeholder="Hồ sơ thanh toán" value="Bên A thanh toán cho bên B tiền thuê + @Model.HOPDONG_DT_CNTT.CHUKY_TT.CHUKY.ToString() " />
+                                    <input class="form-control" rows="4" placeholder="Hồ sơ thanh toán" value="Bên A thanh toán cho bên B tiền thuê @Model.HOPDONG_DT_CNTT.CHUKY_TT.CHUKY.ToString()" readonly/>
                                 </div>
                             </div>
                         </div>
@@ -84,10 +88,6 @@
                                 </div>
                                 <div class="col-md-8">
                                     @Html.DropDownList("TRANGTHAI_XUAT_HOADON", (IEnumerable<SelectListItem>)ViewBag.TT_HOADON, "--Chọn--", new { @class = "form-control", required = "required" })
-                                    @*<select class="form-control" name="TRANGTHAI_XUAT_HOADON" id="trangthai_xuat_hoadon">
-                        <option value="0">Chưa xuất</option>
-                        <option value="1">Đã xuất</option>
-                    </select>*@
                                 </div>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                                     <label style="float: right">Ngày hóa đơn:</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" id="SO_HOADON" class="form-control" name="SO_HOADON" value="@Model.SO_HOADON" />
+                                    <input type="datetime" id="NGAY_HOADON" class="form-control" name="NGAY_HOADON" value="@Model.NGAY_HOADON.Value.ToString("dd/MM/yyyy")" />
                                 </div>
                             </div>
                         </div>

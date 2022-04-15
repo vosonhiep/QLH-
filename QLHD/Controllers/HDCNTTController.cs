@@ -175,15 +175,12 @@ namespace QLHD.Controllers
             ViewBag.THOIHAN_TT = new SelectList(db.THOIHAN_TT.ToList().OrderBy(n => n.THOIHAN_TT_ID), "THOIHAN_TT_ID", "TEN_THOIHAN_TT");
 
             HOPDONG_DT_CNTT HDcntt = db.HOPDONG_DT_CNTT.Find(HDCNTT_ID);
-            //List<DT_CNTT_TIENDO_TT> listTDTT = new List<DT_CNTT_TIENDO_TT>()
-            //{
-            //    new DT_CNTT_TIENDO_TT(1, HDcntt.HOPDONG_DT_CNTT_ID, 1,  3500000, 30, DateTime.Now, "HD01", "13/04/2022", 1, 1, "CT_06A.xls", "", 1),
-            //}
-            ViewBag.listTDTT = db.DT_CNTT_TIENDO_TT.Where(n => n.HOPDONG_DT_CNTT_ID == HDcntt.HOPDONG_DT_CNTT_ID).OrderBy(x => x.TIENDO_TT_ID).ToList(); ;
+            
             if (HDcntt == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.listTDTT = db.DT_CNTT_TIENDO_TT.Where(n => n.HOPDONG_DT_CNTT_ID == HDcntt.HOPDONG_DT_CNTT_ID).OrderBy(x => x.TIENDO_TT_ID).ToList();
             return View(HDcntt);
         }
 
@@ -292,11 +289,12 @@ namespace QLHD.Controllers
         public ActionResult ShowHDCNTT(int maHD)
         {
             HOPDONG_DT_CNTT hd = db.HOPDONG_DT_CNTT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == maHD);
+            
             if (hd == null)
             {
                 return RedirectToAction("baoloi", "Home");
             }
-
+            ViewBag.listTDTT = db.DT_CNTT_TIENDO_TT.Where(n => n.HOPDONG_DT_CNTT_ID == hd.HOPDONG_DT_CNTT_ID).OrderBy(x => x.TIENDO_TT_ID).ToList();
             return View(hd);
         }
 
@@ -423,10 +421,65 @@ namespace QLHD.Controllers
         [HttpGet]
         public PartialViewResult EditTienDoTT(int? HDCNTT_ID, int? TIENDO_ID)
         {
-            ViewBag.edit = TIENDO_ID; // + "edit";
+            ViewBag.edit = TIENDO_ID + HDCNTT_ID + "edit";
             ViewBag.TT_HOADON = new SelectList(trangthai_hoadon, "TRANGTHAI_XUAT_HOADON", "TRANGTHAI_HOADON_VALUE");
             var td = db.DT_CNTT_TIENDO_TT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID && n.TIENDO_TT_ID == TIENDO_ID);
-            return PartialView(td);
+            return PartialView(db.DT_CNTT_TIENDO_TT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID && n.TIENDO_TT_ID == TIENDO_ID));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditTienDoTTPost(int idHDCNTT, int idTD, HttpPostedFileBase upload)
+        {
+            DT_CNTT_TIENDO_TT td = db.DT_CNTT_TIENDO_TT.Where(x => x.HOPDONG_DT_CNTT_ID == idHDCNTT && x.TIENDO_TT_ID == idTD).FirstOrDefault();
+            
+           
+            string fileContent = string.Empty;
+            string fileContentType = string.Empty;
+            if (upload != null && upload.ContentLength > 0)
+            {
+                //start test luu file to DB
+                // Converting to bytes.  
+                byte[] uploadedFile = new byte[upload.InputStream.Length];
+                upload.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
+
+                // Initialization.  
+                fileContent = Convert.ToBase64String(uploadedFile);
+                fileContentType = upload.ContentType;
+
+                // Saving info.
+                TBL_FILE newFile = new TBL_FILE();
+                newFile.file_id = 0;
+                newFile.file_name = upload.FileName;
+                newFile.file_ext = fileContentType;
+                newFile.file_base6 = fileContent;
+                this.db.TBL_FILE.Add(newFile);
+                int flag = db.SaveChanges();
+                //end test luu file to DB
+                if (flag == 1)
+                {
+                    td.FILE_ID = newFile.file_id;
+                    td.FILE = newFile.file_name;
+                }
+            }
+
+            if (TryUpdateModel(td, "",
+                   new string[] { "DOT_TT", "GIATRI_TT", "THOIGIAN_TT", "THOIHAN_TT", "SO_HOADON",
+                                   "NGAY_HOADON", "TRANGTHAI_XUAT_HOADON", "TRANGTHAI_TT", "FILE", "GHICHU"}))
+                {
+                try
+                {
+                    db.SaveChanges();
+
+                    return RedirectToAction("EditHDCNTT", "HDCNTT", new { @HDCNTT_ID = td.HOPDONG_DT_CNTT_ID });
+                }
+                catch (RetryLimitExceededException /* dex */)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
+            }
+            return View(td);
         }
 
         public ActionResult ExportDataTienDo(int HDCNTT_ID, int TIENDO_ID)
@@ -450,32 +503,6 @@ namespace QLHD.Controllers
             return File(fileInfo.file_base6, fileInfo.file_ext);
             //return RedirectToAction("Index");
         }
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditTienDoTTPost(int idHDCNTT, int idTD)
-        {
-            DT_CNTT_TIENDO_TT td = db.DT_CNTT_TIENDO_TT.Where(x => x.HOPDONG_DT_CNTT_ID == idHDCNTT && x.TIENDO_TT_ID == idTD).FirstOrDefault();
-            if (TryUpdateModel(td, "",
-               new string[] { "DOT_TT", "GIATRI_TT", "THOIGIAN_TT", "THOIHAN_TT", "SO_HOADON",
-                               "NGAY_HOADON", "TRANGTHAI_XUAT_HOADON", "TRANGTHAI_TT", "FILE", "GHICHU"}))
-            {
-                try
-                {
-                    db.SaveChanges();
-
-                    return RedirectToAction("EditHDCNTT", "HDCNTT", new { @HDCNTT_ID = td.HOPDONG_DT_CNTT_ID });
-                }
-                catch (RetryLimitExceededException /* dex */)
-                {
-                    //Log the error (uncomment dex variable name and add a line here to write a log.
-                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
-                }
-            }
-            return View(td);
-        }
-
 
 
         public void luulichsuchinhsua(int? loaihd, int? idhd, int? taikhoan)

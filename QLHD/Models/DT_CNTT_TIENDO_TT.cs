@@ -21,7 +21,7 @@ namespace QLHD.Models
         public Nullable<decimal> THOIGIAN_TT { get; set; }
         public Nullable<System.DateTime> THOIHAN_TT { get; set; }
         public string SO_HOADON { get; set; }
-        public string NGAY_HOADON { get; set; }
+        public Nullable<System.DateTime> NGAY_HOADON { get; set; }
         public Nullable<int> TRANGTHAI_XUAT_HOADON { get; set; }
         public Nullable<int> TRANGTHAI_TT { get; set; }
         public string FILE { get; set; }

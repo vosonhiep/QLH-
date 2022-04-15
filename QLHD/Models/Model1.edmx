@@ -95,7 +95,7 @@
           <Property Name="THOIGIAN_TT" Type="numeric" Precision="38" Scale="0" />
           <Property Name="THOIHAN_TT" Type="date" />
           <Property Name="SO_HOADON" Type="nvarchar" MaxLength="100" />
-          <Property Name="NGAY_HOADON" Type="nvarchar" MaxLength="100" />
+          <Property Name="NGAY_HOADON" Type="date" />
           <Property Name="TRANGTHAI_XUAT_HOADON" Type="int" />
           <Property Name="TRANGTHAI_TT" Type="int" />
           <Property Name="FILE" Type="nvarchar" MaxLength="100" />
@@ -1530,7 +1530,7 @@
           <Property Name="THOIGIAN_TT" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="THOIHAN_TT" Type="DateTime" Precision="0" />
           <Property Name="SO_HOADON" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="NGAY_HOADON" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NGAY_HOADON" Type="DateTime" Precision="0" />
           <Property Name="TRANGTHAI_XUAT_HOADON" Type="Int32" />
           <Property Name="TRANGTHAI_TT" Type="Int32" />
           <Property Name="FILE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />

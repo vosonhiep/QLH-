@@ -516,7 +516,7 @@
                                                         @*<input type="text" id="SO_HOADON" class="form-control" name="SO_HOADON" value="@item.SO_HOADON" />*@
                                                     </td>
                                                     <td class="col-md-1">
-                                                        @item.NGAY_HOADON
+                                                        @item.NGAY_HOADON.Value.ToString("dd/MM/yyyy")
                                                         @*<input type="text" id="NGAY_HOADON" class="form-control" name="NGAY_HOADON" value="@item.NGAY_HOADON" />*@
                                                     </td>
                                                     <td>
@@ -535,6 +535,7 @@
                         </div>
                     </div>
                 </div>
+                @* Ghi chú *@
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">
