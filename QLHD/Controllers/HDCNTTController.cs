@@ -180,11 +180,11 @@ namespace QLHD.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.listTDTT = db.DT_CNTT_TIENDO_TT.Where(n => n.HOPDONG_DT_CNTT_ID == HDcntt.HOPDONG_DT_CNTT_ID).OrderBy(x => x.TIENDO_TT_ID).ToList();
+            ViewBag.listTDTT = db.DT_CNTT_TIENDO_TT.Where(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID).OrderBy(x => x.TIENDO_TT_ID).ToList();
             return View(HDcntt);
         }
 
-        [HttpPost]//, ActionName("EditHDDoanhThu")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
         public ActionResult EditHDCNTTPost(int? HDCNTT_ID, HttpPostedFileBase upload)
@@ -421,9 +421,8 @@ namespace QLHD.Controllers
         [HttpGet]
         public PartialViewResult EditTienDoTT(int? HDCNTT_ID, int? TIENDO_ID)
         {
-            ViewBag.edit = TIENDO_ID + HDCNTT_ID + "edit";
+            ViewBag.edit = TIENDO_ID + "edit";
             ViewBag.TT_HOADON = new SelectList(trangthai_hoadon, "TRANGTHAI_XUAT_HOADON", "TRANGTHAI_HOADON_VALUE");
-            var td = db.DT_CNTT_TIENDO_TT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID && n.TIENDO_TT_ID == TIENDO_ID);
             return PartialView(db.DT_CNTT_TIENDO_TT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID && n.TIENDO_TT_ID == TIENDO_ID));
         }
 
@@ -481,6 +480,25 @@ namespace QLHD.Controllers
             }
             return View(td);
         }
+
+        [HttpGet]
+        public PartialViewResult DeleteTienDoTT(int? HDCNTT_ID, int? TIENDO_ID)
+        {
+            ViewBag.delete = TIENDO_ID + "delete";
+            return PartialView(db.DT_CNTT_TIENDO_TT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID && n.TIENDO_TT_ID == TIENDO_ID));
+        }
+
+        [HttpPost]
+        public ActionResult DeleteTienDoTTPost(int HDCNTT_ID, int TIENDO_ID)
+        {
+            DT_CNTT_TIENDO_TT thanhtoan = db.DT_CNTT_TIENDO_TT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID && n.TIENDO_TT_ID == TIENDO_ID);
+            int idhdcntt = thanhtoan.HOPDONG_DT_CNTT_ID;
+            
+            db.DT_CNTT_TIENDO_TT.Remove(thanhtoan);
+            db.SaveChanges();
+            return RedirectToAction("EditHDCNTT", "HDCNTT", new { @HDCNTT_ID = idhdcntt });
+        }
+
 
         public ActionResult ExportDataTienDo(int HDCNTT_ID, int TIENDO_ID)
         {

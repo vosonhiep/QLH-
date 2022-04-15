@@ -522,8 +522,8 @@
                                                     <td>
                                                         @*@Html.ActionLink(" ", "EditTienDoTT", new { @HDCNTT_ID = @item.HOPDONG_DT_CNTT_ID, @TIENDO_ID = item.TIENDO_TT_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })*@
                                                         @Html.Action("EditTienDoTT", "HDCNTT", new { @HDCNTT_ID = @item.HOPDONG_DT_CNTT_ID, @TIENDO_ID = @item.TIENDO_TT_ID })
-                                                        @*|
-                                                            @Html.ActionLink(" ", "DeleteTienDo", new { @HDCNTT_ID = @item.HOPDONG_DT_CNTT_ID, @TIENDO_ID = @item.TIENDO_TT_ID }, new { @class = "glyphicon glyphicon-trash", @style = "font-size: 20px", title = "Xóa" })*@
+                                                        |
+                                                        @Html.Action("DeleteTienDoTT", "HDCNTT", new { @HDCNTT_ID = @item.HOPDONG_DT_CNTT_ID, @TIENDO_ID = @item.TIENDO_TT_ID })
                                                     </td>
                                                 </tr>
                                             }
