@@ -7,7 +7,7 @@
         <div class="modal-content">
             @using (Html.BeginForm("EditTienDoTTPost", "HDCNTT", new { @idHDCNTT = @Model.HOPDONG_DT_CNTT_ID, @idTD = @Model.TIENDO_TT_ID }, FormMethod.Post, new { @enctype = "multipart/form-data" }))
             {
-                @Html.AntiForgeryToken()
+                //@Html.AntiForgeryToken()
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Chỉnh sửa tiến độ thanh toán</h4>
@@ -114,15 +114,25 @@
                         <div class="col-md-6" style="margin-top: 15px">
                             <div class="form-group">
                                 <div class="control-label col-md-4">
+                                    <label style="float: right">TT thanh toán:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("TRANGTHAI_TT", (IEnumerable<SelectListItem>)ViewBag.TT_THANHTOAN, "--Chọn--", new { @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
                                     <label style="float: right">FILE:</label>
                                 </div>
                                 <div class="col-md-8">
-
+                                    <input type="file" name="upload" class="form-control" id="upload" />
                                     <a href="@Url.Action("ExportDataTienDo", "HDCNTT",new{@HDCNTT_ID = Model.HOPDONG_DT_CNTT_ID,  @TIENDO_ID = Model.TIENDO_TT_ID} )"
                                        style="color:blue">
                                         @Model.FILE
                                     </a>
-                                    <input type="file" name="upload" class="form-control" id="upload" />
+                                    
                                 </div>
                             </div>
                         </div>

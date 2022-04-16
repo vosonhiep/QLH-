@@ -418,16 +418,23 @@ namespace QLHD.Controllers
                 new TRANGTHAI_HOADON(0, "Chưa xuất")
             };
 
+        List<TRANGTHAI_THANHTOAN> trangthai_thanhtoan = new List<TRANGTHAI_THANHTOAN>()
+            {
+                new TRANGTHAI_THANHTOAN(1, "Đã thanh toán"),
+                new TRANGTHAI_THANHTOAN(0, "Chưa thanh toán")
+            };
+
         [HttpGet]
         public PartialViewResult EditTienDoTT(int? HDCNTT_ID, int? TIENDO_ID)
         {
             ViewBag.edit = TIENDO_ID + "edit";
             ViewBag.TT_HOADON = new SelectList(trangthai_hoadon, "TRANGTHAI_XUAT_HOADON", "TRANGTHAI_HOADON_VALUE");
+            ViewBag.TT_THANHTOAN = new SelectList(trangthai_thanhtoan, "TRANGTHAI_THANHTOAN_ID", "TRANGTHAI_THANHTOAN_VALUE");
             return PartialView(db.DT_CNTT_TIENDO_TT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID && n.TIENDO_TT_ID == TIENDO_ID));
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult EditTienDoTTPost(int idHDCNTT, int idTD, HttpPostedFileBase upload)
         {
             DT_CNTT_TIENDO_TT td = db.DT_CNTT_TIENDO_TT.Where(x => x.HOPDONG_DT_CNTT_ID == idHDCNTT && x.TIENDO_TT_ID == idTD).FirstOrDefault();

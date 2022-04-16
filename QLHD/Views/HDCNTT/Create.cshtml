@@ -324,13 +324,18 @@
                                 <div class="col-md-3">
                                     <input type="date" class="form-control" id="NGAY_HIEULUC_HD" name="NGAY_HIEULUC_HD" />
                                 </div>
-
                                 <div class="control-label col-md-3">
+                                    <label style="float: left">Thời gian thuê:</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="number" class="form-control" name="THANG" />
+                                </div>
+                                @*<div class="control-label col-md-3">
                                     <label style="float: left">Ngày BBNT:</label>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="date" class="form-control" name="NGAY_BBNT" />
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                         <div class="col-md-6" style="margin-top: 15px">
@@ -348,18 +353,25 @@
                         <div class="col-md-6" style="margin-top: 15px">
                             <div class="form-group">
                                 <div class="control-label col-md-3">
+                                    <label style="float: left">Ngày BBNT:</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" name="NGAY_BBNT" />
+                                </div>
+
+                                <div class="control-label col-md-3">
                                     <label style="float: left">Giá trị BLTHHD:</label>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" id="GIATRI_BLTHHD" class="form-control" name="GIATRI_BLTHHD" />
                                 </div>
 
-                                <div class="control-label col-md-3">
+                                @*<div class="control-label col-md-3">
                                     <label style="float: left">Thời gian BLTHHD:</label>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" id="THOIGIAN_BLTHHD" onchange="sum_date()" class="form-control" name="THOIGIAN_BLTHHD" value="0" />
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                         <div class="col-md-6" style="margin-top: 15px">
@@ -376,17 +388,25 @@
                         <div class="col-md-6" style="margin-top: 15px">
                             <div class="form-group">
                                 <div class="control-label col-md-3">
+                                    <label style="float: left">Thời gian BLTHHD:</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="number" id="THOIGIAN_BLTHHD" onchange="sum_date()" class="form-control" name="THOIGIAN_BLTHHD" value="0" />
+                                </div>
+
+                                <div class="control-label col-md-3">
                                     <label style="float: left">Ngày BLTHHĐ:</label>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="date" id="NGAY_BLTHHD" class="form-control" onchange="sum_date()" name="NGAY_BLTHHD" />
                                 </div>
-                                <div class="control-label col-md-3">
+
+                                @*<div class="control-label col-md-3">
                                     <label style="float: left">Ngày hết hạn BLTHHĐ:</label>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="date" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" readonly />
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                         <div class="col-md-6" style="margin-top: 15px">
@@ -398,6 +418,15 @@
                                     <input type="number" id="TONG_GT" class="form-control" name="TONG_GT" />
                                     <input class="form-control" type="text" id="tong_gt" placeholder="VNĐ" readonly />
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 15px">
+
+                            <div class="control-label col-md-3">
+                                <label style="float: left">Ngày hết hạn BLTHHĐ:</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="date" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" readonly />
                             </div>
                         </div>
                     </div>

@@ -418,6 +418,7 @@
     <Compile Include="ViewModel\TIENDO_Model.cs" />
     <Compile Include="ViewModel\TIENTRINH_Model.cs" />
     <Compile Include="ViewModel\TRANGTHAI_HOADON.cs" />
+    <Compile Include="ViewModel\TRANGTHAI_THANHTOAN.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\animate.min.css" />
@@ -1468,6 +1469,7 @@
     <Content Include="Views\HDCNTT\ThanhToanHDCNTT.cshtml" />
     <Content Include="Views\HDCNTT\partialSearch.cshtml" />
     <Content Include="Views\HDCNTT\EditTienDoTT.cshtml" />
+    <Content Include="Views\HDCNTT\DeleteTienDoTT.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\HD_CHIPHI\" />
