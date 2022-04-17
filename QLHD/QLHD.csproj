@@ -1470,6 +1470,7 @@
     <Content Include="Views\HDCNTT\partialSearch.cshtml" />
     <Content Include="Views\HDCNTT\EditTienDoTT.cshtml" />
     <Content Include="Views\HDCNTT\DeleteTienDoTT.cshtml" />
+    <Content Include="Views\HDCNTT\PartiaDeleteHDCNTT.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\HD_CHIPHI\" />

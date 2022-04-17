@@ -1,22 +1,4 @@
-﻿@model QLHD.Models.HOPDONG_DT_CNTT
-
-@*@{
-        ViewBag.Title = "Xác nhận xoá";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
-
-    <h2>Xác nhận xóa</h2>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Xóa" class="btn btn-default" /> |
-            @Html.ActionLink("Trở về", "Index")
-        </div>
-    }*@
-
-<button type="button" data-toggle="modal" data-target="#@ViewBag.delete" title="Xóa" class="btn btn-danger btn-sm">
+﻿<button type="button" data-toggle="modal" data-target="#@ViewBag.delete" title="Xóa" class="btn btn-danger btn-sm">
     <i class="glyphicon glyphicon-trash" style="font-size: 15px"></i>
 </button>
 <div class="modal fade" id="@ViewBag.delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -31,7 +13,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-horizontal">
-                        Bạn có chắc muốn xóa lịch sử thanh toán không?
+                        Bạn có chắc muốn xóa hợp đồng này không?
                     </div>
                     <div class="clearfix"></div>
                 </div>

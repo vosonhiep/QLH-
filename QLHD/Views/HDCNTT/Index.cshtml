@@ -109,7 +109,7 @@
                                                     @Html.ActionLink(" ", "EditHDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
                                                 </td>
                                                 <td>
-                                                    @Html.ActionLink(" ", "DeleteHDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-trash", @style = "font-size: 20px", title = "Xóa" })
+                                                    @Html.Action("PartiaDeleteHDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID })
                                                 </td>
                                                 <td>
                                                     @if (item.FILE != null)

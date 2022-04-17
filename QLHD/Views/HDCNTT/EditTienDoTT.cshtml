@@ -107,7 +107,14 @@
                                     <label style="float: right">Ngày hóa đơn:</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="datetime" id="NGAY_HOADON" class="form-control" name="NGAY_HOADON" value="@Model.NGAY_HOADON.Value.ToString("dd/MM/yyyy")" />
+                                    @if (Model.NGAY_HOADON.HasValue)
+                                    {
+                                        <input type="datetime" id="NGAY_HOADON" class="form-control" name="NGAY_HOADON" value="@Model.NGAY_HOADON.Value.ToString("dd/MM/yyyy")" />
+                                    }
+                                    else
+                                    {
+                                        <input type="date" class="form-control" name="NGAY_HOADON" required="required" />
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -132,7 +139,7 @@
                                        style="color:blue">
                                         @Model.FILE
                                     </a>
-                                    
+
                                 </div>
                             </div>
                         </div>
