@@ -700,6 +700,20 @@ namespace QLHD.Controllers
             return View();
         }
 
+        public static List<LOAITIENTRINH> listLoaiTienTrinh = new List<LOAITIENTRINH>()
+            {
+                new LOAITIENTRINH(true, "Viễn thông"),
+                new LOAITIENTRINH(false, "Khách hàng")
+            };
+
+        public static List<LOAI_DUAN> listLoaiDA = new List<LOAI_DUAN>()
+            {
+                new LOAI_DUAN(1, "Phần mềm"),
+                new LOAI_DUAN(2, "Đường truyền"),
+                new LOAI_DUAN(3, "Thiết bị"),
+                new LOAI_DUAN(4, "Hỗn hợp")
+            };
+
         [HttpGet]
         public ActionResult DSDuAn(int? page)
         {
@@ -715,14 +729,74 @@ namespace QLHD.Controllers
         [HttpGet]
         public ActionResult CreateDuAn(int? page)
         {
+            ViewBag.LOAIDA = new SelectList(listLoaiDA, "LOAI_DUAN_ID", "TEN_LOAI_DUAN");
+            ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
+
             return View();
         }
 
-        public static List<LOAITIENTRINH> listLoaiTienTrinh = new List<LOAITIENTRINH>()
+        [HttpPost]
+        public ActionResult CreateDuAnPost(QLDA_CNTT da)
+        {
+            if (ModelState.IsValid)
             {
-                new LOAITIENTRINH(true, "Viễn thông"),
-                new LOAITIENTRINH(false, "Khách hàng")
-            };
+                db.QLDA_CNTT.Add(da);
+                db.SaveChanges();
+
+                //Gọi proceduce generate ds tiến độ DA
+                db.FUNC_GEN_TIENDO_DA(da.DUAN_ID);
+                return RedirectToAction("DSDuAn", "HDCNTT");
+            }
+            else
+                ViewBag.baoloi = "Lưu không thành công!";
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult EditDA(int? maDA)
+        {
+            ViewBag.LOAIDA = new SelectList(listLoaiDA, "LOAI_DUAN_ID", "TEN_LOAI_DUAN");
+            ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
+
+            QLDA_CNTT da = db.QLDA_CNTT.Find(maDA);
+
+            if (da == null)
+            {
+                return HttpNotFound();
+            }
+            return View(da);
+        }
+
+        [HttpPost]
+        public ActionResult EditDAPost(int? maDA)
+        {
+            ViewBag.LOAIDA = new SelectList(listLoaiDA, "LOAI_DUAN_ID", "TEN_LOAI_DUAN");
+            ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
+
+            var da = db.QLDA_CNTT.Find(maDA);
+
+            if (TryUpdateModel(da, "",
+                new string[] { "TEN_DA", "CHUDAUTU", "LOAI_DA", "LOAI_HOPDONG_ID", "NGAY_START_DA" }))
+            {
+                try
+                {
+                    db.SaveChanges();
+                    //luulichsuchinhsua(2, HDCNTT_ID, id_taikhoan);
+                    //Gọi proceduce generate ds tiến độ DA
+                    db.FUNC_GEN_TIENDO_DA(da.DUAN_ID);
+                    return RedirectToAction("DSDuAn", "HDCNTT");
+                }
+                catch (RetryLimitExceededException /* dex */)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
+            }
+            return View(da);
+        }
+
+
+
 
         [HttpGet]
         public PartialViewResult addTDDA(int? idDA)
@@ -772,7 +846,7 @@ namespace QLHD.Controllers
                 db.SaveChanges();
                 return RedirectToAction("ShowQuyTrinhDA", "HDCNTT", new { maDA = tdda.DUAN_ID });
             }
-            
+
             return View();
         }
 
@@ -784,7 +858,7 @@ namespace QLHD.Controllers
             ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
             ViewBag.DVTH = new SelectList(listLoaiTienTrinh, "LOAITIENTRINH_ID", "TENLOAITIENTRINH");
             ViewBag.NGUOITHUCHIEN = new SelectList(db.THANHVIENs.ToList().OrderBy(n => n.DONVI_ID), "ID_THANHVIEN", "TEN_THANHVIEN");
-            return PartialView(db.QLDA_CNTT_TIENDO.Where(x=>x.DUAN_ID == idDA && x.TIENDO_DA_ID == idTD));
+            return PartialView(db.QLDA_CNTT_TIENDO.Where(x => x.DUAN_ID == idDA && x.TIENDO_DA_ID == idTD));
         }
 
         [HttpGet]

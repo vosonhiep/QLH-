@@ -12,6 +12,8 @@ namespace QLHD.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class QLHD2Entities : DbContext
     {
@@ -62,5 +64,14 @@ namespace QLHD.Models
         public virtual DbSet<TINHTRANG_SD_CHIPHI> TINHTRANG_SD_CHIPHI { get; set; }
         public virtual DbSet<TRAM_BTS> TRAM_BTS { get; set; }
         public virtual DbSet<TRANGTHAI_HD> TRANGTHAI_HD { get; set; }
+    
+        public virtual int FUNC_GEN_TIENDO_DA(Nullable<int> duan_id)
+        {
+            var duan_idParameter = duan_id.HasValue ?
+                new ObjectParameter("duan_id", duan_id) :
+                new ObjectParameter("duan_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FUNC_GEN_TIENDO_DA", duan_idParameter);
+        }
     }
 }

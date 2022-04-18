@@ -1,5 +1,5 @@
 ﻿@model QLHD.Models.QLDA_CNTT_TIENDO
-<div class="modal fade" id="addTDDA" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="editTDDA" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document" style="width: 50%">
         <div class="modal-content">
             @using (Html.BeginForm("CreateTienDoDAPost", "HDCNTT", FormMethod.Post, new { @enctype = "multipart/form-data" }))
@@ -67,7 +67,15 @@
                                     <label style="float: right">Ngày giao:</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="date" class="form-control" name="NGAY_GIAO" required="required" />
+                                    @if (Model.NGAY_GIAO.HasValue)
+                                    {
+                                        <input type="datetime" class="form-control" name="NGAY_GIAO" value="@Model.NGAY_GIAO.Value.ToString("dd/MM/yyyy")" required="required" />
+                                    }
+                                    else
+                                    {
+                                        <input type="date" class="form-control" name="NGAY_GIAO" required="required" />
+                                    }
+
                                 </div>
                             </div>
                         </div>
@@ -77,7 +85,24 @@
                                     <label style="float: right">Ngày hết hạn:</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="date" class="form-control" name="NGAY_HETHAN" required="required" />
+                                    @if (Model.NGAY_HETHAN.HasValue)
+                                    {
+                                        <input type="datetime" class="form-control" name="NGAY_HETHAN" value="@Model.NGAY_HETHAN.Value.ToString("dd/MM/yyyy")" required="required" />
+                                    }
+                                    else
+                                    {
+                                        <input type="date" class="form-control" name="NGAY_HETHAN" required="required" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Thứ tự:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control" name="STT" value="@Model.STT" required="required" />
                                 </div>
                             </div>
                         </div>

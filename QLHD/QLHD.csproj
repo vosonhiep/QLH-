@@ -423,6 +423,7 @@
       <DependentUpon>QLHDDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\LOAITIENTRINH.cs" />
+    <Compile Include="ViewModel\LOAI_DUAN.cs" />
     <Compile Include="ViewModel\TIENDO_Model.cs" />
     <Compile Include="ViewModel\TIENTRINH_Model.cs" />
     <Compile Include="ViewModel\TRANGTHAI_HOADON.cs" />
@@ -1482,6 +1483,8 @@
     <Content Include="Views\HDCNTT\DSDuAn.cshtml" />
     <Content Include="Views\HDCNTT\addTDDA.cshtml" />
     <Content Include="Views\HDCNTT\editTDDA.cshtml" />
+    <Content Include="Views\HDCNTT\CreateDuAn.cshtml" />
+    <Content Include="Views\HDCNTT\EditDA.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\HD_CHIPHI\" />

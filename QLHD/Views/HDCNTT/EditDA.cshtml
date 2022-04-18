@@ -1,0 +1,96 @@
+﻿@model QLHD.Models.QLDA_CNTT
+
+@{
+    ViewBag.Title = "EditDA";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Hợp đồng CNTT</h3>
+            <span style="color:red">@ViewBag.baoloi</span>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    @using (Html.BeginForm("EditDAPost", "HDCNTT", new {@maDA = Model.DUAN_ID }, FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel" style="">
+                    <div class="x_title">
+                        <h2>Chỉnh sửa dự án CNTT</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="col-md-12" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Tên dự án:</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" name="TEN_DA" value="@Model.TEN_DA" required="required">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Chủ đầu tư:</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" name="CHUDAUTU" value="@Model.CHUDAUTU" required="required" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Loại dự án:</label>
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.DropDownList("LOAI_DA", (IEnumerable<SelectListItem>)ViewBag.LOAIDA, "--Chọn--", new { @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Loại hợp đồng:</label>
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.DropDownList("LOAI_HOPDONG_ID", (IEnumerable<SelectListItem>)ViewBag.LOAIHD, "--Chọn--", new { @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-top: 15px">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Ngày bắt đầu:</label>
+                                </div>
+                                <div class="col-md-3">
+                                    @if (Model.NGAY_START_DA.HasValue)
+                                    {
+                                        <input type="datetime" class="form-control" id="NGAY_START_DA" name="NGAY_START_DA" value="@Model.NGAY_START_DA.Value.ToString("dd/MM/yyyy")" required="required" />
+                                    }
+                                    else
+                                    {
+                                        <input type="date" class="form-control" id="NGAY_START_DA" name="NGAY_START_DA" required="required" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <input type="submit" class="btn btn-success btn-lg" value="Lưu" id="submit" />
+                <a href="@Url.Action("Index", "HDCNTT")" class="btn btn-default btn-lg">
+                    Hủy
+                </a>
+            </div>
+        </div>
+    }
+</div>

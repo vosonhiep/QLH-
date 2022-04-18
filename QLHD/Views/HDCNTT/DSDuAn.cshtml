@@ -9,7 +9,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Quản lý hợp đồng CNTT</h3>
+                <h3>Dự án CNTT</h3>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -22,15 +22,15 @@
                         //@Html.Action("partialSearch", "HDCNTT")
                     }
                 </div>
-                @*<div class="nav navbar-right">
-                        <a href="@Url.Action("Create", "HDCNTT")" class="btn btn-info btn-lg" style="float:right">
-                            Thêm HĐ mới
-                            <span class="glyphicon glyphicon-plus" />
-                        </a>
-                    </div>*@
+                <div class="nav navbar-right">
+                    <a href="@Url.Action("CreateDuAn", "HDCNTT")" class="btn btn-info btn-lg" style="float:right">
+                        Thêm dự án
+                        <span class="glyphicon glyphicon-plus" />
+                    </a>
+                </div>
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Danh sách HĐ CNTT</h2>
+                        <h2>Danh sách dự án CNTT</h2>
                         <div class="clearfix"></div>
                     </div>
 
@@ -57,6 +57,9 @@
                                             </th>
                                             <th>
                                                 Loại hợp đồng
+                                            </th>
+                                            <th>
+                                                Ngày bắt đầu
                                             </th>
                                             <th>Sửa</th>
                                             <th>Xóa</th>
@@ -103,34 +106,32 @@
                                                         {
                                                             <p>Thuê</p>
                                                         }
-                                                        else if (item.LOAI_DA == 2)
+                                                        else if (item.LOAI_HOPDONG_ID == 2)
                                                         {
                                                             <p>Bán</p>
                                                         }
-                                                        else if (item.LOAI_DA == 3)
+                                                        else if (item.LOAI_HOPDONG_ID == 3)
                                                         {
                                                             <p>Hỗn hợp</p>
                                                         }
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    @Html.ActionLink(" ", "EditHDCNTT", new { @maDA = item.DUAN_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
+                                                    <a href="@Url.Action("ShowQuyTrinhDA", new { @maDA = item.DUAN_ID })">
+                                                        @if (item.NGAY_START_DA.HasValue)
+                                                        {
+                                                            <p>@item.NGAY_START_DA.Value.ToString("dd/MM/yyyy")</p>
+                                                        }
+
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink(" ", "EditDA", new { @maDA = item.DUAN_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
                                                 </td>
                                                 <td>
                                                     @*@Html.Action("PartiaDeleteHDCNTT", new { @maDA = item.DUAN_ID })*@
                                                 </td>
 
-                                                @*<td>
-                                                        @Html.ActionLink(" ", "QuyTrinhHDCNTT", "HDCNTT", new { @HDid = item.HOPDONG_DT_CNTT_ID }, new { @class = "fa fa-sitemap text-blue", @style = "font-size: 20px" })
-                                                    </td>
-                                                    <td>
-                                                        @if (@item.ngay_kt <= @system.datetime.now)
-                                                            {
-                                                                <span id="canhbao">
-                                                                    <img src="~/images/canhbao.gif" title="hợp đồng đã tới hạn. cần ký lại hộp đồng mới!" height="40px" width="30px" />
-                                                                </span>
-                                                            }
-                                                    </td>*@
                                             </tr>
                                         }
                                     </table>
