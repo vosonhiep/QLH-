@@ -495,104 +495,104 @@
                 </div>
             </div>
             @* Thông tin tiến độ thanh toán *@
-            
-                <div class="col-md-12">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Tiến độ thanh toán hợp đồng</h2>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                    <li role="presentation" class="active">
-                                        <a href="#tab_content1" id="hopdong-tab" role="tab" data-toggle="tab" aria-expanded="true">DS tiến độ</a>
-                                    </li>
-                                </ul>
-                                <div id="myTabContent" class="tab-content">
-                                    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="hopdong-tab">
-                                        <table id="tableTDTT" class="col-md-12 table table-bordered table-striped table-hover">\
-                                            <tr class="noidung">
-                                                    <th class="col-md-1">
-                                                        Tiến độ thanh toán
-                                                    </th>
 
-                                                    <th class="col-md-1">
-                                                        Thời gian thanh toán
-                                                    </th>
-                                                    <th class="col-md-1">
-                                                        Ngày đến hạn
-                                                    </th>
-                                                    <th class="col-md-1">
-                                                        Số tiền thanh toán
-                                                    </th>
-                                                    <th class="col-md-2">
-                                                        Diễn giải
-                                                    </th>
-                                                    <th class="col-md-1">Trạng thái xuất hóa đơn</th>
-                                                    <th class="col-md-1">Số hóa đơn</th>
-                                                    <th class="col-md-1">Ngày hóa đơn</th>
-                                                    <th class="col-md-1">Trạng thái thanh toán</th>
-                                                </tr>
-                                            @foreach (var item in listTDTT)
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Tiến độ thanh toán hợp đồng</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#tab_content1" id="hopdong-tab" role="tab" data-toggle="tab" aria-expanded="true">DS tiến độ</a>
+                                </li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="hopdong-tab">
+                                    <table id="tableTDTT" class="col-md-12 table table-bordered table-striped table-hover">
+                                        <tr class="noidung">
+                                            <th class="col-md-1">
+                                                Tiến độ thanh toán
+                                            </th>
+
+                                            <th class="col-md-1">
+                                                Thời gian thanh toán
+                                            </th>
+                                            <th class="col-md-1">
+                                                Ngày đến hạn
+                                            </th>
+                                            <th class="col-md-1">
+                                                Số tiền thanh toán
+                                            </th>
+                                            <th class="col-md-2">
+                                                Diễn giải
+                                            </th>
+                                            <th class="col-md-1">Trạng thái xuất hóa đơn</th>
+                                            <th class="col-md-1">Số hóa đơn</th>
+                                            <th class="col-md-1">Ngày hóa đơn</th>
+                                            <th class="col-md-1">Trạng thái thanh toán</th>
+                                        </tr>
+                                        @foreach (var item in listTDTT)
+                                        {
+                                            <tr class="noidunghd">
+                                                <td class="col-md-1">
+                                                    @item.DOT_TT
+                                                </td>
+                                                <td class="col-md-1">
+                                                    @item.THOIGIAN_TT
+                                                </td>
+                                                <td class="col-md-1">
+                                                    @item.THOIHAN_TT.Value.ToString("dd/MM/yyyy")
+                                                </td>
+                                                <td class="col-md-1">
+                                                    @item.GIATRI_TT
+                                                </td>
+                                                <td class="col-md-2">
+                                                    Bên A thanh toán cho bên B tiền thuê @item.HOPDONG_DT_CNTT.CHUKY_TT.CHUKY.ToString();
+                                                </td>
+
+                                                @if (item.TRANGTHAI_XUAT_HOADON == 1)
                                                 {
-                                                    <tr class="noidunghd">
-                                                        <td class="col-md-1">
-                                                            @item.DOT_TT
-                                                        </td>
-                                                        <td class="col-md-1">
-                                                            @item.THOIGIAN_TT
-                                                        </td>
-                                                        <td class="col-md-1">
-                                                            @item.THOIHAN_TT.Value.ToString("dd/MM/yyyy")
-                                                        </td>
-                                                        <td class="col-md-1">
-                                                            @item.GIATRI_TT
-                                                        </td>
-                                                        <td class="col-md-2">
-                                                            Bên A thanh toán cho bên B tiền thuê @item.HOPDONG_DT_CNTT.CHUKY_TT.CHUKY.ToString();
-                                                        </td>
-
-                                                        @if (item.TRANGTHAI_XUAT_HOADON == 1)
-                                                        {
-                                                            <td class="col-md-1">Đã xuất</td>
-                                                        }
-                                                        else
-                                                        {
-                                                            <td class="col-md-1">Chưa xuất</td>
-                                                        }
-                                                        <td class="col-md-1">
-                                                            @item.SO_HOADON
-                                                        </td>
-                                                        <td class="col-md-1">
-                                                            @if (item.NGAY_HOADON.HasValue)
-                                                            {
-                                                                @item.NGAY_HOADON.Value.ToString("dd/MM/yyyy")
-                                                            }
-                                                            else
-                                                            {
-                                                                @item.NGAY_HOADON
-                                                            }
-                                                        </td>
-                                                        @if (item.TRANGTHAI_TT == 1)
-                                                        {
-                                                            <td class="col-md-1" style="color:forestgreen"> Đã thanh toán</td>
-                                                        }
-                                                        else
-                                                        {
-                                                            <td class="col-md-1"> Chưa thanh toán</td>
-                                                        }
-                                                    </tr>
+                                                    <td class="col-md-1">Đã xuất</td>
                                                 }
+                                                else
+                                                {
+                                                    <td class="col-md-1">Chưa xuất</td>
+                                                }
+                                                <td class="col-md-1">
+                                                    @item.SO_HOADON
+                                                </td>
+                                                <td class="col-md-1">
+                                                    @if (item.NGAY_HOADON.HasValue)
+                                                    {
+                                                        @item.NGAY_HOADON.Value.ToString("dd/MM/yyyy")
+                                                    }
+                                                    else
+                                                    {
+                                                        @item.NGAY_HOADON
+                                                    }
+                                                </td>
+                                                @if (item.TRANGTHAI_TT == 1)
+                                                {
+                                                    <td class="col-md-1" style="color:forestgreen"> Đã thanh toán</td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="col-md-1"> Chưa thanh toán</td>
+                                                }
+                                            </tr>
+                                        }
 
-                                        </table>
-                                    </div>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            
+            </div>
+
 
             @* Ghi chú *@
             <div class="col-md-12">
@@ -637,8 +637,11 @@
 
 @Scripts.Render("~/Scripts/numeric/jquery.js")
 @Scripts.Render("~/Scripts/numeric/jquery.number.js")
+
+@Scripts.Render("~/Scripts/js/datatables/js/jquery.dataTables.js")
+
 <script type="text/javascript">
-    $(function () {
+    $(function() {
         var giatri_phancung_hd = $('#giatri_phancung_hd').val();
         var giatri_dichvu_hd = $('#giatri_dichvu_hd').val();
         var giatri_tamung = $('#giatri_tamung').val();
@@ -656,7 +659,7 @@
         $('#giatri_tamung').number(true, 0);
         $('#tong_gt').number(true, 0);
 
-        $('#submit').on('click', function () {
+        $('#submit').on('click', function() {
             var giatri_phancung_hd = $('#giatri_phancung_hd').val();
             var giatri_dichvu_hd = $('#giatri_dichvu_hd').val();
             var giatri_tamung = $('#giatri_tamung').val();
@@ -665,7 +668,8 @@
             $("input[name='GIATRI_TAMUNG']").val(giatri_tamung);
         });
     });
-    function sum_tong() {
+    function sum_tong()
+{
         //alert("tesst");
         var tong1 = 0;
         var thang1 = $('#thang').val();
@@ -676,11 +680,12 @@
         sum_tong2();
     }
 
-    function sum_tong2() {
+    function sum_tong2()
+{
         var kt1 = $('#ngay_kt').val();
         var bd1 = $('#ngay_bd').val();
-        var bd = new Date(bd1.replace(/(\d{2})[-/](\d{2})[-/](\d+)/, "$2/$1/$3"));
-        var kt = new Date(kt1.replace(/(\d{2})[-/](\d{2})[-/](\d+)/, "$2/$1/$3"));
+        var bd = new Date(bd1.replace(/ (\d{ 2 })[-/](\d{ 2})[-/](\d +)/, "$2/$1/$3"));
+        var kt = new Date(kt1.replace(/ (\d{ 2 })[-/](\d{ 2})[-/](\d +)/, "$2/$1/$3"));
         var sogiay = Math.abs(kt - bd);
         var sothang = Math.round(sogiay / (86400000 * 30));
         var tien = $('#thang_gt').val();
@@ -690,7 +695,7 @@
             type: 'GET',
             url: '@Url.Action("getChuKyTT","HDCNTT")',
             data: { chuky: chuky },
-            success: function (data) {
+            success: function(data) {
                 var sochuky = Math.round(sothang / data.thang);
                 var tong = tien * sochuky * data.thang;
                 $('#SO_CHUKY').val(sochuky);
@@ -699,10 +704,11 @@
         });
     }
 
-    function sum_date() {
+    function sum_date()
+{
         var date = $('#NGAY_BLTHHD').val();
         const myArray = date.split("/");
-        var date1 = new Date();;
+        var date1 = new Date(); ;
         date1.setDate(parseInt(myArray[0]));
         date1.setMonth(parseInt(myArray[1]));
         date1.setFullYear(parseInt(myArray[2]));
@@ -711,76 +717,105 @@
         document.getElementById('NGAY_HETHAN_BLTHHD').value = ('0' + date1.getDate()).slice(-2) + "/" + ('0' + (date1.getMonth() + 1)).slice(-2) + "/" + date1.getFullYear(); //date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
     }
 
-    function TaoTienDoTT(idHD) {
-        
-        $.ajax({
+    function TaoTienDoTT(idHD)
+    {
+        let param = new FormData();
+        param.append("idHD", idHD);
+        $('#tableTDTT').DataTable({
+            "ajax": {
+                "url": "/HDCNTT/TaoTienDoTT?idHD=" + idHD,
+                "type": "GET",
+                "datatype": "json",
+                "dataSrc": function (data) {
+                    //Make your callback here.
+                    alert("Done!");
+                    return data;
+                }
+            },
+            "columns": [
+                { data: 'DOT_TT' },
+                { data: 'THOIGIAN_TT' },
+                { data: 'THOIHAN_TT' },
+                { data: 'GIATRI_TT' },
+                { data: 'CHUKY' },
+                { data: 'TRANGTHAI_XUAT_HOADON' },
+                { data: 'SO_HOADON' },
+                { data: 'NGAY_HOADON' },
+                { data: 'TRANGTHAI_TT' }
+            ]
+        });
+
+        @*$.ajax({
             type: 'GET',
             url: '@Url.Action("TaoTienDoTT", "HDCNTT")',
-            data: { HDCNTT_ID: idHD },
-            success: function () {
-                location.reload();
-                //$('#tableTDTT').DataTable({
-                //    data: data,
-                //    columns: [
-                //        { data: 'DOT_TT' },
-                //        { data: 'THOIGIAN_TT' },
-                //        { data: 'THOIHAN_TT' },
-                //        { data: 'GIATRI_TT' },
-                //        { data: 'CHUKY' },
-                //        { data: 'TRANGTHAI_XUAT_HOADON' },
-                //        { data: 'SO_HOADON' },
-                //        { data: 'NGAY_HOADON' },
-                //        { data: 'TRANGTHAI_TT' }
-                //    ],
-                //    "pageLength": 3
-                //});
-            }, error: function (error) {
+            data: { idHD: idHD },
+
+            contentType: 'application/json; charset=utf-8',
+            success: function(data) {
+                //location.reload();
+                $('#tableTDTT').DataTable({
+                    data: data,
+                    columns:
+                    [
+                        { data: 'DOT_TT' },
+                        { data: 'THOIGIAN_TT' },
+                        { data: 'THOIHAN_TT' },
+                        { data: 'GIATRI_TT' },
+                        { data: 'CHUKY' },
+                        { data: 'TRANGTHAI_XUAT_HOADON' },
+                        { data: 'SO_HOADON' },
+                        { data: 'NGAY_HOADON' },
+                        { data: 'TRANGTHAI_TT' }
+                    ],
+                    "pageLength": 3
+                });
+            }, error: function(error) {
                 alert(error.responseText);
             }
-        });
+        });*@
     }
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
         @*$("#vat1").val(@Model.VAT);*@
-        $('#BEN_CHOTHUE').change(function () {
-            var id = $('#BEN_CHOTHUE').val();
-            $.ajax({
-                type: 'GET',
-                url: '@Url.Action("getBT","HDCNTT")',
-                data: { id: id },
-                success: function (data) {
-                    $('#TEN_CT').val(data.ten);
-                    $('#DIACHI_CT').val(data.diachi);
-                    $('#DT_CT').val(data.dienthoai);
-                    $('#MSTHUE_CT').val(data.msthue);
-                    $('#TAIKHOAN_CT').val(data.taikhoan);
-                    $('#NGANHANG_CT').val(data.nganhang);
-                    $('#DAIDIEN_CT').val(data.daidien);
-                    $('#CHUCVU_CT').val(data.chucvu);
-                }
-            });
+        $('#BEN_CHOTHUE').change(function() {
+        var id = $('#BEN_CHOTHUE').val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("getBT","HDCNTT")',
+            data: { id: id },
+            success: function(data) {
+                $('#TEN_CT').val(data.ten);
+                $('#DIACHI_CT').val(data.diachi);
+                $('#DT_CT').val(data.dienthoai);
+                $('#MSTHUE_CT').val(data.msthue);
+                $('#TAIKHOAN_CT').val(data.taikhoan);
+                $('#NGANHANG_CT').val(data.nganhang);
+                $('#DAIDIEN_CT').val(data.daidien);
+                $('#CHUCVU_CT').val(data.chucvu);
+            }
         });
-        $('#BEN_THUE').change(function () {
-            var id = $('#BEN_THUE').val();
-            $.ajax({
-                type: 'GET',
-                url: '@Url.Action("getBT","HDCNTT")',
-                data: { id: id },
-                success: function (data) {
-                    $('#TEN_BT').val(data.ten);
-                    $('#DIACHI_BT').val(data.diachi);
-                    $('#DT_BT').val(data.dienthoai);
-                    $('#MSTHUE_BT').val(data.msthue);
-                    $('#TAIKHOAN_BT').val(data.taikhoan);
-                    $('#NGANHANG_BT').val(data.nganhang);
-                    $('#DAIDIEN_BT').val(data.daidien);
-                    $('#CHUCVU_BT').val(data.chucvu);
-                }
-            });
+    });
+    $('#BEN_THUE').change(function() {
+        var id = $('#BEN_THUE').val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("getBT","HDCNTT")',
+            data: { id: id },
+            success: function(data) {
+                $('#TEN_BT').val(data.ten);
+                $('#DIACHI_BT').val(data.diachi);
+                $('#DT_BT').val(data.dienthoai);
+                $('#MSTHUE_BT').val(data.msthue);
+                $('#TAIKHOAN_BT').val(data.taikhoan);
+                $('#NGANHANG_BT').val(data.nganhang);
+                $('#DAIDIEN_BT').val(data.daidien);
+                $('#CHUCVU_BT').val(data.chucvu);
+            }
         });
+    });
 
-        $('#SO_CHUKY').change(function () {
+    $('#SO_CHUKY').change(function() {
             var thang = $('#thang_gt').val();
             var sochuky = $('#SO_CHUKY').val();
             var tong = thang * sochuky;

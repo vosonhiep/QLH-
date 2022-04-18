@@ -15,6 +15,7 @@ using PagedList.Mvc;
 using System.Globalization;
 using System.IO;
 using QLHD.ViewModel;
+using Newtonsoft.Json;
 
 namespace QLHD.Controllers
 {
@@ -175,7 +176,7 @@ namespace QLHD.Controllers
             ViewBag.THOIHAN_TT = new SelectList(db.THOIHAN_TT.ToList().OrderBy(n => n.THOIHAN_TT_ID), "THOIHAN_TT_ID", "TEN_THOIHAN_TT");
 
             HOPDONG_DT_CNTT HDcntt = db.HOPDONG_DT_CNTT.Find(HDCNTT_ID);
-            
+
             if (HDcntt == null)
             {
                 return HttpNotFound();
@@ -267,7 +268,19 @@ namespace QLHD.Controllers
             return View(HDCNTT);
         }
 
-        [HttpPost, ActionName("DeleteHDCNTT")]
+        public PartialViewResult PartiaDeleteHDCNTT(int HDCNTT_ID)
+        {
+            ViewBag.delete = HDCNTT_ID + "delete";
+            HOPDONG_DT_CNTT HDCNTT = db.HOPDONG_DT_CNTT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID);
+            if (HDCNTT == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return PartialView(HDCNTT);
+        }
+
+        [HttpPost]
         public ActionResult XacNhanXoaHDCNTT(int HDCNTT_ID)
         {
             HOPDONG_DT_CNTT HDCNTT = db.HOPDONG_DT_CNTT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID);
@@ -289,7 +302,7 @@ namespace QLHD.Controllers
         public ActionResult ShowHDCNTT(int maHD)
         {
             HOPDONG_DT_CNTT hd = db.HOPDONG_DT_CNTT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == maHD);
-            
+
             if (hd == null)
             {
                 return RedirectToAction("baoloi", "Home");
@@ -425,6 +438,56 @@ namespace QLHD.Controllers
             };
 
         [HttpGet]
+        public JsonResult TaoTienDoTT(int? idHD)
+        {
+            var new_hd_obj = db.HOPDONG_DT_CNTT.Find(idHD);
+            //Hardcode Số tháng thuê
+            //new_hd_obj.THANG = 60;
+            int sl_dot_tt = (int)Math.Round((double)(new_hd_obj.THANG / new_hd_obj.CHUKY_TT.THANG));
+            List<DT_CNTT_TIENDO_TT> lst_TDTT = new List<DT_CNTT_TIENDO_TT>();
+            //Case Chu kỳ thanh toan là Cuối kỳ
+            DateTime date_toihan = new_hd_obj.NGAY_BBNT.Value.AddMonths(new_hd_obj.CHUKY_TT.THANG.Value);
+            //Case Chu kỳ thanh toan là Đầu kỳ
+            if (new_hd_obj.THOIHAN_TT_ID == 2)
+            {
+                date_toihan = new_hd_obj.NGAY_BBNT.Value;
+            }
+            for (int i = 0; i < sl_dot_tt; i++)
+            {
+                DT_CNTT_TIENDO_TT new_obj = new DT_CNTT_TIENDO_TT();
+                new_obj.HOPDONG_DT_CNTT_ID = new_hd_obj.HOPDONG_DT_CNTT_ID;
+                new_obj.DOT_TT = i + 1;
+                new_obj.GIATRI_TT = (new_hd_obj.GIATRI_PHANCUNG_HD + new_hd_obj.GIATRI_DICHVU_HD) / sl_dot_tt;
+                new_obj.THOIGIAN_TT = 30;
+                //Thời hạn đến kỳ thanh toán
+                new_obj.THOIHAN_TT = date_toihan;
+                //Chưa xuất hóa đơn
+                new_obj.TRANGTHAI_XUAT_HOADON = 0;
+                new_obj.TRANGTHAI_TT = 0;
+                lst_TDTT.Add(new_obj);
+                //Tính ngày gia hạn tiếp theo
+                date_toihan = date_toihan.AddMonths(new_hd_obj.CHUKY_TT.THANG.Value);
+            }
+            db.DT_CNTT_TIENDO_TT.AddRange(lst_TDTT);
+            //db.SaveChanges();
+            var list = (from obj in lst_TDTT
+                        select
+                            new
+                            {
+                                DOT_TT = obj.DOT_TT,
+                                THOIGIAN_TT = obj.THOIGIAN_TT,
+                                THOIHAN_TT = obj.THOIHAN_TT,
+                                GIATRI_TT = obj.GIATRI_TT,
+                                CHUKY = obj.HOPDONG_DT_CNTT.CHUKY_TT.CHUKY,
+                                TRANGTHAI_XUAT_HOADON = obj.TRANGTHAI_XUAT_HOADON,
+                                SO_HOADON = obj.SO_HOADON,
+                                NGAY_HOADON = obj.NGAY_HOADON,
+                                TRANGTHAI_TT = obj.TRANGTHAI_TT
+                            });
+            return Json(new { error = "", data = list }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
         public PartialViewResult EditTienDoTT(int? HDCNTT_ID, int? TIENDO_ID)
         {
             ViewBag.edit = TIENDO_ID + "edit";
@@ -438,8 +501,8 @@ namespace QLHD.Controllers
         public ActionResult EditTienDoTTPost(int idHDCNTT, int idTD, HttpPostedFileBase upload)
         {
             DT_CNTT_TIENDO_TT td = db.DT_CNTT_TIENDO_TT.Where(x => x.HOPDONG_DT_CNTT_ID == idHDCNTT && x.TIENDO_TT_ID == idTD).FirstOrDefault();
-            
-           
+
+
             string fileContent = string.Empty;
             string fileContentType = string.Empty;
             if (upload != null && upload.ContentLength > 0)
@@ -472,7 +535,7 @@ namespace QLHD.Controllers
             if (TryUpdateModel(td, "",
                    new string[] { "DOT_TT", "GIATRI_TT", "THOIGIAN_TT", "THOIHAN_TT", "SO_HOADON",
                                    "NGAY_HOADON", "TRANGTHAI_XUAT_HOADON", "TRANGTHAI_TT", "FILE", "GHICHU"}))
-                {
+            {
                 try
                 {
                     db.SaveChanges();
@@ -500,7 +563,7 @@ namespace QLHD.Controllers
         {
             DT_CNTT_TIENDO_TT thanhtoan = db.DT_CNTT_TIENDO_TT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID && n.TIENDO_TT_ID == TIENDO_ID);
             int idhdcntt = thanhtoan.HOPDONG_DT_CNTT_ID;
-            
+
             db.DT_CNTT_TIENDO_TT.Remove(thanhtoan);
             db.SaveChanges();
             return RedirectToAction("EditHDCNTT", "HDCNTT", new { @HDCNTT_ID = idhdcntt });
