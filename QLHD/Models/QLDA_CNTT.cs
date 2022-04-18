@@ -12,19 +12,25 @@ namespace QLHD.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TBL_FILE
+    public partial class QLDA_CNTT
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TBL_FILE()
+        public QLDA_CNTT()
         {
+            this.HOPDONG_DT_CNTT = new HashSet<HOPDONG_DT_CNTT>();
             this.QLDA_CNTT_TIENDO = new HashSet<QLDA_CNTT_TIENDO>();
         }
     
-        public int file_id { get; set; }
-        public string file_name { get; set; }
-        public string file_ext { get; set; }
-        public string file_base6 { get; set; }
+        public int DUAN_ID { get; set; }
+        public string TEN_DA { get; set; }
+        public string CHUDAUTU { get; set; }
+        public int LOAI_DA { get; set; }
+        public int LOAI_HOPDONG_ID { get; set; }
+        public Nullable<System.DateTime> NGAY_START_DA { get; set; }
     
+        public virtual DM_LOAI_HOPDONG DM_LOAI_HOPDONG { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HOPDONG_DT_CNTT> HOPDONG_DT_CNTT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<QLDA_CNTT_TIENDO> QLDA_CNTT_TIENDO { get; set; }
     }

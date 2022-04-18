@@ -18,6 +18,7 @@ namespace QLHD.Models
         public THANHVIEN()
         {
             this.DS_QUYEN_MENU = new HashSet<DS_QUYEN_MENU>();
+            this.QLDA_CNTT_TIENDO = new HashSet<QLDA_CNTT_TIENDO>();
         }
     
         public int ID_THANHVIEN { get; set; }
@@ -42,5 +43,7 @@ namespace QLHD.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DS_QUYEN_MENU> DS_QUYEN_MENU { get; set; }
         public virtual HETHONG HETHONG { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<QLDA_CNTT_TIENDO> QLDA_CNTT_TIENDO { get; set; }
     }
 }

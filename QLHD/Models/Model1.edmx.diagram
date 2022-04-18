@@ -4,58 +4,62 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1aae9622e0304a0e872aba5f20b3173a" Name="Diagram1">
-        <EntityTypeShape EntityType="QLHD2Model.BENTHUE_TAM" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.CHUKY_TT" Width="1.5" PointX="0.75" PointY="30.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.DM_CHUTHE_HOPDONG" Width="1.5" PointX="0.75" PointY="26.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.DM_LOAI_HOPDONG" Width="1.5" PointX="0.75" PointY="34.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.DM_VANBAN" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.DONVI" Width="1.5" PointX="6.75" PointY="19.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.DS_QUYEN_MENU" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.DT_CNTT_TIENDO_TT" Width="1.5" PointX="5.25" PointY="41.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.HETHONG" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.HISTORY_CHANGE" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.HOPDONG_CHIPHI" Width="1.5" PointX="6" PointY="24.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.HOPDONG_DOANHTHU" Width="1.5" PointX="9" PointY="25.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.HOPDONG_DT_CNTT" Width="1.5" PointX="3" PointY="27.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.HOPDONG_NHANCONG" Width="1.5" PointX="12" PointY="25.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.HTTT" Width="1.5" PointX="6.75" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.LICHSU_DANGNHAP" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.LOAI_HD_SUB" Width="1.5" PointX="6.75" PointY="11.25" IsExpanded="true" />
+      <Diagram DiagramId="739b843b20244b69889e22ee5ef8e784" Name="Diagram1">
+        <EntityTypeShape EntityType="QLHD2Model.BENTHUE_TAM" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.CHUKY_TT" Width="1.5" PointX="0.75" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.DM_CHUTHE_HOPDONG" Width="1.5" PointX="3.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.DM_LOAI_HOPDONG" Width="1.5" PointX="3.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.DM_VANBAN" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.DONVI" Width="1.5" PointX="6.75" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.DS_QUYEN_MENU" Width="1.5" PointX="17" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.DT_CNTT_TIENDO_TT" Width="1.5" PointX="8.25" PointY="39.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.HETHONG" Width="1.5" PointX="12.5" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.HISTORY_CHANGE" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.HOPDONG_CHIPHI" Width="1.5" PointX="3" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.HOPDONG_DOANHTHU" Width="1.5" PointX="9" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.HOPDONG_DT_CNTT" Width="1.5" PointX="6" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.HOPDONG_NHANCONG" Width="1.5" PointX="12" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.HTTT" Width="1.5" PointX="6.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.LICHSU_DANGNHAP" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.LOAI_HD_SUB" Width="1.5" PointX="6.75" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLHD2Model.MENU_CHA" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QLHD2Model.MENU_CON" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.NAM_HD" Width="1.5" PointX="6.75" PointY="51.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.PHULUC" Width="1.5" PointX="8.25" PointY="22.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.PHULUC_HDCP" Width="1.5" PointX="14.25" PointY="35.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.PL_HD_DOANHTHU_CNTT" Width="1.5" PointX="14.25" PointY="25.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.TBL_FILE" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.THANHLY_HDCHIPHI" Width="1.5" PointX="8.25" PointY="39.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.THANHLY_HDDOANHTHU" Width="1.5" PointX="11.25" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.THANHLY_HDNHANCONG" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.THANHTOAN_CHIPHI" Width="1.5" PointX="8.25" PointY="43.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.THANHTOAN_DOANHTHU" Width="1.5" PointX="11.25" PointY="40.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.THANHTOAN_NHANCONG" Width="1.5" PointX="14.25" PointY="30.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.THANHVIEN" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.THOIHAN_TT" Width="1.5" PointX="6.75" PointY="54.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.TINHTRANG_SD_CHIPHI" Width="1.5" PointX="8.25" PointY="47.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.TRAM_BTS" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.TRANGTHAI_HD" Width="1.5" PointX="3.75" PointY="24.375" IsExpanded="true" />
-        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__CHUKY__619B8048" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__CHUKY__693CA210" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLHD2Model.NAM_HD" Width="1.5" PointX="6.75" PointY="50.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.PHULUC" Width="1.5" PointX="5.25" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.PHULUC_HDCP" Width="1.5" PointX="14.25" PointY="35.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.PL_HD_DOANHTHU_CNTT" Width="1.5" PointX="14.25" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.QLDA_CNTT" Width="1.5" PointX="3.75" PointY="49.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.QLDA_CNTT_TIENDO" Width="1.5" PointX="17" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.TBL_FILE" Width="1.5" PointX="14.75" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.THANHLY_HDCHIPHI" Width="1.5" PointX="5.25" PointY="38.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.THANHLY_HDDOANHTHU" Width="1.5" PointX="11.25" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.THANHLY_HDNHANCONG" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.THANHTOAN_CHIPHI" Width="1.5" PointX="5.25" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.THANHTOAN_DOANHTHU" Width="1.5" PointX="11.25" PointY="40.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.THANHTOAN_NHANCONG" Width="1.5" PointX="14.25" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.THANHVIEN" Width="1.5" PointX="14.75" PointY="45.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.THOIHAN_TT" Width="1.5" PointX="6.75" PointY="53.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.TINHTRANG_SD_CHIPHI" Width="1.5" PointX="5.25" PointY="46.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.TRAM_BTS" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.TRANGTHAI_HD" Width="1.5" PointX="0.75" PointY="27.625" IsExpanded="true" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__CHUKY__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__CHUKY__6D0D32F4" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.fk_chuky12" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.fk_PHULUC" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.fk_PHULUC2" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.HDCHIPHI_CHUKY_TT" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.HDNHANCONG_CHUKY_TT" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__BEN_C__6754599E" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__BEN_T__68487DD7" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__PL_HD_DOA__BEN_C__7A672E12" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__PL_HD_DOA__BEN_T__7B5B524B" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__LOAI___6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__BEN_C__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__BEN_T__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__PL_HD_DOA__BEN_C__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__PL_HD_DOA__BEN_T__00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__LOAI___70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__QLDA_CNTT__LOAI___02084FDA" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.FK__HOPDONG_C__DONVI__589C25F3" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__DONVI__628FA481" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__DONVI__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__DONVI__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__DONVI__6E01572D" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.FK__HOPDONG_N__DONVI__5A846E65" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__QLDA_CNTT__DONVI__02FC7413" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.FK__DS_QUYEN___ID_ME__26CFC035" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.FK__DS_QUYEN___USER___27C3E46E" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.fk_menucha" ManuallyRouted="false" />
@@ -71,23 +75,27 @@
         <AssociationConnector Association="QLHD2Model.fk_tinhtrang1" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.HDCHIPHI_HTTT" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.HDCHIPHI_LOAI_HD" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__HTTT___6383C8BA" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__ID_LO__6477ECF3" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__NAM_H__656C112C" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__THOIH__66603565" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__THANHLY_H__HOPDO__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__HTTT___6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__ID_LO__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__NAM_H__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__THOIH__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__THANHLY_H__HOPDO__07C12930" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.FK_THANHTOA_TTDOANHTH_HOPDONG_" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__HTTT___6B24EA82" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__NAM_H__6D0D32F4" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__THOIH__6E01572D" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__PL_HD_DOA__HOPDO__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__DUAN___6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__HTTT___6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__NAM_H__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__HOPDONG_D__THOIH__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__PL_HD_DOA__HOPDO__01142BA1" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.FK__HOPDONG_N__ID_TR__3DB3258D" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.FK_HOPDONG__HDNHANCON_NAM_HD" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.FK_HOPDONG__HDNHANCON_THOIHAN_" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.FK_THANHTOA_TTNHANCON_HOPDONG_" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.HDNHANCONG_HTTT" ManuallyRouted="false" />
         <AssociationConnector Association="QLHD2Model.HDNHANCONG_LOAI_HD" ManuallyRouted="false" />
-        <AssociationConnector Association="QLHD2Model.FK__MENU_CON__ID_MEN__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__MENU_CON__ID_MEN__7A672E12" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__QLDA_CNTT__DUAN___03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__QLDA_CNTT__FILE___04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHD2Model.FK__QLDA_CNTT__NGUOI__05D8E0BE" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

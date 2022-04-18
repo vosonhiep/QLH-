@@ -53,6 +53,7 @@ namespace QLHD.Models
         public Nullable<int> SO_CHUKY { get; set; }
         public Nullable<int> TRANGTHAI { get; set; }
         public Nullable<int> FILE_ID { get; set; }
+        public Nullable<int> DUAN_ID { get; set; }
     
         public virtual CHUKY_TT CHUKY_TT { get; set; }
         public virtual DM_CHUTHE_HOPDONG DM_CHUTHE_HOPDONG { get; set; }
@@ -61,6 +62,7 @@ namespace QLHD.Models
         public virtual DONVI DONVI { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DT_CNTT_TIENDO_TT> DT_CNTT_TIENDO_TT { get; set; }
+        public virtual QLDA_CNTT QLDA_CNTT { get; set; }
         public virtual HTTT HTTT { get; set; }
         public virtual NAM_HD NAM_HD { get; set; }
         public virtual THOIHAN_TT THOIHAN_TT { get; set; }

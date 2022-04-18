@@ -678,6 +678,73 @@ namespace QLHD.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult DSDuAn(int? page)
+        {
+            var duan = db.QLDA_CNTT.ToList().OrderByDescending(n => n.NGAY_START_DA);
+            ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
+
+            int pageNumber = (page ?? 1);
+            int pageSize = 10;
+
+            return View(duan.ToPagedList(pageNumber, pageSize));
+        }
+
+        public static List<LOAITIENTRINH> listLoaiTienTrinh = new List<LOAITIENTRINH>()
+            {
+                new LOAITIENTRINH(true, "Viễn thông"),
+                new LOAITIENTRINH(false, "Khách hàng")
+            };
+
+        [HttpGet]
+        public PartialViewResult CreateTienDoDA(int? idDA)
+        {
+            ViewBag.edit = 1;
+            //ViewBag.IDDuAn = idDA;
+            //ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
+            //ViewBag.DVTH = new SelectList(listLoaiTienTrinh, "LOAITIENTRINH_ID", "TENLOAITIENTRINH");
+            //ViewBag.NGUOITHUCHIEN = new SelectList(db.THANHVIENs.ToList().OrderBy(n => n.DONVI_ID), "ID_THANHVIEN", "TEN_THANHVIEN");
+            return PartialView();
+        }
+
+        [HttpPost]
+        public PartialViewResult CreateTienDoDAPost(QLDA_CNTT_TIENDO tdda, HttpPostedFileBase upload)
+        {
+            tdda.TRANGTHAI_THUCHIEN = 2;
+            return PartialView();
+        }
+
+        [HttpGet]
+        public ActionResult ShowQuyTrinhDA(int? maDA)
+        {
+            ViewBag.idDA = maDA;
+            var dsTienTrinh = db.QLDA_CNTT_TIENDO.Where(x => x.DUAN_ID == maDA).OrderBy(x => x.TIENDO_DA_ID).ToList();
+            return View(dsTienTrinh);
+        }
+
+        public ActionResult ExportData_TienTrinh(int TTid)
+        {
+            QLDA_CNTT_TIENDO td = db.QLDA_CNTT_TIENDO.Find(TTid);
+            TBL_FILE fileInfo = new TBL_FILE();
+            // Model binding.  
+            try
+            {
+                // Loading dile info.  
+                fileInfo = this.db.TBL_FILE.Where(n => n.file_id == td.FILE_ID).FirstOrDefault();
+
+                // Info.  
+                return this.GetFile(fileInfo.file_base6, fileInfo.file_ext, fileInfo.file_name);
+            }
+            catch (Exception ex)
+            {
+                // Info  
+                Console.Write(ex);
+            }
+            return File(fileInfo.file_base6, fileInfo.file_ext);
+            //return RedirectToAction("Index");
+        }
+
+
 
         public static List<TIENTRINH_Model> dsTienTrinh = new List<TIENTRINH_Model>()
             {
@@ -689,11 +756,7 @@ namespace QLHD.Controllers
                 new TIENTRINH_Model(6, "Ký hợp đồng", "Khách hàng TCU", 3, DateTime.Now, DateTime.Now, true)
             };
 
-        public static List<LOAITIENTRINH> listLoaiTienTrinh = new List<LOAITIENTRINH>()
-            {
-                new LOAITIENTRINH(true, "Viễn thông"),
-                new LOAITIENTRINH(false, "Khách hàng")
-            };
+        
 
         /*Quy trình */
         /*

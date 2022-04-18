@@ -281,6 +281,7 @@
           <Property Name="SO_CHUKY" Type="int" />
           <Property Name="TRANGTHAI" Type="int" />
           <Property Name="FILE_ID" Type="int" />
+          <Property Name="DUAN_ID" Type="int" />
         </EntityType>
         <EntityType Name="HOPDONG_NHANCONG">
           <Key>
@@ -450,6 +451,34 @@
           <Property Name="file" Type="nvarchar" MaxLength="100" />
           <Property Name="NGAY_HIEU_LUC_PL" Type="date" />
           <Property Name="FILE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="QLDA_CNTT">
+          <Key>
+            <PropertyRef Name="DUAN_ID" />
+          </Key>
+          <Property Name="DUAN_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEN_DA" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CHUDAUTU" Type="nvarchar" MaxLength="100" />
+          <Property Name="LOAI_DA" Type="int" Nullable="false" />
+          <Property Name="LOAI_HOPDONG_ID" Type="int" Nullable="false" />
+          <Property Name="NGAY_START_DA" Type="date" />
+        </EntityType>
+        <EntityType Name="QLDA_CNTT_TIENDO">
+          <Key>
+            <PropertyRef Name="TIENDO_DA_ID" />
+          </Key>
+          <Property Name="TIENDO_DA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DUAN_ID" Type="int" Nullable="false" />
+          <Property Name="TEN_TIENDO_DA" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DONVI_CHUTRI" Type="int" Nullable="false" />
+          <Property Name="NGUOI_THUCHIEN" Type="int" Nullable="false" />
+          <Property Name="TRANGTHAI_THUCHIEN" Type="int" />
+          <Property Name="NGAY_GIAO" Type="date" />
+          <Property Name="NGAY_HETHAN" Type="date" />
+          <Property Name="FILE_ID" Type="int" />
+          <Property Name="GHICHU_HIENTRANG" Type="nvarchar" MaxLength="500" />
+          <Property Name="GHICHU_TONDONG" Type="nvarchar" MaxLength="500" />
+          <Property Name="VTT" Type="bit" />
         </EntityType>
         <EntityType Name="TBL_FILE">
           <Key>
@@ -659,7 +688,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__BEN_C__6754599E">
+        <Association Name="FK__HOPDONG_D__BEN_C__6B24EA82">
           <End Role="DM_CHUTHE_HOPDONG" Type="Self.DM_CHUTHE_HOPDONG" Multiplicity="1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -671,7 +700,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__BEN_T__68487DD7">
+        <Association Name="FK__HOPDONG_D__BEN_T__6C190EBB">
           <End Role="DM_CHUTHE_HOPDONG" Type="Self.DM_CHUTHE_HOPDONG" Multiplicity="1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -683,7 +712,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__CHUKY__619B8048">
+        <Association Name="FK__HOPDONG_D__CHUKY__656C112C">
           <End Role="CHUKY_TT" Type="Self.CHUKY_TT" Multiplicity="0..1" />
           <End Role="HOPDONG_DOANHTHU" Type="Self.HOPDONG_DOANHTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -695,7 +724,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__CHUKY__693CA210">
+        <Association Name="FK__HOPDONG_D__CHUKY__6D0D32F4">
           <End Role="CHUKY_TT" Type="Self.CHUKY_TT" Multiplicity="0..1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -707,7 +736,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__DONVI__628FA481">
+        <Association Name="FK__HOPDONG_D__DONVI__66603565">
           <End Role="DONVI" Type="Self.DONVI" Multiplicity="0..1" />
           <End Role="HOPDONG_DOANHTHU" Type="Self.HOPDONG_DOANHTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -719,7 +748,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__DONVI__6A30C649">
+        <Association Name="FK__HOPDONG_D__DONVI__6E01572D">
           <End Role="DONVI" Type="Self.DONVI" Multiplicity="0..1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -731,7 +760,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__HTTT___6383C8BA">
+        <Association Name="FK__HOPDONG_D__DUAN___6EF57B66">
+          <End Role="QLDA_CNTT" Type="Self.QLDA_CNTT" Multiplicity="0..1" />
+          <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QLDA_CNTT">
+              <PropertyRef Name="DUAN_ID" />
+            </Principal>
+            <Dependent Role="HOPDONG_DT_CNTT">
+              <PropertyRef Name="DUAN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOPDONG_D__HTTT___6754599E">
           <End Role="HTTT" Type="Self.HTTT" Multiplicity="0..1" />
           <End Role="HOPDONG_DOANHTHU" Type="Self.HOPDONG_DOANHTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -743,7 +784,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__HTTT___6B24EA82">
+        <Association Name="FK__HOPDONG_D__HTTT___6FE99F9F">
           <End Role="HTTT" Type="Self.HTTT" Multiplicity="0..1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -755,7 +796,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__ID_LO__6477ECF3">
+        <Association Name="FK__HOPDONG_D__ID_LO__68487DD7">
           <End Role="LOAI_HD_SUB" Type="Self.LOAI_HD_SUB" Multiplicity="0..1" />
           <End Role="HOPDONG_DOANHTHU" Type="Self.HOPDONG_DOANHTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -767,7 +808,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__LOAI___6C190EBB">
+        <Association Name="FK__HOPDONG_D__LOAI___70DDC3D8">
           <End Role="DM_LOAI_HOPDONG" Type="Self.DM_LOAI_HOPDONG" Multiplicity="1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -779,7 +820,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__NAM_H__656C112C">
+        <Association Name="FK__HOPDONG_D__NAM_H__693CA210">
           <End Role="NAM_HD" Type="Self.NAM_HD" Multiplicity="0..1" />
           <End Role="HOPDONG_DOANHTHU" Type="Self.HOPDONG_DOANHTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -791,7 +832,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__NAM_H__6D0D32F4">
+        <Association Name="FK__HOPDONG_D__NAM_H__71D1E811">
           <End Role="NAM_HD" Type="Self.NAM_HD" Multiplicity="0..1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -803,7 +844,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__THOIH__66603565">
+        <Association Name="FK__HOPDONG_D__THOIH__6A30C649">
           <End Role="THOIHAN_TT" Type="Self.THOIHAN_TT" Multiplicity="0..1" />
           <End Role="HOPDONG_DOANHTHU" Type="Self.HOPDONG_DOANHTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -815,7 +856,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__THOIH__6E01572D">
+        <Association Name="FK__HOPDONG_D__THOIH__72C60C4A">
           <End Role="THOIHAN_TT" Type="Self.THOIHAN_TT" Multiplicity="0..1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -851,7 +892,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MENU_CON__ID_MEN__75A278F5">
+        <Association Name="FK__MENU_CON__ID_MEN__7A672E12">
           <End Role="MENU_CHA" Type="Self.MENU_CHA" Multiplicity="0..1" />
           <End Role="MENU_CON" Type="Self.MENU_CON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -863,7 +904,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PL_HD_DOA__BEN_C__7A672E12">
+        <Association Name="FK__PL_HD_DOA__BEN_C__7F2BE32F">
           <End Role="DM_CHUTHE_HOPDONG" Type="Self.DM_CHUTHE_HOPDONG" Multiplicity="1" />
           <End Role="PL_HD_DOANHTHU_CNTT" Type="Self.PL_HD_DOANHTHU_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -875,7 +916,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PL_HD_DOA__BEN_T__7B5B524B">
+        <Association Name="FK__PL_HD_DOA__BEN_T__00200768">
           <End Role="DM_CHUTHE_HOPDONG" Type="Self.DM_CHUTHE_HOPDONG" Multiplicity="1" />
           <End Role="PL_HD_DOANHTHU_CNTT" Type="Self.PL_HD_DOANHTHU_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -887,7 +928,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PL_HD_DOA__HOPDO__7C4F7684">
+        <Association Name="FK__PL_HD_DOA__HOPDO__01142BA1">
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="1" />
           <End Role="PL_HD_DOANHTHU_CNTT" Type="Self.PL_HD_DOANHTHU_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -899,7 +940,67 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__THANHLY_H__HOPDO__7E37BEF6">
+        <Association Name="FK__QLDA_CNTT__DONVI__02FC7413">
+          <End Role="DONVI" Type="Self.DONVI" Multiplicity="1" />
+          <End Role="QLDA_CNTT_TIENDO" Type="Self.QLDA_CNTT_TIENDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONVI">
+              <PropertyRef Name="DONVI_ID" />
+            </Principal>
+            <Dependent Role="QLDA_CNTT_TIENDO">
+              <PropertyRef Name="DONVI_CHUTRI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QLDA_CNTT__DUAN___03F0984C">
+          <End Role="QLDA_CNTT" Type="Self.QLDA_CNTT" Multiplicity="1" />
+          <End Role="QLDA_CNTT_TIENDO" Type="Self.QLDA_CNTT_TIENDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QLDA_CNTT">
+              <PropertyRef Name="DUAN_ID" />
+            </Principal>
+            <Dependent Role="QLDA_CNTT_TIENDO">
+              <PropertyRef Name="DUAN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QLDA_CNTT__FILE___04E4BC85">
+          <End Role="TBL_FILE" Type="Self.TBL_FILE" Multiplicity="0..1" />
+          <End Role="QLDA_CNTT_TIENDO" Type="Self.QLDA_CNTT_TIENDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_FILE">
+              <PropertyRef Name="file_id" />
+            </Principal>
+            <Dependent Role="QLDA_CNTT_TIENDO">
+              <PropertyRef Name="FILE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QLDA_CNTT__LOAI___02084FDA">
+          <End Role="DM_LOAI_HOPDONG" Type="Self.DM_LOAI_HOPDONG" Multiplicity="1" />
+          <End Role="QLDA_CNTT" Type="Self.QLDA_CNTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DM_LOAI_HOPDONG">
+              <PropertyRef Name="LOAI_HOPDONG_ID" />
+            </Principal>
+            <Dependent Role="QLDA_CNTT">
+              <PropertyRef Name="LOAI_HOPDONG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QLDA_CNTT__NGUOI__05D8E0BE">
+          <End Role="THANHVIEN" Type="Self.THANHVIEN" Multiplicity="1" />
+          <End Role="QLDA_CNTT_TIENDO" Type="Self.QLDA_CNTT_TIENDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THANHVIEN">
+              <PropertyRef Name="ID_THANHVIEN" />
+            </Principal>
+            <Dependent Role="QLDA_CNTT_TIENDO">
+              <PropertyRef Name="NGUOI_THUCHIEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THANHLY_H__HOPDO__07C12930">
           <End Role="HOPDONG_DOANHTHU" Type="Self.HOPDONG_DOANHTHU" Multiplicity="0..1" />
           <End Role="THANHLY_HDDOANHTHU" Type="Self.THANHLY_HDDOANHTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1211,6 +1312,8 @@
           <EntitySet Name="PHULUC" EntityType="Self.PHULUC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHULUC_HDCP" EntityType="Self.PHULUC_HDCP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PL_HD_DOANHTHU_CNTT" EntityType="Self.PL_HD_DOANHTHU_CNTT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QLDA_CNTT" EntityType="Self.QLDA_CNTT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QLDA_CNTT_TIENDO" EntityType="Self.QLDA_CNTT_TIENDO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_FILE" EntityType="Self.TBL_FILE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THANHLY_HDCHIPHI" EntityType="Self.THANHLY_HDCHIPHI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THANHLY_HDDOANHTHU" EntityType="Self.THANHLY_HDDOANHTHU" Schema="dbo" store:Type="Tables" />
@@ -1239,59 +1342,63 @@
             <End Role="DONVI" EntitySet="DONVI" />
             <End Role="HOPDONG_CHIPHI" EntitySet="HOPDONG_CHIPHI" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__BEN_C__6754599E" Association="Self.FK__HOPDONG_D__BEN_C__6754599E">
+          <AssociationSet Name="FK__HOPDONG_D__BEN_C__6B24EA82" Association="Self.FK__HOPDONG_D__BEN_C__6B24EA82">
             <End Role="DM_CHUTHE_HOPDONG" EntitySet="DM_CHUTHE_HOPDONG" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__BEN_T__68487DD7" Association="Self.FK__HOPDONG_D__BEN_T__68487DD7">
+          <AssociationSet Name="FK__HOPDONG_D__BEN_T__6C190EBB" Association="Self.FK__HOPDONG_D__BEN_T__6C190EBB">
             <End Role="DM_CHUTHE_HOPDONG" EntitySet="DM_CHUTHE_HOPDONG" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__CHUKY__619B8048" Association="Self.FK__HOPDONG_D__CHUKY__619B8048">
+          <AssociationSet Name="FK__HOPDONG_D__CHUKY__656C112C" Association="Self.FK__HOPDONG_D__CHUKY__656C112C">
             <End Role="CHUKY_TT" EntitySet="CHUKY_TT" />
             <End Role="HOPDONG_DOANHTHU" EntitySet="HOPDONG_DOANHTHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__CHUKY__693CA210" Association="Self.FK__HOPDONG_D__CHUKY__693CA210">
+          <AssociationSet Name="FK__HOPDONG_D__CHUKY__6D0D32F4" Association="Self.FK__HOPDONG_D__CHUKY__6D0D32F4">
             <End Role="CHUKY_TT" EntitySet="CHUKY_TT" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__DONVI__628FA481" Association="Self.FK__HOPDONG_D__DONVI__628FA481">
+          <AssociationSet Name="FK__HOPDONG_D__DONVI__66603565" Association="Self.FK__HOPDONG_D__DONVI__66603565">
             <End Role="DONVI" EntitySet="DONVI" />
             <End Role="HOPDONG_DOANHTHU" EntitySet="HOPDONG_DOANHTHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__DONVI__6A30C649" Association="Self.FK__HOPDONG_D__DONVI__6A30C649">
+          <AssociationSet Name="FK__HOPDONG_D__DONVI__6E01572D" Association="Self.FK__HOPDONG_D__DONVI__6E01572D">
             <End Role="DONVI" EntitySet="DONVI" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__HTTT___6383C8BA" Association="Self.FK__HOPDONG_D__HTTT___6383C8BA">
+          <AssociationSet Name="FK__HOPDONG_D__DUAN___6EF57B66" Association="Self.FK__HOPDONG_D__DUAN___6EF57B66">
+            <End Role="QLDA_CNTT" EntitySet="QLDA_CNTT" />
+            <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOPDONG_D__HTTT___6754599E" Association="Self.FK__HOPDONG_D__HTTT___6754599E">
             <End Role="HTTT" EntitySet="HTTT" />
             <End Role="HOPDONG_DOANHTHU" EntitySet="HOPDONG_DOANHTHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__HTTT___6B24EA82" Association="Self.FK__HOPDONG_D__HTTT___6B24EA82">
+          <AssociationSet Name="FK__HOPDONG_D__HTTT___6FE99F9F" Association="Self.FK__HOPDONG_D__HTTT___6FE99F9F">
             <End Role="HTTT" EntitySet="HTTT" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__ID_LO__6477ECF3" Association="Self.FK__HOPDONG_D__ID_LO__6477ECF3">
+          <AssociationSet Name="FK__HOPDONG_D__ID_LO__68487DD7" Association="Self.FK__HOPDONG_D__ID_LO__68487DD7">
             <End Role="LOAI_HD_SUB" EntitySet="LOAI_HD_SUB" />
             <End Role="HOPDONG_DOANHTHU" EntitySet="HOPDONG_DOANHTHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__LOAI___6C190EBB" Association="Self.FK__HOPDONG_D__LOAI___6C190EBB">
+          <AssociationSet Name="FK__HOPDONG_D__LOAI___70DDC3D8" Association="Self.FK__HOPDONG_D__LOAI___70DDC3D8">
             <End Role="DM_LOAI_HOPDONG" EntitySet="DM_LOAI_HOPDONG" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__NAM_H__656C112C" Association="Self.FK__HOPDONG_D__NAM_H__656C112C">
+          <AssociationSet Name="FK__HOPDONG_D__NAM_H__693CA210" Association="Self.FK__HOPDONG_D__NAM_H__693CA210">
             <End Role="NAM_HD" EntitySet="NAM_HD" />
             <End Role="HOPDONG_DOANHTHU" EntitySet="HOPDONG_DOANHTHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__NAM_H__6D0D32F4" Association="Self.FK__HOPDONG_D__NAM_H__6D0D32F4">
+          <AssociationSet Name="FK__HOPDONG_D__NAM_H__71D1E811" Association="Self.FK__HOPDONG_D__NAM_H__71D1E811">
             <End Role="NAM_HD" EntitySet="NAM_HD" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__THOIH__66603565" Association="Self.FK__HOPDONG_D__THOIH__66603565">
+          <AssociationSet Name="FK__HOPDONG_D__THOIH__6A30C649" Association="Self.FK__HOPDONG_D__THOIH__6A30C649">
             <End Role="THOIHAN_TT" EntitySet="THOIHAN_TT" />
             <End Role="HOPDONG_DOANHTHU" EntitySet="HOPDONG_DOANHTHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__THOIH__6E01572D" Association="Self.FK__HOPDONG_D__THOIH__6E01572D">
+          <AssociationSet Name="FK__HOPDONG_D__THOIH__72C60C4A" Association="Self.FK__HOPDONG_D__THOIH__72C60C4A">
             <End Role="THOIHAN_TT" EntitySet="THOIHAN_TT" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
           </AssociationSet>
@@ -1303,23 +1410,43 @@
             <End Role="TRANGTHAI_HD" EntitySet="TRANGTHAI_HD" />
             <End Role="HOPDONG_NHANCONG" EntitySet="HOPDONG_NHANCONG" />
           </AssociationSet>
-          <AssociationSet Name="FK__MENU_CON__ID_MEN__75A278F5" Association="Self.FK__MENU_CON__ID_MEN__75A278F5">
+          <AssociationSet Name="FK__MENU_CON__ID_MEN__7A672E12" Association="Self.FK__MENU_CON__ID_MEN__7A672E12">
             <End Role="MENU_CHA" EntitySet="MENU_CHA" />
             <End Role="MENU_CON" EntitySet="MENU_CON" />
           </AssociationSet>
-          <AssociationSet Name="FK__PL_HD_DOA__BEN_C__7A672E12" Association="Self.FK__PL_HD_DOA__BEN_C__7A672E12">
+          <AssociationSet Name="FK__PL_HD_DOA__BEN_C__7F2BE32F" Association="Self.FK__PL_HD_DOA__BEN_C__7F2BE32F">
             <End Role="DM_CHUTHE_HOPDONG" EntitySet="DM_CHUTHE_HOPDONG" />
             <End Role="PL_HD_DOANHTHU_CNTT" EntitySet="PL_HD_DOANHTHU_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__PL_HD_DOA__BEN_T__7B5B524B" Association="Self.FK__PL_HD_DOA__BEN_T__7B5B524B">
+          <AssociationSet Name="FK__PL_HD_DOA__BEN_T__00200768" Association="Self.FK__PL_HD_DOA__BEN_T__00200768">
             <End Role="DM_CHUTHE_HOPDONG" EntitySet="DM_CHUTHE_HOPDONG" />
             <End Role="PL_HD_DOANHTHU_CNTT" EntitySet="PL_HD_DOANHTHU_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__PL_HD_DOA__HOPDO__7C4F7684" Association="Self.FK__PL_HD_DOA__HOPDO__7C4F7684">
+          <AssociationSet Name="FK__PL_HD_DOA__HOPDO__01142BA1" Association="Self.FK__PL_HD_DOA__HOPDO__01142BA1">
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
             <End Role="PL_HD_DOANHTHU_CNTT" EntitySet="PL_HD_DOANHTHU_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__THANHLY_H__HOPDO__7E37BEF6" Association="Self.FK__THANHLY_H__HOPDO__7E37BEF6">
+          <AssociationSet Name="FK__QLDA_CNTT__DONVI__02FC7413" Association="Self.FK__QLDA_CNTT__DONVI__02FC7413">
+            <End Role="DONVI" EntitySet="DONVI" />
+            <End Role="QLDA_CNTT_TIENDO" EntitySet="QLDA_CNTT_TIENDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QLDA_CNTT__DUAN___03F0984C" Association="Self.FK__QLDA_CNTT__DUAN___03F0984C">
+            <End Role="QLDA_CNTT" EntitySet="QLDA_CNTT" />
+            <End Role="QLDA_CNTT_TIENDO" EntitySet="QLDA_CNTT_TIENDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QLDA_CNTT__FILE___04E4BC85" Association="Self.FK__QLDA_CNTT__FILE___04E4BC85">
+            <End Role="TBL_FILE" EntitySet="TBL_FILE" />
+            <End Role="QLDA_CNTT_TIENDO" EntitySet="QLDA_CNTT_TIENDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QLDA_CNTT__LOAI___02084FDA" Association="Self.FK__QLDA_CNTT__LOAI___02084FDA">
+            <End Role="DM_LOAI_HOPDONG" EntitySet="DM_LOAI_HOPDONG" />
+            <End Role="QLDA_CNTT" EntitySet="QLDA_CNTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QLDA_CNTT__NGUOI__05D8E0BE" Association="Self.FK__QLDA_CNTT__NGUOI__05D8E0BE">
+            <End Role="THANHVIEN" EntitySet="THANHVIEN" />
+            <End Role="QLDA_CNTT_TIENDO" EntitySet="QLDA_CNTT_TIENDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THANHLY_H__HOPDO__07C12930" Association="Self.FK__THANHLY_H__HOPDO__07C12930">
             <End Role="HOPDONG_DOANHTHU" EntitySet="HOPDONG_DOANHTHU" />
             <End Role="THANHLY_HDDOANHTHU" EntitySet="THANHLY_HDDOANHTHU" />
           </AssociationSet>
@@ -1449,8 +1576,8 @@
           <Property Name="CHUKY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CHUKY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="THANG" Type="Int32" />
-          <NavigationProperty Name="HOPDONG_DOANHTHU" Relationship="Self.FK__HOPDONG_D__CHUKY__619B8048" FromRole="CHUKY_TT" ToRole="HOPDONG_DOANHTHU" />
-          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__HOPDONG_D__CHUKY__693CA210" FromRole="CHUKY_TT" ToRole="HOPDONG_DT_CNTT" />
+          <NavigationProperty Name="HOPDONG_DOANHTHU" Relationship="Self.FK__HOPDONG_D__CHUKY__656C112C" FromRole="CHUKY_TT" ToRole="HOPDONG_DOANHTHU" />
+          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__HOPDONG_D__CHUKY__6D0D32F4" FromRole="CHUKY_TT" ToRole="HOPDONG_DT_CNTT" />
           <NavigationProperty Name="HOPDONG_CHIPHI" Relationship="Self.fk_chuky12" FromRole="CHUKY_TT" ToRole="HOPDONG_CHIPHI" />
           <NavigationProperty Name="PHULUC_HDCP" Relationship="Self.fk_PHULUC" FromRole="CHUKY_TT" ToRole="PHULUC_HDCP" />
           <NavigationProperty Name="PHULUC_HDCP1" Relationship="Self.fk_PHULUC2" FromRole="CHUKY_TT" ToRole="PHULUC_HDCP" />
@@ -1471,10 +1598,10 @@
           <Property Name="TEN_NGANHANG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="MSTHUE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="GHICHU" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__HOPDONG_D__BEN_C__6754599E" FromRole="DM_CHUTHE_HOPDONG" ToRole="HOPDONG_DT_CNTT" />
-          <NavigationProperty Name="HOPDONG_DT_CNTT1" Relationship="Self.FK__HOPDONG_D__BEN_T__68487DD7" FromRole="DM_CHUTHE_HOPDONG" ToRole="HOPDONG_DT_CNTT" />
-          <NavigationProperty Name="PL_HD_DOANHTHU_CNTT" Relationship="Self.FK__PL_HD_DOA__BEN_C__7A672E12" FromRole="DM_CHUTHE_HOPDONG" ToRole="PL_HD_DOANHTHU_CNTT" />
-          <NavigationProperty Name="PL_HD_DOANHTHU_CNTT1" Relationship="Self.FK__PL_HD_DOA__BEN_T__7B5B524B" FromRole="DM_CHUTHE_HOPDONG" ToRole="PL_HD_DOANHTHU_CNTT" />
+          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__HOPDONG_D__BEN_C__6B24EA82" FromRole="DM_CHUTHE_HOPDONG" ToRole="HOPDONG_DT_CNTT" />
+          <NavigationProperty Name="HOPDONG_DT_CNTT1" Relationship="Self.FK__HOPDONG_D__BEN_T__6C190EBB" FromRole="DM_CHUTHE_HOPDONG" ToRole="HOPDONG_DT_CNTT" />
+          <NavigationProperty Name="PL_HD_DOANHTHU_CNTT" Relationship="Self.FK__PL_HD_DOA__BEN_C__7F2BE32F" FromRole="DM_CHUTHE_HOPDONG" ToRole="PL_HD_DOANHTHU_CNTT" />
+          <NavigationProperty Name="PL_HD_DOANHTHU_CNTT1" Relationship="Self.FK__PL_HD_DOA__BEN_T__00200768" FromRole="DM_CHUTHE_HOPDONG" ToRole="PL_HD_DOANHTHU_CNTT" />
         </EntityType>
         <EntityType Name="DM_LOAI_HOPDONG">
           <Key>
@@ -1484,7 +1611,8 @@
           <Property Name="HOPDONG_DT_CNTT_ID" Type="Int32" Nullable="false" />
           <Property Name="TEN_LOAI_HOPDONG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__HOPDONG_D__LOAI___6C190EBB" FromRole="DM_LOAI_HOPDONG" ToRole="HOPDONG_DT_CNTT" />
+          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__HOPDONG_D__LOAI___70DDC3D8" FromRole="DM_LOAI_HOPDONG" ToRole="HOPDONG_DT_CNTT" />
+          <NavigationProperty Name="QLDA_CNTT" Relationship="Self.FK__QLDA_CNTT__LOAI___02084FDA" FromRole="DM_LOAI_HOPDONG" ToRole="QLDA_CNTT" />
         </EntityType>
         <EntityType Name="DM_VANBAN">
           <Key>
@@ -1503,9 +1631,10 @@
           <Property Name="DONVI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TEN_DV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HOPDONG_CHIPHI" Relationship="Self.FK__HOPDONG_C__DONVI__589C25F3" FromRole="DONVI" ToRole="HOPDONG_CHIPHI" />
-          <NavigationProperty Name="HOPDONG_DOANHTHU" Relationship="Self.FK__HOPDONG_D__DONVI__628FA481" FromRole="DONVI" ToRole="HOPDONG_DOANHTHU" />
-          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__HOPDONG_D__DONVI__6A30C649" FromRole="DONVI" ToRole="HOPDONG_DT_CNTT" />
+          <NavigationProperty Name="HOPDONG_DOANHTHU" Relationship="Self.FK__HOPDONG_D__DONVI__66603565" FromRole="DONVI" ToRole="HOPDONG_DOANHTHU" />
+          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__HOPDONG_D__DONVI__6E01572D" FromRole="DONVI" ToRole="HOPDONG_DT_CNTT" />
           <NavigationProperty Name="HOPDONG_NHANCONG" Relationship="Self.FK__HOPDONG_N__DONVI__5A846E65" FromRole="DONVI" ToRole="HOPDONG_NHANCONG" />
+          <NavigationProperty Name="QLDA_CNTT_TIENDO" Relationship="Self.FK__QLDA_CNTT__DONVI__02FC7413" FromRole="DONVI" ToRole="QLDA_CNTT_TIENDO" />
         </EntityType>
         <EntityType Name="DS_QUYEN_MENU">
           <Key>
@@ -1694,13 +1823,13 @@
           <Property Name="VAT" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="SO_CHUKY" Type="Int32" />
           <Property Name="TRANGTHAI" Type="Int32" />
-          <NavigationProperty Name="CHUKY_TT" Relationship="Self.FK__HOPDONG_D__CHUKY__619B8048" FromRole="HOPDONG_DOANHTHU" ToRole="CHUKY_TT" />
-          <NavigationProperty Name="DONVI" Relationship="Self.FK__HOPDONG_D__DONVI__628FA481" FromRole="HOPDONG_DOANHTHU" ToRole="DONVI" />
-          <NavigationProperty Name="HTTT" Relationship="Self.FK__HOPDONG_D__HTTT___6383C8BA" FromRole="HOPDONG_DOANHTHU" ToRole="HTTT" />
-          <NavigationProperty Name="LOAI_HD_SUB" Relationship="Self.FK__HOPDONG_D__ID_LO__6477ECF3" FromRole="HOPDONG_DOANHTHU" ToRole="LOAI_HD_SUB" />
-          <NavigationProperty Name="NAM_HD" Relationship="Self.FK__HOPDONG_D__NAM_H__656C112C" FromRole="HOPDONG_DOANHTHU" ToRole="NAM_HD" />
-          <NavigationProperty Name="THOIHAN_TT" Relationship="Self.FK__HOPDONG_D__THOIH__66603565" FromRole="HOPDONG_DOANHTHU" ToRole="THOIHAN_TT" />
-          <NavigationProperty Name="THANHLY_HDDOANHTHU" Relationship="Self.FK__THANHLY_H__HOPDO__7E37BEF6" FromRole="HOPDONG_DOANHTHU" ToRole="THANHLY_HDDOANHTHU" />
+          <NavigationProperty Name="CHUKY_TT" Relationship="Self.FK__HOPDONG_D__CHUKY__656C112C" FromRole="HOPDONG_DOANHTHU" ToRole="CHUKY_TT" />
+          <NavigationProperty Name="DONVI" Relationship="Self.FK__HOPDONG_D__DONVI__66603565" FromRole="HOPDONG_DOANHTHU" ToRole="DONVI" />
+          <NavigationProperty Name="HTTT" Relationship="Self.FK__HOPDONG_D__HTTT___6754599E" FromRole="HOPDONG_DOANHTHU" ToRole="HTTT" />
+          <NavigationProperty Name="LOAI_HD_SUB" Relationship="Self.FK__HOPDONG_D__ID_LO__68487DD7" FromRole="HOPDONG_DOANHTHU" ToRole="LOAI_HD_SUB" />
+          <NavigationProperty Name="NAM_HD" Relationship="Self.FK__HOPDONG_D__NAM_H__693CA210" FromRole="HOPDONG_DOANHTHU" ToRole="NAM_HD" />
+          <NavigationProperty Name="THOIHAN_TT" Relationship="Self.FK__HOPDONG_D__THOIH__6A30C649" FromRole="HOPDONG_DOANHTHU" ToRole="THOIHAN_TT" />
+          <NavigationProperty Name="THANHLY_HDDOANHTHU" Relationship="Self.FK__THANHLY_H__HOPDO__07C12930" FromRole="HOPDONG_DOANHTHU" ToRole="THANHLY_HDDOANHTHU" />
           <NavigationProperty Name="THANHTOAN_DOANHTHU" Relationship="Self.FK_THANHTOA_TTDOANHTH_HOPDONG_" FromRole="HOPDONG_DOANHTHU" ToRole="THANHTOAN_DOANHTHU" />
         </EntityType>
         <EntityType Name="HOPDONG_DT_CNTT">
@@ -1739,16 +1868,18 @@
           <Property Name="SO_CHUKY" Type="Int32" />
           <Property Name="TRANGTHAI" Type="Int32" />
           <Property Name="FILE_ID" Type="Int32" />
-          <NavigationProperty Name="CHUKY_TT" Relationship="Self.FK__HOPDONG_D__CHUKY__693CA210" FromRole="HOPDONG_DT_CNTT" ToRole="CHUKY_TT" />
-          <NavigationProperty Name="DM_CHUTHE_HOPDONG" Relationship="Self.FK__HOPDONG_D__BEN_C__6754599E" FromRole="HOPDONG_DT_CNTT" ToRole="DM_CHUTHE_HOPDONG" />
-          <NavigationProperty Name="DM_CHUTHE_HOPDONG1" Relationship="Self.FK__HOPDONG_D__BEN_T__68487DD7" FromRole="HOPDONG_DT_CNTT" ToRole="DM_CHUTHE_HOPDONG" />
-          <NavigationProperty Name="DM_LOAI_HOPDONG" Relationship="Self.FK__HOPDONG_D__LOAI___6C190EBB" FromRole="HOPDONG_DT_CNTT" ToRole="DM_LOAI_HOPDONG" />
-          <NavigationProperty Name="DONVI" Relationship="Self.FK__HOPDONG_D__DONVI__6A30C649" FromRole="HOPDONG_DT_CNTT" ToRole="DONVI" />
+          <Property Name="DUAN_ID" Type="Int32" />
+          <NavigationProperty Name="CHUKY_TT" Relationship="Self.FK__HOPDONG_D__CHUKY__6D0D32F4" FromRole="HOPDONG_DT_CNTT" ToRole="CHUKY_TT" />
+          <NavigationProperty Name="DM_CHUTHE_HOPDONG" Relationship="Self.FK__HOPDONG_D__BEN_C__6B24EA82" FromRole="HOPDONG_DT_CNTT" ToRole="DM_CHUTHE_HOPDONG" />
+          <NavigationProperty Name="DM_CHUTHE_HOPDONG1" Relationship="Self.FK__HOPDONG_D__BEN_T__6C190EBB" FromRole="HOPDONG_DT_CNTT" ToRole="DM_CHUTHE_HOPDONG" />
+          <NavigationProperty Name="DM_LOAI_HOPDONG" Relationship="Self.FK__HOPDONG_D__LOAI___70DDC3D8" FromRole="HOPDONG_DT_CNTT" ToRole="DM_LOAI_HOPDONG" />
+          <NavigationProperty Name="DONVI" Relationship="Self.FK__HOPDONG_D__DONVI__6E01572D" FromRole="HOPDONG_DT_CNTT" ToRole="DONVI" />
           <NavigationProperty Name="DT_CNTT_TIENDO_TT" Relationship="Self.FK__DT_CNTT_T__HOPDO__59063A47" FromRole="HOPDONG_DT_CNTT" ToRole="DT_CNTT_TIENDO_TT" />
-          <NavigationProperty Name="HTTT" Relationship="Self.FK__HOPDONG_D__HTTT___6B24EA82" FromRole="HOPDONG_DT_CNTT" ToRole="HTTT" />
-          <NavigationProperty Name="NAM_HD" Relationship="Self.FK__HOPDONG_D__NAM_H__6D0D32F4" FromRole="HOPDONG_DT_CNTT" ToRole="NAM_HD" />
-          <NavigationProperty Name="THOIHAN_TT" Relationship="Self.FK__HOPDONG_D__THOIH__6E01572D" FromRole="HOPDONG_DT_CNTT" ToRole="THOIHAN_TT" />
-          <NavigationProperty Name="PL_HD_DOANHTHU_CNTT" Relationship="Self.FK__PL_HD_DOA__HOPDO__7C4F7684" FromRole="HOPDONG_DT_CNTT" ToRole="PL_HD_DOANHTHU_CNTT" />
+          <NavigationProperty Name="QLDA_CNTT" Relationship="Self.FK__HOPDONG_D__DUAN___6EF57B66" FromRole="HOPDONG_DT_CNTT" ToRole="QLDA_CNTT" />
+          <NavigationProperty Name="HTTT" Relationship="Self.FK__HOPDONG_D__HTTT___6FE99F9F" FromRole="HOPDONG_DT_CNTT" ToRole="HTTT" />
+          <NavigationProperty Name="NAM_HD" Relationship="Self.FK__HOPDONG_D__NAM_H__71D1E811" FromRole="HOPDONG_DT_CNTT" ToRole="NAM_HD" />
+          <NavigationProperty Name="THOIHAN_TT" Relationship="Self.FK__HOPDONG_D__THOIH__72C60C4A" FromRole="HOPDONG_DT_CNTT" ToRole="THOIHAN_TT" />
+          <NavigationProperty Name="PL_HD_DOANHTHU_CNTT" Relationship="Self.FK__PL_HD_DOA__HOPDO__01142BA1" FromRole="HOPDONG_DT_CNTT" ToRole="PL_HD_DOANHTHU_CNTT" />
         </EntityType>
         <EntityType Name="HOPDONG_NHANCONG">
           <Key>
@@ -1831,8 +1962,8 @@
           <Property Name="TEN_HTTT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="GHICHU" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HOPDONG_CHIPHI" Relationship="Self.HDCHIPHI_HTTT" FromRole="HTTT" ToRole="HOPDONG_CHIPHI" />
-          <NavigationProperty Name="HOPDONG_DOANHTHU" Relationship="Self.FK__HOPDONG_D__HTTT___6383C8BA" FromRole="HTTT" ToRole="HOPDONG_DOANHTHU" />
-          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__HOPDONG_D__HTTT___6B24EA82" FromRole="HTTT" ToRole="HOPDONG_DT_CNTT" />
+          <NavigationProperty Name="HOPDONG_DOANHTHU" Relationship="Self.FK__HOPDONG_D__HTTT___6754599E" FromRole="HTTT" ToRole="HOPDONG_DOANHTHU" />
+          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__HOPDONG_D__HTTT___6FE99F9F" FromRole="HTTT" ToRole="HOPDONG_DT_CNTT" />
           <NavigationProperty Name="HOPDONG_NHANCONG" Relationship="Self.HDNHANCONG_HTTT" FromRole="HTTT" ToRole="HOPDONG_NHANCONG" />
         </EntityType>
         <EntityType Name="LICHSU_DANGNHAP">
@@ -1853,7 +1984,7 @@
           <Property Name="GHICHU" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="LOAIHD" Type="Int32" />
           <NavigationProperty Name="HOPDONG_CHIPHI" Relationship="Self.HDCHIPHI_LOAI_HD" FromRole="LOAI_HD_SUB" ToRole="HOPDONG_CHIPHI" />
-          <NavigationProperty Name="HOPDONG_DOANHTHU" Relationship="Self.FK__HOPDONG_D__ID_LO__6477ECF3" FromRole="LOAI_HD_SUB" ToRole="HOPDONG_DOANHTHU" />
+          <NavigationProperty Name="HOPDONG_DOANHTHU" Relationship="Self.FK__HOPDONG_D__ID_LO__68487DD7" FromRole="LOAI_HD_SUB" ToRole="HOPDONG_DOANHTHU" />
           <NavigationProperty Name="HOPDONG_NHANCONG" Relationship="Self.HDNHANCONG_LOAI_HD" FromRole="LOAI_HD_SUB" ToRole="HOPDONG_NHANCONG" />
         </EntityType>
         <EntityType Name="MENU_CHA">
@@ -1865,7 +1996,7 @@
           <Property Name="LINK" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ICON" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DS_QUYEN_MENU" Relationship="Self.fk_menucha" FromRole="MENU_CHA" ToRole="DS_QUYEN_MENU" />
-          <NavigationProperty Name="MENU_CON" Relationship="Self.FK__MENU_CON__ID_MEN__75A278F5" FromRole="MENU_CHA" ToRole="MENU_CON" />
+          <NavigationProperty Name="MENU_CON" Relationship="Self.FK__MENU_CON__ID_MEN__7A672E12" FromRole="MENU_CHA" ToRole="MENU_CON" />
         </EntityType>
         <EntityType Name="MENU_CON">
           <Key>
@@ -1876,7 +2007,7 @@
           <Property Name="TEN_MENU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="LINK" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DS_QUYEN_MENU" Relationship="Self.FK__DS_QUYEN___ID_ME__26CFC035" FromRole="MENU_CON" ToRole="DS_QUYEN_MENU" />
-          <NavigationProperty Name="MENU_CHA" Relationship="Self.FK__MENU_CON__ID_MEN__75A278F5" FromRole="MENU_CON" ToRole="MENU_CHA" />
+          <NavigationProperty Name="MENU_CHA" Relationship="Self.FK__MENU_CON__ID_MEN__7A672E12" FromRole="MENU_CON" ToRole="MENU_CHA" />
         </EntityType>
         <EntityType Name="NAM_HD">
           <Key>
@@ -1885,8 +2016,8 @@
           <Property Name="NAM_HD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAM" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HOPDONG_CHIPHI" Relationship="Self.FK_HOPDONG__HDCHIPHI__NAM_HD" FromRole="NAM_HD" ToRole="HOPDONG_CHIPHI" />
-          <NavigationProperty Name="HOPDONG_DOANHTHU" Relationship="Self.FK__HOPDONG_D__NAM_H__656C112C" FromRole="NAM_HD" ToRole="HOPDONG_DOANHTHU" />
-          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__HOPDONG_D__NAM_H__6D0D32F4" FromRole="NAM_HD" ToRole="HOPDONG_DT_CNTT" />
+          <NavigationProperty Name="HOPDONG_DOANHTHU" Relationship="Self.FK__HOPDONG_D__NAM_H__693CA210" FromRole="NAM_HD" ToRole="HOPDONG_DOANHTHU" />
+          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__HOPDONG_D__NAM_H__71D1E811" FromRole="NAM_HD" ToRole="HOPDONG_DT_CNTT" />
           <NavigationProperty Name="HOPDONG_NHANCONG" Relationship="Self.FK_HOPDONG__HDNHANCON_NAM_HD" FromRole="NAM_HD" ToRole="HOPDONG_NHANCONG" />
         </EntityType>
         <EntityType Name="PHULUC">
@@ -1945,9 +2076,44 @@
           <Property Name="file" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="NGAY_HIEU_LUC_PL" Type="DateTime" Precision="0" />
           <Property Name="FILE_ID" Type="Int32" />
-          <NavigationProperty Name="DM_CHUTHE_HOPDONG" Relationship="Self.FK__PL_HD_DOA__BEN_C__7A672E12" FromRole="PL_HD_DOANHTHU_CNTT" ToRole="DM_CHUTHE_HOPDONG" />
-          <NavigationProperty Name="DM_CHUTHE_HOPDONG1" Relationship="Self.FK__PL_HD_DOA__BEN_T__7B5B524B" FromRole="PL_HD_DOANHTHU_CNTT" ToRole="DM_CHUTHE_HOPDONG" />
-          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__PL_HD_DOA__HOPDO__7C4F7684" FromRole="PL_HD_DOANHTHU_CNTT" ToRole="HOPDONG_DT_CNTT" />
+          <NavigationProperty Name="DM_CHUTHE_HOPDONG" Relationship="Self.FK__PL_HD_DOA__BEN_C__7F2BE32F" FromRole="PL_HD_DOANHTHU_CNTT" ToRole="DM_CHUTHE_HOPDONG" />
+          <NavigationProperty Name="DM_CHUTHE_HOPDONG1" Relationship="Self.FK__PL_HD_DOA__BEN_T__00200768" FromRole="PL_HD_DOANHTHU_CNTT" ToRole="DM_CHUTHE_HOPDONG" />
+          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__PL_HD_DOA__HOPDO__01142BA1" FromRole="PL_HD_DOANHTHU_CNTT" ToRole="HOPDONG_DT_CNTT" />
+        </EntityType>
+        <EntityType Name="QLDA_CNTT">
+          <Key>
+            <PropertyRef Name="DUAN_ID" />
+          </Key>
+          <Property Name="DUAN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEN_DA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CHUDAUTU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LOAI_DA" Type="Int32" Nullable="false" />
+          <Property Name="LOAI_HOPDONG_ID" Type="Int32" Nullable="false" />
+          <Property Name="NGAY_START_DA" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="DM_LOAI_HOPDONG" Relationship="Self.FK__QLDA_CNTT__LOAI___02084FDA" FromRole="QLDA_CNTT" ToRole="DM_LOAI_HOPDONG" />
+          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__HOPDONG_D__DUAN___6EF57B66" FromRole="QLDA_CNTT" ToRole="HOPDONG_DT_CNTT" />
+          <NavigationProperty Name="QLDA_CNTT_TIENDO" Relationship="Self.FK__QLDA_CNTT__DUAN___03F0984C" FromRole="QLDA_CNTT" ToRole="QLDA_CNTT_TIENDO" />
+        </EntityType>
+        <EntityType Name="QLDA_CNTT_TIENDO">
+          <Key>
+            <PropertyRef Name="TIENDO_DA_ID" />
+          </Key>
+          <Property Name="TIENDO_DA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DUAN_ID" Type="Int32" Nullable="false" />
+          <Property Name="TEN_TIENDO_DA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DONVI_CHUTRI" Type="Int32" Nullable="false" />
+          <Property Name="NGUOI_THUCHIEN" Type="Int32" Nullable="false" />
+          <Property Name="TRANGTHAI_THUCHIEN" Type="Int32" />
+          <Property Name="NGAY_GIAO" Type="DateTime" Precision="0" />
+          <Property Name="NGAY_HETHAN" Type="DateTime" Precision="0" />
+          <Property Name="FILE_ID" Type="Int32" />
+          <Property Name="GHICHU_HIENTRANG" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="GHICHU_TONDONG" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="VTT" Type="Boolean" />
+          <NavigationProperty Name="DONVI" Relationship="Self.FK__QLDA_CNTT__DONVI__02FC7413" FromRole="QLDA_CNTT_TIENDO" ToRole="DONVI" />
+          <NavigationProperty Name="QLDA_CNTT" Relationship="Self.FK__QLDA_CNTT__DUAN___03F0984C" FromRole="QLDA_CNTT_TIENDO" ToRole="QLDA_CNTT" />
+          <NavigationProperty Name="TBL_FILE" Relationship="Self.FK__QLDA_CNTT__FILE___04E4BC85" FromRole="QLDA_CNTT_TIENDO" ToRole="TBL_FILE" />
+          <NavigationProperty Name="THANHVIEN" Relationship="Self.FK__QLDA_CNTT__NGUOI__05D8E0BE" FromRole="QLDA_CNTT_TIENDO" ToRole="THANHVIEN" />
         </EntityType>
         <EntityType Name="TBL_FILE">
           <Key>
@@ -1957,6 +2123,7 @@
           <Property Name="file_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="file_ext" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="file_base6" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="QLDA_CNTT_TIENDO" Relationship="Self.FK__QLDA_CNTT__FILE___04E4BC85" FromRole="TBL_FILE" ToRole="QLDA_CNTT_TIENDO" />
         </EntityType>
         <EntityType Name="THANHLY_HDCHIPHI">
           <Key>
@@ -1984,7 +2151,7 @@
           <Property Name="NOIDUNG_TL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NGAY_HIEULUC_TL" Type="DateTime" Precision="0" />
           <Property Name="GHICHU" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HOPDONG_DOANHTHU" Relationship="Self.FK__THANHLY_H__HOPDO__7E37BEF6" FromRole="THANHLY_HDDOANHTHU" ToRole="HOPDONG_DOANHTHU" />
+          <NavigationProperty Name="HOPDONG_DOANHTHU" Relationship="Self.FK__THANHLY_H__HOPDO__07C12930" FromRole="THANHLY_HDDOANHTHU" ToRole="HOPDONG_DOANHTHU" />
         </EntityType>
         <EntityType Name="THANHLY_HDNHANCONG">
           <Key>
@@ -2078,6 +2245,7 @@
           <Property Name="DONVI_ID" Type="Int32" />
           <NavigationProperty Name="DS_QUYEN_MENU" Relationship="Self.FK__DS_QUYEN___USER___27C3E46E" FromRole="THANHVIEN" ToRole="DS_QUYEN_MENU" />
           <NavigationProperty Name="HETHONG" Relationship="Self.FK_THANHVIE_THANHVIEN_HETHONG" FromRole="THANHVIEN" ToRole="HETHONG" />
+          <NavigationProperty Name="QLDA_CNTT_TIENDO" Relationship="Self.FK__QLDA_CNTT__NGUOI__05D8E0BE" FromRole="THANHVIEN" ToRole="QLDA_CNTT_TIENDO" />
         </EntityType>
         <EntityType Name="THOIHAN_TT">
           <Key>
@@ -2086,8 +2254,8 @@
           <Property Name="THOIHAN_TT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TEN_THOIHAN_TT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HOPDONG_CHIPHI" Relationship="Self.FK_HOPDONG__HDCHIPHI__THOIHAN_" FromRole="THOIHAN_TT" ToRole="HOPDONG_CHIPHI" />
-          <NavigationProperty Name="HOPDONG_DOANHTHU" Relationship="Self.FK__HOPDONG_D__THOIH__66603565" FromRole="THOIHAN_TT" ToRole="HOPDONG_DOANHTHU" />
-          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__HOPDONG_D__THOIH__6E01572D" FromRole="THOIHAN_TT" ToRole="HOPDONG_DT_CNTT" />
+          <NavigationProperty Name="HOPDONG_DOANHTHU" Relationship="Self.FK__HOPDONG_D__THOIH__6A30C649" FromRole="THOIHAN_TT" ToRole="HOPDONG_DOANHTHU" />
+          <NavigationProperty Name="HOPDONG_DT_CNTT" Relationship="Self.FK__HOPDONG_D__THOIH__72C60C4A" FromRole="THOIHAN_TT" ToRole="HOPDONG_DT_CNTT" />
           <NavigationProperty Name="HOPDONG_NHANCONG" Relationship="Self.FK_HOPDONG__HDNHANCON_THOIHAN_" FromRole="THOIHAN_TT" ToRole="HOPDONG_NHANCONG" />
         </EntityType>
         <EntityType Name="TINHTRANG_SD_CHIPHI">
@@ -2123,7 +2291,7 @@
           <NavigationProperty Name="HOPDONG_CHIPHI" Relationship="Self.FK_HOPDONG_CHIPHI_TRANGTHAI_HD" FromRole="TRANGTHAI_HD" ToRole="HOPDONG_CHIPHI" />
           <NavigationProperty Name="HOPDONG_NHANCONG" Relationship="Self.FK__HOPDONG_N__ID_TR__3DB3258D" FromRole="TRANGTHAI_HD" ToRole="HOPDONG_NHANCONG" />
         </EntityType>
-        <Association Name="FK__HOPDONG_D__CHUKY__619B8048">
+        <Association Name="FK__HOPDONG_D__CHUKY__656C112C">
           <End Role="CHUKY_TT" Type="Self.CHUKY_TT" Multiplicity="0..1" />
           <End Role="HOPDONG_DOANHTHU" Type="Self.HOPDONG_DOANHTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2135,7 +2303,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__CHUKY__693CA210">
+        <Association Name="FK__HOPDONG_D__CHUKY__6D0D32F4">
           <End Role="CHUKY_TT" Type="Self.CHUKY_TT" Multiplicity="0..1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2207,7 +2375,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__BEN_C__6754599E">
+        <Association Name="FK__HOPDONG_D__BEN_C__6B24EA82">
           <End Role="DM_CHUTHE_HOPDONG" Type="Self.DM_CHUTHE_HOPDONG" Multiplicity="1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2219,7 +2387,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__BEN_T__68487DD7">
+        <Association Name="FK__HOPDONG_D__BEN_T__6C190EBB">
           <End Role="DM_CHUTHE_HOPDONG" Type="Self.DM_CHUTHE_HOPDONG" Multiplicity="1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2231,7 +2399,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PL_HD_DOA__BEN_C__7A672E12">
+        <Association Name="FK__PL_HD_DOA__BEN_C__7F2BE32F">
           <End Role="DM_CHUTHE_HOPDONG" Type="Self.DM_CHUTHE_HOPDONG" Multiplicity="1" />
           <End Role="PL_HD_DOANHTHU_CNTT" Type="Self.PL_HD_DOANHTHU_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2243,7 +2411,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PL_HD_DOA__BEN_T__7B5B524B">
+        <Association Name="FK__PL_HD_DOA__BEN_T__00200768">
           <End Role="DM_CHUTHE_HOPDONG" Type="Self.DM_CHUTHE_HOPDONG" Multiplicity="1" />
           <End Role="PL_HD_DOANHTHU_CNTT" Type="Self.PL_HD_DOANHTHU_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2255,7 +2423,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__LOAI___6C190EBB">
+        <Association Name="FK__HOPDONG_D__LOAI___70DDC3D8">
           <End Role="DM_LOAI_HOPDONG" Type="Self.DM_LOAI_HOPDONG" Multiplicity="1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2263,6 +2431,18 @@
               <PropertyRef Name="LOAI_HOPDONG_ID" />
             </Principal>
             <Dependent Role="HOPDONG_DT_CNTT">
+              <PropertyRef Name="LOAI_HOPDONG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QLDA_CNTT__LOAI___02084FDA">
+          <End Role="DM_LOAI_HOPDONG" Type="Self.DM_LOAI_HOPDONG" Multiplicity="1" />
+          <End Role="QLDA_CNTT" Type="Self.QLDA_CNTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DM_LOAI_HOPDONG">
+              <PropertyRef Name="LOAI_HOPDONG_ID" />
+            </Principal>
+            <Dependent Role="QLDA_CNTT">
               <PropertyRef Name="LOAI_HOPDONG_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -2279,7 +2459,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__DONVI__628FA481">
+        <Association Name="FK__HOPDONG_D__DONVI__66603565">
           <End Role="DONVI" Type="Self.DONVI" Multiplicity="0..1" />
           <End Role="HOPDONG_DOANHTHU" Type="Self.HOPDONG_DOANHTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2291,7 +2471,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__DONVI__6A30C649">
+        <Association Name="FK__HOPDONG_D__DONVI__6E01572D">
           <End Role="DONVI" Type="Self.DONVI" Multiplicity="0..1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2312,6 +2492,18 @@
             </Principal>
             <Dependent Role="HOPDONG_NHANCONG">
               <PropertyRef Name="DONVI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QLDA_CNTT__DONVI__02FC7413">
+          <End Role="DONVI" Type="Self.DONVI" Multiplicity="1" />
+          <End Role="QLDA_CNTT_TIENDO" Type="Self.QLDA_CNTT_TIENDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONVI">
+              <PropertyRef Name="DONVI_ID" />
+            </Principal>
+            <Dependent Role="QLDA_CNTT_TIENDO">
+              <PropertyRef Name="DONVI_CHUTRI" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2495,7 +2687,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__HTTT___6383C8BA">
+        <Association Name="FK__HOPDONG_D__HTTT___6754599E">
           <End Role="HTTT" Type="Self.HTTT" Multiplicity="0..1" />
           <End Role="HOPDONG_DOANHTHU" Type="Self.HOPDONG_DOANHTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2507,7 +2699,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__ID_LO__6477ECF3">
+        <Association Name="FK__HOPDONG_D__ID_LO__68487DD7">
           <End Role="LOAI_HD_SUB" Type="Self.LOAI_HD_SUB" Multiplicity="0..1" />
           <End Role="HOPDONG_DOANHTHU" Type="Self.HOPDONG_DOANHTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2519,7 +2711,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__NAM_H__656C112C">
+        <Association Name="FK__HOPDONG_D__NAM_H__693CA210">
           <End Role="NAM_HD" Type="Self.NAM_HD" Multiplicity="0..1" />
           <End Role="HOPDONG_DOANHTHU" Type="Self.HOPDONG_DOANHTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2531,7 +2723,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__THOIH__66603565">
+        <Association Name="FK__HOPDONG_D__THOIH__6A30C649">
           <End Role="THOIHAN_TT" Type="Self.THOIHAN_TT" Multiplicity="0..1" />
           <End Role="HOPDONG_DOANHTHU" Type="Self.HOPDONG_DOANHTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2543,7 +2735,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__THANHLY_H__HOPDO__7E37BEF6">
+        <Association Name="FK__THANHLY_H__HOPDO__07C12930">
           <End Role="HOPDONG_DOANHTHU" Type="Self.HOPDONG_DOANHTHU" Multiplicity="0..1" />
           <End Role="THANHLY_HDDOANHTHU" Type="Self.THANHLY_HDDOANHTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2567,7 +2759,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__HTTT___6B24EA82">
+        <Association Name="FK__HOPDONG_D__DUAN___6EF57B66">
+          <End Role="QLDA_CNTT" Type="Self.QLDA_CNTT" Multiplicity="0..1" />
+          <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QLDA_CNTT">
+              <PropertyRef Name="DUAN_ID" />
+            </Principal>
+            <Dependent Role="HOPDONG_DT_CNTT">
+              <PropertyRef Name="DUAN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOPDONG_D__HTTT___6FE99F9F">
           <End Role="HTTT" Type="Self.HTTT" Multiplicity="0..1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2579,7 +2783,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__NAM_H__6D0D32F4">
+        <Association Name="FK__HOPDONG_D__NAM_H__71D1E811">
           <End Role="NAM_HD" Type="Self.NAM_HD" Multiplicity="0..1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2591,7 +2795,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOPDONG_D__THOIH__6E01572D">
+        <Association Name="FK__HOPDONG_D__THOIH__72C60C4A">
           <End Role="THOIHAN_TT" Type="Self.THOIHAN_TT" Multiplicity="0..1" />
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2603,7 +2807,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PL_HD_DOA__HOPDO__7C4F7684">
+        <Association Name="FK__PL_HD_DOA__HOPDO__01142BA1">
           <End Role="HOPDONG_DT_CNTT" Type="Self.HOPDONG_DT_CNTT" Multiplicity="1" />
           <End Role="PL_HD_DOANHTHU_CNTT" Type="Self.PL_HD_DOANHTHU_CNTT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2687,7 +2891,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MENU_CON__ID_MEN__75A278F5">
+        <Association Name="FK__MENU_CON__ID_MEN__7A672E12">
           <End Role="MENU_CHA" Type="Self.MENU_CHA" Multiplicity="0..1" />
           <End Role="MENU_CON" Type="Self.MENU_CON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2696,6 +2900,42 @@
             </Principal>
             <Dependent Role="MENU_CON">
               <PropertyRef Name="ID_MENU_CHA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QLDA_CNTT__DUAN___03F0984C">
+          <End Role="QLDA_CNTT" Type="Self.QLDA_CNTT" Multiplicity="1" />
+          <End Role="QLDA_CNTT_TIENDO" Type="Self.QLDA_CNTT_TIENDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QLDA_CNTT">
+              <PropertyRef Name="DUAN_ID" />
+            </Principal>
+            <Dependent Role="QLDA_CNTT_TIENDO">
+              <PropertyRef Name="DUAN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QLDA_CNTT__FILE___04E4BC85">
+          <End Role="TBL_FILE" Type="Self.TBL_FILE" Multiplicity="0..1" />
+          <End Role="QLDA_CNTT_TIENDO" Type="Self.QLDA_CNTT_TIENDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_FILE">
+              <PropertyRef Name="file_id" />
+            </Principal>
+            <Dependent Role="QLDA_CNTT_TIENDO">
+              <PropertyRef Name="FILE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QLDA_CNTT__NGUOI__05D8E0BE">
+          <End Role="THANHVIEN" Type="Self.THANHVIEN" Multiplicity="1" />
+          <End Role="QLDA_CNTT_TIENDO" Type="Self.QLDA_CNTT_TIENDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THANHVIEN">
+              <PropertyRef Name="ID_THANHVIEN" />
+            </Principal>
+            <Dependent Role="QLDA_CNTT_TIENDO">
+              <PropertyRef Name="NGUOI_THUCHIEN" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2723,6 +2963,8 @@
           <EntitySet Name="PHULUCs" EntityType="Self.PHULUC" />
           <EntitySet Name="PHULUC_HDCP" EntityType="Self.PHULUC_HDCP" />
           <EntitySet Name="PL_HD_DOANHTHU_CNTT" EntityType="Self.PL_HD_DOANHTHU_CNTT" />
+          <EntitySet Name="QLDA_CNTT" EntityType="Self.QLDA_CNTT" />
+          <EntitySet Name="QLDA_CNTT_TIENDO" EntityType="Self.QLDA_CNTT_TIENDO" />
           <EntitySet Name="TBL_FILE" EntityType="Self.TBL_FILE" />
           <EntitySet Name="THANHLY_HDCHIPHI" EntityType="Self.THANHLY_HDCHIPHI" />
           <EntitySet Name="THANHLY_HDDOANHTHU" EntityType="Self.THANHLY_HDDOANHTHU" />
@@ -2735,11 +2977,11 @@
           <EntitySet Name="TINHTRANG_SD_CHIPHI" EntityType="Self.TINHTRANG_SD_CHIPHI" />
           <EntitySet Name="TRAM_BTS" EntityType="Self.TRAM_BTS" />
           <EntitySet Name="TRANGTHAI_HD" EntityType="Self.TRANGTHAI_HD" />
-          <AssociationSet Name="FK__HOPDONG_D__CHUKY__619B8048" Association="Self.FK__HOPDONG_D__CHUKY__619B8048">
+          <AssociationSet Name="FK__HOPDONG_D__CHUKY__656C112C" Association="Self.FK__HOPDONG_D__CHUKY__656C112C">
             <End Role="CHUKY_TT" EntitySet="CHUKY_TT" />
             <End Role="HOPDONG_DOANHTHU" EntitySet="HOPDONG_DOANHTHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__CHUKY__693CA210" Association="Self.FK__HOPDONG_D__CHUKY__693CA210">
+          <AssociationSet Name="FK__HOPDONG_D__CHUKY__6D0D32F4" Association="Self.FK__HOPDONG_D__CHUKY__6D0D32F4">
             <End Role="CHUKY_TT" EntitySet="CHUKY_TT" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
           </AssociationSet>
@@ -2763,41 +3005,49 @@
             <End Role="CHUKY_TT" EntitySet="CHUKY_TT" />
             <End Role="HOPDONG_NHANCONG" EntitySet="HOPDONG_NHANCONG" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__BEN_C__6754599E" Association="Self.FK__HOPDONG_D__BEN_C__6754599E">
+          <AssociationSet Name="FK__HOPDONG_D__BEN_C__6B24EA82" Association="Self.FK__HOPDONG_D__BEN_C__6B24EA82">
             <End Role="DM_CHUTHE_HOPDONG" EntitySet="DM_CHUTHE_HOPDONG" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__BEN_T__68487DD7" Association="Self.FK__HOPDONG_D__BEN_T__68487DD7">
+          <AssociationSet Name="FK__HOPDONG_D__BEN_T__6C190EBB" Association="Self.FK__HOPDONG_D__BEN_T__6C190EBB">
             <End Role="DM_CHUTHE_HOPDONG" EntitySet="DM_CHUTHE_HOPDONG" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__PL_HD_DOA__BEN_C__7A672E12" Association="Self.FK__PL_HD_DOA__BEN_C__7A672E12">
+          <AssociationSet Name="FK__PL_HD_DOA__BEN_C__7F2BE32F" Association="Self.FK__PL_HD_DOA__BEN_C__7F2BE32F">
             <End Role="DM_CHUTHE_HOPDONG" EntitySet="DM_CHUTHE_HOPDONG" />
             <End Role="PL_HD_DOANHTHU_CNTT" EntitySet="PL_HD_DOANHTHU_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__PL_HD_DOA__BEN_T__7B5B524B" Association="Self.FK__PL_HD_DOA__BEN_T__7B5B524B">
+          <AssociationSet Name="FK__PL_HD_DOA__BEN_T__00200768" Association="Self.FK__PL_HD_DOA__BEN_T__00200768">
             <End Role="DM_CHUTHE_HOPDONG" EntitySet="DM_CHUTHE_HOPDONG" />
             <End Role="PL_HD_DOANHTHU_CNTT" EntitySet="PL_HD_DOANHTHU_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__LOAI___6C190EBB" Association="Self.FK__HOPDONG_D__LOAI___6C190EBB">
+          <AssociationSet Name="FK__HOPDONG_D__LOAI___70DDC3D8" Association="Self.FK__HOPDONG_D__LOAI___70DDC3D8">
             <End Role="DM_LOAI_HOPDONG" EntitySet="DM_LOAI_HOPDONG" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QLDA_CNTT__LOAI___02084FDA" Association="Self.FK__QLDA_CNTT__LOAI___02084FDA">
+            <End Role="DM_LOAI_HOPDONG" EntitySet="DM_LOAI_HOPDONG" />
+            <End Role="QLDA_CNTT" EntitySet="QLDA_CNTT" />
           </AssociationSet>
           <AssociationSet Name="FK__HOPDONG_C__DONVI__589C25F3" Association="Self.FK__HOPDONG_C__DONVI__589C25F3">
             <End Role="DONVI" EntitySet="DONVIs" />
             <End Role="HOPDONG_CHIPHI" EntitySet="HOPDONG_CHIPHI" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__DONVI__628FA481" Association="Self.FK__HOPDONG_D__DONVI__628FA481">
+          <AssociationSet Name="FK__HOPDONG_D__DONVI__66603565" Association="Self.FK__HOPDONG_D__DONVI__66603565">
             <End Role="DONVI" EntitySet="DONVIs" />
             <End Role="HOPDONG_DOANHTHU" EntitySet="HOPDONG_DOANHTHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__DONVI__6A30C649" Association="Self.FK__HOPDONG_D__DONVI__6A30C649">
+          <AssociationSet Name="FK__HOPDONG_D__DONVI__6E01572D" Association="Self.FK__HOPDONG_D__DONVI__6E01572D">
             <End Role="DONVI" EntitySet="DONVIs" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
           </AssociationSet>
           <AssociationSet Name="FK__HOPDONG_N__DONVI__5A846E65" Association="Self.FK__HOPDONG_N__DONVI__5A846E65">
             <End Role="DONVI" EntitySet="DONVIs" />
             <End Role="HOPDONG_NHANCONG" EntitySet="HOPDONG_NHANCONG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QLDA_CNTT__DONVI__02FC7413" Association="Self.FK__QLDA_CNTT__DONVI__02FC7413">
+            <End Role="DONVI" EntitySet="DONVIs" />
+            <End Role="QLDA_CNTT_TIENDO" EntitySet="QLDA_CNTT_TIENDO" />
           </AssociationSet>
           <AssociationSet Name="FK__DS_QUYEN___ID_ME__26CFC035" Association="Self.FK__DS_QUYEN___ID_ME__26CFC035">
             <End Role="MENU_CON" EntitySet="MENU_CON" />
@@ -2859,23 +3109,23 @@
             <End Role="LOAI_HD_SUB" EntitySet="LOAI_HD_SUB" />
             <End Role="HOPDONG_CHIPHI" EntitySet="HOPDONG_CHIPHI" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__HTTT___6383C8BA" Association="Self.FK__HOPDONG_D__HTTT___6383C8BA">
+          <AssociationSet Name="FK__HOPDONG_D__HTTT___6754599E" Association="Self.FK__HOPDONG_D__HTTT___6754599E">
             <End Role="HTTT" EntitySet="HTTTs" />
             <End Role="HOPDONG_DOANHTHU" EntitySet="HOPDONG_DOANHTHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__ID_LO__6477ECF3" Association="Self.FK__HOPDONG_D__ID_LO__6477ECF3">
+          <AssociationSet Name="FK__HOPDONG_D__ID_LO__68487DD7" Association="Self.FK__HOPDONG_D__ID_LO__68487DD7">
             <End Role="LOAI_HD_SUB" EntitySet="LOAI_HD_SUB" />
             <End Role="HOPDONG_DOANHTHU" EntitySet="HOPDONG_DOANHTHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__NAM_H__656C112C" Association="Self.FK__HOPDONG_D__NAM_H__656C112C">
+          <AssociationSet Name="FK__HOPDONG_D__NAM_H__693CA210" Association="Self.FK__HOPDONG_D__NAM_H__693CA210">
             <End Role="NAM_HD" EntitySet="NAM_HD" />
             <End Role="HOPDONG_DOANHTHU" EntitySet="HOPDONG_DOANHTHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__THOIH__66603565" Association="Self.FK__HOPDONG_D__THOIH__66603565">
+          <AssociationSet Name="FK__HOPDONG_D__THOIH__6A30C649" Association="Self.FK__HOPDONG_D__THOIH__6A30C649">
             <End Role="THOIHAN_TT" EntitySet="THOIHAN_TT" />
             <End Role="HOPDONG_DOANHTHU" EntitySet="HOPDONG_DOANHTHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__THANHLY_H__HOPDO__7E37BEF6" Association="Self.FK__THANHLY_H__HOPDO__7E37BEF6">
+          <AssociationSet Name="FK__THANHLY_H__HOPDO__07C12930" Association="Self.FK__THANHLY_H__HOPDO__07C12930">
             <End Role="HOPDONG_DOANHTHU" EntitySet="HOPDONG_DOANHTHU" />
             <End Role="THANHLY_HDDOANHTHU" EntitySet="THANHLY_HDDOANHTHU" />
           </AssociationSet>
@@ -2883,19 +3133,23 @@
             <End Role="HOPDONG_DOANHTHU" EntitySet="HOPDONG_DOANHTHU" />
             <End Role="THANHTOAN_DOANHTHU" EntitySet="THANHTOAN_DOANHTHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__HTTT___6B24EA82" Association="Self.FK__HOPDONG_D__HTTT___6B24EA82">
+          <AssociationSet Name="FK__HOPDONG_D__DUAN___6EF57B66" Association="Self.FK__HOPDONG_D__DUAN___6EF57B66">
+            <End Role="QLDA_CNTT" EntitySet="QLDA_CNTT" />
+            <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOPDONG_D__HTTT___6FE99F9F" Association="Self.FK__HOPDONG_D__HTTT___6FE99F9F">
             <End Role="HTTT" EntitySet="HTTTs" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__NAM_H__6D0D32F4" Association="Self.FK__HOPDONG_D__NAM_H__6D0D32F4">
+          <AssociationSet Name="FK__HOPDONG_D__NAM_H__71D1E811" Association="Self.FK__HOPDONG_D__NAM_H__71D1E811">
             <End Role="NAM_HD" EntitySet="NAM_HD" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOPDONG_D__THOIH__6E01572D" Association="Self.FK__HOPDONG_D__THOIH__6E01572D">
+          <AssociationSet Name="FK__HOPDONG_D__THOIH__72C60C4A" Association="Self.FK__HOPDONG_D__THOIH__72C60C4A">
             <End Role="THOIHAN_TT" EntitySet="THOIHAN_TT" />
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
           </AssociationSet>
-          <AssociationSet Name="FK__PL_HD_DOA__HOPDO__7C4F7684" Association="Self.FK__PL_HD_DOA__HOPDO__7C4F7684">
+          <AssociationSet Name="FK__PL_HD_DOA__HOPDO__01142BA1" Association="Self.FK__PL_HD_DOA__HOPDO__01142BA1">
             <End Role="HOPDONG_DT_CNTT" EntitySet="HOPDONG_DT_CNTT" />
             <End Role="PL_HD_DOANHTHU_CNTT" EntitySet="PL_HD_DOANHTHU_CNTT" />
           </AssociationSet>
@@ -2923,9 +3177,21 @@
             <End Role="LOAI_HD_SUB" EntitySet="LOAI_HD_SUB" />
             <End Role="HOPDONG_NHANCONG" EntitySet="HOPDONG_NHANCONG" />
           </AssociationSet>
-          <AssociationSet Name="FK__MENU_CON__ID_MEN__75A278F5" Association="Self.FK__MENU_CON__ID_MEN__75A278F5">
+          <AssociationSet Name="FK__MENU_CON__ID_MEN__7A672E12" Association="Self.FK__MENU_CON__ID_MEN__7A672E12">
             <End Role="MENU_CHA" EntitySet="MENU_CHA" />
             <End Role="MENU_CON" EntitySet="MENU_CON" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QLDA_CNTT__DUAN___03F0984C" Association="Self.FK__QLDA_CNTT__DUAN___03F0984C">
+            <End Role="QLDA_CNTT" EntitySet="QLDA_CNTT" />
+            <End Role="QLDA_CNTT_TIENDO" EntitySet="QLDA_CNTT_TIENDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QLDA_CNTT__FILE___04E4BC85" Association="Self.FK__QLDA_CNTT__FILE___04E4BC85">
+            <End Role="TBL_FILE" EntitySet="TBL_FILE" />
+            <End Role="QLDA_CNTT_TIENDO" EntitySet="QLDA_CNTT_TIENDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QLDA_CNTT__NGUOI__05D8E0BE" Association="Self.FK__QLDA_CNTT__NGUOI__05D8E0BE">
+            <End Role="THANHVIEN" EntitySet="THANHVIENs" />
+            <End Role="QLDA_CNTT_TIENDO" EntitySet="QLDA_CNTT_TIENDO" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -3221,6 +3487,7 @@
                 <ScalarProperty Name="SO_CHUKY" ColumnName="SO_CHUKY" />
                 <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
                 <ScalarProperty Name="FILE_ID" ColumnName="FILE_ID" />
+                <ScalarProperty Name="DUAN_ID" ColumnName="DUAN_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3400,6 +3667,36 @@
                 <ScalarProperty Name="file" ColumnName="file" />
                 <ScalarProperty Name="NGAY_HIEU_LUC_PL" ColumnName="NGAY_HIEU_LUC_PL" />
                 <ScalarProperty Name="FILE_ID" ColumnName="FILE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QLDA_CNTT">
+            <EntityTypeMapping TypeName="QLHD2Model.QLDA_CNTT">
+              <MappingFragment StoreEntitySet="QLDA_CNTT">
+                <ScalarProperty Name="DUAN_ID" ColumnName="DUAN_ID" />
+                <ScalarProperty Name="TEN_DA" ColumnName="TEN_DA" />
+                <ScalarProperty Name="CHUDAUTU" ColumnName="CHUDAUTU" />
+                <ScalarProperty Name="LOAI_DA" ColumnName="LOAI_DA" />
+                <ScalarProperty Name="LOAI_HOPDONG_ID" ColumnName="LOAI_HOPDONG_ID" />
+                <ScalarProperty Name="NGAY_START_DA" ColumnName="NGAY_START_DA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QLDA_CNTT_TIENDO">
+            <EntityTypeMapping TypeName="QLHD2Model.QLDA_CNTT_TIENDO">
+              <MappingFragment StoreEntitySet="QLDA_CNTT_TIENDO">
+                <ScalarProperty Name="TIENDO_DA_ID" ColumnName="TIENDO_DA_ID" />
+                <ScalarProperty Name="DUAN_ID" ColumnName="DUAN_ID" />
+                <ScalarProperty Name="TEN_TIENDO_DA" ColumnName="TEN_TIENDO_DA" />
+                <ScalarProperty Name="DONVI_CHUTRI" ColumnName="DONVI_CHUTRI" />
+                <ScalarProperty Name="NGUOI_THUCHIEN" ColumnName="NGUOI_THUCHIEN" />
+                <ScalarProperty Name="TRANGTHAI_THUCHIEN" ColumnName="TRANGTHAI_THUCHIEN" />
+                <ScalarProperty Name="NGAY_GIAO" ColumnName="NGAY_GIAO" />
+                <ScalarProperty Name="NGAY_HETHAN" ColumnName="NGAY_HETHAN" />
+                <ScalarProperty Name="FILE_ID" ColumnName="FILE_ID" />
+                <ScalarProperty Name="GHICHU_HIENTRANG" ColumnName="GHICHU_HIENTRANG" />
+                <ScalarProperty Name="GHICHU_TONDONG" ColumnName="GHICHU_TONDONG" />
+                <ScalarProperty Name="VTT" ColumnName="VTT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -48,7 +48,8 @@ namespace QLHD.Models
         public virtual DbSet<PHULUC> PHULUCs { get; set; }
         public virtual DbSet<PHULUC_HDCP> PHULUC_HDCP { get; set; }
         public virtual DbSet<PL_HD_DOANHTHU_CNTT> PL_HD_DOANHTHU_CNTT { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<QLDA_CNTT> QLDA_CNTT { get; set; }
+        public virtual DbSet<QLDA_CNTT_TIENDO> QLDA_CNTT_TIENDO { get; set; }
         public virtual DbSet<TBL_FILE> TBL_FILE { get; set; }
         public virtual DbSet<THANHLY_HDCHIPHI> THANHLY_HDCHIPHI { get; set; }
         public virtual DbSet<THANHLY_HDDOANHTHU> THANHLY_HDDOANHTHU { get; set; }
