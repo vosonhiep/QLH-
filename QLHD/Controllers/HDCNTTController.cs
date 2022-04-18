@@ -67,6 +67,23 @@ namespace QLHD.Controllers
             return View(listKQTK.OrderBy(n => n.SO_HD).ToPagedList(pageNumber, pageSize));
         }
 
+        
+        public ActionResult IndexTimKiem(int? idda)
+        {
+            int? page = 1;
+            List<HOPDONG_DT_CNTT> listKQTK = db.HOPDONG_DT_CNTT.ToList();
+            listKQTK = db.HOPDONG_DT_CNTT.Where(n => n.DUAN_ID == idda).ToList();
+            int pageNumber = (page ?? 1);
+            int pageSize = 15;
+            if (listKQTK.Count == 0)
+            {
+                ViewBag.ThongBao = "Không tìm thấy hợp đồng nào!!";
+                return View(listKQTK.OrderBy(n => n.SO_HD).ToPagedList(pageNumber, pageSize));
+            }
+            ViewBag.ThongBao = "Đã tìm thấy " + listKQTK.Count + " kết quả!";
+            return View(listKQTK.OrderBy(n => n.SO_HD).ToPagedList(pageNumber, pageSize));
+        }
+
         public PartialViewResult partialSearch()
         {
             List<SelectListItem> items = new List<SelectListItem>();
