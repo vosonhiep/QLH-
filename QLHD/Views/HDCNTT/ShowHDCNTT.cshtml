@@ -721,58 +721,31 @@
     {
         let param = new FormData();
         param.append("idHD", idHD);
-        $('#tableTDTT').DataTable({
-            "ajax": {
-                "url": "/HDCNTT/TaoTienDoTT?idHD=" + idHD,
-                "type": "GET",
-                "datatype": "json",
-                "dataSrc": function (data) {
-                    //Make your callback here.
-                    alert("Done!");
-                    return data;
-                }
-            },
-            "columns": [
-                { data: 'DOT_TT' },
-                { data: 'THOIGIAN_TT' },
-                { data: 'THOIHAN_TT' },
-                { data: 'GIATRI_TT' },
-                { data: 'CHUKY' },
-                { data: 'TRANGTHAI_XUAT_HOADON' },
-                { data: 'SO_HOADON' },
-                { data: 'NGAY_HOADON' },
-                { data: 'TRANGTHAI_TT' }
-            ]
-        });
-
-        @*$.ajax({
-            type: 'GET',
-            url: '@Url.Action("TaoTienDoTT", "HDCNTT")',
-            data: { idHD: idHD },
-
-            contentType: 'application/json; charset=utf-8',
-            success: function(data) {
-                //location.reload();
-                $('#tableTDTT').DataTable({
-                    data: data,
-                    columns:
-                    [
-                        { data: 'DOT_TT' },
-                        { data: 'THOIGIAN_TT' },
-                        { data: 'THOIHAN_TT' },
-                        { data: 'GIATRI_TT' },
-                        { data: 'CHUKY' },
-                        { data: 'TRANGTHAI_XUAT_HOADON' },
-                        { data: 'SO_HOADON' },
-                        { data: 'NGAY_HOADON' },
-                        { data: 'TRANGTHAI_TT' }
-                    ],
-                    "pageLength": 3
-                });
-            }, error: function(error) {
-                alert(error.responseText);
+        $.ajax({
+            'url': "/HDCNTT/TaoTienDoTT?idHD=" + idHD,
+            'method': "GET",
+            'contentType': 'application/json',
+            'success': function (data) {
+                jQuery('#tableTDTT').DataTable().ajax.reload();
             }
-        });*@
+        }).done(function (data) {
+            $('#tableTDTT').dataTable({
+                "data": data
+                , "columns": [
+                    { "data": "DOT_TT" },
+                    { "data": "THOIGIAN_TT" },
+                    { "data": "THOIHAN_TT" },
+                    { "data": "GIATRI_TT" },
+                    { "data": "CHUKY" },
+                    { "data": "TRANGTHAI_XUAT_HOADON" },
+                    { "data": "SO_HOADON" },
+                    { "data": "NGAY_HOADON" },
+                    { "data": "TRANGTHAI_TT" }
+                ]
+            });
+        });
+        location.reload();
+        //jQuery('#tableTDTT').DataTable().ajax.reload();
     }
 </script>
 <script type="text/javascript">

@@ -14,15 +14,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="nav navbar-right">
-                    @*<a href="@Url.Action("CreateTienDoDA", "HDCNTT", new { @idDA = ViewBag.idDA})" class="btn btn-info btn-lg" style="float:right">
-                            Thêm tiến độ
-                        </a>*@
-                    @Html.Action("CreateTienDoDA", "HDCNTT", new { @idDA = ViewBag.idDA })
+                    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addTDDA"><i class="fa fa-plus"></i>Thêm mới</button>
                 </div>
             </div>
         </div>
         <div class="clearfix"></div>
-        @*
+
         <div class="container" style="height: 101vh">
             <div class="timeline">
                 @foreach (var item in Model)
@@ -103,15 +100,11 @@
 
             </div>
         </div>
-        *@
+
     </div>
-
-
+    @Html.Action("addTDDA", "HDCNTT", new { @idDA = ViewBag.idDA })
+    @*@Html.Action("editTDDA", "HDCNTT", new { @idDA = ViewBag.idDA })*@
     @section partial_script {
-
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
         <link href="~/Content/css/HDCNTT/quytrinhhopdong.css" rel="stylesheet" />
     }
 

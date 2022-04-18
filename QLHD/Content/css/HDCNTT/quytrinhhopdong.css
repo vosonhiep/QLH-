@@ -262,5 +262,5 @@ div.show-image:hover i {
 div.show-image i {
     position: absolute;
     top: -20px;
-    display: none;
+    
 }

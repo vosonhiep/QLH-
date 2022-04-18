@@ -149,6 +149,7 @@ namespace QLHD.Controllers
                 }
 
                 THANHVIEN user = db.THANHVIENs.SingleOrDefault(n => n.TENTRUYCAP == User.Identity.Name);
+                
                 hopdong.USER = user.TENTRUYCAP;
                 db.HOPDONG_DT_CNTT.Add(hopdong);
                 db.SaveChanges();
@@ -311,7 +312,6 @@ namespace QLHD.Controllers
             return View(hd);
         }
 
-
         [HttpGet]
         public ActionResult ThanhLyHDCNTT(int HDid)
         {
@@ -441,50 +441,55 @@ namespace QLHD.Controllers
         public JsonResult TaoTienDoTT(int? idHD)
         {
             var new_hd_obj = db.HOPDONG_DT_CNTT.Find(idHD);
-            //Hardcode Số tháng thuê
-            //new_hd_obj.THANG = 60;
-            int sl_dot_tt = (int)Math.Round((double)(new_hd_obj.THANG / new_hd_obj.CHUKY_TT.THANG));
-            List<DT_CNTT_TIENDO_TT> lst_TDTT = new List<DT_CNTT_TIENDO_TT>();
-            //Case Chu kỳ thanh toan là Cuối kỳ
-            DateTime date_toihan = new_hd_obj.NGAY_BBNT.Value.AddMonths(new_hd_obj.CHUKY_TT.THANG.Value);
-            //Case Chu kỳ thanh toan là Đầu kỳ
-            if (new_hd_obj.THOIHAN_TT_ID == 2)
+            if (new_hd_obj.NGAY_BBNT.HasValue)
             {
-                date_toihan = new_hd_obj.NGAY_BBNT.Value;
+                //Hardcode Số tháng thuê
+                //new_hd_obj.THANG = 60;
+                int sl_dot_tt = (int)Math.Round((double)(new_hd_obj.THANG / new_hd_obj.CHUKY_TT.THANG));
+                List<DT_CNTT_TIENDO_TT> lst_TDTT = new List<DT_CNTT_TIENDO_TT>();
+                //Case Chu kỳ thanh toan là Cuối kỳ
+                DateTime date_toihan = new_hd_obj.NGAY_BBNT.Value.AddMonths(new_hd_obj.CHUKY_TT.THANG.Value);
+                //Case Chu kỳ thanh toan là Đầu kỳ
+                if (new_hd_obj.THOIHAN_TT_ID == 2)
+                {
+                    date_toihan = new_hd_obj.NGAY_BBNT.Value;
+                }
+                for (int i = 0; i < sl_dot_tt; i++)
+                {
+                    DT_CNTT_TIENDO_TT new_obj = new DT_CNTT_TIENDO_TT();
+                    new_obj.HOPDONG_DT_CNTT_ID = new_hd_obj.HOPDONG_DT_CNTT_ID;
+                    new_obj.DOT_TT = i + 1;
+                    new_obj.GIATRI_TT = (new_hd_obj.GIATRI_PHANCUNG_HD + new_hd_obj.GIATRI_DICHVU_HD) / sl_dot_tt;
+                    new_obj.THOIGIAN_TT = 30;
+                    //Thời hạn đến kỳ thanh toán
+                    new_obj.THOIHAN_TT = date_toihan;
+                    //Chưa xuất hóa đơn
+                    new_obj.TRANGTHAI_XUAT_HOADON = 0;
+                    new_obj.TRANGTHAI_TT = 0;
+                    lst_TDTT.Add(new_obj);
+                    //Tính ngày gia hạn tiếp theo
+                    date_toihan = date_toihan.AddMonths(new_hd_obj.CHUKY_TT.THANG.Value);
+                }
+                db.DT_CNTT_TIENDO_TT.AddRange(lst_TDTT);
+                db.SaveChanges();
+                List<DT_CNTT_TIENDO_TT> lst_TDTT_view = db.DT_CNTT_TIENDO_TT.Where(x => x.HOPDONG_DT_CNTT_ID == idHD).ToList();
+                var list = (from obj in lst_TDTT_view
+                            select
+                                new
+                                {
+                                    DOT_TT = obj.DOT_TT,
+                                    THOIGIAN_TT = obj.THOIGIAN_TT,
+                                    THOIHAN_TT = obj.THOIHAN_TT,
+                                    GIATRI_TT = obj.GIATRI_TT,
+                                    CHUKY = obj.HOPDONG_DT_CNTT.CHUKY_TT.CHUKY,
+                                    TRANGTHAI_XUAT_HOADON = obj.TRANGTHAI_XUAT_HOADON,
+                                    SO_HOADON = obj.SO_HOADON,
+                                    NGAY_HOADON = obj.NGAY_HOADON,
+                                    TRANGTHAI_TT = obj.TRANGTHAI_TT
+                                });
+                return Json(new { error = "", data = list }, JsonRequestBehavior.AllowGet);
             }
-            for (int i = 0; i < sl_dot_tt; i++)
-            {
-                DT_CNTT_TIENDO_TT new_obj = new DT_CNTT_TIENDO_TT();
-                new_obj.HOPDONG_DT_CNTT_ID = new_hd_obj.HOPDONG_DT_CNTT_ID;
-                new_obj.DOT_TT = i + 1;
-                new_obj.GIATRI_TT = (new_hd_obj.GIATRI_PHANCUNG_HD + new_hd_obj.GIATRI_DICHVU_HD) / sl_dot_tt;
-                new_obj.THOIGIAN_TT = 30;
-                //Thời hạn đến kỳ thanh toán
-                new_obj.THOIHAN_TT = date_toihan;
-                //Chưa xuất hóa đơn
-                new_obj.TRANGTHAI_XUAT_HOADON = 0;
-                new_obj.TRANGTHAI_TT = 0;
-                lst_TDTT.Add(new_obj);
-                //Tính ngày gia hạn tiếp theo
-                date_toihan = date_toihan.AddMonths(new_hd_obj.CHUKY_TT.THANG.Value);
-            }
-            db.DT_CNTT_TIENDO_TT.AddRange(lst_TDTT);
-            //db.SaveChanges();
-            var list = (from obj in lst_TDTT
-                        select
-                            new
-                            {
-                                DOT_TT = obj.DOT_TT,
-                                THOIGIAN_TT = obj.THOIGIAN_TT,
-                                THOIHAN_TT = obj.THOIHAN_TT,
-                                GIATRI_TT = obj.GIATRI_TT,
-                                CHUKY = obj.HOPDONG_DT_CNTT.CHUKY_TT.CHUKY,
-                                TRANGTHAI_XUAT_HOADON = obj.TRANGTHAI_XUAT_HOADON,
-                                SO_HOADON = obj.SO_HOADON,
-                                NGAY_HOADON = obj.NGAY_HOADON,
-                                TRANGTHAI_TT = obj.TRANGTHAI_TT
-                            });
-            return Json(new { error = "", data = list }, JsonRequestBehavior.AllowGet);
+            return Json(new { error = "", data = "" }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -690,6 +695,12 @@ namespace QLHD.Controllers
             return View(duan.ToPagedList(pageNumber, pageSize));
         }
 
+        [HttpGet]
+        public ActionResult CreateDuAn(int? page)
+        {
+            return View();
+        }
+
         public static List<LOAITIENTRINH> listLoaiTienTrinh = new List<LOAITIENTRINH>()
             {
                 new LOAITIENTRINH(true, "Viễn thông"),
@@ -697,21 +708,66 @@ namespace QLHD.Controllers
             };
 
         [HttpGet]
-        public PartialViewResult CreateTienDoDA(int? idDA)
+        public PartialViewResult addTDDA(int? idDA)
         {
-            ViewBag.edit = 1;
-            //ViewBag.IDDuAn = idDA;
-            //ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
-            //ViewBag.DVTH = new SelectList(listLoaiTienTrinh, "LOAITIENTRINH_ID", "TENLOAITIENTRINH");
-            //ViewBag.NGUOITHUCHIEN = new SelectList(db.THANHVIENs.ToList().OrderBy(n => n.DONVI_ID), "ID_THANHVIEN", "TEN_THANHVIEN");
+            ViewBag.IDDuAn = idDA;
+            ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
+            ViewBag.DVTH = new SelectList(listLoaiTienTrinh, "LOAITIENTRINH_ID", "TENLOAITIENTRINH");
+            ViewBag.NGUOITHUCHIEN = new SelectList(db.THANHVIENs.ToList().OrderBy(n => n.DONVI_ID), "ID_THANHVIEN", "TEN_THANHVIEN");
             return PartialView();
         }
 
         [HttpPost]
-        public PartialViewResult CreateTienDoDAPost(QLDA_CNTT_TIENDO tdda, HttpPostedFileBase upload)
+        public ActionResult CreateTienDoDAPost(QLDA_CNTT_TIENDO tdda, HttpPostedFileBase upload)
         {
-            tdda.TRANGTHAI_THUCHIEN = 2;
-            return PartialView();
+            if (ModelState.IsValid)
+            {
+                string fileContent = string.Empty;
+                string fileContentType = string.Empty;
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    //start test luu file to DB
+                    // Converting to bytes.  
+                    byte[] uploadedFile = new byte[upload.InputStream.Length];
+                    upload.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
+
+                    // Initialization.  
+                    fileContent = Convert.ToBase64String(uploadedFile);
+                    fileContentType = upload.ContentType;
+
+                    // Saving info.
+                    TBL_FILE newFile = new TBL_FILE();
+                    newFile.file_id = 0;
+                    newFile.file_name = upload.FileName;
+                    newFile.file_ext = fileContentType;
+                    newFile.file_base6 = fileContent;
+                    this.db.TBL_FILE.Add(newFile);
+                    int flag = db.SaveChanges();
+                    //end test luu file to DB
+                    if (flag == 1)
+                    {
+                        tdda.FILE_ID = newFile.file_id;
+                    }
+                }
+
+                tdda.TRANGTHAI_THUCHIEN = 2;
+                db.QLDA_CNTT_TIENDO.Add(tdda);
+                db.SaveChanges();
+                return RedirectToAction("ShowQuyTrinhDA", "HDCNTT", new { maDA = tdda.DUAN_ID });
+            }
+            
+            return View();
+        }
+
+        [HttpGet]
+        public PartialViewResult editTDDA(int? idDA, int? idTD)
+        {
+            ViewBag.edit = idTD + "edit";
+            ViewBag.IDDuAn = idDA;
+            ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
+            ViewBag.DVTH = new SelectList(listLoaiTienTrinh, "LOAITIENTRINH_ID", "TENLOAITIENTRINH");
+            ViewBag.NGUOITHUCHIEN = new SelectList(db.THANHVIENs.ToList().OrderBy(n => n.DONVI_ID), "ID_THANHVIEN", "TEN_THANHVIEN");
+            return PartialView(db.QLDA_CNTT_TIENDO.Where(x=>x.DUAN_ID == idDA && x.TIENDO_DA_ID == idTD));
         }
 
         [HttpGet]

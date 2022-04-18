@@ -1480,7 +1480,8 @@
     <Content Include="Views\HDCNTT\DeleteTienDoTT.cshtml" />
     <Content Include="Views\HDCNTT\PartiaDeleteHDCNTT.cshtml" />
     <Content Include="Views\HDCNTT\DSDuAn.cshtml" />
-    <Content Include="Views\HDCNTT\CreateTienDoDA.cshtml" />
+    <Content Include="Views\HDCNTT\addTDDA.cshtml" />
+    <Content Include="Views\HDCNTT\editTDDA.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\HD_CHIPHI\" />

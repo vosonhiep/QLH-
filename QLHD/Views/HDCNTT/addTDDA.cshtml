@@ -1,0 +1,105 @@
+﻿@model QLHD.Models.QLDA_CNTT_TIENDO
+<div class="modal fade" id="addTDDA" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width: 50%">
+        <div class="modal-content">
+            @using (Html.BeginForm("CreateTienDoDAPost", "HDCNTT", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Thêm tiến độ dự án</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="col-md-6" style="display:none">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Dự án ID:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="DUAN_ID" required="required" value="@ViewBag.IDDuAn" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Tên tiến độ:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="TEN_TIENDO_DA" class="form-control" required="required" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Đơn vị chủ trì:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("DONVI_CHUTRI", (IEnumerable<SelectListItem>)ViewBag.DONVI, "--Chọn--", new { @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Đơn vị thực hiện:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("VTT", (IEnumerable<SelectListItem>)ViewBag.DVTH, "--Chọn--", new { @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Người thực hiện:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("NGUOI_THUCHIEN", (IEnumerable<SelectListItem>)ViewBag.NGUOITHUCHIEN, "--Chọn--", new { @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Ngày giao:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="date" class="form-control" name="NGAY_GIAO" required="required" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Ngày hết hạn:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="date" class="form-control" name="NGAY_HETHAN" required="required" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="control-label col-md-2">
+                                    <label style="float: right">File đính kèm:</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="file" class="form-control" id="upload" name="upload" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Lưu" />
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

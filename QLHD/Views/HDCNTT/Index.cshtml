@@ -1,194 +1,202 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
 @model IPagedList<QLHD.Models.HOPDONG_DT_CNTT>
-    @{
-        ViewBag.Title = "Index";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-    <div class="">
-        <div class="page-title">
-            <div class="title_left">
-                <h3>Quản lý hợp đồng CNTT</h3>
-            </div>
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Quản lý hợp đồng CNTT</h3>
         </div>
-        <div class="clearfix"></div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="nav navbar-left">
-                    @using (Html.BeginForm("KetQuaTimKiem", "HDCNTT", FormMethod.Post))
-                    {
-                        // Hiệp: Tại sao lại phải gọi search ở HDChiPhi
-                        @Html.Action("partialSearch", "HDCNTT")
-                    }
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav navbar-left">
+                @using (Html.BeginForm("KetQuaTimKiem", "HDCNTT", FormMethod.Post))
+                {
+                    // Hiệp: Tại sao lại phải gọi search ở HDChiPhi
+                    @Html.Action("partialSearch", "HDCNTT")
+                }
+            </div>
+            <div class="nav navbar-right">
+                <a href="@Url.Action("Create", "HDCNTT")" class="btn btn-info btn-lg" style="float:right">
+                    Thêm HĐ mới
+                    <span class="glyphicon glyphicon-plus" />
+                </a>
+            </div>
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh sách HĐ CNTT</h2>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="nav navbar-right">
-                    <a href="@Url.Action("Create", "HDCNTT")" class="btn btn-info btn-lg" style="float:right">
-                        Thêm HĐ mới
-                        <span class="glyphicon glyphicon-plus" />
-                    </a>
-                </div>
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Danh sách HĐ CNTT</h2>
-                        <div class="clearfix"></div>
-                    </div>
 
-                    <div class="x_content">
-                        <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                <li role="presentation" class="active">
-                                    <a href="#tab_content1" id="hopdong-tab" role="tab" data-toggle="tab" aria-expanded="true">DS Hợp Đồng</a>
-                                </li>
-                                @*<li role="presentation" class="">
-                                        <a href="#tab_content2" role="tab" id="thanhly-tab" data-toggle="tab" aria-expanded="false">Hợp đồng đã thanh lý</a>
-                                    </li>*@
-                            </ul>
-                            <div id="myTabContent" class="tab-content">
-                                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="hopdong-tab">
-                                    <table class="table table-bordered table-striped table-hover">
-                                        <tr class="noidung">
-                                            <th>STT</th>
-                                            <th>
-                                                Số hợp đồng
-                                            </th>
-                                            <th>
-                                                Tên hợp đồng
-                                            </th>
-                                            <th>
-                                                Khách hàng
-                                            </th>
-                                            <th>
-                                                Ngày hợp đồng
-                                            </th>
-                                            <th>
-                                                Tiến độ thanh toán
-                                            </th>
-                                            <th>Sửa</th>
-                                            <th>Xóa</th>
-                                            <th>File HĐ</th>
-                                            @*Hiệp
-                                                <th>Quy trình</th>*@
-                                            <th>Cảnh báo</th>
-                                        </tr>
-                                        @{int row = (@Model.PageNumber * 10) - 10;}
-                                        @foreach (var item in Model)
-                                        {
-                                            <tr class="noidunghd">
-                                                <td>@(row+=1)</td>
-                                                <td>
-                                                    <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
-                                                        @item.SO_HD
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.TEN_HOPDONG </a>
-                                                </td>
-                                                <td>
-                                                    <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.DM_CHUTHE_HOPDONG1.TEN_CHUTHE </a>
-                                                </td>
-                                                <td>
-                                                    <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
-                                                        @if (item.NGAY_HD.HasValue)
-                                                        {
-                                                            @item.NGAY_HD.Value.ToString("dd/MM/yyyy")
-                                                        }
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
-                                                        @if (item.THOIHAN_TT.TEN_THOIHAN_TT != "")
-                                                        {
-                                                            @item.THOIHAN_TT.TEN_THOIHAN_TT
-                                                        }
-                                                    </a>
-                                                </td>
-
-                                                <td>
-                                                    @*<a href="@Url.Action("EditHDChiPhi", new { @HDCHIPHI_ID = item.HOPDONG_CHIPHI_ID })"><span class="glyphicon glyphicon-edit"></span></a>*@
-                                                    @Html.ActionLink(" ", "EditHDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
-                                                </td>
-                                                <td>
-                                                    @Html.Action("PartiaDeleteHDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID })
-                                                </td>
-                                                <td>
-                                                    @if (item.FILE != null)
+                <div class="x_content">
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#tab_content1" id="hopdong-tab" role="tab" data-toggle="tab" aria-expanded="true">DS Hợp Đồng</a>
+                            </li>
+                            @*<li role="presentation" class="">
+                                    <a href="#tab_content2" role="tab" id="thanhly-tab" data-toggle="tab" aria-expanded="false">Hợp đồng đã thanh lý</a>
+                                </li>*@
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="hopdong-tab">
+                                <table class="table table-bordered table-striped table-hover">
+                                    <tr class="noidung">
+                                        <th>STT</th>
+                                        <th>
+                                            Số hợp đồng
+                                        </th>
+                                        <th>
+                                            Tên hợp đồng
+                                        </th>
+                                        <th>
+                                            Khách hàng
+                                        </th>
+                                        <th>
+                                            Ngày hợp đồng
+                                        </th>
+                                        <th>
+                                            Tiến độ thanh toán
+                                        </th>
+                                        <th>Sửa</th>
+                                        <th>Xóa</th>
+                                        <th>File HĐ</th>
+                                        @*Hiệp
+                                            <th>Quy trình</th>*@
+                                        <th>Ngày hạn TT</th>
+                                    </tr>
+                                    @{int row = (@Model.PageNumber * 10) - 10;}
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="noidunghd">
+                                            <td>@(row+=1)</td>
+                                            <td>
+                                                <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
+                                                    @item.SO_HD
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.TEN_HOPDONG </a>
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.DM_CHUTHE_HOPDONG1.TEN_CHUTHE </a>
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
+                                                    @if (item.NGAY_HD.HasValue)
                                                     {
-                                                        @Html.ActionLink(" ", "ExportData", "HDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 20px" })
+                                                        @item.NGAY_HD.Value.ToString("dd/MM/yyyy")
                                                     }
-                                                </td>
-                                                @*<td>
-                                                    @Html.ActionLink(" ", "QuyTrinhHDCNTT", "HDCNTT", new { @HDid = item.HOPDONG_DT_CNTT_ID }, new { @class = "fa fa-sitemap text-blue", @style = "font-size: 20px" })
-                                                </td>
-                                                <td>
-                                                    @if (@item.ngay_kt <= @system.datetime.now)
-                                                        {
-                                                            <span id="canhbao">
-                                                                <img src="~/images/canhbao.gif" title="hợp đồng đã tới hạn. cần ký lại hộp đồng mới!" height="40px" width="30px" />
-                                                            </span>
-                                                        }
-                                                </td>*@
-                                            </tr>
-                                        }
-                                    </table>
-                                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
-                                    <div class="MenuTrang">
-                                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, @sTuKhoa = ViewBag.TuKhoa }))
-                                    </div>
-                                    <style>
-                                        .MenuTrang li {
-                                            display: inline;
-                                        }
-                                    </style>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
+                                                    @if (item.THOIHAN_TT.TEN_THOIHAN_TT != "")
+                                                    {
+                                                        @item.THOIHAN_TT.TEN_THOIHAN_TT
+                                                    }
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                @*<a href="@Url.Action("EditHDChiPhi", new { @HDCHIPHI_ID = item.HOPDONG_CHIPHI_ID })"><span class="glyphicon glyphicon-edit"></span></a>*@
+                                                @Html.ActionLink(" ", "EditHDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
+                                            </td>
+                                            <td>
+                                                @Html.Action("PartiaDeleteHDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID })
+                                            </td>
+                                            <td>
+                                                @if (item.FILE != null)
+                                                {
+                                                    @Html.ActionLink(" ", "ExportData", "HDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 20px" })
+                                                }
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
+                                                    @if (item.DT_CNTT_TIENDO_TT.Count != 0)
+                                                    {
+
+                                                        var TH_TT = item.DT_CNTT_TIENDO_TT.FirstOrDefault(x => x.TRANGTHAI_TT == 0).THOIHAN_TT.Value.ToString("dd/MM/yyyy");
+                                                        <p>@TH_TT</p>
+                                                    }
+
+                                                </a>
+                                            </td>
+                                            @*<td>
+                                                @if (@item.ngay_kt <= @system.datetime.now)
+                                                    {
+                                                        <span id="canhbao">
+                                                            <img src="~/images/canhbao.gif" title="hợp đồng đã tới hạn. cần ký lại hộp đồng mới!" height="40px" width="30px" />
+                                                        </span>
+                                                    }
+                                            </td>*@
+                                        </tr>
+                                    }
+                                </table>
+                                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+                                <div class="MenuTrang">
+                                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, @sTuKhoa = ViewBag.TuKhoa }))
                                 </div>
+                                <style>
+                                    .MenuTrang li {
+                                        display: inline;
+                                    }
+                                </style>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
     </div>
+</div>
 
-    @Scripts.Render("~/Scripts/numeric/jquery.js")
-    @Scripts.Render("~/Scripts/numeric/jquery.number.js")
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.no').number(true, 0);
-        });
-    </script>
-    @Scripts.Render("~/Scripts/js/notify/pnotify.core.js")
-    @Scripts.Render("~/Scripts/js/notify/pnotify.buttons.js")
-    @Scripts.Render("~/Scripts/js/notify/pnotify.nonblock.js")
+@Scripts.Render("~/Scripts/numeric/jquery.js")
+@Scripts.Render("~/Scripts/numeric/jquery.number.js")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.no').number(true, 0);
+    });
+</script>
+@Scripts.Render("~/Scripts/js/notify/pnotify.core.js")
+@Scripts.Render("~/Scripts/js/notify/pnotify.buttons.js")
+@Scripts.Render("~/Scripts/js/notify/pnotify.nonblock.js")
 
-    @* Hợp đồng hết hạn *@
-    @*<script type="text/javascript">
-        $.ajax({
-            type: 'GET',
-            url: '@Url.Action("getHD_HetHan", "HDCNTT")',
-            success: function (data) {
-                if (data.hd != 0) {
-                    new PNotify({
-                        title: "Cảnh báo",
-                        //type: "error",
-                        text: "Hiện tại có " + data.hd + " hợp đồng sắp hết hạn! <button type='button' data-toggle='modal' data-target='#dshd' class='btn btn-default btn-sm noidung'>Xem danh sách</button>",
-                        hide: false
-                    });
-                }
-                //alert(data.hd);
-                //alert(data.hd_hethan);
-
-                if (data.hd_hethan != 0) {
-                    new PNotify({
-                        title: "Hợp đồng hết hạn",
-                        //type: "error",
-                        text: "Hiện tại có " + data.hd_hethan + " hợp đồng hết hạn! <button type='button' data-toggle='modal' data-target='#dshd2' class='btn btn-default btn-sm noidung'>Xem danh sách</button>",
-                        type: "error",
-                        hide: false
-                    });
-                }
+@* Hợp đồng hết hạn *@
+@*<script type="text/javascript">
+    $.ajax({
+        type: 'GET',
+        url: '@Url.Action("getHD_HetHan", "HDCNTT")',
+        success: function (data) {
+            if (data.hd != 0) {
+                new PNotify({
+                    title: "Cảnh báo",
+                    //type: "error",
+                    text: "Hiện tại có " + data.hd + " hợp đồng sắp hết hạn! <button type='button' data-toggle='modal' data-target='#dshd' class='btn btn-default btn-sm noidung'>Xem danh sách</button>",
+                    hide: false
+                });
             }
-        });
-    </script>*@
-    @*@Html.Action("HDHetHan", "HDCNTT")
-        @Html.Action("HDHetHan2", "HDCNTT")*@
+            //alert(data.hd);
+            //alert(data.hd_hethan);
+
+            if (data.hd_hethan != 0) {
+                new PNotify({
+                    title: "Hợp đồng hết hạn",
+                    //type: "error",
+                    text: "Hiện tại có " + data.hd_hethan + " hợp đồng hết hạn! <button type='button' data-toggle='modal' data-target='#dshd2' class='btn btn-default btn-sm noidung'>Xem danh sách</button>",
+                    type: "error",
+                    hide: false
+                });
+            }
+        }
+    });
+</script>*@
+@*@Html.Action("HDHetHan", "HDCNTT")
+    @Html.Action("HDHetHan2", "HDCNTT")*@
