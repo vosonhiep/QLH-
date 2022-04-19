@@ -1,13 +1,13 @@
 ﻿@model QLHD.Models.QLDA_CNTT_TIENDO
-<div class="modal fade" id="editTDDA" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document" style="width: 50%">
+<div class="modal fade" id="@ViewBag.edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width: 60%">
         <div class="modal-content">
-            @using (Html.BeginForm("CreateTienDoDAPost", "HDCNTT", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("editTDDAPost", "HDCNTT", new { @idDA = Model.DUAN_ID, @idTD = Model.TIENDO_DA_ID }, FormMethod.Post, new { @enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Chỉnh sửa tiến độ dự án</h4>
+                    <h4 class="modal-title" id="myModalLabel" style="float:left">Chỉnh sửa tiến độ dự án</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-horizontal">
@@ -102,7 +102,7 @@
                                     <label style="float: right">Thứ tự:</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="number" class="form-control" name="STT" value="@Model.STT" required="required" />
+                                    <input type="number" step="0.1" class="form-control" name="STT" value="@Model.STT" required="required" />
                                 </div>
                             </div>
                         </div>
@@ -112,7 +112,18 @@
                                     <label style="float: right">File đính kèm:</label>
                                 </div>
                                 <div class="col-md-10">
-                                    <input type="file" class="form-control" id="upload" name="upload" />
+                                    @if (Model.FILE_ID != null)
+                                    {
+                                        <input type="file" class="form-control" id="upload" name="upload" value="@Model.TBL_FILE.file_name" />
+                                        <a href="@Url.Action("ExportData_TienTrinh", "HDCNTT",new{@TTid = Model.TIENDO_DA_ID} )"
+                                           style="color:blue">
+                                            @Model.TBL_FILE.file_name
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <input type="file" class="form-control" id="upload" name="upload"/>
+                                    }
                                 </div>
                             </div>
                         </div>
