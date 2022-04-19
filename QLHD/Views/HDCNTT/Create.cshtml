@@ -26,6 +26,16 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="control-label col-md-4">
+                                    <label style="float: right">Dự án:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    @Html.DropDownList("DUAN_ID", (IEnumerable<SelectListItem>)ViewBag.DUAN, "--Chọn--", new { @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
                                     <label style="float: right">Loại hợp đồng:</label>
                                 </div>
                                 <div class="col-md-5">
@@ -33,7 +43,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" style="margin-top: 15px">
                             <div class="form-group">
                                 <div class="control-label col-md-4">
                                     <label style="float: right">Năm hợp đồng:</label>
