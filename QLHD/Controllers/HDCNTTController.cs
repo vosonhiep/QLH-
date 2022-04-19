@@ -853,19 +853,73 @@ namespace QLHD.Controllers
         [HttpGet]
         public PartialViewResult editTDDA(int? idDA, int? idTD)
         {
-            ViewBag.edit = idTD + "edit";
+            ViewBag.edit = idTD;
             ViewBag.IDDuAn = idDA;
             ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
             ViewBag.DVTH = new SelectList(listLoaiTienTrinh, "LOAITIENTRINH_ID", "TENLOAITIENTRINH");
             ViewBag.NGUOITHUCHIEN = new SelectList(db.THANHVIENs.ToList().OrderBy(n => n.DONVI_ID), "ID_THANHVIEN", "TEN_THANHVIEN");
-            return PartialView(db.QLDA_CNTT_TIENDO.Where(x => x.DUAN_ID == idDA && x.TIENDO_DA_ID == idTD));
+            return PartialView(db.QLDA_CNTT_TIENDO.SingleOrDefault(x => x.DUAN_ID == idDA && x.TIENDO_DA_ID == idTD));
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult editTDDAPost(int idDA, int idTD, HttpPostedFileBase upload)
+        {
+            QLDA_CNTT_TIENDO td = db.QLDA_CNTT_TIENDO.Where(x => x.DUAN_ID == idDA && x.TIENDO_DA_ID == idTD).FirstOrDefault();
+
+
+            string fileContent = string.Empty;
+            string fileContentType = string.Empty;
+            if (upload != null && upload.ContentLength > 0)
+            {
+                //start test luu file to DB
+                // Converting to bytes.  
+                byte[] uploadedFile = new byte[upload.InputStream.Length];
+                upload.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
+
+                // Initialization.  
+                fileContent = Convert.ToBase64String(uploadedFile);
+                fileContentType = upload.ContentType;
+
+                // Saving info.
+                TBL_FILE newFile = new TBL_FILE();
+                newFile.file_id = 0;
+                newFile.file_name = upload.FileName;
+                newFile.file_ext = fileContentType;
+                newFile.file_base6 = fileContent;
+                this.db.TBL_FILE.Add(newFile);
+                int flag = db.SaveChanges();
+                //end test luu file to DB
+                if (flag == 1)
+                {
+                    td.FILE_ID = newFile.file_id;
+                }
+            }
+
+            if (TryUpdateModel(td, "",
+                   new string[] { "TEN_TIENDO_DA", "DONVI_CHUTRI", "NGUOI_THUCHIEN", "TRANGTHAI_THUCHIEN", "NGAY_GIAO",
+                                   "NGAY_HETHAN", "FILE_ID", "GHICHU_HIENTRANG", "GHICHU_TONDONG", "STT", "VTT"}))
+            {
+                try
+                {
+                    db.SaveChanges();
+
+                    return RedirectToAction("ShowQuyTrinhDA", "HDCNTT", new { @maDA = td.DUAN_ID });
+                }
+                catch (RetryLimitExceededException /* dex */)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
+            }
+            return View(td);
         }
 
         [HttpGet]
         public ActionResult ShowQuyTrinhDA(int? maDA)
         {
             ViewBag.idDA = maDA;
-            var dsTienTrinh = db.QLDA_CNTT_TIENDO.Where(x => x.DUAN_ID == maDA).OrderBy(x => x.TIENDO_DA_ID).ToList();
+            var dsTienTrinh = db.QLDA_CNTT_TIENDO.Where(x => x.DUAN_ID == maDA).OrderBy(x => x.STT).ToList();
             return View(dsTienTrinh);
         }
 
