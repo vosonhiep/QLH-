@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="739b843b20244b69889e22ee5ef8e784" Name="Diagram1">
+      <Diagram DiagramId="4e932e8ede7542e8bf3356e202321d80" Name="Diagram1">
         <EntityTypeShape EntityType="QLHD2Model.BENTHUE_TAM" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLHD2Model.CHUKY_TT" Width="1.5" PointX="0.75" PointY="31" IsExpanded="true" />
         <EntityTypeShape EntityType="QLHD2Model.DM_CHUTHE_HOPDONG" Width="1.5" PointX="3.75" PointY="19.5" IsExpanded="true" />
@@ -29,7 +29,7 @@
         <EntityTypeShape EntityType="QLHD2Model.PHULUC_HDCP" Width="1.5" PointX="14.25" PointY="35.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLHD2Model.PL_HD_DOANHTHU_CNTT" Width="1.5" PointX="14.25" PointY="25.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QLHD2Model.QLDA_CNTT" Width="1.5" PointX="3.75" PointY="49.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLHD2Model.QLDA_CNTT_TIENDO" Width="1.5" PointX="17" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHD2Model.QLDA_CNTT_TIENDO" Width="1.5" PointX="17" PointY="34.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLHD2Model.TBL_FILE" Width="1.5" PointX="14.75" PointY="22.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLHD2Model.THANHLY_HDCHIPHI" Width="1.5" PointX="5.25" PointY="38.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLHD2Model.THANHLY_HDDOANHTHU" Width="1.5" PointX="11.25" PointY="21" IsExpanded="true" />

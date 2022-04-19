@@ -478,6 +478,7 @@
           <Property Name="FILE_ID" Type="int" />
           <Property Name="GHICHU_HIENTRANG" Type="nvarchar" MaxLength="500" />
           <Property Name="GHICHU_TONDONG" Type="nvarchar" MaxLength="500" />
+          <Property Name="STT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="VTT" Type="bit" />
         </EntityType>
         <EntityType Name="TBL_FILE">
@@ -1288,6 +1289,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="FUNC_GEN_TIENDO_DA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="duan_id" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="QLHD2ModelStoreContainer">
           <EntitySet Name="BENTHUE_TAM" EntityType="Self.BENTHUE_TAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHUKY_TT" EntityType="Self.CHUKY_TT" Schema="dbo" store:Type="Tables" />
@@ -2109,6 +2113,7 @@
           <Property Name="FILE_ID" Type="Int32" />
           <Property Name="GHICHU_HIENTRANG" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="GHICHU_TONDONG" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="STT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="VTT" Type="Boolean" />
           <NavigationProperty Name="DONVI" Relationship="Self.FK__QLDA_CNTT__DONVI__02FC7413" FromRole="QLDA_CNTT_TIENDO" ToRole="DONVI" />
           <NavigationProperty Name="QLDA_CNTT" Relationship="Self.FK__QLDA_CNTT__DUAN___03F0984C" FromRole="QLDA_CNTT_TIENDO" ToRole="QLDA_CNTT" />
@@ -3193,6 +3198,9 @@
             <End Role="THANHVIEN" EntitySet="THANHVIENs" />
             <End Role="QLDA_CNTT_TIENDO" EntitySet="QLDA_CNTT_TIENDO" />
           </AssociationSet>
+          <FunctionImport Name="FUNC_GEN_TIENDO_DA">
+            <Parameter Name="duan_id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -3696,6 +3704,7 @@
                 <ScalarProperty Name="FILE_ID" ColumnName="FILE_ID" />
                 <ScalarProperty Name="GHICHU_HIENTRANG" ColumnName="GHICHU_HIENTRANG" />
                 <ScalarProperty Name="GHICHU_TONDONG" ColumnName="GHICHU_TONDONG" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
                 <ScalarProperty Name="VTT" ColumnName="VTT" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3872,6 +3881,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FUNC_GEN_TIENDO_DA" FunctionName="QLHD2Model.Store.FUNC_GEN_TIENDO_DA" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

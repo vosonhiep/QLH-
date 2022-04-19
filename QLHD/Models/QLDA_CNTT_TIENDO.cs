@@ -25,6 +25,7 @@ namespace QLHD.Models
         public Nullable<int> FILE_ID { get; set; }
         public string GHICHU_HIENTRANG { get; set; }
         public string GHICHU_TONDONG { get; set; }
+        public decimal STT { get; set; }
         public Nullable<bool> VTT { get; set; }
     
         public virtual DONVI DONVI { get; set; }
