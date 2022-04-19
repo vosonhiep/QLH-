@@ -116,7 +116,7 @@ namespace QLHD.Controllers
             ViewBag.HINHTHUCTT = new SelectList(db.HTTTs.ToList().OrderBy(n => n.HTTT_ID), "HTTT_ID", "TEN_HTTT");
             ViewBag.NamHD = new SelectList(db.NAM_HD.ToList().OrderByDescending(n => n.NAM_HD_ID), "NAM_HD_ID", "NAM");
             ViewBag.THOIHAN_TT = new SelectList(db.THOIHAN_TT.ToList().OrderBy(n => n.THOIHAN_TT_ID), "THOIHAN_TT_ID", "TEN_THOIHAN_TT");
-
+            ViewBag.DUAN = new SelectList(db.QLDA_CNTT.ToList().OrderByDescending(n => n.NGAY_START_DA), "DUAN_ID", "TEN_DA");
             return View();
         }
 
@@ -192,7 +192,7 @@ namespace QLHD.Controllers
             ViewBag.HINHTHUCTT = new SelectList(db.HTTTs.ToList().OrderBy(n => n.HTTT_ID), "HTTT_ID", "TEN_HTTT");
             ViewBag.NamHD = new SelectList(db.NAM_HD.ToList().OrderByDescending(n => n.NAM_HD_ID), "NAM_HD_ID", "NAM");
             ViewBag.THOIHAN_TT = new SelectList(db.THOIHAN_TT.ToList().OrderBy(n => n.THOIHAN_TT_ID), "THOIHAN_TT_ID", "TEN_THOIHAN_TT");
-
+            ViewBag.DUAN = new SelectList(db.QLDA_CNTT.ToList().OrderByDescending(n => n.NGAY_START_DA), "DUAN_ID", "TEN_DA");
             HOPDONG_DT_CNTT HDcntt = db.HOPDONG_DT_CNTT.Find(HDCNTT_ID);
 
             if (HDcntt == null)
@@ -253,7 +253,7 @@ namespace QLHD.Controllers
                 new string[] {"TEN_DUAN", "TEN_GOITHAU", "LOAI_HOPDONG_ID", "TEN_HOPDONG", "CHUKY_ID", "HTTT_ID", "SO_HD", "NGAY_HD", "BEN_THUE_ID",
                             "BEN_CHOTHUE_ID", "GIATRI_PHANCUNG_HD", "GIATRI_DICHVU_HD", "GIATRI_TAMUNG",
                             "NGAY_HIEULUC_HD", "NGAY_BBNT", "GIATRI_BLTHHD", "NGAY_BLTHHD", "THOIGIAN_BLTHHD", "NGAY_HETHAN_BLTHHD",
-                            "GHICHU", "DONVI_ID", "THANG", "VAT", "SO_CHUKY"}))
+                            "GHICHU", "DONVI_ID", "THANG", "VAT", "SO_CHUKY", "DUAN_ID"}))
             {
                 try
                 {
