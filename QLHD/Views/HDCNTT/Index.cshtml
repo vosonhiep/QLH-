@@ -49,33 +49,33 @@
                                 <table class="table table-bordered table-striped table-hover">
                                     <tr class="noidung">
                                         <th>STT</th>
-                                        <th>
+                                        <th rowspan="1" colspan="1" style="text-align:center">
                                             Số hợp đồng
                                         </th>
-                                        <th>
+                                        <th rowspan="1" colspan="1" style="text-align:center" width="20%">
                                             Tên hợp đồng
                                         </th>
-                                        <th>
+                                        <th rowspan="1" colspan="1" style="text-align:center" width="20%">
                                             Khách hàng
                                         </th>
-                                        <th>
+                                        <th rowspan="1" colspan="1" style="text-align:center">
                                             Ngày hợp đồng
                                         </th>
-                                        <th>
+                                        <th rowspan="1" colspan="1" style="text-align:center">
                                             Tiến độ thanh toán
                                         </th>
-                                        <th>Sửa</th>
-                                        <th>Xóa</th>
-                                        <th>File HĐ</th>
+                                        <th style="text-align:center">Sửa</th>
+                                        <th style="text-align:center">Xóa</th>
+                                        <th style="text-align:center">File HĐ</th>
                                         @*Hiệp
                                             <th>Quy trình</th>*@
-                                        <th>Ngày hạn TT</th>
+                                        <th rowspan="1" colspan="1" style="text-align:center">Đợt TT kế tiếp</th>
                                     </tr>
                                     @{int row = (@Model.PageNumber * 10) - 10;}
                                     @foreach (var item in Model)
                                     {
                                         <tr class="noidunghd">
-                                            <td>@(row+=1)</td>
+                                            <td style="text-align:center">@(row+=1)</td>
                                             <td>
                                                 <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
                                                     @item.SO_HD
@@ -87,7 +87,7 @@
                                             <td>
                                                 <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.DM_CHUTHE_HOPDONG1.TEN_CHUTHE </a>
                                             </td>
-                                            <td>
+                                            <td style="text-align:center">
                                                 <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
                                                     @if (item.NGAY_HD.HasValue)
                                                     {
@@ -95,7 +95,7 @@
                                                     }
                                                 </a>
                                             </td>
-                                            <td>
+                                            <td style="text-align:center">
                                                 <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
                                                     @if (item.THOIHAN_TT.TEN_THOIHAN_TT != "")
                                                     {
@@ -104,26 +104,36 @@
                                                 </a>
                                             </td>
 
-                                            <td>
+                                            <td style="text-align:center">
                                                 @*<a href="@Url.Action("EditHDChiPhi", new { @HDCHIPHI_ID = item.HOPDONG_CHIPHI_ID })"><span class="glyphicon glyphicon-edit"></span></a>*@
                                                 @Html.ActionLink(" ", "EditHDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
                                             </td>
-                                            <td>
+                                            <td style="text-align:center">
                                                 @Html.Action("PartiaDeleteHDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID })
                                             </td>
-                                            <td>
+                                            <td style="text-align:center">
                                                 @if (item.FILE != null)
                                                 {
                                                     @Html.ActionLink(" ", "ExportData", "HDCNTT", new { @HDCNTT_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 20px" })
                                                 }
                                             </td>
-                                            <td>
+                                            <td style="text-align:center">
                                                 <a href="@Url.Action("ShowHDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
                                                     @if (item.DT_CNTT_TIENDO_TT.Count != 0)
                                                     {
-
-                                                        var TH_TT = item.DT_CNTT_TIENDO_TT.FirstOrDefault(x => x.TRANGTHAI_TT == 0).THOIHAN_TT.Value.ToString("dd/MM/yyyy");
-                                                        <p>@TH_TT</p>
+                                                        //Lấy obj chưa xuất hóa đơn mới nhất
+                                                        var TH_TT_VALUE = item.DT_CNTT_TIENDO_TT.FirstOrDefault(x => x.TRANGTHAI_XUAT_HOADON == 0).THOIHAN_TT.Value;
+                                                        var TH_TT = TH_TT_VALUE.ToString("dd/MM/yyyy");
+                                                        
+                                                        if (TH_TT_VALUE.Subtract(@DateTime.Today).Days < 7)
+                                                        {
+                                                            <p style="color:red;">@TH_TT (@TH_TT_VALUE.Subtract(@DateTime.Today).Days ngày nữa)</p>
+                                                            <img src='Content/warning_icon.png' id='warning_icon' />
+                                                        }
+                                                        else
+                                                        {
+                                                            <p>@TH_TT</p>
+                                                        }
                                                     }
 
                                                 </a>

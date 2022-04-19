@@ -533,57 +533,57 @@
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="hopdong-tab">
                                     <table class=" col-md-12 table table-bordered table-striped table-hover">
                                         <tr class="noidung">
-                                            <th class="col-md-1">
+                                            <th class="col-md-1" style="text-align:center">
                                                 Tiến độ thanh toán
                                             </th>
-                                            <th class="col-md-1">
+                                            <th class="col-md-1" style="text-align:center">
                                                 Thời gian thanh toán
                                             </th>
-                                            <th class="col-md-1">
+                                            <th class="col-md-1" style="text-align:center">
                                                 Ngày đến hạn
                                             </th>
-                                            <th class="col-md-1">
+                                            <th class="col-md-1" style="text-align:center">
                                                 Số tiền thanh toán
                                             </th>
-                                            <th class="col-md-2">
+                                            <th class="col-md-2" style="text-align:center">
                                                 Diễn giải
                                             </th>
-                                            <th class="col-md-1">Trạng thái xuất hóa đơn</th>
-                                            <th class="col-md-1">Số hóa đơn</th>
-                                            <th class="col-md-1">Ngày hóa đơn</th>
-                                            <th class="col-md-1">Trạng thái thanh toán</th>
-                                            <th class="col-md-1">Sửa|Xóa</th>
+                                            <th class="col-md-1" style="text-align:center">Trạng thái xuất hóa đơn</th>
+                                            <th class="col-md-1" style="text-align:center">Số hóa đơn</th>
+                                            <th class="col-md-1" style="text-align:center">Ngày hóa đơn</th>
+                                            <th class="col-md-1" style="text-align:center">Trạng thái thanh toán</th>
+                                            <th class="col-md-1" style="text-align:center">Sửa|Xóa</th>
                                         </tr>
                                         @foreach (var item in listTDTT)
                                         {
                                             <tr class="noidunghd">
-                                                <td class="col-md-1">
+                                                <td class="col-md-1" style="text-align:center">
                                                     @item.DOT_TT
                                                 </td>
-                                                <td class="col-md-1">
+                                                <td class="col-md-1" style="text-align:center">
                                                     @item.THOIGIAN_TT
                                                 </td>
-                                                <td class="col-md-1">
+                                                <td class="col-md-1" style="text-align:center">
                                                     @item.THOIHAN_TT.Value.ToString("dd/MM/yyyy")
                                                 </td>
-                                                <td class="col-md-1">
+                                                <td class="col-md-1" style="text-align:center">
                                                     @item.GIATRI_TT
                                                 </td>
-                                                <td class="col-md-2">
+                                                <td class="col-md-2" style="text-align:center">
                                                     Bên A thanh toán cho bên B tiền thuê @item.HOPDONG_DT_CNTT.CHUKY_TT.CHUKY.ToString()
                                                 </td>
                                                 @if (item.TRANGTHAI_XUAT_HOADON == 1)
                                                 {
-                                                    <td class="col-md-1">Đã xuất</td>
+                                                    <td class="col-md-1" style="color:forestgreen; background-color:blanchedalmond; text-align:center">Đã xuất</td>
                                                 }
                                                 else
                                                 {
-                                                    <td class="col-md-1">Chưa xuất</td>
+                                                    <td class="col-md-1" style="text-align:center">Chưa xuất</td>
                                                 }
-                                                <td class="col-md-1">
+                                                <td class="col-md-1" style="text-align:center">
                                                     @item.SO_HOADON
                                                 </td>
-                                                <td class="col-md-1">
+                                                <td class="col-md-1" style="text-align:center">
                                                     @if (item.NGAY_HOADON.HasValue)
                                                     {
                                                         @item.NGAY_HOADON.Value.ToString("dd/MM/yyyy")
@@ -595,13 +595,13 @@
                                                 </td>
                                                 @if (item.TRANGTHAI_TT == 1)
                                                 {
-                                                    <td class="col-md-1" style="color:forestgreen"> Đã thanh toán</td>
+                                                    <td class="col-md-1" style="color:forestgreen; background-color:blanchedalmond; text-align:center"> Đã thanh toán</td>
                                                 }
                                                 else
                                                 {
-                                                    <td class="col-md-1"> Chưa thanh toán</td>
+                                                    <td class="col-md-1" style="text-align:center"> Chưa thanh toán</td>
                                                 }
-                                                <td>
+                                                <td style="text-align:center">
                                                     @Html.Action("EditTienDoTT", "HDCNTT", new { @HDCNTT_ID = @item.HOPDONG_DT_CNTT_ID, @TIENDO_ID = @item.TIENDO_TT_ID })
                                                     |
                                                     @Html.Action("DeleteTienDoTT", "HDCNTT", new { @HDCNTT_ID = @item.HOPDONG_DT_CNTT_ID, @TIENDO_ID = @item.TIENDO_TT_ID })
