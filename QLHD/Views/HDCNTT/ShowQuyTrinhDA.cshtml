@@ -53,10 +53,9 @@
                                             <p style="color:orange">Tiến độ: Đang thực hiện</p> }
                                         else if (item.TRANGTHAI_THUCHIEN == 3)
                                         {
-                                            <p style="color: red">Tiến độ: Trễ NGAY_HETHAN</p> }
-                                        else
-                                        {
-                                            <p style="color: green; font-weight:bold">Tiến độ: Trễ tiến độ</p>}
+                                            <p style="color: red">Tiến độ: Trễ hạn</p>
+                                         }
+                                        
                                         @if (item.FILE_ID != null)
                                         {
                                             @Html.ActionLink(" " + item.TBL_FILE.file_name, "ExportData_TienTrinh", "HDCNTT", new { @TTid = item.TIENDO_DA_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 13px; margin-bottom: 10px; text-decoration: underline; color: #0c67d9" })

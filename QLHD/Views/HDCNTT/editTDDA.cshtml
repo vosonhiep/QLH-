@@ -69,7 +69,7 @@
                                 <div class="col-md-8">
                                     @if (Model.NGAY_GIAO.HasValue)
                                     {
-                                        <input type="datetime" class="form-control" name="NGAY_GIAO" value="@Model.NGAY_GIAO.Value.ToString("dd/MM/yyyy")"/>
+                                        <input type="datetime" class="form-control" name="NGAY_GIAO" value="@Model.NGAY_GIAO.Value.ToString("dd/MM/yyyy")" />
                                     }
                                     else
                                     {
@@ -106,6 +106,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
+                                    <label style="float: right">Trạng thái:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("TRANGTHAI_THUCHIEN", (IEnumerable<SelectListItem>)ViewBag.TRANGTHAI_TD, "--Chọn--", new { @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <div class="control-label col-md-2">
@@ -122,7 +132,7 @@
                                     }
                                     else
                                     {
-                                        <input type="file" class="form-control" id="upload" name="upload"/>
+                                        <input type="file" class="form-control" id="upload" name="upload" />
                                     }
                                 </div>
                             </div>
@@ -132,7 +142,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-primary" value="Lưu" />
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy" />
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Trờ về" />
                 </div>
             }
         </div>

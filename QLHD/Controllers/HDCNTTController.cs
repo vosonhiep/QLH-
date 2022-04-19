@@ -133,7 +133,7 @@ namespace QLHD.Controllers
             ViewBag.HINHTHUCTT = new SelectList(db.HTTTs.ToList().OrderBy(n => n.HTTT_ID), "HTTT_ID", "TEN_HTTT");
             ViewBag.NamHD = new SelectList(db.NAM_HD.ToList().OrderByDescending(n => n.NAM_HD_ID), "NAM_HD_ID", "NAM");
             ViewBag.THOIHAN_TT = new SelectList(db.THOIHAN_TT.ToList().OrderBy(n => n.THOIHAN_TT_ID), "THOIHAN_TT_ID", "TEN_THOIHAN_TT");
-
+            ViewBag.DUAN = new SelectList(db.QLDA_CNTT.ToList().OrderByDescending(n => n.NGAY_START_DA), "DUAN_ID", "TEN_DA");
             if (ModelState.IsValid)
             {
                 string fileContent = string.Empty;
@@ -325,6 +325,7 @@ namespace QLHD.Controllers
             {
                 return RedirectToAction("baoloi", "Home");
             }
+            ViewBag.DUAN = new SelectList(db.QLDA_CNTT.ToList().OrderByDescending(n => n.NGAY_START_DA), "DUAN_ID", "TEN_DA");
             ViewBag.listTDTT = db.DT_CNTT_TIENDO_TT.Where(n => n.HOPDONG_DT_CNTT_ID == hd.HOPDONG_DT_CNTT_ID).OrderBy(x => x.TIENDO_TT_ID).ToList();
             return View(hd);
         }
@@ -706,6 +707,13 @@ namespace QLHD.Controllers
                 new LOAITIENTRINH(false, "Khách hàng")
             };
 
+        public static List<TRANGTHAI_TIENDO_DA> listTrangThai = new List<TRANGTHAI_TIENDO_DA>()
+            {
+                new TRANGTHAI_TIENDO_DA(1, "Hoàn thành"),
+                new TRANGTHAI_TIENDO_DA(2, "Đang thực hiện"),
+                new TRANGTHAI_TIENDO_DA(3, "Trễ hạn")
+            };
+
         public static List<LOAI_DUAN> listLoaiDA = new List<LOAI_DUAN>()
             {
                 new LOAI_DUAN(1, "Phần mềm"),
@@ -795,9 +803,6 @@ namespace QLHD.Controllers
             return View(da);
         }
 
-
-
-
         [HttpGet]
         public PartialViewResult addTDDA(int? idDA)
         {
@@ -858,6 +863,7 @@ namespace QLHD.Controllers
             ViewBag.DONVI = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
             ViewBag.DVTH = new SelectList(listLoaiTienTrinh, "LOAITIENTRINH_ID", "TENLOAITIENTRINH");
             ViewBag.NGUOITHUCHIEN = new SelectList(db.THANHVIENs.ToList().OrderBy(n => n.DONVI_ID), "ID_THANHVIEN", "TEN_THANHVIEN");
+            ViewBag.TRANGTHAI_TD = new SelectList(listTrangThai, "TRANGTHAI_TIENDO_DA_ID", "TEN_TRANGTHAI_TIENDO_DA");
             return PartialView(db.QLDA_CNTT_TIENDO.SingleOrDefault(x => x.DUAN_ID == idDA && x.TIENDO_DA_ID == idTD));
         }
 

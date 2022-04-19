@@ -38,6 +38,16 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="control-label col-md-4">
+                                    <label style="float: right">Dự án:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="DUAN_ID" required="required" value="@Model.QLDA_CNTT.TEN_DA" disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">
                                     <label style="float: right">Loại hợp đồng:</label>
                                 </div>
                                 <div class="col-md-5">
@@ -46,7 +56,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" style="margin-top: 15px">
                             <div class="form-group">
                                 <div class="control-label col-md-4">
                                     <label style="float: right">Năm hợp đồng:</label>
@@ -628,7 +638,7 @@
                 <input type="button" id="TaoTienDoTT" class="btn btn-success btn-lg" value="Tạo tiến độ" onclick="TaoTienDoTT(@Model.HOPDONG_DT_CNTT_ID)" />
                 @*@Html.ActionLink("Tạo tiến độ", "TaoTienDoTT", new { @HDCNTT_ID = @Model.HOPDONG_DT_CNTT_ID }, new { @class = "btn btn-success btn-lg" })*@
                 @Html.ActionLink("Chỉnh sửa", "EditHDCNTT", new { @HDCNTT_ID = @Model.HOPDONG_DT_CNTT_ID }, new { @class = "btn btn-success btn-lg" })
-                <a href="@Url.Action("Index", "HDCNTT")" class="btn btn-default btn-lg">Hủy</a>
+            <a href="@Url.Action("Index", "HDCNTT")" class="btn btn-default btn-lg">Trờ về</a>
             </div>
         </div>
 
