@@ -1,0 +1,56 @@
+﻿<div class="navbar-form navbar-left" role="search">
+    <div class="form-group">
+        @Html.DropDownList("txtloaiTimKiem", (IEnumerable<SelectListItem>)ViewBag.loaiTK, new { @class = "form-control" })
+    </div>
+    <div class="form-group" id="tenDA">
+        @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "form-control", @placeholder = "Nhập thông tin cần tìm ..." })
+    </div>
+    <div class="form-group" id="chuDT" style="display: none">
+        @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "form-control", @placeholder = "Nhập thông tin cần tìm ..." })
+    </div>
+    <div class="form-group" id="loaiDA" style="display: none">
+        @Html.DropDownList("LOAI_DUAN_ID", (IEnumerable<SelectListItem>)ViewBag.loaiDA, new { @class = "form-control" })
+    </div>
+    <div class="form-group" id="loaiHD" style="display: none">
+        @Html.DropDownList("LOAI_HOPDONG_ID", (IEnumerable<SelectListItem>)ViewBag.loaiHD, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-default" style="margin-bottom: 0px">Tìm kiếm <span class="glyphicon glyphicon-search" /></button>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#txtloaiTimKiem').change(function () {
+            var id = $('#txtloaiTimKiem').val();
+            if (id == 1 || id == 5) {
+                $('#tenDA').show();
+                $('#chuDT').hide();
+                $('#loaiDA').hide();
+                $('#loaiHD').hide();
+               
+                $('#loaiDA').hide();
+            }
+            if (id == 2) {
+                $('#tenDA').hide();
+                $('#chuDT').show();
+                $('#loaiDA').hide();
+                $('#loaiHD').hide();
+                
+                $('#loaiDA').hide();
+            }
+            if (id == 3) {
+                $('#tenDA').hide();
+                $('#chuDT').hide();
+                $('#loaiDA').show();
+                $('#loaiHD').hide();
+                
+            }
+            if (id == 4) {
+                $('#tenDA').hide();
+                $('#chuDT').hide();
+                $('#loaiDA').hide();
+                $('#loaiHD').show();
+            }
+        });
+    });
+</script>

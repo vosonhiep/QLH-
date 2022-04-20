@@ -16,10 +16,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="nav navbar-left">
-                    @using (Html.BeginForm("KetQuaTimKiem", "HDCNTT", FormMethod.Post))
+                    @using (Html.BeginForm("KetQuaTimKiemDA", "HDCNTT", FormMethod.Post))
                     {
-                        // Hiệp: Tại sao lại phải gọi search ở HDChiPhi
-                        //@Html.Action("partialSearch", "HDCNTT")
+                        @Html.Action("partialSearchDA", "HDCNTT")
                     }
                 </div>
                 <div class="nav navbar-right">
@@ -64,6 +63,9 @@
                                             <th>
                                                 Tiến độ dự án
                                             </th>
+                                            <th>
+                                                Ghi chú tồn động
+                                            </th>
                                             <th>Sửa</th>
                                             <th>Xóa</th>
                                         </tr>
@@ -71,7 +73,7 @@
                                         @foreach (var item in Model)
                                         {
                                             <tr class="noidunghd">
-                                                <td>@(row+=1)</td>
+                                                <td>@(row += 1)</td>
                                                 <td>
                                                     <a href="@Url.Action("ShowQuyTrinhDA", new { @maDA = item.DUAN_ID })">
                                                         @item.TEN_DA
@@ -114,7 +116,7 @@
                                                         }
                                                         else if (item.LOAI_HOPDONG_ID == 3)
                                                         {
-                                                            <p>Hỗn hợp</p>
+                                                            <p>Thuê và bán</p>
                                                         }
                                                     </a>
                                                 </td>
@@ -128,7 +130,49 @@
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a>@Model.</a>
+                                                    <a>
+                                                        @{
+                                                            var td = item.QLDA_CNTT_TIENDO.OrderByDescending(k => k.STT).FirstOrDefault(m => m.TRANGTHAI_THUCHIEN == 1);
+                                                            if (td != null && item.QLDA_CNTT_TIENDO.Count != 0)
+                                                            {
+                                                                @*int maxID = item.QLDA_CNTT_TIENDO.Where(x => x.TRANGTHAI_THUCHIEN == 1).Max(td => td.TIENDO_DA_ID);
+                                                                    var TenTienDo = item.QLDA_CNTT_TIENDO.SingleOrDefault(n => n.TIENDO_DA_ID == (maxID + 1)).TEN_TIENDO_DA;
+                                                                    <p>@TenTienDo</p>*@
+                                                                // 1 - Hoàn thành   2- Đang thực hiện    3 - Trễ tiến độ
+                                                                var TienDo = item.QLDA_CNTT_TIENDO.OrderBy(l => l.STT).First(n => n.TRANGTHAI_THUCHIEN == 2 && n.STT > (td.STT));
+
+                                                                // NGAY_GIAO là ngày thực hiện thực tế
+                                                                if (TienDo.NGAY_GIAO > TienDo.NGAY_HETHAN)
+                                                                {
+                                                                    <p style="color: red">@TienDo.TEN_TIENDO_DA (trễ hạn)</p>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <p style="color: green">@TienDo.TEN_TIENDO_DA</p>
+                                                                }
+
+                                                            }
+                                                        }
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a>
+                                                        @{
+                                                            var td1 = item.QLDA_CNTT_TIENDO.OrderByDescending(k => k.STT).FirstOrDefault(m => m.TRANGTHAI_THUCHIEN == 1);
+                                                            if (td1 != null && item.QLDA_CNTT_TIENDO.Count != 0)
+                                                            {
+                                                                @*int maxID = item.QLDA_CNTT_TIENDO.Where(x => x.TRANGTHAI_THUCHIEN == 1).Max(td => td.TIENDO_DA_ID);
+                                                                    var TenTienDo = item.QLDA_CNTT_TIENDO.SingleOrDefault(n => n.TIENDO_DA_ID == (maxID + 1)).TEN_TIENDO_DA;
+                                                                    <p>@TenTienDo</p>*@
+                                                                // 1 - Hoàn thành   2- Đang thực hiện    3 - Trễ tiến độ
+                                                                var TienDo1 = item.QLDA_CNTT_TIENDO.OrderBy(l => l.STT).First(n => n.TRANGTHAI_THUCHIEN == 2 && n.STT > (td1.STT));
+
+                                                                // NGAY_GIAO là ngày thực hiện thực tế
+                                                                <p>@TienDo1.GHICHU_TONDONG</p>
+                                                                
+                                                            }
+                                                        }
+                                                    </a>
                                                 </td>
                                                 <td>
                                                     @Html.ActionLink(" ", "EditDA", new { @maDA = item.DUAN_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })

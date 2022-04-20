@@ -725,14 +725,70 @@ namespace QLHD.Controllers
         [HttpGet]
         public ActionResult DSDuAn(int? page)
         {
-            var duan = db.QLDA_CNTT.ToList().OrderByDescending(n => n.NGAY_START_DA);
+            var duan = db.QLDA_CNTT.ToList().OrderByDescending(n => n.DUAN_ID);
             ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
-
+            
             int pageNumber = (page ?? 1);
             int pageSize = 10;
 
             return View(duan.ToPagedList(pageNumber, pageSize));
         }
+
+        public PartialViewResult partialSearchDA()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+
+            items.Add(new SelectListItem { Text = "--Chọn thông tin cần tìm--", Value = "0" });
+
+            items.Add(new SelectListItem { Text = "Tên dự án", Value = "1", Selected = true });
+            items.Add(new SelectListItem { Text = "Chủ đầu tư", Value = "2" });
+            items.Add(new SelectListItem { Text = "Loại dự án", Value = "3" });
+            items.Add(new SelectListItem { Text = "Loại hợp đồng", Value = "4" });
+            items.Add(new SelectListItem { Text = "Khác", Value = "5" });
+            ViewBag.loaiTK = items;
+            ViewBag.loaiHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
+            ViewBag.loaiDA = new SelectList(listLoaiDA, "LOAI_DUAN_ID", "TEN_LOAI_DUAN");
+            
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult KetQuaTimKiemDA(FormCollection f, int? page)
+        {
+            String loaiTK = f["txtloaiTimKiem"].ToString();
+            String tukhoa = f["txtTimKiem"].ToString();
+
+            List<QLDA_CNTT> listKQTK = db.QLDA_CNTT.ToList();
+            ViewBag.tukhoa = tukhoa;
+            if (loaiTK == "1")
+            {
+                listKQTK = db.QLDA_CNTT.Where(n => n.TEN_DA.Contains(tukhoa)).ToList();
+            }
+            if (loaiTK == "2")
+            {
+                listKQTK = db.QLDA_CNTT.Where(n => n.CHUDAUTU.Contains(tukhoa)).ToList();
+            }
+            if (loaiTK == "3")
+            {
+                int loaiDA = Int32.Parse(f["LOAI_DUAN_ID"].ToString());
+                listKQTK = db.QLDA_CNTT.Where(n => n.LOAI_DA == loaiDA).ToList();
+            }
+            if (loaiTK == "4")
+            {
+                int loaiHD = Int32.Parse(f["LOAI_HOPDONG_ID"].ToString());
+                listKQTK = db.QLDA_CNTT.Where(n => n.LOAI_HOPDONG_ID == loaiHD).ToList();
+            }
+            int pageNumber = (page ?? 1);
+            int pageSize = 9;
+            if (listKQTK.Count == 0)
+            {
+                ViewBag.ThongBao = "Không tìm thấy hợp đồng nào!!";
+                return View(listKQTK.OrderBy(n => n.DUAN_ID).ToPagedList(pageNumber, pageSize));
+            }
+            ViewBag.ThongBao = "Đã tìm thấy " + listKQTK.Count + " kết quả!";
+            return View(listKQTK.OrderBy(n => n.DUAN_ID).ToPagedList(pageNumber, pageSize));
+        }
+
 
         [HttpGet]
         public ActionResult CreateDuAn(int? page)
