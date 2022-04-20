@@ -61,9 +61,11 @@
                                             <th>
                                                 Ngày bắt đầu
                                             </th>
+                                            <th>
+                                                Tiến độ dự án
+                                            </th>
                                             <th>Sửa</th>
                                             <th>Xóa</th>
-                                            <th>File DA</th>
                                         </tr>
                                         @{int row = (@Model.PageNumber * 10) - 10;}
                                         @foreach (var item in Model)
@@ -124,6 +126,9 @@
                                                         }
 
                                                     </a>
+                                                </td>
+                                                <td>
+                                                    <a>@Model.</a>
                                                 </td>
                                                 <td>
                                                     @Html.ActionLink(" ", "EditDA", new { @maDA = item.DUAN_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })

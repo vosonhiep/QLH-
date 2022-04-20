@@ -1,4 +1,5 @@
-﻿@model QLHD.Models.HOPDONG_DT_CNTT
+﻿@using System.Globalization
+@model QLHD.Models.HOPDONG_DT_CNTT
 
 @{
     ViewBag.Title = "Xem hợp đồng CNTT";
@@ -306,70 +307,103 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">Giá trị phần cứng:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="number" id="GIATRI_PHANCUNG_HD" class="form-control" name="GIATRI_PHANCUNG_HD" />
-                                    <input class="form-control" type="text" id="giatri_phancung_hd" placeholder="0 VNĐ" value="@Model.GIATRI_PHANCUNG_HD VNĐ" disabled />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <div class="control-label col-md-3">
-                                    <label style="float: right">Chu kỳ TT:</label>
-                                </div>
-                                <div class="col-md-3">
-                                    @*@Html.DropDownList("CHUKY_ID", (IEnumerable<SelectListItem>)ViewBag.CHUKYTT, "--Chọn chu kỳ TT--", new { @class = "form-control", required = "required", @id = "CHUKY_ID" })*@
-                                    <input type="text" id="CHUKY_ID" class="form-control" name="CHUKY_ID" value="@Model.CHUKY_TT.CHUKY" disabled />
-                                </div>
-                                <div class="control-label col-md-3">
-                                    <label style="float: right">Thời gian TT:</label>
-                                </div>
-                                <div class="col-md-3">
-                                    @*@Html.DropDownList("THOIHAN_TT_ID", (IEnumerable<SelectListItem>)ViewBag.THOIHAN_TT, "--Chọn--", new { @class = "form-control", required = "required", @id = "THOIHAN_TT_ID" })*@
-                                    <input type="text" id="THOIHAN_TT_ID" class="form-control" name="THOIHAN_TT_ID" value="@Model.THOIHAN_TT.TEN_THOIHAN_TT" disabled />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Giá trị phần cứng:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="number" id="GIATRI_PHANCUNG_HD" class="form-control" name="GIATRI_PHANCUNG_HD" />
+                                        <input class="form-control" type="text" id="giatri_phancung_hd" placeholder="0 VNĐ" value="@Model.GIATRI_PHANCUNG_HD VNĐ" disabled />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4" style="margin-top: 15px">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">Giá trị dịch vụ:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="number" id="GIATRI_DICHVU_HD" class="form-control" name="GIATRI_DICHVU_HD" />
-                                    <input class="form-control" type="text" id="giatri_dichvu_hd" placeholder="VNĐ" value="@Model.GIATRI_DICHVU_HD VNĐ" disabled />
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="control-label col-md-3">
+                                        <label style="float: right">Chu kỳ TT:</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @*@Html.DropDownList("CHUKY_ID", (IEnumerable<SelectListItem>)ViewBag.CHUKYTT, "--Chọn chu kỳ TT--", new { @class = "form-control", required = "required", @id = "CHUKY_ID" })*@
+                                        <input type="text" id="CHUKY_ID" class="form-control" name="CHUKY_ID" value="@Model.CHUKY_TT.CHUKY" disabled />
+                                    </div>
+                                    <div class="control-label col-md-3">
+                                        <label style="float: right">Thời gian TT:</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @*@Html.DropDownList("THOIHAN_TT_ID", (IEnumerable<SelectListItem>)ViewBag.THOIHAN_TT, "--Chọn--", new { @class = "form-control", required = "required", @id = "THOIHAN_TT_ID" })*@
+                                        <input type="text" id="THOIHAN_TT_ID" class="form-control" name="THOIHAN_TT_ID" value="@Model.THOIHAN_TT.TEN_THOIHAN_TT" disabled />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-8" style="margin-top: 15px">
-                            <div class="form-group">
-                                <div class="control-label col-md-3">
-                                    <label style="float: right">Ngày hiệu lực HĐ:</label>
+                        </div>                        
+                        <div class="row">
+                            <div class="col-md-4" style="margin-top: 15px">
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Giá trị dịch vụ:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="number" id="GIATRI_DICHVU_HD" class="form-control" name="GIATRI_DICHVU_HD" />
+                                        <input class="form-control" type="text" id="giatri_dichvu_hd" placeholder="VNĐ" value="@Model.GIATRI_DICHVU_HD VNĐ" disabled />
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    @if (Model.NGAY_HIEULUC_HD.HasValue)
-                                    {
-                                        <input type="datetime" class="form-control" name="NGAY_HIEULUC_HD" value="@Model.NGAY_HIEULUC_HD.Value.ToString("dd/MM/yyyy")" disabled />
-                                    }
-                                    else
-                                    {
-                                        <input type="date" class="form-control" name="NGAY_HIEULUC_HD" disabled />
-                                    }
+                            </div>
+                            <div class="col-md-8" style="margin-top: 15px">
+                                <div class="form-group">
+                                    <div class="control-label col-md-3">
+                                        <label style="float: right">Ngày hiệu lực HĐ:</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @if (Model.NGAY_HIEULUC_HD.HasValue)
+                                        {
+                                            <input type="datetime" class="form-control" name="NGAY_HIEULUC_HD" value="@Model.NGAY_HIEULUC_HD.Value.ToString("dd/MM/yyyy")" disabled />
+                                        }
+                                        else
+                                        {
+                                            <input type="date" class="form-control" name="NGAY_HIEULUC_HD" disabled />
+                                        }
 
-                                </div>
-                                <div class="control-label col-md-3">
-                                    <label style="float: right">Thời gian thuê:</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" id="THANG" name="THANG" class="form-control" value="@Model.THANG" disabled />
-                                </div>
+                                    </div>
+                                    <div class="control-label col-md-3">
+                                        <label style="float: right">Thời gian thuê:</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="number" id="THANG" name="THANG" class="form-control" value="@Model.THANG" disabled />
+                                    </div>
 
-                                @*<div class="control-label col-md-3">
+                                    @*<div class="control-label col-md-3">
+                    <label style="float: right">Ngày BBNT:</label>
+                </div>
+                <div class="col-md-3">
+                    @if (Model.NGAY_BBNT.HasValue)
+                    {
+                        <input type="datetime" class="form-control" name="NGAY_BBNT" value="@Model.NGAY_BBNT.Value.ToString("dd/MM/yyyy")" disabled />
+                    }
+                    else
+                    {
+                        <input type="date" class="form-control" name="NGAY_BBNT" disabled />
+                    }
+                </div>*@
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="row">
+                            <div class="col-md-4" style="margin-top: 15px">
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Giá trị tạm ứng:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="number" id="GIATRI_TAMUNG" class="form-control" name="GIATRI_TAMUNG" />
+                                        <input class="form-control" type="text" id="giatri_tamung" placeholder="VNĐ" value="@Model.GIATRI_TAMUNG VNĐ" disabled />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8" style="margin-top: 15px">
+                                <div class="form-group">
+                                    <div class="control-label col-md-3">
                                         <label style="float: right">Ngày BBNT:</label>
                                     </div>
                                     <div class="col-md-3">
@@ -381,126 +415,103 @@
                                         {
                                             <input type="date" class="form-control" name="NGAY_BBNT" disabled />
                                         }
-                                    </div>*@
-                            </div>
-                        </div>
-                        <div class="col-md-4" style="margin-top: 15px">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">Giá trị tạm ứng:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="number" id="GIATRI_TAMUNG" class="form-control" name="GIATRI_TAMUNG" />
-                                    <input class="form-control" type="text" id="giatri_tamung" placeholder="VNĐ" value="@Model.GIATRI_TAMUNG VNĐ" disabled />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-8" style="margin-top: 15px">
-                            <div class="form-group">
-                                <div class="control-label col-md-3">
-                                    <label style="float: right">Ngày BBNT:</label>
-                                </div>
-                                <div class="col-md-3">
-                                    @if (Model.NGAY_BBNT.HasValue)
-                                    {
-                                        <input type="datetime" class="form-control" name="NGAY_BBNT" value="@Model.NGAY_BBNT.Value.ToString("dd/MM/yyyy")" disabled />
-                                    }
-                                    else
-                                    {
-                                        <input type="date" class="form-control" name="NGAY_BBNT" disabled />
-                                    }
-                                </div>
+                                    </div>
 
-                                <div class="control-label col-md-3">
-                                    <label style="float: right">Giá trị BLTHHD:</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" id="GIATRI_BLTHHD" class="form-control" name="GIATRI_BLTHHD" value="@Model.GIATRI_BLTHHD" disabled />
-                                </div>
+                                    <div class="control-label col-md-3">
+                                        <label style="float: right">Giá trị BLTHHD:</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="number" id="GIATRI_BLTHHD" class="form-control" name="GIATRI_BLTHHD" value="@Model.GIATRI_BLTHHD" disabled />
+                                    </div>
 
-                                @*<div class="control-label col-md-3">
+                                    @*<div class="control-label col-md-3">
+                    <label style="float: right">Thời gian BLTHHD:</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="number" id="THOIGIAN_BLTHHD" onchange="sum_date()" class="form-control" name="THOIGIAN_BLTHHD" value="@Model.THOIGIAN_BLTHHD" disabled />
+                </div>*@
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="row">
+                            <div class="col-md-4" style="margin-top: 15px">
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Hình thức thanh toán:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        @*@Html.DropDownList("HTTT_ID", (IEnumerable<SelectListItem>)ViewBag.HINHTHUCTT, "--Chọn HTTT--", new { @class = "form-control", required = "required", @id = "HTTT_ID" })*@
+                                        <input type="number" id="HTTT_ID" class="form-control" name="HTTT_ID" value="@Model.HTTT.TEN_HTTT" disabled />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8" style="margin-top: 15px">
+                                <div class="form-group">
+                                    <div class="control-label col-md-3">
                                         <label style="float: right">Thời gian BLTHHD:</label>
                                     </div>
                                     <div class="col-md-3">
                                         <input type="number" id="THOIGIAN_BLTHHD" onchange="sum_date()" class="form-control" name="THOIGIAN_BLTHHD" value="@Model.THOIGIAN_BLTHHD" disabled />
-                                    </div>*@
-                            </div>
-                        </div>
-                        <div class="col-md-4" style="margin-top: 15px">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">Hình thức thanh toán:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    @*@Html.DropDownList("HTTT_ID", (IEnumerable<SelectListItem>)ViewBag.HINHTHUCTT, "--Chọn HTTT--", new { @class = "form-control", required = "required", @id = "HTTT_ID" })*@
-                                    <input type="number" id="HTTT_ID" class="form-control" name="HTTT_ID" value="@Model.HTTT.TEN_HTTT" disabled />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-8" style="margin-top: 15px">
-                            <div class="form-group">
-                                <div class="control-label col-md-3">
-                                    <label style="float: right">Thời gian BLTHHD:</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" id="THOIGIAN_BLTHHD" onchange="sum_date()" class="form-control" name="THOIGIAN_BLTHHD" value="@Model.THOIGIAN_BLTHHD" disabled />
-                                </div>
+                                    </div>
 
-                                <div class="control-label col-md-3">
-                                    <label style="float: right">Ngày BLTHHĐ:</label>
-                                </div>
-                                <div class="col-md-3">
-                                    @if (Model.NGAY_BLTHHD.HasValue)
-                                    {
-                                        <input type="datetime" id="NGAY_BLTHHD" class="form-control" onchange="sum_date()" name="NGAY_BLTHHD" value="@Model.NGAY_BLTHHD.Value.ToString("dd/MM/yyyy")" disabled />
-                                    }
-                                    else
-                                    {
-                                        <input type="date" id="NGAY_BLTHHD" class="form-control" onchange="sum_date()" name="NGAY_BLTHHD" disabled />
-                                    }
-                                </div>
-
-                                @*<div class="control-label col-md-3">
-                                        <label style="float: right">Ngày hết hạn BLTHHĐ:</label>
+                                    <div class="control-label col-md-3">
+                                        <label style="float: right">Ngày BLTHHĐ:</label>
                                     </div>
                                     <div class="col-md-3">
-                                        @if (Model.NGAY_HETHAN_BLTHHD.HasValue)
+                                        @if (Model.NGAY_BLTHHD.HasValue)
                                         {
-                                            <input type="datetime" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" disabled value="@Model.NGAY_HETHAN_BLTHHD.Value.ToString("dd/MM/yyyy")" disabled />
+                                            <input type="datetime" id="NGAY_BLTHHD" class="form-control" onchange="sum_date()" name="NGAY_BLTHHD" value="@Model.NGAY_BLTHHD.Value.ToString("dd/MM/yyyy")" disabled />
                                         }
                                         else
                                         {
-                                            <input type="date" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" disabled />
+                                            <input type="date" id="NGAY_BLTHHD" class="form-control" onchange="sum_date()" name="NGAY_BLTHHD" disabled />
                                         }
-                                    </div>*@
-                            </div>
-                        </div>
-                        <div class="col-md-4" style="margin-top: 15px">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">Tổng giá trị hợp đồng:</label>
+                                    </div>
+
+                                    @*<div class="control-label col-md-3">
+                    <label style="float: right">Ngày hết hạn BLTHHĐ:</label>
+                </div>
+                <div class="col-md-3">
+                    @if (Model.NGAY_HETHAN_BLTHHD.HasValue)
+                    {
+                        <input type="datetime" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" disabled value="@Model.NGAY_HETHAN_BLTHHD.Value.ToString("dd/MM/yyyy")" disabled />
+                    }
+                    else
+                    {
+                        <input type="date" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" disabled />
+                    }
+                </div>*@
                                 </div>
-                                <div class="col-md-8">
-                                    <input type="number" id="TONG_GT" class="form-control" name="TONG_GT" />
-                                    <input class="form-control" type="text" id="tong_gt" placeholder="VNĐ" disabled />
+                            </div>
+                        </div>                        
+                        <div class="row">
+                            <div class="col-md-4" style="margin-top: 15px">
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float:right;color:red">Tổng giá trị hợp đồng:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="number" id="TONG_GT" class="form-control" name="TONG_GT" />
+                                        <input class="form-control red" type="text" id="tong_gt" placeholder="VNĐ" disabled />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-8" style="margin-top: 15px">
-                            <div class="control-label col-md-3">
-                                <label style="float: right">Ngày hết hạn BLTHHĐ:</label>
+                            <div class="col-md-8" style="margin-top: 15px">
+                                <div class="control-label col-md-3">
+                                    <label style="float: right">Ngày hết hạn BLTHHĐ:</label>
+                                </div>
+                                <div class="col-md-3">
+                                    @if (Model.NGAY_HETHAN_BLTHHD.HasValue)
+                                    {
+                                        <input type="datetime" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" disabled value="@Model.NGAY_HETHAN_BLTHHD.Value.ToString("dd/MM/yyyy")" disabled />
+                                    }
+                                    else
+                                    {
+                                        <input type="date" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" disabled />
+                                    }
+                                </div>
                             </div>
-                            <div class="col-md-3">
-                                @if (Model.NGAY_HETHAN_BLTHHD.HasValue)
-                                {
-                                    <input type="datetime" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" disabled value="@Model.NGAY_HETHAN_BLTHHD.Value.ToString("dd/MM/yyyy")" disabled />
-                                }
-                                else
-                                {
-                                    <input type="date" id="NGAY_HETHAN_BLTHHD" class="form-control" name="NGAY_HETHAN_BLTHHD" disabled />
-                                }
-                            </div>
-                        </div>
+                        </div>                        
                     </div>
                 </div>
             </div>
@@ -524,17 +535,17 @@
                                     <table id="tableTDTT" class="col-md-12 table table-bordered table-striped table-hover">
                                         <tr class="noidung">
                                             <th class="col-md-1" style="text-align:center">
-                                                Tiến độ thanh toán
+                                                Đợt thanh toán
                                             </th>
 
                                             <th class="col-md-1" style="text-align:center">
-                                                Thời gian thanh toán
+                                                Thời gian thanh toán (từ ngày đến hạn)
                                             </th>
                                             <th class="col-md-1" style="text-align:center">
-                                                Ngày đến hạn
+                                                Ngày đến hạn thanh toán
                                             </th>
                                             <th class="col-md-1" style="text-align:center">
-                                                Số tiền thanh toán
+                                                Số tiền thanh toán/Đợt
                                             </th>
                                             <th class="col-md-2" style="text-align:center">
                                                 Diễn giải
@@ -557,7 +568,7 @@
                                                     @item.THOIHAN_TT.Value.ToString("dd/MM/yyyy")
                                                 </td>
                                                 <td class="col-md-1" style="text-align:center">
-                                                    @item.GIATRI_TT
+                                                    @string.Format(new CultureInfo("vi-VN"), "{0:C0}", @item.GIATRI_TT)
                                                 </td>
                                                 <td class="col-md-2" style="text-align:center">
                                                     Bên A thanh toán cho bên B tiền thuê @item.HOPDONG_DT_CNTT.CHUKY_TT.CHUKY.ToString();
@@ -638,7 +649,7 @@
                 <input type="button" id="TaoTienDoTT" class="btn btn-success btn-lg" value="Tạo tiến độ" onclick="TaoTienDoTT(@Model.HOPDONG_DT_CNTT_ID)" />
                 @*@Html.ActionLink("Tạo tiến độ", "TaoTienDoTT", new { @HDCNTT_ID = @Model.HOPDONG_DT_CNTT_ID }, new { @class = "btn btn-success btn-lg" })*@
                 @Html.ActionLink("Chỉnh sửa", "EditHDCNTT", new { @HDCNTT_ID = @Model.HOPDONG_DT_CNTT_ID }, new { @class = "btn btn-success btn-lg" })
-            <a href="@Url.Action("Index", "HDCNTT")" class="btn btn-default btn-lg">Trờ về</a>
+                <a href="@Url.Action("Index", "HDCNTT")" class="btn btn-default btn-lg">Trờ về</a>
             </div>
         </div>
 
