@@ -1,205 +1,200 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
 @model IPagedList<QLHD.Models.QLDA_CNTT>
-    @{
-        ViewBag.Title = "DSDuAn";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
+@{
+    ViewBag.Title = "DSDuAn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-    <div class="">
-        <div class="page-title">
-            <div class="title_left">
-                <h3>Dự án CNTT</h3>
-            </div>
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Dự án CNTT</h3>
         </div>
-        <div class="clearfix"></div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="nav navbar-left">
-                    @using (Html.BeginForm("KetQuaTimKiemDA", "HDCNTT", FormMethod.Post))
-                    {
-                        @Html.Action("partialSearchDA", "HDCNTT")
-                    }
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav navbar-left">
+                @using (Html.BeginForm("KetQuaTimKiemDA", "HDCNTT", FormMethod.Post))
+                {
+                    @Html.Action("partialSearchDA", "HDCNTT")
+                }
+            </div>
+            <div class="nav navbar-right">
+                <a href="@Url.Action("CreateDuAn", "HDCNTT")" class="btn btn-info btn-lg" style="float:right">
+                    Thêm dự án
+                    <span class="glyphicon glyphicon-plus" />
+                </a>
+            </div>
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh sách dự án CNTT</h2>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="nav navbar-right">
-                    <a href="@Url.Action("CreateDuAn", "HDCNTT")" class="btn btn-info btn-lg" style="float:right">
-                        Thêm dự án
-                        <span class="glyphicon glyphicon-plus" />
-                    </a>
-                </div>
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Danh sách dự án CNTT</h2>
-                        <div class="clearfix"></div>
-                    </div>
 
-                    <div class="x_content">
-                        <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                <li role="presentation" class="active">
-                                    <a href="#tab_content1" id="hopdong-tab" role="tab" data-toggle="tab" aria-expanded="true">DS dự án</a>
-                                </li>
-                            </ul>
-                            <div id="myTabContent" class="tab-content">
-                                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="hopdong-tab">
-                                    <table class="table table-bordered table-striped table-hover">
-                                        <tr class="noidung">
-                                            <th>STT</th>
-                                            <th>
-                                                Tên dự án
-                                            </th>
-                                            <th>
-                                                Chủ đầu tư
-                                            </th>
-                                            <th>
-                                                Loại dự án
-                                            </th>
-                                            <th>
-                                                Loại hợp đồng
-                                            </th>
-                                            <th>
-                                                Ngày bắt đầu
-                                            </th>
-                                            <th>
-                                                Tiến độ dự án
-                                            </th>
-                                            <th>
-                                                Ghi chú tồn động
-                                            </th>
-                                            <th>Sửa</th>
-                                            <th>Xóa</th>
-                                        </tr>
-                                        @{int row = (@Model.PageNumber * 10) - 10;}
-                                        @foreach (var item in Model)
-                                        {
-                                            <tr class="noidunghd">
-                                                <td>@(row += 1)</td>
-                                                <td>
-                                                    <a href="@Url.Action("ShowQuyTrinhDA", new { @maDA = item.DUAN_ID })">
-                                                        @item.TEN_DA
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="@Url.Action("ShowQuyTrinhDA", new { @maDA = item.DUAN_ID })">
-                                                        @item.CHUDAUTU
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="@Url.Action("ShowQuyTrinhDA", new { @maDA = item.DUAN_ID })">
-                                                        @if (item.LOAI_DA == 1)
-                                                        {
-                                                            <p>Phần mềm</p>
-                                                        }
-                                                        else if (item.LOAI_DA == 2)
-                                                        {
-                                                            <p>Đường truyền</p>
-                                                        }
-                                                        else if (item.LOAI_DA == 3)
-                                                        {
-                                                            <p>Thiết bị</p>
-                                                        }
-                                                        else if (item.LOAI_DA == 4)
-                                                        {
-                                                            <p>Hỗn hợp</p>
-                                                        }
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="@Url.Action("ShowQuyTrinhDA", new { @maDA = item.DUAN_ID })">
-                                                        @if (item.LOAI_HOPDONG_ID == 1)
-                                                        {
-                                                            <p>Thuê</p>
-                                                        }
-                                                        else if (item.LOAI_HOPDONG_ID == 2)
-                                                        {
-                                                            <p>Bán</p>
-                                                        }
-                                                        else if (item.LOAI_HOPDONG_ID == 3)
-                                                        {
-                                                            <p>Thuê và bán</p>
-                                                        }
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="@Url.Action("ShowQuyTrinhDA", new { @maDA = item.DUAN_ID })">
-                                                        @if (item.NGAY_START_DA.HasValue)
-                                                        {
-                                                            <p>@item.NGAY_START_DA.Value.ToString("dd/MM/yyyy")</p>
-                                                        }
+                <div class="x_content">
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#tab_content1" id="hopdong-tab" role="tab" data-toggle="tab" aria-expanded="true">DS dự án</a>
+                            </li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="hopdong-tab">
+                                <table class="table table-bordered table-striped table-hover">
+                                    <tr class="noidung">
+                                        <th>STT</th>
+                                        <th>
+                                            Tên dự án
+                                        </th>
+                                        <th>
+                                            Chủ đầu tư
+                                        </th>
+                                        <th>
+                                            Loại dự án
+                                        </th>
+                                        <th>
+                                            Loại hợp đồng
+                                        </th>
+                                        <th>
+                                            Ngày bắt đầu
+                                        </th>
+                                        <th>
+                                            Tiến độ dự án
+                                        </th>
+                                        <th>
+                                            Ghi chú tồn động
+                                        </th>
+                                        <th>Sửa</th>
+                                        <th>Xóa</th>
+                                    </tr>
+                                    @{int row = (@Model.PageNumber * 10) - 10;}
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="noidunghd">
+                                            <td>@(row += 1)</td>
+                                            <td>
+                                                <a href="@Url.Action("ShowQuyTrinhDA", new { @maDA = item.DUAN_ID })">
+                                                    @item.TEN_DA
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("ShowQuyTrinhDA", new { @maDA = item.DUAN_ID })">
+                                                    @item.CHUDAUTU
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("ShowQuyTrinhDA", new { @maDA = item.DUAN_ID })">
+                                                    @if (item.LOAI_DA == 1)
+                                                    {
+                                                        <p>Phần mềm</p>
+                                                    }
+                                                    else if (item.LOAI_DA == 2)
+                                                    {
+                                                        <p>Đường truyền</p>
+                                                    }
+                                                    else if (item.LOAI_DA == 3)
+                                                    {
+                                                        <p>Thiết bị</p>
+                                                    }
+                                                    else if (item.LOAI_DA == 4)
+                                                    {
+                                                        <p>Hỗn hợp</p>
+                                                    }
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("ShowQuyTrinhDA", new { @maDA = item.DUAN_ID })">
+                                                    @if (item.LOAI_HOPDONG_ID == 1)
+                                                    {
+                                                        <p>Thuê</p>
+                                                    }
+                                                    else if (item.LOAI_HOPDONG_ID == 2)
+                                                    {
+                                                        <p>Bán</p>
+                                                    }
+                                                    else if (item.LOAI_HOPDONG_ID == 3)
+                                                    {
+                                                        <p>Thuê và bán</p>
+                                                    }
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("ShowQuyTrinhDA", new { @maDA = item.DUAN_ID })">
+                                                    @if (item.NGAY_START_DA.HasValue)
+                                                    {
+                                                        <p>@item.NGAY_START_DA.Value.ToString("dd/MM/yyyy")</p>
+                                                    }
 
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a>
-                                                        @{
-                                                            var td = item.QLDA_CNTT_TIENDO.OrderByDescending(k => k.STT).FirstOrDefault(m => m.TRANGTHAI_THUCHIEN == 1);
-                                                            if (td != null && item.QLDA_CNTT_TIENDO.Count != 0)
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a>
+                                                    @{
+                                                        var td = item.QLDA_CNTT_TIENDO.OrderByDescending(k => k.STT).FirstOrDefault(m => m.TRANGTHAI_THUCHIEN == 1);
+                                                        if (td != null && item.QLDA_CNTT_TIENDO.Count != 0)
+                                                        {
+                                                            @*int maxID = item.QLDA_CNTT_TIENDO.Where(x => x.TRANGTHAI_THUCHIEN == 1).Max(td => td.TIENDO_DA_ID);
+                                                                var TenTienDo = item.QLDA_CNTT_TIENDO.SingleOrDefault(n => n.TIENDO_DA_ID == (maxID + 1)).TEN_TIENDO_DA;
+                                                                <p>@TenTienDo</p>*@
+                                                            // 1 - Hoàn thành   2- Đang thực hiện    3 - Trễ tiến độ
+                                                            var TienDo = item.QLDA_CNTT_TIENDO.OrderBy(l => l.STT).First(n => n.TRANGTHAI_THUCHIEN == 2 && n.STT > (td.STT));
+
+                                                            // NGAY_GIAO là ngày thực hiện thực tế
+                                                            if (TienDo.NGAY_GIAO > TienDo.NGAY_HETHAN)
                                                             {
-                                                                @*int maxID = item.QLDA_CNTT_TIENDO.Where(x => x.TRANGTHAI_THUCHIEN == 1).Max(td => td.TIENDO_DA_ID);
-                                                                    var TenTienDo = item.QLDA_CNTT_TIENDO.SingleOrDefault(n => n.TIENDO_DA_ID == (maxID + 1)).TEN_TIENDO_DA;
-                                                                    <p>@TenTienDo</p>*@
-                                                                // 1 - Hoàn thành   2- Đang thực hiện    3 - Trễ tiến độ
-                                                                var TienDo = item.QLDA_CNTT_TIENDO.OrderBy(l => l.STT).First(n => n.TRANGTHAI_THUCHIEN == 2 && n.STT > (td.STT));
-
-                                                                // NGAY_GIAO là ngày thực hiện thực tế
-                                                                if (TienDo.NGAY_GIAO > TienDo.NGAY_HETHAN)
-                                                                {
-                                                                    <p style="color: red">@TienDo.TEN_TIENDO_DA (trễ hạn)</p>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <p style="color: green">@TienDo.TEN_TIENDO_DA</p>
-                                                                }
-
+                                                                <p style="color: red">@TienDo.TEN_TIENDO_DA (trễ hạn)</p>
                                                             }
                                                         }
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a>
-                                                        @{
-                                                            var td1 = item.QLDA_CNTT_TIENDO.OrderByDescending(k => k.STT).FirstOrDefault(m => m.TRANGTHAI_THUCHIEN == 1);
-                                                            if (td1 != null && item.QLDA_CNTT_TIENDO.Count != 0)
-                                                            {
-                                                                @*int maxID = item.QLDA_CNTT_TIENDO.Where(x => x.TRANGTHAI_THUCHIEN == 1).Max(td => td.TIENDO_DA_ID);
-                                                                    var TenTienDo = item.QLDA_CNTT_TIENDO.SingleOrDefault(n => n.TIENDO_DA_ID == (maxID + 1)).TEN_TIENDO_DA;
-                                                                    <p>@TenTienDo</p>*@
-                                                                // 1 - Hoàn thành   2- Đang thực hiện    3 - Trễ tiến độ
-                                                                var TienDo1 = item.QLDA_CNTT_TIENDO.OrderBy(l => l.STT).First(n => n.TRANGTHAI_THUCHIEN == 2 && n.STT > (td1.STT));
+                                                    }
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a>
+                                                    @{
+                                                        var td1 = item.QLDA_CNTT_TIENDO.OrderByDescending(k => k.STT).FirstOrDefault(m => m.TRANGTHAI_THUCHIEN == 1);
+                                                        if (td1 != null && item.QLDA_CNTT_TIENDO.Count != 0)
+                                                        {
+                                                            @*int maxID = item.QLDA_CNTT_TIENDO.Where(x => x.TRANGTHAI_THUCHIEN == 1).Max(td => td.TIENDO_DA_ID);
+                                                                var TenTienDo = item.QLDA_CNTT_TIENDO.SingleOrDefault(n => n.TIENDO_DA_ID == (maxID + 1)).TEN_TIENDO_DA;
+                                                                <p>@TenTienDo</p>*@
+                                                            // 1 - Hoàn thành   2- Đang thực hiện    3 - Trễ tiến độ
+                                                            var TienDo1 = item.QLDA_CNTT_TIENDO.OrderBy(l => l.STT).First(n => n.TRANGTHAI_THUCHIEN == 2 && n.STT > (td1.STT));
 
-                                                                // NGAY_GIAO là ngày thực hiện thực tế
-                                                                <p>@TienDo1.GHICHU_TONDONG</p>
+                                                            // NGAY_GIAO là ngày thực hiện thực tế
+                                                            <p>@TienDo1.GHICHU_TONDONG</p>
                                                                 
-                                                            }
                                                         }
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    @Html.ActionLink(" ", "EditDA", new { @maDA = item.DUAN_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
-                                                </td>
-                                                <td>
-                                                    @*@Html.Action("PartiaDeleteHDCNTT", new { @maDA = item.DUAN_ID })*@
-                                                </td>
+                                                    }
+                                                </a>
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink(" ", "EditDA", new { @maDA = item.DUAN_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
+                                            </td>
+                                            <td>
+                                                @*@Html.Action("PartiaDeleteHDCNTT", new { @maDA = item.DUAN_ID })*@
+                                            </td>
 
-                                            </tr>
-                                        }
-                                    </table>
-                                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
-                                    <div class="MenuTrang">
-                                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, @sTuKhoa = ViewBag.TuKhoa }))
-                                    </div>
-                                    <style>
-                                        .MenuTrang li {
-                                            display: inline;
-                                        }
-                                    </style>
+                                        </tr>
+                                    }
+                                </table>
+                                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+                                <div class="MenuTrang">
+                                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, @sTuKhoa = ViewBag.TuKhoa }))
                                 </div>
+                                <style>
+                                    .MenuTrang li {
+                                        display: inline;
+                                    }
+                                </style>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
     </div>
+</div>
 
