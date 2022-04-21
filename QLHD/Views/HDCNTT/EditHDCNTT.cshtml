@@ -28,269 +28,283 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: right">Dự án:</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="control-label col-md-4">
+                                            <label style="float: right">Dự án:</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            @Html.DropDownList("DUAN_ID", (IEnumerable<SelectListItem>)ViewBag.DUAN, "--Chọn--", new { @class = "form-control", required = "required" })
+                                        </div>
                                     </div>
-                                    <div class="col-md-5">
-                                        @Html.DropDownList("DUAN_ID", (IEnumerable<SelectListItem>)ViewBag.DUAN, "--Chọn--", new { @class = "form-control", required = "required" })
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="control-label col-md-4">
+                                            <label style="float: right">Loại hợp đồng:</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            @Html.DropDownList("LOAI_HOPDONG_ID", (IEnumerable<SelectListItem>)ViewBag.LOAIHD, "--Chọn--", new { @class = "form-control", required = "required" })
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: right">Loại hợp đồng:</label>
-                                    </div>
-                                    <div class="col-md-5">
-                                        @Html.DropDownList("LOAI_HOPDONG_ID", (IEnumerable<SelectListItem>)ViewBag.LOAIHD, "--Chọn--", new { @class = "form-control", required = "required" })
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6" style="margin-top: 15px">
-                                <div class="form-group">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: right">Năm hợp đồng:</label>
-                                    </div>
-                                    <div class="col-md-5">
-                                        @Html.DropDownList("NAM_HD_ID", (IEnumerable<SelectListItem>)ViewBag.NamHD, "--Chọn--", new { @class = "form-control", required = "required" })
+                            <div class="row">
+                                <div class="col-md-6" style="margin-top: 15px">
+                                    <div class="form-group">
+                                        <div class="control-label col-md-4">
+                                            <label style="float: right">Năm hợp đồng:</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            @Html.DropDownList("NAM_HD_ID", (IEnumerable<SelectListItem>)ViewBag.NamHD, "--Chọn--", new { @class = "form-control", required = "required" })
 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="margin-top: 15px">
+                                    <div class="form-group">
+                                        <div class="control-label col-md-4">
+                                            <label style="float: right">Số hợp đồng:</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control" name="SO_HD" required="required" value="@Model.SO_HD" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6" style="margin-top: 15px">
-                                <div class="form-group">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: right">Số hợp đồng:</label>
+                            <div class="row">
+                                <div class="col-md-6" style="margin-top: 15px">
+                                    <div class="form-group">
+                                        <div class="control-label col-md-4">
+                                            <label style="float: right">Tên hợp đồng:</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control" name="TEN_HOPDONG" required="required" value="@Model.TEN_HOPDONG" />
+                                        </div>
                                     </div>
-                                    <div class="col-md-5">
-                                        <input type="text" class="form-control" name="SO_HD" required="required" value="@Model.SO_HD" />
+                                </div>
+                                <div class="col-md-6" style="margin-top: 15px">
+                                    <div class="form-group">
+                                        <div class="control-label col-md-4">
+                                            <label style="float: right">Tên gói thầu:</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control" name="TEN_GOITHAU" required="required" value="@Model.TEN_GOITHAU" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6" style="margin-top: 15px">
-                                <div class="form-group">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: right">Tên hợp đồng:</label>
+                            <div class="row">
+                                <div class="col-md-6" style="margin-top: 15px">
+                                    <div class="form-group">
+                                        <div class="control-label col-md-4">
+                                            <label style="float: right">Tên dự án:</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control" name="TEN_DUAN" required="required" value="@Model.TEN_DUAN" />
+                                        </div>
                                     </div>
-                                    <div class="col-md-5">
-                                        <input type="text" class="form-control" name="TEN_HOPDONG" required="required" value="@Model.TEN_HOPDONG" />
+                                </div>
+                                <div class="col-md-6" style="margin-top: 15px">
+                                    <div class="form-group">
+                                        <div class="control-label col-md-4">
+                                            <label style="float: right">Ngày lập hợp đồng:</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            @if (Model.NGAY_HD.HasValue)
+                                            {
+                                                <input type="datetime" class="form-control" name="NGAY_HD" value="@Model.NGAY_HD.Value.ToString("dd/MM/yyyy")" />
+                                            }
+                                            else
+                                            {
+                                                <input type="date" class="form-control" name="NGAY_HD" required="required" />
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6" style="margin-top: 15px">
-                                <div class="form-group">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: right">Tên gói thầu:</label>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <input type="text" class="form-control" name="TEN_GOITHAU" required="required" value="@Model.TEN_GOITHAU" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6" style="margin-top: 15px">
-                                <div class="form-group">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: right">Tên dự án:</label>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <input type="text" class="form-control" name="TEN_DUAN" required="required" value="@Model.TEN_DUAN" />
+                            <div class="row">
+                                <div class="col-md-6" style="margin-top: 15px">
+                                    <div class="form-group">
+                                        <div class="control-label col-md-4">
+                                            <label style="float: right">Đơn vị lập hợp đồng:</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            @Html.DropDownList("DONVI_ID", (IEnumerable<SelectListItem>)ViewBag.DONVI, "--Chọn--", new { @class = "form-control", required = "required" })
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6" style="margin-top: 15px">
-                                <div class="form-group">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: right">Ngày lập hợp đồng:</label>
-                                    </div>
-                                    <div class="col-md-5">
-                                        @if (Model.NGAY_HD.HasValue)
-                                        {
-                                            <input type="datetime" class="form-control" name="NGAY_HD" value="@Model.NGAY_HD.Value.ToString("dd/MM/yyyy")" />
-                                        }
-                                        else
-                                        {
-                                            <input type="date" class="form-control" name="NGAY_HD" required="required" />
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6" style="margin-top: 15px">
-                                <div class="form-group">
-                                    <div class="control-label col-md-4">
-                                        <label style="float: right">Đơn vị lập hợp đồng:</label>
-                                    </div>
-                                    <div class="col-md-5">
-                                        @Html.DropDownList("DONVI_ID", (IEnumerable<SelectListItem>)ViewBag.DONVI, "--Chọn--", new { @class = "form-control", required = "required" })
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    @* Bên thuê *@
-                    <div class="col-md-6">
-                        <div class="x_panel">
-                            <div class="x_title">
-                                <h2>Bên thuê</h2>
-                                <div class="col-md-8" style="float:right">
-                                    @Html.DropDownList("BEN_THUE_ID", (IEnumerable<SelectListItem>)ViewBag.BENTHUEID, new { @class = "form-control", @id = "BEN_THUE" })
+                    <div class="row">
+                        @* Bên thuê *@
+                        <div class="col-md-6">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Bên thuê</h2>
+                                    <div class="col-md-8" style="float:right">
+                                        @Html.DropDownList("BEN_THUE_ID", (IEnumerable<SelectListItem>)ViewBag.BENTHUEID, new { @class = "form-control", @id = "BEN_THUE" })
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="x_content">
-                                <div class="form-horizontal">
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Tên bên thuê:</label>
+                                <div class="x_content">
+                                    <div class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Tên bên thuê:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" name="TEN_BT" required="required" id="TEN_BT" value="@Model.DM_CHUTHE_HOPDONG1.TEN_CHUTHE" />
+                                            </div>
                                         </div>
-                                        <div class="col-md-8">
-                                            <input type="text" class="form-control" name="TEN_BT" required="required" id="TEN_BT" value="@Model.DM_CHUTHE_HOPDONG1.TEN_CHUTHE" />
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Địa chỉ:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" name="DIACHI_BT" required="required" id="DIACHI_BT" value="@Model.DM_CHUTHE_HOPDONG1.DIACHI" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Địa chỉ:</label>
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Số điện thoại/FAX:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="number" class="form-control" name="DIENTHOAI_BT" id="DT_BT" required="required" value="@Model.DM_CHUTHE_HOPDONG1.DIENTHOAI" />
+                                            </div>
                                         </div>
-                                        <div class="col-md-8">
-                                            <input type="text" class="form-control" name="DIACHI_BT" required="required" id="DIACHI_BT" value="@Model.DM_CHUTHE_HOPDONG1.DIACHI" />
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Mã số thuế:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" name="MSTHUE_BT" id="MSTHUE_BT" required="required" value="@Model.DM_CHUTHE_HOPDONG1.MSTHUE" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Số điện thoại/FAX:</label>
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Tài khoản:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" id="TAIKHOAN_BT" class="form-control" name="TAIKHOAN_BT" required="required" value="@Model.DM_CHUTHE_HOPDONG1.STK_NGANHANG" />
+                                            </div>
                                         </div>
-                                        <div class="col-md-8">
-                                            <input type="number" class="form-control" name="DIENTHOAI_BT" id="DT_BT" required="required" value="@Model.DM_CHUTHE_HOPDONG1.DIENTHOAI" />
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Ngân hàng:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" id="NGANHANG_BT" class="form-control" name="NGANHANG_BT" required="required" value="@Model.DM_CHUTHE_HOPDONG1.TEN_NGANHANG" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Mã số thuế:</label>
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Đại diện:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" id="DAIDIEN_BT" class="form-control" name="DAIDIEN_BT" required="required" value="@Model.DM_CHUTHE_HOPDONG1.DAIDIEN" />
+                                            </div>
                                         </div>
-                                        <div class="col-md-8">
-                                            <input type="text" class="form-control" name="MSTHUE_BT" id="MSTHUE_BT" required="required" value="@Model.DM_CHUTHE_HOPDONG1.MSTHUE" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Tài khoản:</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <input type="text" id="TAIKHOAN_BT" class="form-control" name="TAIKHOAN_BT" required="required" value="@Model.DM_CHUTHE_HOPDONG1.STK_NGANHANG" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Ngân hàng:</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <input type="text" id="NGANHANG_BT" class="form-control" name="NGANHANG_BT" required="required" value="@Model.DM_CHUTHE_HOPDONG1.TEN_NGANHANG" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Đại diện:</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <input type="text" id="DAIDIEN_BT" class="form-control" name="DAIDIEN_BT" required="required" value="@Model.DM_CHUTHE_HOPDONG1.DAIDIEN" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Chức vụ:</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <input type="text" id="CHUCVU_BT" class="form-control" name="CHUCVU_BT" required="required" value="@Model.DM_CHUTHE_HOPDONG1.CHUCVU" />
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Chức vụ:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" id="CHUCVU_BT" class="form-control" name="CHUCVU_BT" required="required" value="@Model.DM_CHUTHE_HOPDONG1.CHUCVU" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    @* Bên cho thuê *@
-                    <div class="col-md-6">
-                        <div class="x_panel">
-                            <div class="x_title">
-                                <h2>Bên cho thuê</h2>
-                                <div class="col-md-8" style="float:right">
-                                    @Html.DropDownList("BEN_CHOTHUE_ID", (IEnumerable<SelectListItem>)ViewBag.BENTHUEID, new { @class = "form-control", @id = "BEN_CHOTHUE" })
+                        @* Bên cho thuê *@
+                        <div class="col-md-6">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Bên cho thuê</h2>
+                                    <div class="col-md-8" style="float:right">
+                                        @Html.DropDownList("BEN_CHOTHUE_ID", (IEnumerable<SelectListItem>)ViewBag.BENTHUEID, new { @class = "form-control", @id = "BEN_CHOTHUE" })
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="x_content">
-                                <div class="form-horizontal">
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Tên bên cho thuê:</label>
+                                <div class="x_content">
+                                    <div class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Tên bên cho thuê:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" name="TEN_CT" required="required" id="TEN_CT" value="@Model.DM_CHUTHE_HOPDONG.TEN_CHUTHE" />
+                                            </div>
                                         </div>
-                                        <div class="col-md-8">
-                                            <input type="text" class="form-control" name="TEN_CT" required="required" id="TEN_CT" value="@Model.DM_CHUTHE_HOPDONG.TEN_CHUTHE" />
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Địa chỉ:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" name="DIACHI_CT" required="required" id="DIACHI_CT" value="@Model.DM_CHUTHE_HOPDONG.DIACHI" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Địa chỉ:</label>
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Số điện thoại/FAX:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="number" class="form-control" name="DIENTHOAI_CT" id="DT_CT" required="required" value="@Model.DM_CHUTHE_HOPDONG.DIENTHOAI" />
+                                            </div>
                                         </div>
-                                        <div class="col-md-8">
-                                            <input type="text" class="form-control" name="DIACHI_CT" required="required" id="DIACHI_CT" value="@Model.DM_CHUTHE_HOPDONG.DIACHI" />
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Mã số thuế:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" name="MSTHUE_CT" id="MSTHUE_CT" required="required" value="@Model.DM_CHUTHE_HOPDONG.MSTHUE" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Số điện thoại/FAX:</label>
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Tài khoản:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" id="TAIKHOAN_CT" class="form-control" name="TAIKHOAN_CT" required="required" value="@Model.DM_CHUTHE_HOPDONG.STK_NGANHANG" />
+                                            </div>
                                         </div>
-                                        <div class="col-md-8">
-                                            <input type="number" class="form-control" name="DIENTHOAI_CT" id="DT_CT" required="required" value="@Model.DM_CHUTHE_HOPDONG.DIENTHOAI" />
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Ngân hàng:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" id="NGANHANG_CT" class="form-control" name="NGANHANG_CT" required="required" value="@Model.DM_CHUTHE_HOPDONG.TEN_NGANHANG" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Mã số thuế:</label>
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Đại diện:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" id="DAIDIEN_CT" class="form-control" name="DAIDIEN_CT" required="required" value="@Model.DM_CHUTHE_HOPDONG.DAIDIEN" />
+                                            </div>
                                         </div>
-                                        <div class="col-md-8">
-                                            <input type="text" class="form-control" name="MSTHUE_CT" id="MSTHUE_CT" required="required" value="@Model.DM_CHUTHE_HOPDONG.MSTHUE" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Tài khoản:</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <input type="text" id="TAIKHOAN_CT" class="form-control" name="TAIKHOAN_CT" required="required" value="@Model.DM_CHUTHE_HOPDONG.STK_NGANHANG" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Ngân hàng:</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <input type="text" id="NGANHANG_CT" class="form-control" name="NGANHANG_CT" required="required" value="@Model.DM_CHUTHE_HOPDONG.TEN_NGANHANG" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Đại diện:</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <input type="text" id="DAIDIEN_CT" class="form-control" name="DAIDIEN_CT" required="required" value="@Model.DM_CHUTHE_HOPDONG.DAIDIEN" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="control-label col-md-4">
-                                            <label style="float: right">Chức vụ:</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <input type="text" id="CHUCVU_CT" class="form-control" name="CHUCVU_CT" required="required" value="@Model.DM_CHUTHE_HOPDONG.CHUCVU" />
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Chức vụ:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" id="CHUCVU_CT" class="form-control" name="CHUCVU_CT" required="required" value="@Model.DM_CHUTHE_HOPDONG.CHUCVU" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
                 @* Giá trị hợp đồng *@
                 <div class="col-md-12">
