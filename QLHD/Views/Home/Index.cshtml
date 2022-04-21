@@ -104,8 +104,8 @@
 </div>
 <script src="~/Scripts/js/echart/echarts-all.js"></script>
     <script src="~/Scripts/js/echart/green.js"></script> 
-<script>
-   
+    <script>
+
     //Biểu đồ thanh toán
     var myChart = echarts.init(document.getElementById('echart_donut'), theme);
     myChart.setOption({
@@ -182,13 +182,13 @@
                         value: @ViewBag.TTNhanCong,
                         name: 'Thanh toán HĐ nhân công'
                     }
-                 
+
                 ]
             }
         ]
     });
     //Biểu đồ 2
-    var myChart = echarts.init(document.getElementById('echart_pie'), theme); 
+    var myChart = echarts.init(document.getElementById('echart_pie'), theme);
     myChart.setOption({
         tooltip: {
             trigger: 'item',
@@ -199,7 +199,7 @@
             //x: 'left',
             x: 'center',
             y: 'bottom',
-            data: ['HĐ Chi Phí', 'HĐ Doanh Thu', 'HĐ Nhân Công']
+            data: ['HĐ Chi Phí', 'HĐ Doanh Thu', 'HĐ Nhân Công', 'HĐ Công nghệ thông tin']
         },
         toolbox: {
             show: true,
@@ -243,9 +243,13 @@
                     {
                         value: @ViewBag.HDNhanCong,
                         name: 'HĐ Nhân Công'
+                    },
+                    {
+                        value: @ViewBag.HDCNTT,
+                        name: 'HĐ Công nghệ thông tin'
                     }
                 ]
             }
         ]
     });
-</script>
+    </script>

@@ -1,6 +1,6 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
-@model IPagedList<QLHD.Models.HOPDONG_DOANHTHU>
+@model IPagedList<QLHD.Models.HOPDONG_DT_CNTT>
 
 @{
     ViewBag.Title = "Kết quả thống kê";
@@ -52,11 +52,11 @@
                 </div>
             </div>
             <div class="nav navbar-right">
-                <a href="@Url.Action("export_hdcntt_toihan", "ThongKeToiHan",  new {@namHD = @ViewBag.namHD1, @loaiHD = @ViewBag.loaiHD1, @donvi = @ViewBag.donvi1 })" class="btn btn-info" style="float:right">
+                @*<a href="@Url.Action("export_hdcntt_toihan", "ThongKeToiHan",  new {@namHD = @ViewBag.namHD1, @loaiHD = @ViewBag.loaiHD1, @donvi = @ViewBag.donvi1 })" class="btn btn-info" style="float:right">
                     Xuất thống kê HĐ tới hạn
                     <span class="glyphicon glyphicon-download" />
-                </a>
-                <a href="@Url.Action("export_hddt", "ThongKe",  new {@namHD = @ViewBag.namHD1, @loaiHD = @ViewBag.loaiHD1, @donvi = @ViewBag.donvi1 })" class="btn btn-info" style="float:right">
+                </a>*@
+                <a href="@Url.Action("export_hdcntt", "ThongKe",  new {@namHD = @ViewBag.namHD1, @loaiHD = @ViewBag.loaiHD1, @donvi = @ViewBag.donvi1 })" class="btn btn-info" style="float:right">
                     Xuất Excel Thống Kê
                     <span class="glyphicon glyphicon-download" />
                 </a>
@@ -94,9 +94,9 @@
                             <th>
                                 Hình thức thanh toán
                             </th>
-                            <th>Sửa|Xóa|Thanh toán</th>
+                            @*<th>Sửa|Xóa|Thanh toán</th>
                             <th>Tải</th>
-                            <th>Cảnh báo</th>
+                            <th>Cảnh báo</th>*@
                         </tr>
                         @{int row = 0;}
                         @foreach (var item in Model)
@@ -104,16 +104,16 @@
                             <tr class="noidunghd">
                                 <td>@(row += 1)</td>
                                 <td>
-                                    <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })">
+                                    <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
                                         @item.SO_HD
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })">@item.LOAI_HD_SUB.TEN_HD_SUB </a>
+                                    <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.DM_LOAI_HOPDONG.TEN_LOAI_HOPDONG </a>
                                 </td>
 
                                 <td>
-                                    <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })">
+                                    <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
 
                                         @if (item.NGAY_HD.HasValue)
                                         {
@@ -122,25 +122,33 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })">@item.DAIDIEN_BT</a>
+                                    <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.DM_CHUTHE_HOPDONG.TEN_CHUTHE</a>
                                 </td>
 
-                                <td><a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })">@item.TEN_CT</a></td>
-                                <td><a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })">@item.TONG_GT</a></td>
-                                <td><a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })">@item.CHUKY_TT.CHUKY</a></td>
-                                <td><a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DOANHTHU_ID })">@item.HTTT.TEN_HTTT</a></td>
+                                <td><a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.DM_CHUTHE_HOPDONG1.TEN_CHUTHE</a></td>
                                 <td>
-                                    @*<a href="@Url.Action("EditHDDoanhThu", new { @HDDoanhThu_ID = item.HOPDONG_DOANHTHU_ID })"><span class="glyphicon glyphicon-edit"></span></a>*@
-                                    @Html.ActionLink(" ", "EditHDCNTT", "HDCNTT", new { @HDDoanhThu_ID = item.HOPDONG_DOANHTHU_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
+                                    <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
+                                        @{
+                                            var sum = item.GIATRI_PHANCUNG_HD + item.GIATRI_DICHVU_HD;
+
+                                        }
+                                        <p>@sum</p>
+                                    </a>
+                                </td>
+                                <td><a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.CHUKY_TT.CHUKY</a></td>
+                                <td><a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.HTTT.TEN_HTTT</a></td>
+                                @*<td>
+                                   
+                                    @Html.ActionLink(" ", "EditHDCNTT", "HDCNTT", new { @HDDoanhThu_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
                                     |
-                                    @Html.ActionLink(" ", "DeleteHDCNTT", new { @HDDoanhThu_ID = item.HOPDONG_DOANHTHU_ID }, new { @class = "glyphicon glyphicon-trash", @style = "font-size: 20px", title = "Xóa" })
+                                    @Html.ActionLink(" ", "DeleteHDCNTT", new { @HDDoanhThu_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-trash", @style = "font-size: 20px", title = "Xóa" })
                                     |
-                                    @Html.ActionLink(" ", "ThanhToanHDCNTT", "HDCNTT", new { @HDid = item.HOPDONG_DOANHTHU_ID }, new { @class = "glyphicon glyphicon-usd", @style = "font-size: 20px" })
+                                    @Html.ActionLink(" ", "ThanhToanHDCNTT", "HDCNTT", new { @HDid = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-usd", @style = "font-size: 20px" })
 
 
 
                                 </td>
-                                <td>@Html.ActionLink(" ", "ExportData", "HDCNTT", new { @HDid = item.HOPDONG_DOANHTHU_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 20px" })</td>
+                                <td>@Html.ActionLink(" ", "ExportData", "HDCNTT", new { @HDid = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 20px" })</td>
                                 <td>
                                     @if (@item.NGAY_KT <= @System.DateTime.Now)
                                     {
@@ -148,12 +156,12 @@
                                             <img src="~/Images/canhbao.gif" title="Hợp đồng đã tới hạn. Cần ký lại hộp đồng mới!" height="40px" width="30px" />
                                         </span>
                                     }
-                                </td>
+                                </td>*@
                             </tr>
                         }
                     </table>
                     <div class="clearfix"></div>
-                    <h1>Tổng giá trị: <span id="test">@Model.Sum(n => n.TONG_GT)</span> VNĐ</h1>
+                    <h1>Tổng giá trị: <span id="test">@Model.Sum(n => n.GIATRI_PHANCUNG_HD + n.GIATRI_DICHVU_HD)</span> VNĐ</h1>
                 </div>
             </div>
             Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount

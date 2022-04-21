@@ -16,6 +16,7 @@ namespace QLHD.Controllers
                 ViewBag.HDChiPhi = db.HOPDONG_CHIPHI.Where(s=>s.TRANGTHAI != 2).Select(x => x.HOPDONG_CHIPHI_ID).Distinct().Count();
                 ViewBag.HDDoanhThu = db.HOPDONG_DOANHTHU.Select(x => x.HOPDONG_DOANHTHU_ID).Distinct().Count();
                 ViewBag.HDNhanCong = db.HOPDONG_NHANCONG.Select(x => x.HOPDONG_NHANCONG_ID).Distinct().Count();
+                ViewBag.HDCNTT = db.HOPDONG_DT_CNTT.Select(x=> x.HOPDONG_DT_CNTT_ID).Distinct().Count();
                 ViewBag.ThanhVien = db.THANHVIENs.Select(x => x.ID_THANHVIEN).Distinct().Count();
                 ViewBag.TTHDChiPhi = db.THANHTOAN_CHIPHI.Sum(n => n.SOTIEN_TT)??0;
                 ViewBag.TTHDDoanhThu = db.THANHTOAN_DOANHTHU.Sum(n => n.SOTIEN_TT)??0;

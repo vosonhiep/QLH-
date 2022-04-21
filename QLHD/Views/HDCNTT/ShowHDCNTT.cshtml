@@ -15,17 +15,7 @@
             <h3>Hợp đồng CNTT</h3>
             <span style="color:red">@ViewBag.baoloi</span>
         </div>
-        <div class="nav navbar-right" style="display:none">
-            @*<a href="@Url.Action("baoloi", "Home", new {@HDid = @Model.HOPDONG_DOANHTHU_ID })" class="btn btn-info btn-lg" style="float:right">Thanh toán HĐ
-                    <span class="fa fa-dollar" />
-                </a>*@
-            @if (@Model.TRANGTHAI == 0)
-            {
-                <a href="@Url.Action("ThanhLyHDCNTT", "HDCNTT", new {@HDid = @Model.HOPDONG_DT_CNTT_ID })" class="btn btn-info btn-lg" style="float:right">
-                    Thanh lý HĐ
-                    @*<span class="fa fa-dollar" />*@
-                </a>}
-        </div>
+       
     </div>
     <div class="clear-fix">
         <div class="row">
