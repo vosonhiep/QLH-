@@ -1,6 +1,6 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
-@model IPagedList<QLHD.Models.HOPDONG_DT_CNTT>
+@model IPagedList<QLHD.Models.proc_thongke_dt_thang_Result>
 
     @{
         ViewBag.Title = "Thống kê HĐ CNTT";
@@ -38,14 +38,24 @@
                                         </div>
                                         <div class="form-group col-md-5">
                                             <label class="col-md-6">Năm hợp đồng</label>
-                                            @Html.DropDownList("namHD", (IEnumerable<SelectListItem>)ViewBag.namHD, new { @class = "form-control" })
+                                            @*@Html.DropDownList("namHD", (IEnumerable<SelectListItem>)ViewBag.namHD, new { @class = "form-control" })*@
+                                        <select class="form-control" name="namHD" id="namHD">
+                                            <option value="2022" selected>2022</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2019">2019</option>
+                                            <option value="2018">2018</option>
+                                            <option value="2017">2017</option>
+                                            <option value="2016">2016</option>
+                                            <option value="2015">2015</option>
+                                        </select>
                                         </div>
                                         <div class="col-md-2">
                                             <button type="submit" class="btn btn-info">Thống kê <span class="glyphicon glyphicon-search" /></button>
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
                             }
                         </div>
@@ -120,48 +130,50 @@
                             {
                         <tr class="noidunghd">
                             <td>@(row += 1)</td>
-                            <td>Danh mucj</td>
                             <td>
-                                Tháng 1
+                                @item.TEN_NHOM_HANGHOA
                             </td>
                             <td>
-                                Tháng 2
+                                @item.tong
                             </td>
                             <td>
-                                Tháng 3
+                                @item.tong
                             </td>
                             <td>
-                                Tháng 4
+                                @item.tong
                             </td>
                             <td>
-                                Tháng 5
+                                @item.tong
                             </td>
                             <td>
-                                Tháng 6
+                                @item.tong
                             </td>
                             <td>
-                                Tháng 7
+                                @item.tong
                             </td>
                             <td>
-                                Tháng 8
+                                @item.tong
                             </td>
                             <td>
-                                Tháng 9
+                                @item.tong
                             </td>
                             <td>
-                                Tháng 10
+                                @item.tong
                             </td>
                             <td>
-                                Tháng 11
+                                @item.tong
                             </td>
                             <td>
-                                Tháng 12
+                                @item.tong
+                            </td>
+                            <td>
+                                @item.tong
                             </td>
                         </tr>
                             }
                         </table>
                         <div class="clearfix"></div>
-                        
+
                     </div>
                 </div>
                 Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount

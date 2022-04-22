@@ -50,7 +50,7 @@ namespace QLHD.Controllers
         {
             int loaihd = Int32.Parse(f["loaiHD"].ToString());
             DateTime thang = System.DateTime.Now;
-            List<HOPDONG_CHIPHI> listKQTK = db.HOPDONG_CHIPHI.Where(n=>n.NGAY_BD < thang && n.ID_LOAIHD_SUB == loaihd).ToList();
+            List<HOPDONG_CHIPHI> listKQTK = db.HOPDONG_CHIPHI.Where(n => n.NGAY_BD < thang && n.ID_LOAIHD_SUB == loaihd).ToList();
             return View(listKQTK);
         }
         public ActionResult ketquathongke(FormCollection f, int? page)
@@ -71,7 +71,7 @@ namespace QLHD.Controllers
             {
                 listKQTK = db.HOPDONG_CHIPHI.Where(n => n.DONVI_ID == donvi).ToList();
             }
-            if (namHD != 0 && loaiHD !=0)
+            if (namHD != 0 && loaiHD != 0)
             {
                 listKQTK = db.HOPDONG_CHIPHI.Where(n => n.NAM_HD_ID == namHD && n.ID_LOAIHD_SUB == loaiHD).ToList();
             }
@@ -117,26 +117,35 @@ namespace QLHD.Controllers
             return View(hd.ToPagedList(pagenumber, pagesize));
         }
 
+        List<int> lstNam = new List<int>() { };
+        public void KhoiTaoNam()
+        {
+            for (int i = 2015; i < 2025; i++)
+            {
+                lstNam.Add(i);
+            }
+        }
+        
         public ActionResult ThongKe_HDCNTT(int? page)
         {
-            var hd = db.HOPDONG_DT_CNTT.ToList();
-            if (hd == null)
-            {
-                ViewBag.thongbao = "Hiện chưa có hợp đồng nào trong CSDL!!";
-            }
-            ViewBag.namHD = new SelectList(db.NAM_HD.ToList().OrderByDescending(n => n.NAM_HD_ID), "NAM_HD_ID", "NAM");
+            KhoiTaoNam();
+            int nam = 2022;
+            int loai = 1;
+            ViewBag.namHD = new SelectList(lstNam, "NAM_HD_ID", "NAM");
             ViewBag.loaiHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
-            ViewBag.donvi = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
-            //List<NAM_HD> namhd = new List<NAM_HD>();
-            //namhd = db.NAM_HD.ToList();
-            //namhd.Add(new NAM_HD { NAM_HD_ID = 0, NAM = "Tất cả" });
-            //ViewBag.namhd = new SelectList(namhd, "NAM_HD_ID", "NAM",0);
+            //ViewBag.DM_HH = new SelectList(db.DM_NHOM_HANGHOA.ToList().OrderBy(n => n.NHOM_HANGHOA_ID), "NHOM_HANGHOA_ID", "TEN_NHOM_HANGHOA");
             int pagenumber = (page ?? 1);
             int pagesize = 10;
             ViewBag.namHD1 = 0;
             ViewBag.loaiHD1 = 0;
-            ViewBag.donvi1 = 0;
-            return View(hd.ToPagedList(pagenumber, pagesize));
+            var lstTK = db.proc_thongke_dt_thang(2022,1).ToList();
+           
+            if (lstTK == null)
+            {
+                ViewBag.thongbao = "Hiện chưa có doanh thu nào trong CSDL!!";
+            }
+            
+            return View(lstTK.ToPagedList(pagenumber, pagesize));
         }
         public ActionResult ketquathongke_HDDT(FormCollection f, int? page)
         {
@@ -606,48 +615,21 @@ namespace QLHD.Controllers
 
         public ActionResult ketquathongke_HDCNTT(FormCollection f, int? page)
         {
+            ViewBag.namHD = new SelectList(lstNam, "NAM_HD_ID", "NAM");
+            ViewBag.loaiHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
             int namHD = Int32.Parse(f["namHD"].ToString());
             int loaiHD = Int32.Parse(f["loaiHD"].ToString());
-            int donvi = 1;// Int32.Parse(f["donvi"].ToString());
-            List<HOPDONG_DT_CNTT> listKQTK = db.HOPDONG_DT_CNTT.ToList();
-            if (namHD != 0)
+
+            List<proc_thongke_dt_thang_Result> listKQTK = db.proc_thongke_dt_thang(namHD, loaiHD).ToList();
+            
+
+            if (listKQTK == null)
             {
-                listKQTK = db.HOPDONG_DT_CNTT.Where(n => n.NAM_HD_ID == namHD).ToList();
+                ViewBag.thongbao = "Hiện chưa có doanh thu nào trong CSDL!!";
             }
-            if (loaiHD != 0)
-            {
-                listKQTK = db.HOPDONG_DT_CNTT.Where(n => n.LOAI_HOPDONG_ID == loaiHD).ToList();
-            }
-            if (donvi != 0)
-            {
-                listKQTK = db.HOPDONG_DT_CNTT.Where(n => n.DONVI_ID == donvi).ToList();
-            }
-            if (namHD != 0 && loaiHD != 0)
-            {
-                listKQTK = db.HOPDONG_DT_CNTT.Where(n => n.NAM_HD_ID == namHD && n.LOAI_HOPDONG_ID == loaiHD).ToList();
-            }
-            if (namHD != 0 && donvi != 0)
-            {
-                listKQTK = db.HOPDONG_DT_CNTT.Where(n => n.NAM_HD_ID == namHD && n.DONVI_ID == donvi).ToList();
-            }
-            if (donvi != 0 && loaiHD != 0)
-            {
-                listKQTK = db.HOPDONG_DT_CNTT.Where(n => n.DONVI_ID == donvi && n.LOAI_HOPDONG_ID == loaiHD).ToList();
-            }
-            if (namHD != 0 && loaiHD != 0 && donvi != 0)
-            {
-                listKQTK = db.HOPDONG_DT_CNTT.Where(n => n.NAM_HD_ID == namHD && n.LOAI_HOPDONG_ID == loaiHD && n.DONVI_ID == donvi).ToList();
-            }
-            ViewBag.namHD1 = namHD;
-            ViewBag.loaiHD1 = loaiHD;
-            ViewBag.donvi1 = donvi;
-            //var tongtien = listKQTK.Sum(n => n.TONG_GT);
-            ViewBag.namHD = new SelectList(db.NAM_HD.ToList().OrderByDescending(n => n.NAM_HD_ID), "NAM_HD_ID", "NAM");
-            ViewBag.loaiHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
-            ViewBag.donvi = new SelectList(db.DONVIs.ToList().OrderBy(n => n.DONVI_ID), "DONVI_ID", "TEN_DV");
             int pageNumber = (page ?? 1);
             int pageSize = 9;
-            return View(listKQTK.OrderBy(n => n.SO_HD).ToPagedList(pageNumber, pageSize));
+            return View(listKQTK.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult export_hdcntt(int? namHD, int? loaiHD, int? donvi)

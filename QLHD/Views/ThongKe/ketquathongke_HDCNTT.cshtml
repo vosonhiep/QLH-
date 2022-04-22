@@ -1,178 +1,191 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
-@model IPagedList<QLHD.Models.HOPDONG_DT_CNTT>
+@model IPagedList<QLHD.Models.proc_thongke_dt_thang_Result>
 
-@{
-    ViewBag.Title = "Kết quả thống kê";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-@Scripts.Render("~/Scripts/numeric/jquery.js")
-@Scripts.Render("~/Scripts/numeric/jquery.number.js")
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#namHD").append('<option value="0" selected>--Tất cả--</option>');
-        $("#loaiHD").append('<option value="0" selected>--Tất cả--</option>');
-        $("#donvi").append('<option value="0" selected>--Tất cả--</option>');
-        $('#test').number(true, 0);
-    });
-</script>
+    @{
+        ViewBag.Title = "Kết quả thống kê";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @Scripts.Render("~/Scripts/numeric/jquery.js")
+    @Scripts.Render("~/Scripts/numeric/jquery.number.js")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#namHD").append('<option value="0" selected>--Tất cả--</option>');
+            $("#loaiHD").append('<option value="0" selected>--Tất cả--</option>');
+            $("#donvi").append('<option value="0" selected>--Tất cả--</option>');
+            $('#test').number(true, 0);
+        });
+    </script>
 
-<div class="">
-    <div class="page-title">
-        <div class="title_left">
-            <h3>Thống kê hợp đồng doanh thu</h3>
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Thống kê hợp đồng doanh thu</h3>
+            </div>
         </div>
-    </div>
-    <div class="clearfix"></div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="nav navbar-left">
-                <div class="x_panel" style="">
-                    <div class="x_content">
-                        @using (Html.BeginForm("ketquathongke_HDCNTT", "ThongKe", FormMethod.Post))
-                        {
-                            <div class="navbar-form navbar-left" role="search">
-                                <div class="form-group col-md-6">
-                                    <label class="col-md-5">Năm hợp đồng</label>
-                                    @Html.DropDownList("namHD", (IEnumerable<SelectListItem>)ViewBag.namHD, new { @class = "form-control" })
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="nav">
+                    <div class="x_panel" style="">
+                        <div class="x_content">
+                            @using (Html.BeginForm("ketquathongke_HDCNTT", "ThongKe", FormMethod.Post))
+                            {
+                                <div class="navbar-form" role="search">
+                                    <div class="col-md-6">
+                                        <div class="form-group col-md-5">
+                                            <label class="col-md-5">Loại hợp đồng</label>
+                                            @Html.DropDownList("loaiHD", (IEnumerable<SelectListItem>)ViewBag.LoaiHD, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group col-md-5">
+                                            <label class="col-md-6">Năm hợp đồng</label>
+                                            @*@Html.DropDownList("namHD", (IEnumerable<SelectListItem>)ViewBag.namHD, new { @class = "form-control" })*@
+                                            <select class="form-control" name="namHD" id="namHD">
+                                                <option value="2022" selected>2022</option>
+                                                <option value="2021">2021</option>
+                                                <option value="2020">2020</option>
+                                                <option value="2019">2019</option>
+                                                <option value="2018">2018</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2016">2016</option>
+                                                <option value="2015">2015</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="submit" class="btn btn-info">Thống kê <span class="glyphicon glyphicon-search" /></button>
+                                        </div>
+
+                                    </div>
 
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label class="col-md-3">Loại hợp đồng</label>
-                                    @Html.DropDownList("loaiHD", (IEnumerable<SelectListItem>)ViewBag.LoaiHD, new { @class = "form-control" })
-                                </div>
-                                <div class="form-group col-md-6" style="margin-top:10px">
-                                    <label class="col-md-5">Đơn vị ký hợp đồng</label>
-                                    @Html.DropDownList("donvi", (IEnumerable<SelectListItem>)ViewBag.donvi, new { @class = "form-control" })
-                                </div>
-                                <button type="submit" class="btn btn-info" style="margin-top: 10px">Thống kê <span class="glyphicon glyphicon-search" /></button>
-                            </div>
-                        }
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="nav navbar-right">
-                @*<a href="@Url.Action("export_hdcntt_toihan", "ThongKeToiHan",  new {@namHD = @ViewBag.namHD1, @loaiHD = @ViewBag.loaiHD1, @donvi = @ViewBag.donvi1 })" class="btn btn-info" style="float:right">
-                    Xuất thống kê HĐ tới hạn
-                    <span class="glyphicon glyphicon-download" />
-                </a>*@
-                <a href="@Url.Action("export_hdcntt", "ThongKe",  new {@namHD = @ViewBag.namHD1, @loaiHD = @ViewBag.loaiHD1, @donvi = @ViewBag.donvi1 })" class="btn btn-info" style="float:right">
-                    Xuất Excel Thống Kê
-                    <span class="glyphicon glyphicon-download" />
-                </a>
-            </div>
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>Danh sách HĐ chi phí</h2>
-                    <div class="clearfix"></div>
+                <div class="nav navbar-right">
+                    @*<a href="@Url.Action("export_hdcntt_toihan", "ThongKeToiHan",  new {@namHD = @ViewBag.namHD1, @loaiHD = @ViewBag.loaiHD1, @donvi = @ViewBag.donvi1 })" class="btn btn-info" style="float:right">
+                            Xuất thống kê HĐ tới hạn
+                            <span class="glyphicon glyphicon-download" />
+                        </a>*@
+                    @*<a href="@Url.Action("export_hdcntt", "ThongKe",  new {@namHD = @ViewBag.namHD1, @loaiHD = @ViewBag.loaiHD1, @donvi = @ViewBag.donvi1 })" class="btn btn-info" style="float:right">
+                            Xuất Excel Thống Kê
+                            <span class="glyphicon glyphicon-download" />
+                        </a>*@
                 </div>
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Danh sách thống kê</h2>
+                        <div class="clearfix"></div>
+                    </div>
 
-                <div class="x_content">
-                    <h4>@ViewBag.thongbao</h4>
-                    <table class="table table-bordered table-striped table-hover">
-                        <tr>
-                            <th style="width: 30px">STT</th>
-                            <th>
-                                Số HĐ
-                            </th>
-                            <th>
-                                Loại HĐ
-                            </th>
-                            <th>
-                                Ngày lập HĐ
-                            </th>
-                            <th>
-                                Đại diện bên thuê
-                            </th>
-                            <th>
-                                Đại diện bên cho thuê
-                            </th>
-                            <th>
-                                Tổng giá trị HĐ
-                            </th>
-                            <th>Chu kỳ thanh toán</th>
-                            <th>
-                                Hình thức thanh toán
-                            </th>
-                            @*<th>Sửa|Xóa|Thanh toán</th>
-                            <th>Tải</th>
-                            <th>Cảnh báo</th>*@
-                        </tr>
-                        @{int row = 0;}
-                        @foreach (var item in Model)
-                        {
-                            <tr class="noidunghd">
-                                <td>@(row += 1)</td>
-                                <td>
-                                    <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
-                                        @item.SO_HD
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.DM_LOAI_HOPDONG.TEN_LOAI_HOPDONG </a>
-                                </td>
-
-                                <td>
-                                    <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
-
-                                        @if (item.NGAY_HD.HasValue)
-                                        {
-                                            @item.NGAY_HD.Value.ToString("dd/MM/yyyy")
-                                        }
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.DM_CHUTHE_HOPDONG.TEN_CHUTHE</a>
-                                </td>
-
-                                <td><a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.DM_CHUTHE_HOPDONG1.TEN_CHUTHE</a></td>
-                                <td>
-                                    <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
-                                        @{
-                                            var sum = item.GIATRI_PHANCUNG_HD + item.GIATRI_DICHVU_HD;
-
-                                        }
-                                        <p>@sum</p>
-                                    </a>
-                                </td>
-                                <td><a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.CHUKY_TT.CHUKY</a></td>
-                                <td><a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.HTTT.TEN_HTTT</a></td>
-                                @*<td>
-                                   
-                                    @Html.ActionLink(" ", "EditHDCNTT", "HDCNTT", new { @HDDoanhThu_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
-                                    |
-                                    @Html.ActionLink(" ", "DeleteHDCNTT", new { @HDDoanhThu_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-trash", @style = "font-size: 20px", title = "Xóa" })
-                                    |
-                                    @Html.ActionLink(" ", "ThanhToanHDCNTT", "HDCNTT", new { @HDid = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-usd", @style = "font-size: 20px" })
-
-
-
-                                </td>
-                                <td>@Html.ActionLink(" ", "ExportData", "HDCNTT", new { @HDid = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 20px" })</td>
-                                <td>
-                                    @if (@item.NGAY_KT <= @System.DateTime.Now)
-                                    {
-                                        <span id="canhbao">
-                                            <img src="~/Images/canhbao.gif" title="Hợp đồng đã tới hạn. Cần ký lại hộp đồng mới!" height="40px" width="30px" />
-                                        </span>
-                                    }
-                                </td>*@
+                    <div class="x_content">
+                        <h4>@ViewBag.thongbao</h4>
+                        <table class="table table-bordered table-striped table-hover">
+                            <tr>
+                                <th style="width: 30px">STT</th>
+                                <th>
+                                    Danh mục
+                                </th>
+                                <th>
+                                    Tháng 1
+                                </th>
+                                <th>
+                                    Tháng 2
+                                </th>
+                                <th>
+                                    Tháng 3
+                                </th>
+                                <th>
+                                    Tháng 4
+                                </th>
+                                <th>
+                                    Tháng 5
+                                </th>
+                                <th>
+                                    Tháng 6
+                                </th>
+                                <th>
+                                    Tháng 7
+                                </th>
+                                <th>
+                                    Tháng 8
+                                </th>
+                                <th>
+                                    Tháng 9
+                                </th>
+                                <th>
+                                    Tháng 10
+                                </th>
+                                <th>
+                                    Tháng 11
+                                </th>
+                                <th>
+                                    Tháng 12
+                                </th>
+                                @*<th>Sửa|Xóa|Thanh toán</th>
+                                    <th>Tải</th>
+                                    <th>Cảnh báo</th>*@
                             </tr>
-                        }
-                    </table>
-                    <div class="clearfix"></div>
-                    <h1>Tổng giá trị: <span id="test">@Model.Sum(n => n.GIATRI_PHANCUNG_HD + n.GIATRI_DICHVU_HD)</span> VNĐ</h1>
+                            @{int row = 0;}
+                            @foreach (var item in Model)
+                            {
+                                <tr class="noidunghd">
+                                    <td>@(row += 1)</td>
+                                    <td>
+                                        @item.TEN_NHOM_HANGHOA
+                                    </td>
+                                    <td>
+                                        @item.tong
+                                    </td>
+                                    <td>
+                                        @item.tong
+                                    </td>
+                                    <td>
+                                        @item.tong
+                                    </td>
+                                    <td>
+                                        @item.tong
+                                    </td>
+                                    <td>
+                                        @item.tong
+                                    </td>
+                                    <td>
+                                        @item.tong
+                                    </td>
+                                    <td>
+                                        @item.tong
+                                    </td>
+                                    <td>
+                                        @item.tong
+                                    </td>
+                                    <td>
+                                        @item.tong
+                                    </td>
+                                    <td>
+                                        @item.tong
+                                    </td>
+                                    <td>
+                                        @item.tong
+                                    </td>
+                                    <td>
+                                        @item.tong
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                        <div class="clearfix"></div>
+                        @*<h1>Tổng giá trị: <span id="test">@Model.Sum(n => n.GIATRI_PHANCUNG_HD + n.GIATRI_DICHVU_HD)</span> VNĐ</h1>*@
+                    </div>
                 </div>
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+                <div class="MenuTrang">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, @sTuKhoa = ViewBag.TuKhoa }))
+                </div>
+                <style>
+                    .MenuTrang li {
+                        display: inline;
+                    }
+                </style>
             </div>
-            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
-            <div class="MenuTrang">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, @sTuKhoa = ViewBag.TuKhoa }))
-            </div>
-            <style>
-                .MenuTrang li {
-                    display: inline;
-                }
-            </style>
         </div>
     </div>
-</div>
