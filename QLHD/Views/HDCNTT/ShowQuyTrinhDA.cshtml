@@ -46,11 +46,11 @@
                             {
                                 <div class="col-md-5" style="position: relative;">
                                     <div class="col-md-9 timeline-content" style="text-align: left; float:right; max-width: 350px; margin-right: -12%">
-                                        <i data-toggle="modal" data-target="#@item.TIENDO_DA_ID" class="fa fa-edit" style="@(item.VTT == true ? "right: 0" : "left:0")"></i>
-
+                                        <i data-toggle="modal" data-target="#@item.TIENDO_DA_ID" class="fa fa-edit fa-lg" style="@(item.VTT == true ? "right: 0" : "left:0")"></i>
+                                        <i data-toggle="modal" data-target="#@item.TIENDO_DA_ID.ToString()delete" class="fa fa-remove fa-lg" style="color:red; @(item.VTT == true ? "right: 25px" : "left:25px")"></i>
                                         <h4 class="text-light" onclick="javascript:window.open('/HDCNTT/IndexTimKiem?idda='+ @item.DUAN_ID);">
                                             @item.STT @item.TEN_TIENDO_DA
-                                           
+
                                         </h4>
                                         <p>@item.THANHVIEN.TEN_THANHVIEN</p>
                                         @if (item.TRANGTHAI_THUCHIEN == 1)
@@ -71,6 +71,7 @@
                                         <p>Ghi chú hiện trạng: <a style="color:blue"> @item.GHICHU_HIENTRANG</a></p>
                                         <p>Ghi chú tồn động:<a style="color:darkred">@item.GHICHU_TONDONG</a></p>
                                         @Html.Action("editTDDA", "HDCNTT", new { @idDA = ViewBag.idDA, @idTD = item.TIENDO_DA_ID })
+                                        @Html.Action("deleteTDDA", "HDCNTT", new { @idDA = ViewBag.idDA, @idTD = item.TIENDO_DA_ID })
                                     </div>
                                 </div>
                                 <div class="col-md-2 timeline-image text-md-center">
@@ -132,8 +133,8 @@
                                 </div>
                                 <div class="col-md-4" style="position: relative;">
                                     <div class="col-md-11 timeline-content" style="text-align: left; float:left; max-width: 350px; margin-left: -13%">
-                                        <i data-toggle="modal" data-target="#@item.TIENDO_DA_ID" class="fa fa-edit" style="@(item.VTT == true ?  "right: 0" : "left:0")"></i>
-
+                                        <i data-toggle="modal" data-target="#@item.TIENDO_DA_ID" class="fa fa-edit fa-lg" style="@(item.VTT == true ?  "right: 0" : "left:0")"></i>
+                                        <i data-toggle="modal" data-target="#@item.TIENDO_DA_ID.ToString()delete" class="fa fa-remove fa-lg" style="color:red; @(item.VTT == true ? "right: 25px" : "left:25px")"></i>
                                         <h4 class="text-light">@item.STT @item.TEN_TIENDO_DA</h4>
                                         <p>Người thực hiện: @item.THANHVIEN.TEN_THANHVIEN</p>
                                         @if (item.TRANGTHAI_THUCHIEN == 1)
@@ -155,6 +156,7 @@
                                         <p>Ghi chú hiện trạng: <a style="color:blue"> @item.GHICHU_HIENTRANG</a></p>
                                         <p>Ghi chú tồn động:<a style="color:darkred">@item.GHICHU_TONDONG</a></p>
                                         @Html.Action("editTDDA", "HDCNTT", new { @idDA = ViewBag.idDA, @idTD = item.TIENDO_DA_ID })
+                                        @Html.Action("deleteTDDA", "HDCNTT", new { @idDA = ViewBag.idDA, @idTD = item.TIENDO_DA_ID })
                                     </div>
                                 </div>
                             }

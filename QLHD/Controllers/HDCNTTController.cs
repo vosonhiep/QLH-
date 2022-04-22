@@ -1000,6 +1000,74 @@ namespace QLHD.Controllers
         }
 
         [HttpGet]
+        public PartialViewResult deleteTDDA(int? idDA, int? idTD)
+        {
+            ViewBag.delete = idTD + "delete";
+            QLDA_CNTT_TIENDO td = db.QLDA_CNTT_TIENDO.SingleOrDefault(n => n.DUAN_ID == idDA && n.TIENDO_DA_ID == idTD);
+            if (td == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return PartialView(td);
+        }
+
+        [HttpPost]
+        public ActionResult XacNhanXoaTDDA(int idDA, int idTD)
+        {
+            QLDA_CNTT_TIENDO td = db.QLDA_CNTT_TIENDO.SingleOrDefault(n => n.DUAN_ID == idDA && n.TIENDO_DA_ID == idTD);
+            if (td == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            
+            db.QLDA_CNTT_TIENDO.Remove(td);
+
+            db.SaveChanges();
+            return RedirectToAction("ShowQuyTrinhDA", "HDCNTT", new { @maDA = idDA });
+        }
+
+
+        public PartialViewResult PartiaDeleteDA(int maDA)
+        {
+            ViewBag.delete = maDA + "delete";
+            QLDA_CNTT da = db.QLDA_CNTT.SingleOrDefault(n => n.DUAN_ID == maDA);
+            if (da == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return PartialView(da);
+        }
+
+        [HttpPost]
+        public ActionResult XacNhanXoaDA(int maDA)
+        {
+            QLDA_CNTT da = db.QLDA_CNTT.SingleOrDefault(n => n.DUAN_ID == maDA);
+            if (da == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            // Xóa tiến độ DA
+            db.QLDA_CNTT_TIENDO.RemoveRange(db.QLDA_CNTT_TIENDO.Where(x => x.DUAN_ID == maDA));         
+            // Xóa tiến độ doanh thu HĐ CNTT
+            List<HOPDONG_DT_CNTT> lstHDCNTT = db.HOPDONG_DT_CNTT.Where(x => x.DUAN_ID == da.DUAN_ID).ToList();
+            foreach (var item in lstHDCNTT)
+            {
+                db.DT_CNTT_TIENDO_TT.RemoveRange(db.DT_CNTT_TIENDO_TT.Where(x => x.HOPDONG_DT_CNTT_ID == item.HOPDONG_DT_CNTT_ID));
+            }
+            //Xóa hợp đồng
+            db.HOPDONG_DT_CNTT.RemoveRange(db.HOPDONG_DT_CNTT.Where(x => x.DUAN_ID == da.DUAN_ID));
+            // Xóa dự án
+            db.QLDA_CNTT.Remove(da);
+
+            db.SaveChanges();
+            return RedirectToAction("DSDuAn", "HDCNTT");
+        }
+
+        [HttpGet]
         public ActionResult ShowQuyTrinhDA(int? maDA)
         {
             ViewBag.idDA = maDA;
