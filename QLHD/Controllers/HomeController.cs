@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QLHD.Models;
+using QLHD.Utinity;
+
 namespace QLHD.Controllers
 {
     public class HomeController : Controller
@@ -11,6 +13,11 @@ namespace QLHD.Controllers
         QLHD2Entities db = new QLHD2Entities();
         public ActionResult Index()
         {
+            if (SessionStore.users == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (Request.IsAuthenticated)
             {
                 ViewBag.HDChiPhi = db.HOPDONG_CHIPHI.Where(s=>s.TRANGTHAI != 2).Select(x => x.HOPDONG_CHIPHI_ID).Distinct().Count();

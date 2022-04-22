@@ -16,6 +16,7 @@ using System.Globalization;
 using System.IO;
 using QLHD.ViewModel;
 using Newtonsoft.Json;
+using QLHD.Utinity;
 
 namespace QLHD.Controllers
 {
@@ -23,8 +24,14 @@ namespace QLHD.Controllers
     {
         // GET: /HDCNTT/
         QLHD2Entities db = new QLHD2Entities();
+
+
         public ActionResult Index(int? page)
         {
+            if (SessionStore.users == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var hdCNTT = db.HOPDONG_DT_CNTT.ToList().OrderByDescending(n => n.HOPDONG_DT_CNTT_ID);
             ViewBag.BENTHUEID = new SelectList(db.DM_CHUTHE_HOPDONG.ToList().OrderBy(n => n.CHUTHE_HOPDONG_ID), "CHUTHE_HOPDONG_ID", "TEN_CHUTHE");
 
@@ -725,6 +732,10 @@ namespace QLHD.Controllers
         [HttpGet]
         public ActionResult DSDuAn(int? page)
         {
+            if (SessionStore.users == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var duan = db.QLDA_CNTT.ToList().OrderByDescending(n => n.DUAN_ID);
             ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
             

@@ -8,6 +8,8 @@ using System.Web.Security;
 using System.Security.Cryptography;
 using System.Text;
 using System.Net;
+using QLHD.Utinity;
+
 namespace QLHD.Controllers
 {
     public class AccountController : Controller
@@ -44,6 +46,7 @@ namespace QLHD.Controllers
 
                 db.LICHSU_DANGNHAP.Add(lichsu);
                 db.SaveChanges();
+                SessionStore.users = tv;
                 return RedirectToAction("Index", "Home");
             }
             ViewBag.ThongBao = "Tên tài khoản hoặc mật khẩu sai!";
@@ -51,6 +54,7 @@ namespace QLHD.Controllers
         }
         public ActionResult DangXuat()
         {
+            SessionStore.users = null;
             FormsAuthentication.SignOut();
 
             return RedirectToAction("Login", "Account");
