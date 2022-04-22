@@ -608,7 +608,7 @@ namespace QLHD.Controllers
         {
             int namHD = Int32.Parse(f["namHD"].ToString());
             int loaiHD = Int32.Parse(f["loaiHD"].ToString());
-            int donvi = Int32.Parse(f["donvi"].ToString());
+            int donvi = 1;// Int32.Parse(f["donvi"].ToString());
             List<HOPDONG_DT_CNTT> listKQTK = db.HOPDONG_DT_CNTT.ToList();
             if (namHD != 0)
             {

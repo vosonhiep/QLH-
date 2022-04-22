@@ -422,12 +422,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLHDDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Utinity\SessionStore.cs" />
     <Compile Include="ViewModel\LOAITIENTRINH.cs" />
     <Compile Include="ViewModel\LOAI_DUAN.cs" />
     <Compile Include="ViewModel\TIENDO_Model.cs" />
     <Compile Include="ViewModel\TIENTRINH_Model.cs" />
     <Compile Include="ViewModel\TRANGTHAI_HOADON.cs" />
     <Compile Include="ViewModel\TRANGTHAI_THANHTOAN.cs" />
+    <Compile Include="ViewModel\TRANGTHAI_TIENDO_DA.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\animate.min.css" />
@@ -1485,6 +1487,8 @@
     <Content Include="Views\HDCNTT\editTDDA.cshtml" />
     <Content Include="Views\HDCNTT\CreateDuAn.cshtml" />
     <Content Include="Views\HDCNTT\EditDA.cshtml" />
+    <Content Include="Views\HDCNTT\partialSearchDA.cshtml" />
+    <Content Include="Views\HDCNTT\IndexTimKiem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\HD_CHIPHI\" />

@@ -25,26 +25,27 @@
         <div class="clearfix"></div>
         <div class="row">
             <div class="col-md-12">
-                <div class="nav navbar-left">
+                <div class="nav">
                     <div class="x_panel" style="">
                         <div class="x_content">
                             @using (Html.BeginForm("ketquathongke_HDCNTT", "ThongKe", FormMethod.Post))
                             {
-                                <div class="navbar-form navbar-left" role="search">
-                                    <div class="form-group col-md-6">
-                                        <label class="col-md-5">Năm hợp đồng</label>
-                                        @Html.DropDownList("namHD", (IEnumerable<SelectListItem>)ViewBag.namHD, new { @class = "form-control" })
-
+                                <div class="navbar-form" role="search">
+                                    <div class="col-md-6">
+                                        <div class="form-group col-md-5">
+                                            <label class="col-md-5">Loại hợp đồng</label>
+                                            @Html.DropDownList("loaiHD", (IEnumerable<SelectListItem>)ViewBag.LoaiHD, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group col-md-5">
+                                            <label class="col-md-6">Năm hợp đồng</label>
+                                            @Html.DropDownList("namHD", (IEnumerable<SelectListItem>)ViewBag.namHD, new { @class = "form-control" })
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="submit" class="btn btn-info">Thống kê <span class="glyphicon glyphicon-search" /></button>
+                                        </div>
+                                        
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label class="col-md-3">Loại hợp đồng</label>
-                                        @Html.DropDownList("loaiHD", (IEnumerable<SelectListItem>)ViewBag.LoaiHD, new { @class = "form-control" })
-                                    </div>
-                                    <div class="form-group col-md-6" style="margin-top:10px">
-                                        <label class="col-md-5">Đơn vị ký hợp đồng</label>
-                                        @Html.DropDownList("donvi", (IEnumerable<SelectListItem>)ViewBag.donvi, new { @class = "form-control" })
-                                    </div>
-                                    <button type="submit" class="btn btn-info" style="margin-top: 10px">Thống kê <span class="glyphicon glyphicon-search" /></button>
+                                    
                                 </div>
                             }
                         </div>
@@ -52,13 +53,13 @@
                 </div>
                 <div class="nav navbar-right">
                     @*<a href="@Url.Action("export_hdcntt_toihan", "ThongKeToiHan",  new {@namHD = @ViewBag.namHD1, @loaiHD = @ViewBag.loaiHD1, @donvi = @ViewBag.donvi1 })" class="btn btn-info" style="float:right">
-                        Xuất thống kê HĐ tới hạn
-                        <span class="glyphicon glyphicon-download" />
-                    </a>*@
-                    <a href="@Url.Action("export_hdcntt", "ThongKe",  new {@namHD = @ViewBag.namHD1, @loaiHD = @ViewBag.loaiHD1, @donvi = @ViewBag.donvi1 })" class="btn btn-info" style="float:right">
-                        Xuất Excel Thống Kê
-                        <span class="glyphicon glyphicon-download" />
-                    </a>
+                            Xuất thống kê HĐ tới hạn
+                            <span class="glyphicon glyphicon-download" />
+                        </a>*@
+                    @*<a href="@Url.Action("export_hdcntt", "ThongKe",  new {@namHD = @ViewBag.namHD1, @loaiHD = @ViewBag.loaiHD1, @donvi = @ViewBag.donvi1 })" class="btn btn-info" style="float:right">
+                            Xuất Excel Thống Kê
+                            <span class="glyphicon glyphicon-download" />
+                        </a>*@
                 </div>
                 <div class="x_panel">
                     <div class="x_title">
@@ -72,26 +73,43 @@
                             <tr>
                                 <th style="width: 30px">STT</th>
                                 <th>
-                                    Số HĐ
+                                    Danh mục
                                 </th>
                                 <th>
-                                    Loại HĐ
+                                    Tháng 1
                                 </th>
                                 <th>
-                                    Ngày lập HĐ
+                                    Tháng 2
                                 </th>
                                 <th>
-                                    Đại diện bên thuê
+                                    Tháng 3
                                 </th>
                                 <th>
-                                    Đại diện bên cho thuê
+                                    Tháng 4
                                 </th>
                                 <th>
-                                    Tổng giá trị HĐ
+                                    Tháng 5
                                 </th>
-                                <th>Chu kỳ thanh toán</th>
                                 <th>
-                                    Hình thức thanh toán
+                                    Tháng 6
+                                </th>
+                                <th>
+                                    Tháng 7
+                                </th>
+                                <th>
+                                    Tháng 8
+                                </th>
+                                <th>
+                                    Tháng 9
+                                </th>
+                                <th>
+                                    Tháng 10
+                                </th>
+                                <th>
+                                    Tháng 11
+                                </th>
+                                <th>
+                                    Tháng 12
                                 </th>
                                 @*<th>Sửa|Xóa|Thanh toán</th>
                                     <th>Tải</th>
@@ -100,66 +118,50 @@
                             @{int row = 0;}
                             @foreach (var item in Model)
                             {
-                                <tr class="noidunghd">
-                                    <td>@(row += 1)</td>
-                                    <td>
-                                        <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
-                                            @item.SO_HD
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.DM_LOAI_HOPDONG.TEN_LOAI_HOPDONG </a>
-                                    </td>
-
-                                    <td>
-                                        <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
-
-                                            @if (item.NGAY_HD.HasValue)
-                                            {
-                                                @item.NGAY_HD.Value.ToString("dd/MM/yyyy")
-                                            }
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.DM_CHUTHE_HOPDONG.TEN_CHUTHE</a>
-                                    </td>
-
-                                    <td><a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.DM_CHUTHE_HOPDONG1.TEN_CHUTHE</a></td>
-                                    <td>
-                                        <a href="@Url.Action("ShowHDCNTT", "HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">
-                                            @{
-                                                var sum = item.GIATRI_PHANCUNG_HD + item.GIATRI_DICHVU_HD;
-
-                                                    }
-                                            <p>@sum</p>
-                                        </a>
-                                    </td>
-                                    <td><a href="@Url.Action("ShowHDCNTT","HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.CHUKY_TT.CHUKY</a></td>
-                                    <td><a href="@Url.Action("ShowHDCNTT","HDCNTT", new { @maHD = item.HOPDONG_DT_CNTT_ID })">@item.HTTT.TEN_HTTT</a></td>
-                                    @*<td>
-                                            @Html.ActionLink(" ", "EditHDCNTT", "HDCNTT", new { @HDDoanhThu_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px" })
-                                            |
-                                            @Html.ActionLink(" ", "DeleteHDCNTT", new { @HDDoanhThu_ID = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-trash", @style = "font-size: 20px", title = "Xóa" })
-                                            |
-                                            @Html.ActionLink(" ", "ThanhToan", "HDCNTT", new { @HDid = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-usd", @style = "font-size: 20px" })
-
-
-
-                                        </td>
-                                        <td>@Html.ActionLink(" ", "ExportData", "HDCNTT", new { @HDid = item.HOPDONG_DT_CNTT_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 20px" })</td>
-                                        <td>
-                                            @if (@item.NGAY_KT <= @System.DateTime.Now)
-                                            {
-                                                <span id="canhbao">
-                                                    <img src="~/Images/canhbao.gif" title="Hợp đồng đã tới hạn. Cần ký lại hộp đồng mới!" height="40px" width="30px" />
-                                                </span>
-                                            }
-                                        </td>*@
-                                </tr>
+                        <tr class="noidunghd">
+                            <td>@(row += 1)</td>
+                            <td>Danh mucj</td>
+                            <td>
+                                Tháng 1
+                            </td>
+                            <td>
+                                Tháng 2
+                            </td>
+                            <td>
+                                Tháng 3
+                            </td>
+                            <td>
+                                Tháng 4
+                            </td>
+                            <td>
+                                Tháng 5
+                            </td>
+                            <td>
+                                Tháng 6
+                            </td>
+                            <td>
+                                Tháng 7
+                            </td>
+                            <td>
+                                Tháng 8
+                            </td>
+                            <td>
+                                Tháng 9
+                            </td>
+                            <td>
+                                Tháng 10
+                            </td>
+                            <td>
+                                Tháng 11
+                            </td>
+                            <td>
+                                Tháng 12
+                            </td>
+                        </tr>
                             }
                         </table>
                         <div class="clearfix"></div>
-                        <h1>Tổng giá trị: <span id="test">@Model.Sum(n => n.GIATRI_PHANCUNG_HD + n.GIATRI_DICHVU_HD)</span> VNĐ</h1>
+                        
                     </div>
                 </div>
                 Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount

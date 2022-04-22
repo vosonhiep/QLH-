@@ -95,7 +95,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6" style="margin-top: 15px">
+                            <div class="col-md-6" style="margin-top: 15px; display:none">
                                 <div class="form-group">
                                     <div class="control-label col-md-4">
                                         <label style="float: right">Tên dự án:</label>
@@ -122,8 +122,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6" style="margin-top: 15px">
                                 <div class="form-group">
                                     <div class="control-label col-md-4">
@@ -136,6 +134,19 @@
                                 </div>
                             </div>
                         </div>
+                        <!--<div class="row">
+                            <div class="col-md-6" style="margin-top: 15px">
+                                <div class="form-group">
+                                    <div class="control-label col-md-4">
+                                        <label style="float: right">Đơn vị lập hợp đồng:</label>
+                                    </div>
+                                    <div class="col-md-5">-->
+                                        @*@Html.DropDownList("DONVI_ID", (IEnumerable<SelectListItem>)ViewBag.DONVI, "--Chọn--", new { @class = "form-control", required = "required" })*@
+                                        <!--<input type="text" class="form-control" name="DONVI_ID" required="required" value="@Model.DONVI.TEN_DV" disabled />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
                        
                     </div>
                 </div>
@@ -751,6 +762,7 @@
             'method': "GET",
             'contentType': 'application/json',
             'success': function (data) {
+                
                 jQuery('#tableTDTT').DataTable().ajax.reload();
             }
         }).done(function (data) {
@@ -768,8 +780,9 @@
                     { "data": "TRANGTHAI_TT" }
                 ]
             });
+            location.reload();
         });
-        location.reload();
+        
         //jQuery('#tableTDTT').DataTable().ajax.reload();
     }
 </script>
