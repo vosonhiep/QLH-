@@ -14,132 +14,146 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-horizontal">
-                        <div class="col-md-6" style="display:none">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">Hợp đồng ID:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="HOPDONG_DT_CNTT_ID" required="required" value="@Model.HOPDONG_DT_CNTT_ID" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">Đợt thanh toán:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" name="DOT_TT" class="form-control" required="required" value="@Model.DOT_TT" readonly />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">Thời gian thanh toán:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="number" class="form-control" name="THOIGIAN_TT" value="@Model.THOIGIAN_TT" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">Ngày đến hạn:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    @if (Model.THOIHAN_TT.HasValue)
-                                    {
-                                        <input type="datetime" class="form-control" name="THOIHAN_TT" required="required" value="@Model.THOIHAN_TT.Value.ToString("dd/MM/yyyy")" />
-                                    }
-                                    else
-                                    {
-                                        <input type="date" class="form-control" name="THOIHAN_TT" required="required" />
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">Số tiền thanh toán:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="number" class="form-control" name="GIATRI_TT" value="@Model.GIATRI_TT" />
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <div class="control-label col-md-2">
-                                    <label style="float: right">Diễn giải:</label>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-md-6" style="display:none">
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Hợp đồng ID:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" name="HOPDONG_DT_CNTT_ID" required="required" value="@Model.HOPDONG_DT_CNTT_ID" />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-10">
-                                    <input class="form-control" rows="4" placeholder="Hồ sơ thanh toán" value="Bên A thanh toán cho bên B tiền thuê @Model.HOPDONG_DT_CNTT.CHUKY_TT.CHUKY.ToString()" readonly />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Đợt thanh toán:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" name="DOT_TT" class="form-control" required="required" value="@Model.DOT_TT" readonly />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Thời gian thanh toán:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="number" class="form-control" name="THOIGIAN_TT" value="@Model.THOIGIAN_TT" />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6" style="margin-top: 15px">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">TT xuất hóa đơn:</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Ngày đến hạn:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                @if (Model.THOIHAN_TT.HasValue)
+                                                {
+                                                    <input type="datetime" class="form-control" name="THOIHAN_TT" required="required" value="@Model.THOIHAN_TT.Value.ToString("dd/MM/yyyy")" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="date" class="form-control" name="THOIHAN_TT" required="required" />
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Số tiền thanh toán:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="number" class="form-control" name="GIATRI_TT" value="@Model.GIATRI_TT" />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-8">
-                                    @Html.DropDownList("TRANGTHAI_XUAT_HOADON", (IEnumerable<SelectListItem>)ViewBag.TT_HOADON, "--Chọn--", new { @class = "form-control", required = "required" })
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6" style="margin-top: 15px">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">Số hóa đơn:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" id="SO_HOADON" class="form-control" name="SO_HOADON" value="@Model.SO_HOADON" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6" style="margin-top: 15px">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">Ngày hóa đơn:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    @if (Model.NGAY_HOADON.HasValue)
-                                    {
-                                        <input type="datetime" id="NGAY_HOADON" class="form-control" name="NGAY_HOADON" value="@Model.NGAY_HOADON.Value.ToString("dd/MM/yyyy")" />
-                                    }
-                                    else
-                                    {
-                                        <input type="date" class="form-control" name="NGAY_HOADON" />
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6" style="margin-top: 15px">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">TT thanh toán:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.DropDownList("TRANGTHAI_TT", (IEnumerable<SelectListItem>)ViewBag.TT_THANHTOAN, "--Chọn--", new { @class = "form-control", required = "required" })
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6" style="margin-top: 15px">
-                            <div class="form-group">
-                                <div class="control-label col-md-4">
-                                    <label style="float: right">FILE:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="file" name="upload" class="form-control" id="upload" />
-                                    <a href="@Url.Action("ExportDataTienDo", "HDCNTT",new{@HDCNTT_ID = Model.HOPDONG_DT_CNTT_ID,  @TIENDO_ID = Model.TIENDO_TT_ID} )"
-                                       style="color:blue">
-                                        @Model.FILE
-                                    </a>
 
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="control-label col-md-2">
+                                            <label style="float: right">Diễn giải:</label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input class="form-control" rows="4" placeholder="Hồ sơ thanh toán" value="Bên A thanh toán cho bên B tiền thuê @Model.HOPDONG_DT_CNTT.CHUKY_TT.CHUKY.ToString()" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">TT xuất hóa đơn:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                @Html.DropDownList("TRANGTHAI_XUAT_HOADON", (IEnumerable<SelectListItem>)ViewBag.TT_HOADON, "--Chọn--", new { @class = "form-control", required = "required" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Số hóa đơn:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" id="SO_HOADON" class="form-control" name="SO_HOADON" value="@Model.SO_HOADON" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">Ngày hóa đơn:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                @if (Model.NGAY_HOADON.HasValue)
+                                                {
+                                                    <input type="datetime" id="NGAY_HOADON" class="form-control" name="NGAY_HOADON" value="@Model.NGAY_HOADON.Value.ToString("dd/MM/yyyy")" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="date" class="form-control" name="NGAY_HOADON" />
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <div class="control-label col-md-4">
+                                                <label style="float: right">TT thanh toán:</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                @Html.DropDownList("TRANGTHAI_TT", (IEnumerable<SelectListItem>)ViewBag.TT_THANHTOAN, "--Chọn--", new { @class = "form-control", required = "required" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="control-label col-md-2">
+                                            <label style="float: right">FILE:</label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="file" name="upload" class="form-control" id="upload" />
+                                            <a href="@Url.Action("ExportDataTienDo", "HDCNTT",new{@HDCNTT_ID = Model.HOPDONG_DT_CNTT_ID,  @TIENDO_ID = Model.TIENDO_TT_ID} )"
+                                               style="color:blue">
+                                                @Model.FILE
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -24,8 +24,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="nav navbar-right">
+                    <a href="@Url.Action("DSDuAn", "HDCNTT")" class="btn btn-default btn-lg">
+                        Trờ về
+                    </a>
+                </div>
+                <div class="nav navbar-right">
                     <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addTDDA"><i class="fa fa-plus"></i>Thêm mới</button>
                 </div>
+
             </div>
         </div>
         <div class="clearfix"></div>
@@ -42,7 +48,10 @@
                                     <div class="col-md-9 timeline-content" style="text-align: left; float:right; max-width: 350px; margin-right: -12%">
                                         <i data-toggle="modal" data-target="#@item.TIENDO_DA_ID" class="fa fa-edit" style="@(item.VTT == true ? "right: 0" : "left:0")"></i>
 
-                                        <h4 class="text-light" onclick="javascript:window.open('/HDCNTT/IndexTimKiem?idda='+ @item.DUAN_ID);">@item.STT. @item.TEN_TIENDO_DA </h4>
+                                        <h4 class="text-light" onclick="javascript:window.open('/HDCNTT/IndexTimKiem?idda='+ @item.DUAN_ID);">
+                                            @item.STT @item.TEN_TIENDO_DA
+                                           
+                                        </h4>
                                         <p>@item.THANHVIEN.TEN_THANHVIEN</p>
                                         @if (item.TRANGTHAI_THUCHIEN == 1)
                                         {
@@ -125,7 +134,7 @@
                                     <div class="col-md-11 timeline-content" style="text-align: left; float:left; max-width: 350px; margin-left: -13%">
                                         <i data-toggle="modal" data-target="#@item.TIENDO_DA_ID" class="fa fa-edit" style="@(item.VTT == true ?  "right: 0" : "left:0")"></i>
 
-                                        <h4 class="text-light">@item.STT. @item.TEN_TIENDO_DA</h4>
+                                        <h4 class="text-light">@item.STT @item.TEN_TIENDO_DA</h4>
                                         <p>Người thực hiện: @item.THANHVIEN.TEN_THANHVIEN</p>
                                         @if (item.TRANGTHAI_THUCHIEN == 1)
                                         {
@@ -147,18 +156,13 @@
                                         <p>Ghi chú tồn động:<a style="color:darkred">@item.GHICHU_TONDONG</a></p>
                                         @Html.Action("editTDDA", "HDCNTT", new { @idDA = ViewBag.idDA, @idTD = item.TIENDO_DA_ID })
                                     </div>
-                                </div>}
-
+                                </div>
+                            }
                         </div>
                     </div>
                 }
-
-
-
-
             </div>
         </div>
-
     </div>
     @Html.Action("addTDDA", "HDCNTT", new { @idDA = ViewBag.idDA })
     @*@Html.Action("editTDDA", "HDCNTT", new { @idDA = ViewBag.idDA })*@
