@@ -3,6 +3,17 @@
     ViewBag.Title = "Tạo mới HĐ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .select2-container .select2-selection--single {
+        height: 34px !important;
+    }
+
+    .select2-container--default .select2-selection--single {
+        border: 1px solid #ccc !important;
+        border-radius: 0px !important;
+    }
+</style>
+
 
 <div class="">
     <div class="page-title">
@@ -29,9 +40,12 @@
                                     <div class="control-label col-md-4">
                                         <label style="float: right">Dự án:</label>
                                     </div>
-                                    <div class="col-md-5">
-                                        @Html.DropDownList("DUAN_ID", (IEnumerable<SelectListItem>)ViewBag.DUAN, "--Chọn--", new { @class = "form-control", required = "required" })
+                                    <div class="container">
+                                        <div class="col-md-5">
+                                            @Html.DropDownList("DUAN_ID", (IEnumerable<SelectListItem>)ViewBag.DUAN, "--Chọn--", new { @class = "form-control select2", required = "required", @id = "selectDA" })
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -462,7 +476,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -585,6 +599,8 @@
             $("input[name='GIATRI_DICHVU_HD']").val(giatri_dichvu_hd);
             $("input[name='GIATRI_TAMUNG']").val(giatri_tamung);
         });
+
+
     });
 </script>
 <script type="text/javascript">
@@ -645,7 +661,7 @@
                 $('#CHUCVU_BT').val("");
             }
         });
-
+        $('.select2').select2();
     });
 </script>
 <script type="text/javascript">

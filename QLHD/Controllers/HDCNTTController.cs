@@ -25,7 +25,7 @@ namespace QLHD.Controllers
         // GET: /HDCNTT/
         QLHD2Entities db = new QLHD2Entities();
 
-
+         
         public ActionResult Index(int? page)
         {
             if (SessionStore.users == null)
