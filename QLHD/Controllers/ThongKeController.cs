@@ -117,6 +117,7 @@ namespace QLHD.Controllers
             return View(hd.ToPagedList(pagenumber, pagesize));
         }
 
+        // Khởi tạ danh sách năm
         List<int> lstNam = new List<int>() { };
         public void KhoiTaoNam()
         {

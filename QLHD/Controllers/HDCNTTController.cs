@@ -879,8 +879,7 @@ namespace QLHD.Controllers
                 {
                     db.SaveChanges();
                     //luulichsuchinhsua(2, HDCNTT_ID, id_taikhoan);
-                    //Gọi proceduce generate ds tiến độ DA
-                    db.FUNC_GEN_TIENDO_DA(da.DUAN_ID);
+                    
                     return RedirectToAction("DSDuAn", "HDCNTT");
                 }
                 catch (RetryLimitExceededException /* dex */)
