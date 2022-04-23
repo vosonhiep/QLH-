@@ -548,28 +548,31 @@
                             <div id="myTabContent" class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="hopdong-tab">
                                     <table id="tableTDTT" class="col-md-12 table table-bordered table-striped table-hover">
-                                        <tr class="noidung">
-                                            <th class="col-md-1" style="text-align:center">
-                                                Đợt thanh toán
-                                            </th>
+                                        <thead>
+                                            <tr class="noidung">
+                                                <th class="col-md-1" style="text-align:center">
+                                                    Đợt thanh toán
+                                                </th>
 
-                                            <th class="col-md-1" style="text-align:center">
-                                                Thời gian thanh toán (từ ngày đến hạn)
-                                            </th>
-                                            <th class="col-md-1" style="text-align:center">
-                                                Ngày đến hạn thanh toán
-                                            </th>
-                                            <th class="col-md-1" style="text-align:center">
-                                                Số tiền thanh toán/Đợt
-                                            </th>
-                                            <th class="col-md-2" style="text-align:center">
-                                                Diễn giải
-                                            </th>
-                                            <th class="col-md-1" style="text-align:center">Trạng thái xuất hóa đơn</th>
-                                            <th class="col-md-1" style="text-align:center">Số hóa đơn</th>
-                                            <th class="col-md-1" style="text-align:center">Ngày hóa đơn</th>
-                                            <th class="col-md-1" style="text-align:center">Trạng thái thanh toán</th>
-                                        </tr>
+                                                <th class="col-md-1" style="text-align:center">
+                                                    Thời gian thanh toán (từ ngày đến hạn)
+                                                </th>
+                                                <th class="col-md-1" style="text-align:center">
+                                                    Ngày đến hạn thanh toán
+                                                </th>
+                                                <th class="col-md-1" style="text-align:center">
+                                                    Số tiền thanh toán/Đợt
+                                                </th>
+                                                <th class="col-md-2" style="text-align:center">
+                                                    Diễn giải
+                                                </th>
+                                                <th class="col-md-1" style="text-align:center">Trạng thái xuất hóa đơn</th>
+                                                <th class="col-md-1" style="text-align:center">Số hóa đơn</th>
+                                                <th class="col-md-1" style="text-align:center">Ngày hóa đơn</th>
+                                                <th class="col-md-1" style="text-align:center">Trạng thái thanh toán</th>
+                                            </tr>
+                                        </thead>
+                                        
                                         @foreach (var item in listTDTT)
                                         {
                                             <tr class="noidunghd">
@@ -671,11 +674,6 @@
     </div>
 </div>
 
-@Scripts.Render("~/Scripts/numeric/jquery.js")
-@Scripts.Render("~/Scripts/numeric/jquery.number.js")
-
-@Scripts.Render("~/Scripts/js/datatables/js/jquery.dataTables.js")
-
 <script type="text/javascript">
     $(function() {
         var giatri_phancung_hd = $('#giatri_phancung_hd').val();
@@ -763,7 +761,6 @@
             'contentType': 'application/json',
             'success': function (data) {
                 
-                jQuery('#tableTDTT').DataTable().ajax.reload();
             }
         }).done(function (data) {
             $('#tableTDTT').dataTable({
@@ -780,6 +777,7 @@
                     { "data": "TRANGTHAI_TT" }
                 ]
             });
+            //$('#tableTDTT').DataTable().ajax.reload(null, false);
             location.reload();
         });
         
