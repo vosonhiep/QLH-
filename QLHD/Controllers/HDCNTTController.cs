@@ -710,8 +710,8 @@ namespace QLHD.Controllers
 
         public static List<LOAITIENTRINH> listLoaiTienTrinh = new List<LOAITIENTRINH>()
             {
-                new LOAITIENTRINH(true, "Viễn thông"),
-                new LOAITIENTRINH(false, "Khách hàng")
+                new LOAITIENTRINH(false, "Viễn thông"),
+                new LOAITIENTRINH(true, "Khách hàng")
             };
 
         public static List<TRANGTHAI_TIENDO_DA> listTrangThai = new List<TRANGTHAI_TIENDO_DA>()
@@ -740,7 +740,7 @@ namespace QLHD.Controllers
             ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
             
             int pageNumber = (page ?? 1);
-            int pageSize = 10;
+            int pageSize = 2;
 
             return View(duan.ToPagedList(pageNumber, pageSize));
         }
@@ -767,35 +767,35 @@ namespace QLHD.Controllers
         public ActionResult KetQuaTimKiemDA(FormCollection f, int? page)
         {
             String loaiTK = f["txtloaiTimKiem"].ToString();
-            String tukhoa = "";
+            String tukhoa = f["txtSearch"].ToString();
 
             List<QLDA_CNTT> listKQTK = db.QLDA_CNTT.ToList();
             
             if (loaiTK == "1")
             {
-                tukhoa = f["txtTenDA"].ToString();
                 listKQTK = db.QLDA_CNTT.Where(n => n.TEN_DA.Contains(tukhoa)).ToList();
                 ViewBag.tukhoa = tukhoa;
             }
             if (loaiTK == "2")
             {
-                tukhoa = f["txtChuDT"].ToString();
                 listKQTK = db.QLDA_CNTT.Where(n => n.CHUDAUTU.Contains(tukhoa)).ToList();
                 ViewBag.tukhoa = tukhoa;
             }
             if (loaiTK == "3")
             {
                 int loaiDA = Int32.Parse(f["LOAI_DUAN_ID"].ToString());
-                
                 listKQTK = db.QLDA_CNTT.Where(n => n.LOAI_DA == loaiDA).ToList();
                 ViewBag.tukhoa = tukhoa;
             }
             if (loaiTK == "4")
             {
-                //int loaiHD = Int32.Parse(f["LOAI_HOPDONG_ID"].ToString());
                 int loaiHD = Int32.Parse(f["LOAI_HOPDONG_ID"].ToString());
                 listKQTK = db.QLDA_CNTT.Where(n => n.LOAI_HOPDONG_ID == loaiHD).ToList();
                 ViewBag.tukhoa = tukhoa;
+            }
+            if(loaiTK == "5")
+            {
+                listKQTK = db.QLDA_CNTT.Where(n => (n.TEN_DA.Contains(tukhoa)) || (n.CHUDAUTU.Contains(tukhoa))).ToList();
             }
             
             int pageNumber = (page ?? 1);
@@ -1107,115 +1107,5 @@ namespace QLHD.Controllers
             //return RedirectToAction("Index");
         }
 
-
-
-        public static List<TIENTRINH_Model> dsTienTrinh = new List<TIENTRINH_Model>()
-            {
-                new TIENTRINH_Model(1, "Mua thiết bị lắp đặt IOC TCU", "Nguyễn Quốc Khang", 1, DateTime.Now, DateTime.Now, true),
-                new TIENTRINH_Model(2, "Thi công lắp đặt1", "Phan Thanh Triều", 1, DateTime.Now, DateTime.Now, true),
-                new TIENTRINH_Model(3, "Thi công lắp đặt2", "Phan Thanh Triều", 1, DateTime.Now, DateTime.Now, true),
-                new TIENTRINH_Model(4, "Ký hợp đồng", "Khách hàng TCU", 1, DateTime.Now, DateTime.Now, false),
-                new TIENTRINH_Model(5, "Ký hợp đồng", "Khách hàng TCU", 2, DateTime.Now, DateTime.Now, false),
-                new TIENTRINH_Model(6, "Ký hợp đồng", "Khách hàng TCU", 3, DateTime.Now, DateTime.Now, true)
-            };
-
-        
-
-        /*Quy trình */
-        /*
-        [HttpGet]
-        public ActionResult QuyTrinhHDCNTT(int? HDid)
-        {
-            List<TIENTRINH> dsTienTrinh = db.TIENTRINH.Where(x => x.HOPDONG_ID == HDid).OrderBy(x=>x.NGAYGIAO).ToList();
-            return View(dsTienTrinh);
-        }
-
-        [HttpGet]
-        public ActionResult Create_TienTrinh()
-        {
-            ViewBag.MATIENDO = new SelectList(db.TIENDO.OrderBy(x=>x.TIENDO_ID).ToList(), "TIENDO_ID", "TEN_TIENDO");
-            ViewBag.MALOAITIENTRINH = new SelectList(listLoaiTienTrinh, "LOAITIENTRINH_ID", "TENLOAITIENTRINH");
-            
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult Create_TienTrinh(TIENTRINH tientrinh, HttpPostedFileBase upload)
-        {
-            ViewBag.MATIENDO = new SelectList(db.TIENDO.OrderBy(x => x.TIENDO_ID).ToList(), "TIENDO_ID", "TEN_TIENDO");
-            //ViewBag.MALOAITIENTRINH = new SelectList(listLoaiTienTrinh, "LOAITIENTRINH_ID", "TENLOAITIENTRINH");
-            if (ModelState.IsValid)
-            {
-                if (upload != null && upload.ContentLength > 0)
-                    try
-                    {
-                        string path = Path.Combine(Server.MapPath("~/Content/HD_CNTT"),
-                                                   Path.GetFileName(upload.FileName));
-                        upload.SaveAs(path);
-                        ViewBag.Message = "File uploaded successfully";
-                        tientrinh.FILE = upload.FileName;
-                    }
-                    catch (Exception ex)
-                    {
-                        ViewBag.Message = "ERROR:" + ex.Message.ToString();
-                    }
-                else
-                {
-                    ViewBag.Message = "You have not specified a file.";
-                }
-
-                tientrinh.HOPDONG_ID = 6;
-                db.TIENTRINH.Add(tientrinh);
-                db.SaveChanges();
-                return RedirectToAction("QuyTrinhHDCNTT", "HDCNTT");
-            }
-            else ViewBag.baoloi = "Lưu không thành công!";
-            return View();
-        }
-
-        //Chỉnh sửa HĐ
-        [HttpGet]
-        public ActionResult Edit_TienTrinhu(int? TTid)
-        {
-            ViewBag.MATIENDO = new SelectList(db.TIENDO.OrderBy(x => x.TIENDO_ID).ToList(), "TIENDO_ID", "TEN_TIENDO");
-            ViewBag.MALOAITIENTRINH = new SelectList(listLoaiTienTrinh, "LOAITIENTRINH_ID", "TENLOAITIENTRINH");
-
-            TIENTRINH tientrinh = db.TIENTRINH.Find(TTid);
-            if (tientrinh == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tientrinh);
-        }
-
-        public ActionResult ExportData_TienTrinh(int TTid)
-        {
-            TIENTRINH tt = db.TIENTRINH.Where(x => x.TIENTRINH_ID == TTid).SingleOrDefault();
-            String filename = tt.FILE;
-            if (filename == null)
-            {
-                ViewBag.baoloi = "Hợp đồng này chưa lưu file!!";
-                return RedirectToAction("Index");
-            }
-            string filepath = AppDomain.CurrentDomain.BaseDirectory + "/Content/HD_CNTT/" + filename;
-
-
-            byte[] filedata = System.IO.File.ReadAllBytes(filepath);
-
-            string contentType = MimeMapping.GetMimeMapping(filepath);
-
-            var cd = new System.Net.Mime.ContentDisposition
-            {
-                FileName = filename,
-                Inline = true,
-            };
-
-            Response.AppendHeader("Content-Disposition", cd.ToString());
-
-            return File(filedata, contentType);
-            //return RedirectToAction("Index");
-        }
-        */
     }
 }
