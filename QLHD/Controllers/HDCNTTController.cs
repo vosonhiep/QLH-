@@ -936,6 +936,16 @@ namespace QLHD.Controllers
 
                 tdda.TRANGTHAI_THUCHIEN = 2;
                 db.QLDA_CNTT_TIENDO.Add(tdda);
+
+                // Tăng STT lên 1 nếu bị trùng
+                if(db.QLDA_CNTT_TIENDO.Where(x=>x.STT == tdda.STT).FirstOrDefault() != null)
+                {
+                    var lst = db.QLDA_CNTT_TIENDO.Where(x => x.STT >= tdda.STT && x.DUAN_ID == tdda.DUAN_ID).ToList();
+                    foreach (var item in lst)
+                    {
+                        item.STT += 1;
+                    }
+                }
                 db.SaveChanges();
                 return RedirectToAction("ShowQuyTrinhDA", "HDCNTT", new { maDA = tdda.DUAN_ID });
             }
@@ -996,6 +1006,16 @@ namespace QLHD.Controllers
             {
                 try
                 {
+                    // Tăng STT lên 1 nếu bị trùng
+                    if (db.QLDA_CNTT_TIENDO.Where(x => x.STT == td.STT).FirstOrDefault() != null)
+                    {
+                        var lst = db.QLDA_CNTT_TIENDO.Where(x => x.STT >= td.STT && x.DUAN_ID == td.DUAN_ID).ToList();
+                        foreach (var item in lst)
+                        {
+                            item.STT += 1;
+                        }
+                    }
+
                     db.SaveChanges();
 
                     return RedirectToAction("ShowQuyTrinhDA", "HDCNTT", new { @maDA = td.DUAN_ID });
