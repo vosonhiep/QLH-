@@ -14,6 +14,18 @@
             width: 40%;
         }
     </style>
+
+    <style>
+        .select2-container .select2-selection--single {
+            height: 34px !important;
+        }
+
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #ccc !important;
+            border-radius: 0px !important;
+        }
+    </style>
+
     <div class="">
         <div class="page-title">
             <div class="title_left">
@@ -23,6 +35,7 @@
         <div class="clear-fix"></div>
         <div class="row">
             <div class="col-md-12">
+                <div class="col-md-10 text-center">@ViewBag.TEN_DUAN</div>
                 <div class="nav navbar-right">
                     <a href="@Url.Action("DSDuAn", "HDCNTT")" class="btn btn-default btn-lg">
                         Trờ về
@@ -168,3 +181,9 @@
     </div>
     @Html.Action("addTDDA", "HDCNTT", new { @idDA = ViewBag.idDA })
     @*@Html.Action("editTDDA", "HDCNTT", new { @idDA = ViewBag.idDA })*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.select2').select2();
+            
+        })
+    </script>

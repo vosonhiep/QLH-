@@ -62,7 +62,7 @@
                                         <label style="float: right">Người thực hiện:</label>
                                     </div>
                                     <div class="col-md-8">
-                                        @Html.DropDownList("NGUOI_THUCHIEN", (IEnumerable<SelectListItem>)ViewBag.NGUOITHUCHIEN, "--Chọn--", new { @class = "form-control", required = "required" })
+                                        @Html.DropDownList("NGUOI_THUCHIEN", (IEnumerable<SelectListItem>)ViewBag.NGUOITHUCHIEN, "--Chọn--", new { @class = "form-control select2", required = "required", @id = "selectDA" })
                                     </div>
                                 </div>
                             </div>
@@ -189,6 +189,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        $('.select2').select2();
         $('#TrangThai').change(function () {
             var id = $('#TrangThai').val();
             if (id == "1") {

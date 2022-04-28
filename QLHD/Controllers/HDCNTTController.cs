@@ -740,7 +740,7 @@ namespace QLHD.Controllers
             ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
             
             int pageNumber = (page ?? 1);
-            int pageSize = 2;
+            int pageSize = 10;
 
             return View(duan.ToPagedList(pageNumber, pageSize));
         }
@@ -755,6 +755,7 @@ namespace QLHD.Controllers
             items.Add(new SelectListItem { Text = "Chủ đầu tư", Value = "2" });
             items.Add(new SelectListItem { Text = "Loại dự án", Value = "3" });
             items.Add(new SelectListItem { Text = "Loại hợp đồng", Value = "4" });
+            items.Add(new SelectListItem { Text = "Trạng thái", Value = "5" });
             items.Add(new SelectListItem { Text = "Khác", Value = "5" });
             ViewBag.loaiTK = items;
             ViewBag.loaiHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
@@ -1102,6 +1103,10 @@ namespace QLHD.Controllers
         {
             ViewBag.idDA = maDA;
             var dsTienTrinh = db.QLDA_CNTT_TIENDO.Where(x => x.DUAN_ID == maDA).OrderBy(x => x.STT).ToList();
+            if(dsTienTrinh.Count() > 0)
+            {
+                ViewBag.TEN_DUAN = dsTienTrinh.Select(x => x.QLDA_CNTT.TEN_DA).FirstOrDefault();
+            }
             return View(dsTienTrinh);
         }
 
