@@ -121,7 +121,7 @@
                                         <label style="float: right">Trạng thái:</label>
                                     </div>
                                     <div class="col-md-8">
-                                        @Html.DropDownList("TRANGTHAI_THUCHIEN", (IEnumerable<SelectListItem>)ViewBag.TRANGTHAI_TD, "--Chọn--", new { @class = "form-control", required = "required" })
+                                        @Html.DropDownList("TRANGTHAI_THUCHIEN", (IEnumerable<SelectListItem>)ViewBag.TRANGTHAI_TD, "--Chọn--", new { @class = "form-control", required = "required", @id = "TrangThai" })
                                     </div>
                                 </div>
                             </div>
@@ -185,3 +185,18 @@
         </div>
     </div>
 </div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#TrangThai').change(function () {
+            var id = $('#TrangThai').val();
+            if (id == "1") {
+                $('#upload').attr('required', true);
+            }
+            else {
+                $('#upload').attr('required', false);
+            }
+        })
+    })
+</script>

@@ -1006,12 +1006,6 @@ namespace QLHD.Controllers
             {
                 try
                 {
-
-                    if (td.TRANGTHAI_THUCHIEN == 1 && td.FILE_ID == null)
-                    {
-                        ModelState.AddModelError("", "Cần bổ sung thêm file");
-                        return editTDDA(td.DUAN_ID, td.TIENDO_DA_ID);
-                    }
                     // Tăng STT lên 1 nếu bị trùng
                     if (db.QLDA_CNTT_TIENDO.Where(x => x.STT == td.STT).FirstOrDefault() != null)
                     {
