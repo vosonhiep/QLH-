@@ -15,21 +15,21 @@
         <div class="clearfix"></div>
         <div class="row">
             <div class="col-md-12">
-                <div class="nav navbar-left">
-                    @using (Html.BeginForm("KetQuaTimKiemDA", "HDCNTT", FormMethod.Post))
-                    {
-                        @Html.Action("partialSearchDA", "HDCNTT")
-                    }
-                </div>
-                <div class="nav navbar-right">
-                    <a href="@Url.Action("CreateDuAn", "HDCNTT")" class="btn btn-info btn-lg" style="float:right">
-                        Thêm dự án
-                        <span class="glyphicon glyphicon-plus" />
-                    </a>
-                </div>
+                @using (Html.BeginForm("KetQuaTimKiemDA", "HDCNTT", FormMethod.Post))
+                {
+                    @Html.Action("partialSearchDA", "HDCNTT")
+                }
+
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Danh sách dự án CNTT</h2>
+
+                        <div class="nav navbar-right">
+                            <a href="@Url.Action("CreateDuAn", "HDCNTT")" class="btn btn-info btn-lg" style="float:right">
+                                Thêm dự án
+                                <span class="glyphicon glyphicon-plus" />
+                            </a>
+                        </div>
                         <div class="clearfix"></div>
                     </div>
 
