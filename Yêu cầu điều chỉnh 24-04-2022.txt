@@ -1,14 +1,14 @@
 Yêu cầu điều chỉnh QLDA
-1. Hoàn thành tiến độ dự án phải có file
+1. Hoàn thành tiến độ dự án phải có file (xong)
 2. Bổ sung thêm các bước (lấy từ chị Linh - anh Triều)
-3. Thêm trạng thái sắp hết hạn
-4. Xuất báo cáo nhanh (trạng thái hoàn thành, chưa hoàn thành, lý do...)
+3. Thêm trạng thái sắp hết hạn (đã thêm trên giao diện danh sách DA)
+4. Xuất báo cáo nhanh (trạng thái hoàn thành, chưa hoàn thành, lý do...) (anh Triều)
 5. Bổ sung thêm tên dự án ở giữa màn và khi scroll ko bị mất
 6. Người thực hiện ở đâu thì mới có quyền chỉnh sửa ở đó
 7. Khi tạo quy trình, mặc định chưa thực hiện
 8. Bổ sung thêm phần danh mục trạng thái (cho phép thêm sửa xóa)
-9. Bổ sung thêm STT trên phần thêm tiến độ dự án
-10. Khi trung STT các thành phần ngoài sau phải tự động tăng lên 1
+9. Bổ sung thêm STT trên phần thêm tiến độ dự án (xong)
+10. Khi trùng STT các thành phần ngoài sau phải tự động tăng lên 1 (xong)
 11. Thêm tài liệu tham khảo
 12. Các combobox chuyển thành select2
 13. Trạng thái thực hiện thể hiện thêm màu
@@ -17,9 +17,9 @@ Yêu cầu điều chỉnh QLDA
 16. Thêm doanh thu dự kiến trên ds DA
 17. Chuyển phần thêm DA thành poup
 18. Thêm menu Hỗ trợ - chứa các file
-19. Sửa tieu đề QLHD -> QLDA
+19. Sửa tiêu đề QLHD -> QLDA
 20. Căn chỉnh lại giao diện trang thống kê doanh thu CNTT
 21. Thêm phần thống kê của dự án
 22. Thêm nút xuất tồn động, báo giá (anh Vinh)
-23. Thêm phần lọc theo thời gian (mặc định từ ngày đầu năm), trạng thái hợp đồng, dự án (anh Hồ)
+23. Thêm phần lọc theo thời gian (mặc định từ ngày đầu năm), trạng thái hợp đồng, dự án (anh Hồ)  (xong)
 24. Thêm phần trạng thái dự án (đã thực hiện, đang thực hiện, ...)

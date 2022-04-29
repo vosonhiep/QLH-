@@ -76,11 +76,11 @@
                                     <div class="col-md-8">
                                         @if (Model.NGAY_GIAO.HasValue)
                                         {
-                                            <input type="datetime" class="form-control" name="NGAY_GIAO" value="@Model.NGAY_GIAO.Value.ToString("dd/MM/yyyy")" />
+                                            <input type="datetime" id="NgayTH_@Model.TIENDO_DA_ID" class="form-control" name="NGAY_GIAO" value="@Model.NGAY_GIAO.Value.ToString("dd/MM/yyyy")" />
                                         }
                                         else
                                         {
-                                            <input type="date" class="form-control" name="NGAY_GIAO" />
+                                            <input type="date" id="NgayTH_@Model.TIENDO_DA_ID" class="form-control" name="NGAY_GIAO" />
                                         }
 
                                     </div>
@@ -94,7 +94,7 @@
                                     <div class="col-md-8">
                                         @if (Model.NGAY_HETHAN.HasValue)
                                         {
-                                            <input type="datetime" class="form-control" name="NGAY_HETHAN" value="@Model.NGAY_HETHAN.Value.ToString("dd/MM/yyyy")" required="required" />
+                                            <input type="datetime" class="form-control" id="NGAY_HETHAN" name="NGAY_HETHAN" value="@Model.NGAY_HETHAN.Value.ToString("dd/MM/yyyy")" required="required" />
                                         }
                                         else
                                         {
@@ -121,7 +121,7 @@
                                         <label style="float: right">Trạng thái:</label>
                                     </div>
                                     <div class="col-md-8">
-                                        @Html.DropDownList("TRANGTHAI_THUCHIEN", (IEnumerable<SelectListItem>)ViewBag.TRANGTHAI_TD, "--Chọn--", new { @class = "form-control", required = "required", @id = "TrangThai" })
+                                        @Html.DropDownList("TRANGTHAI_THUCHIEN", (IEnumerable<SelectListItem>)ViewBag.TRANGTHAI_TD, "--Chọn--", new { @class = "form-control", required = "required", @id = "TrangThai_" + Model.TIENDO_DA_ID })
                                     </div>
                                 </div>
                             </div>
@@ -135,15 +135,15 @@
                                     <div class="col-md-10">
                                         @if (Model.FILE_ID != null)
                                         {
-                                            <input type="file" class="form-control" id="upload" name="upload" value="@Model.TBL_FILE.file_name" />
+                                            <input type="file" class="form-control" id="upload_@Model.TIENDO_DA_ID" name="upload" value="@Model.TBL_FILE.file_name" />
                                             <a href="@Url.Action("ExportData_TienTrinh", "HDCNTT",new{@TTid = Model.TIENDO_DA_ID} )"
-                                               style="color:blue">
+                                               style="color:blue" id="file">
                                                 @Model.TBL_FILE.file_name
                                             </a>
                                         }
                                         else
                                         {
-                                            <input type="file" class="form-control" id="upload" name="upload" />
+                                            <input type="file" class="form-control" id="upload_@Model.TIENDO_DA_ID" name="upload" />
                                         }
                                     </div>
                                 </div>
@@ -190,14 +190,16 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('.select2').select2();
-        $('#TrangThai').change(function () {
-            var id = $('#TrangThai').val();
-            if (id == "1") {
-                $('#upload').attr('required', true);
+        $("#TrangThai_@Model.TIENDO_DA_ID").change(function () {
+            var id = $('#TrangThai_@Model.TIENDO_DA_ID').val();
+            if ((id == "1") && ('@Model.FILE_ID' == '')) {
+                $('#upload_@Model.TIENDO_DA_ID').attr('required', true);
+                $('#NgayTH_@Model.TIENDO_DA_ID').attr('required', true);
             }
             else {
-                $('#upload').attr('required', false);
+                $('#upload_@Model.TIENDO_DA_ID').attr('required', false);
+                $('#NgayTH_@Model.TIENDO_DA_ID').attr('required', false);
             }
-        })
+        });
     })
 </script>

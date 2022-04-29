@@ -21,7 +21,7 @@
                         @Html.Action("partialSearchDA", "HDCNTT")
                     }
                 </div>
-                
+
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Danh sách dự án CNTT</h2>
@@ -70,6 +70,7 @@
                                             </th>
                                             <th>Sửa</th>
                                             <th>Xóa</th>
+                                            <th>Ngày hết hạn TT</th>
                                         </tr>
                                         @{int row = (@Model.PageNumber * 10) - 10;}
                                         @foreach (var item in Model)
@@ -179,6 +180,27 @@
                                                     @Html.Action("PartiaDeleteDA", new { @maDA = item.DUAN_ID })
                                                 </td>
 
+                                                <td style="text-align:center">
+                                                    <a href="@Url.Action("ShowQuyTrinhDA", new { @maDA = item.DUAN_ID })">
+                                                        @if (item.QLDA_CNTT_TIENDO.Count != 0)
+                                                        {
+                                                            //Lấy obj chưa xuất hóa đơn mới nhất
+                                                            var TH_TT_VALUE = item.QLDA_CNTT_TIENDO.FirstOrDefault(x => x.TRANGTHAI_THUCHIEN >= 2).NGAY_HETHAN.Value;
+                                                            var TH_TT = TH_TT_VALUE.ToString("dd/MM/yyyy");
+
+                                                            if (TH_TT_VALUE.Subtract(@DateTime.Today).Days < 7)
+                                                            {
+                                                                <p style="color:red;">@TH_TT (@TH_TT_VALUE.Subtract(@DateTime.Today).Days ngày nữa)</p>
+                                                                <img src='~/Images/warning_icon.png' id='warning_icon' />
+                                                            }
+                                                            else
+                                                            {
+                                                                <p>@TH_TT</p>
+                                                            }
+                                                        }
+
+                                                    </a>
+                                                </td>
                                             </tr>
                                         }
                                     </table>

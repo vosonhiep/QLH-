@@ -82,7 +82,7 @@
                                             @Html.ActionLink(" " + item.TBL_FILE.file_name, "ExportData_TienTrinh", "HDCNTT", new { @TTid = item.TIENDO_DA_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 13px; margin-bottom: 10px; text-decoration: underline; color: #0c67d9" })
                                         }
                                         <p>Ghi chú hiện trạng: <a style="color:blue"> @item.GHICHU_HIENTRANG</a></p>
-                                        <p>Ghi chú tồn động:<a style="color:darkred">@item.GHICHU_TONDONG</a></p>
+                                        <p>Ghi chú tồn động: <a style="color:darkred">@item.GHICHU_TONDONG</a></p>
                                         @Html.Action("editTDDA", "HDCNTT", new { @idDA = ViewBag.idDA, @idTD = item.TIENDO_DA_ID })
                                         @Html.Action("deleteTDDA", "HDCNTT", new { @idDA = ViewBag.idDA, @idTD = item.TIENDO_DA_ID })
                                     </div>

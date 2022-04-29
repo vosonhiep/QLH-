@@ -1144,6 +1144,16 @@ namespace QLHD.Controllers
             {
                 ViewBag.TEN_DUAN = dsTienTrinh.Select(x => x.QLDA_CNTT.TEN_DA).FirstOrDefault();
             }
+
+            // Cập nhật trễ hạn
+            foreach (var item in dsTienTrinh)
+            {
+                if(item.TRANGTHAI_THUCHIEN == 2 && item.NGAY_HETHAN < DateTime.Now)
+                {
+                    item.TRANGTHAI_THUCHIEN = 3; 
+                }
+            }
+            db.SaveChanges();  
             return View(dsTienTrinh);
         }
 
