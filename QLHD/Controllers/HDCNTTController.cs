@@ -866,7 +866,7 @@ namespace QLHD.Controllers
         {
             ViewBag.LOAIDA = new SelectList(listLoaiDA, "LOAI_DUAN_ID", "TEN_LOAI_DUAN");
             ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
-
+            ViewBag.DSTD = db.DM_KHOITAO_TIENDO_DA.OrderBy(x => x.TIENDO_DA_ID).ToList();
             return View();
         }
 

@@ -3,7 +3,10 @@
     ViewBag.Title = "CreateDuAn";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{
+    List<QLHD.Models.DM_KHOITAO_TIENDO_DA> listTD = ViewBag.DSTD;
 
+}
 <div class="">
     <div class="page-title">
         <div class="title_left">
@@ -85,5 +88,85 @@
             </div>
         </div>
     }
+    @* Danh sách tiến độ Dự án *@
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh sách tiến độ dự án</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                        <div id="myTabContent" class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="hopdong-tab">
+                                <table class=" col-md-12 table table-bordered table-striped table-hover">
+                                    <tr class="noidung">
+                                        <th class="col-md-1" style="text-align:center">
+                                            STT
+                                        </th>
+                                        <th class="col-md-1" style="text-align:center">
+                                            Tên tiến độ
+                                        </th>
+                                        <th class="col-md-1" style="text-align:center">
+                                            Đơn vị chủ trì
+                                        </th>
+                                        <th class="col-md-1" style="text-align:center">
+                                            Người thực hiện
+                                        </th>
+                                        <th class="col-md-2" style="text-align:center">
+                                            Ngày giao
+                                        </th>
+                                        <th class="col-md-1" style="text-align:center">
+                                            Ngày hết hạn
+                                        </th>
+
+                                    </tr>
+                                    @foreach (var item in listTD)
+                                    {
+                                        <tr class="noidunghd">
+                                            <td class="col-md-1" style="text-align:center">
+                                                @item.STT
+                                            </td>
+                                            <td class="col-md-1" style="text-align:center">
+                                                @item.TEN_TIENDO_DA
+                                            </td>
+                                            <td class="col-md-1" style="text-align:center">
+                                                @item.DONVI_CHUTRI
+                                            </td>
+                                            <td class="col-md-1" style="text-align:center">
+                                                @item.NGUOI_THUCHIEN
+                                            </td>
+                                            <td class="col-md-1" style="text-align:center">
+                                                @if (item.NGAY_GIAO.HasValue)
+                                                {
+                                                    @item.NGAY_GIAO.Value.ToString("dd/MM/yyyy")
+                                                }
+                                                else
+                                                {
+                                                    @item.NGAY_GIAO
+                                                }
+                                            </td>
+                                            <td class="col-md-1" style="text-align:center">
+                                                class="col-md-1" style="text-align:center">
+                                                @if (item.NGAY_HETHAN.HasValue)
+                                                {
+                                                    @item.NGAY_HETHAN.Value.ToString("dd/MM/yyyy")
+                                                }
+                                                else
+                                                {
+                                                    @item.NGAY_HETHAN
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
