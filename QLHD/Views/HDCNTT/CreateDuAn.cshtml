@@ -115,12 +115,12 @@
                                             Người thực hiện
                                         </th>
                                         <th class="col-md-2" style="text-align:center">
-                                            Ngày giao
+                                            Ngày bắt đầu
                                         </th>
                                         <th class="col-md-1" style="text-align:center">
                                             Ngày hết hạn
                                         </th>
-
+                                        @*<th class="col-md-2" style="text-align:center">Sửa|Xóa</th>*@
                                     </tr>
                                     @foreach (var item in listTD)
                                     {
@@ -132,10 +132,10 @@
                                                 @item.TEN_TIENDO_DA
                                             </td>
                                             <td class="col-md-1" style="text-align:center">
-                                                @item.DONVI_CHUTRI
+                                                @item.DONVI.TEN_DV
                                             </td>
                                             <td class="col-md-1" style="text-align:center">
-                                                @item.NGUOI_THUCHIEN
+                                                @item.THANHVIEN.TEN_THANHVIEN
                                             </td>
                                             <td class="col-md-1" style="text-align:center">
                                                 @if (item.NGAY_GIAO.HasValue)
@@ -148,7 +148,6 @@
                                                 }
                                             </td>
                                             <td class="col-md-1" style="text-align:center">
-                                                class="col-md-1" style="text-align:center">
                                                 @if (item.NGAY_HETHAN.HasValue)
                                                 {
                                                     @item.NGAY_HETHAN.Value.ToString("dd/MM/yyyy")
@@ -158,8 +157,14 @@
                                                     @item.NGAY_HETHAN
                                                 }
                                             </td>
+                                            @*<td class="col-md-2" style="text-align:center">
+                                                @Html.Action("EditTienDoDA", "HDCNTT", new { @idDA = ViewBag.idDA, @idTD = item.TIENDO_DA_ID })
+                                                |
+                                                @Html.Action("DeleteTienDoDA", "HDCNTT", new { @idDA = ViewBag.idDA, @idTD = item.TIENDO_DA_ID })
+                                            </td>*@
                                         </tr>
                                     }
+
                                 </table>
                             </div>
                         </div>

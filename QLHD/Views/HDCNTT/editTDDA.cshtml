@@ -192,7 +192,7 @@
         $('.select2').select2();
         $("#TrangThai_@Model.TIENDO_DA_ID").change(function () {
             var id = $('#TrangThai_@Model.TIENDO_DA_ID').val();
-            if ((id == "1") && ('@Model.FILE_ID' == '')) {
+            if ((id == "3") && ('@Model.FILE_ID' == '')) {
                 $('#upload_@Model.TIENDO_DA_ID').attr('required', true);
                 $('#NgayTH_@Model.TIENDO_DA_ID').attr('required', true);
             }

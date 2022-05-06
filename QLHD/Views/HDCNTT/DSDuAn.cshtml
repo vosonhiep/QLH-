@@ -135,14 +135,19 @@
                                                 <td>
                                                     <a>
                                                         @{
-                                                            var td = item.QLDA_CNTT_TIENDO.OrderByDescending(k => k.STT).FirstOrDefault(m => m.TRANGTHAI_THUCHIEN == 1);
+                                                            var td = item.QLDA_CNTT_TIENDO.OrderByDescending(k => k.STT).FirstOrDefault(m => m.TRANGTHAI_THUCHIEN == 3);
                                                             if (td != null && item.QLDA_CNTT_TIENDO.Count != 0)
                                                             {
                                                                 @*int maxID = item.QLDA_CNTT_TIENDO.Where(x => x.TRANGTHAI_THUCHIEN == 1).Max(td => td.TIENDO_DA_ID);
                                                                     var TenTienDo = item.QLDA_CNTT_TIENDO.SingleOrDefault(n => n.TIENDO_DA_ID == (maxID + 1)).TEN_TIENDO_DA;
                                                                     <p>@TenTienDo</p>*@
                                                                 // 1 - Hoàn thành   2- Đang thực hiện    3 - Trễ tiến độ
-                                                                var TienDo = item.QLDA_CNTT_TIENDO.OrderBy(l => l.STT).First(n => n.TRANGTHAI_THUCHIEN == 2 && n.STT > (td.STT));
+                                                                @*  1. chưa thực hiện
+                                                                    2. đang thực hiện
+                                                                    3. Hoàn thành
+                                                                    4. trễ hạn
+                                                                *@
+                                                                var TienDo = item.QLDA_CNTT_TIENDO.OrderBy(l => l.STT).First(n => n.TRANGTHAI_THUCHIEN != 3 && n.STT > (td.STT));
 
                                                                 // NGAY_GIAO là ngày thực hiện thực tế
                                                                 if (TienDo.NGAY_GIAO > TienDo.NGAY_HETHAN)
@@ -160,11 +165,11 @@
                                                 <td>
                                                     <a>
                                                         @{
-                                                            var td1 = item.QLDA_CNTT_TIENDO.OrderByDescending(k => k.STT).FirstOrDefault(m => m.TRANGTHAI_THUCHIEN == 1);
+                                                            var td1 = item.QLDA_CNTT_TIENDO.OrderByDescending(k => k.STT).FirstOrDefault(m => m.TRANGTHAI_THUCHIEN == 3);
                                                             if (td1 != null && item.QLDA_CNTT_TIENDO.Count != 0)
                                                             {
                                                                 // 1 - Hoàn thành   2- Đang thực hiện    3 - Trễ tiến độ
-                                                                var TienDo1 = item.QLDA_CNTT_TIENDO.OrderBy(l => l.STT).First(n => n.TRANGTHAI_THUCHIEN == 2 && n.STT > (td1.STT));
+                                                                var TienDo1 = item.QLDA_CNTT_TIENDO.OrderBy(l => l.STT).First(n => n.TRANGTHAI_THUCHIEN != 3 && n.STT > (td1.STT));
 
                                                                 // NGAY_GIAO là ngày thực hiện thực tế
                                                                 <p>@TienDo1.GHICHU_TONDONG</p>
@@ -185,7 +190,7 @@
                                                         @if (item.QLDA_CNTT_TIENDO.Count != 0)
                                                         {
                                                             //Lấy obj chưa xuất hóa đơn mới nhất
-                                                            var TH_TT_VALUE = item.QLDA_CNTT_TIENDO.FirstOrDefault(x => x.TRANGTHAI_THUCHIEN >= 2).NGAY_HETHAN.Value;
+                                                            var TH_TT_VALUE = item.QLDA_CNTT_TIENDO.FirstOrDefault(x => x.TRANGTHAI_THUCHIEN != 3).NGAY_HETHAN.Value;
                                                             var TH_TT = TH_TT_VALUE.ToString("dd/MM/yyyy");
 
                                                             if (TH_TT_VALUE.Subtract(@DateTime.Today).Days < 7)

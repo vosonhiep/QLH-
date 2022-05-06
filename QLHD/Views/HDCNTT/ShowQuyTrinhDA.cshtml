@@ -66,15 +66,19 @@
 
                                         </h4>
                                         <p>@item.THANHVIEN.TEN_THANHVIEN</p>
-                                        @if (item.TRANGTHAI_THUCHIEN == 1)
+                                        @if (item.TRANGTHAI_THUCHIEN == 3)
                                         {
                                             <p style="color: green">Tiến độ: Hoàn thành</p> }
                                         else if (item.TRANGTHAI_THUCHIEN == 2)
                                         {
                                             <p style="color:orange">Tiến độ: Đang thực hiện</p> }
-                                        else if (item.TRANGTHAI_THUCHIEN == 3)
+                                        else if (item.TRANGTHAI_THUCHIEN == 4)
                                         {
                                             <p style="color: red">Tiến độ: Trễ hạn</p>
+                                        }
+                                        else
+                                        {
+                                            <p style="color: red">Tiến độ: Chưa thực hiện</p>
                                         }
 
                                         @if (item.FILE_ID != null)
@@ -90,12 +94,23 @@
                                 <div class="col-md-2 timeline-image text-md-center">
                                     <div class="col-md-12">
                                         @*1 - hoàn thành, 2 - đang thực hiện, 3 - trễ tiến độ*@
-                                        @*Ngày giao là Ngày thực hiện thực tế*@
-                                        @if (item.TRANGTHAI_THUCHIEN == 1)
+                                        @*  1. chưa thực hiện
+                                            2. đang thực hiện
+                                            3. Hoàn thành
+                                            4. trễ hạn
+                                        *@
+                                        @*Ngày giao là Ngày thực hiện thực tế
+
+                                        *@
+                                        @if ((item.NGAY_HETHAN.Value.Subtract(@DateTime.Today).Days < 7) && (item.TRANGTHAI_THUCHIEN == 2 || item.TRANGTHAI_THUCHIEN == 1))
+                                        {
+                                            <img src='~/Images/warning_icon.png' id='warning_icon' class="img_done" />
+                                        }
+                                        else if (item.TRANGTHAI_THUCHIEN == 3)
                                         {
                                             <img src='~/Images/checked.png' id='warning_icon' class="img_done" />
                                         }
-                                        else if (item.TRANGTHAI_THUCHIEN == 2 && ((item.NGAY_GIAO > item.NGAY_HETHAN) || (item.NGAY_GIAO == null && @DateTime.Today > item.NGAY_HETHAN)))
+                                        else if (item.TRANGTHAI_THUCHIEN == 4 && ((item.NGAY_GIAO > item.NGAY_HETHAN) || (item.NGAY_GIAO == null && @DateTime.Today > item.NGAY_HETHAN)))
                                         {
                                             <img src='~/Images/delay.png' id='warning_icon' class="img_done" />
                                         }
@@ -103,6 +118,10 @@
                                 </div>
                                 <div class="col-md-4 timeline-date">
                                     <div class="time" style="margin-left: -15%;">
+                                        @*@if (item.NGAY_GIAO.HasValue)
+                                            {
+                                                <p>Ngày thực hiện thực tế: @item.NGAY_GIAO.Value.ToString("dd/MM/yyyy")</p>
+                                            }*@
                                         @if (item.NGAY_GIAO.HasValue)
                                         {
                                             <p>Ngày thực hiện thực tế: @item.NGAY_GIAO.Value.ToString("dd/MM/yyyy")</p>
@@ -120,9 +139,13 @@
                             {
                                 <div class="col-md-5 timeline-date-revert">
                                     <div class="time" style="margin-right: -12%;">
+                                        @*@if (item.NGAY_GIAO.HasValue)
+                                            {
+                                                <p>Ngày thực hiện thực tế:: @item.NGAY_GIAO.Value.ToString("dd/MM/yyyy")</p>
+                                            }*@
                                         @if (item.NGAY_GIAO.HasValue)
                                         {
-                                            <p>Ngày thực hiện thực tế:: @item.NGAY_GIAO.Value.ToString("dd/MM/yyyy")</p>
+                                            <p>Ngày thực hiện thực tế: @item.NGAY_GIAO.Value.ToString("dd/MM/yyyy")</p>
                                         }
                                     </div>
                                     <div class="time" style="margin-right: -12%;">
@@ -134,12 +157,20 @@
                                 </div>
                                 <div class="col-md-2 timeline-image text-md-center">
                                     @*1 - hoàn thành, 2 - đang thực hiện, 3 - trễ tiến độ*@
-                                    @*Ngày giao là Ngày thực hiện thực tế*@
-                                    @if (item.TRANGTHAI_THUCHIEN == 1)
+                                    @*  1. chưa thực hiện
+                                        2. đang thực hiện
+                                        3. Hoàn thành
+                                        4. trễ hạn
+                                    *@
+                                    @if ((item.NGAY_HETHAN.Value.Subtract(@DateTime.Today).Days < 7) && (item.TRANGTHAI_THUCHIEN == 2 || item.TRANGTHAI_THUCHIEN == 1))
+                                    {
+                                        <img src='~/Images/warning_icon.png' id='warning_icon' class="img_done" />
+                                    }
+                                    else if (item.TRANGTHAI_THUCHIEN == 3)
                                     {
                                         <img src='~/Images/checked.png' id='warning_icon' class="img_done" />
                                     }
-                                    else if (item.TRANGTHAI_THUCHIEN == 2 && ((item.NGAY_GIAO > item.NGAY_HETHAN) || (item.NGAY_GIAO == null && @DateTime.Today > item.NGAY_HETHAN)))
+                                    else if (item.TRANGTHAI_THUCHIEN == 4 && ((item.NGAY_GIAO > item.NGAY_HETHAN) || (item.NGAY_GIAO == null && @DateTime.Today > item.NGAY_HETHAN)))
                                     {
                                         <img src='~/Images/delay.png' id='warning_icon' class="img_done" />
                                     }
@@ -150,18 +181,21 @@
                                         <i data-toggle="modal" data-target="#@item.TIENDO_DA_ID.ToString()delete" class="fa fa-remove fa-lg" style="color:red; @(item.VTT == true ? "right: 25px" : "left:25px")"></i>
                                         <h4 class="text-light">@item.STT @item.TEN_TIENDO_DA</h4>
                                         <p>Người thực hiện: @item.THANHVIEN.TEN_THANHVIEN</p>
-                                        @if (item.TRANGTHAI_THUCHIEN == 1)
+                                        @if (item.TRANGTHAI_THUCHIEN == 3)
                                         {
                                             <p style="color: green">Tiến độ: Hoàn thành</p> }
                                         else if (item.TRANGTHAI_THUCHIEN == 2)
                                         {
                                             <p style="color:orange">Tiến độ: Đang thực hiện</p> }
-                                        else if (item.TRANGTHAI_THUCHIEN == 3)
+                                        else if (item.TRANGTHAI_THUCHIEN == 4)
                                         {
-                                            <p style="color: red">Tiến độ: Trễ NGAY_HETHAN</p> }
+                                            <p style="color: red">Tiến độ: Trễ hạn</p>
+                                        }
                                         else
                                         {
-                                            <p style="color: green; font-weight:bold">Tiến độ: Trễ tiến độ</p>}
+                                            <p style="color: red">Tiến độ: Chưa thực hiện</p>
+                                        }
+
                                         @if (item.FILE_ID != null)
                                         {
                                             @Html.ActionLink(" " + item.TBL_FILE.file_name, "ExportData_TienTrinh", "HDCNTT", new { @TTid = item.TIENDO_DA_ID }, new { @class = "glyphicon glyphicon-download-alt", @style = "font-size: 13px; margin-bottom: 10px; text-decoration: underline; color: #0c67d9" })
@@ -184,6 +218,6 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('.select2').select2();
-            
+
         })
     </script>

@@ -532,7 +532,6 @@ namespace QLHD.Controllers
         {
             DT_CNTT_TIENDO_TT td = db.DT_CNTT_TIENDO_TT.Where(x => x.HOPDONG_DT_CNTT_ID == idHDCNTT && x.TIENDO_TT_ID == idTD).FirstOrDefault();
 
-
             string fileContent = string.Empty;
             string fileContentType = string.Empty;
             if (upload != null && upload.ContentLength > 0)
@@ -716,9 +715,10 @@ namespace QLHD.Controllers
 
         public static List<TRANGTHAI_TIENDO_DA> listTrangThai = new List<TRANGTHAI_TIENDO_DA>()
             {
-                new TRANGTHAI_TIENDO_DA(1, "Hoàn thành"),
+                new TRANGTHAI_TIENDO_DA(1, "Chưa thực hiện"),
                 new TRANGTHAI_TIENDO_DA(2, "Đang thực hiện"),
-                new TRANGTHAI_TIENDO_DA(3, "Trễ hạn")
+                new TRANGTHAI_TIENDO_DA(3, "Hoàn thành"),
+                new TRANGTHAI_TIENDO_DA(4, "Trễ hạn")
             };
 
         public static List<LOAI_DUAN> listLoaiDA = new List<LOAI_DUAN>()
@@ -733,7 +733,8 @@ namespace QLHD.Controllers
             {
                 new TRANGTHAI_DUAN(1, "Chưa thực hiện"),
                 new TRANGTHAI_DUAN(2, "Đang thực hiện"),
-                new TRANGTHAI_DUAN(3, "Hoàn thành")
+                new TRANGTHAI_DUAN(3, "Hoàn thành"),
+                new TRANGTHAI_DUAN(4, "Trễ hạn")
             };
 
         [HttpGet]
@@ -861,13 +862,39 @@ namespace QLHD.Controllers
         }
 
 
+        static List<DM_KHOITAO_TIENDO_DA> lst = null;
         [HttpGet]
         public ActionResult CreateDuAn(int? page)
         {
             ViewBag.LOAIDA = new SelectList(listLoaiDA, "LOAI_DUAN_ID", "TEN_LOAI_DUAN");
             ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
-            ViewBag.DSTD = db.DM_KHOITAO_TIENDO_DA.OrderBy(x => x.TIENDO_DA_ID).ToList();
+            lst = db.DM_KHOITAO_TIENDO_DA.OrderBy(x => x.TIENDO_DA_ID).ToList();
+            var date = DateTime.Now;
+            foreach (var item in lst)
+            {
+                item.NGAY_GIAO = date;
+                item.NGAY_HETHAN = date.AddDays(7);
+                date = item.NGAY_HETHAN.Value.AddDays(1);
+            }
+            ViewBag.DSTD = lst;
             return View();
+        }
+
+        public QLDA_CNTT_TIENDO ConvertToTDDA(DM_KHOITAO_TIENDO_DA item, int idDA)
+        {
+            QLDA_CNTT_TIENDO td = new QLDA_CNTT_TIENDO();
+            td.DUAN_ID = idDA;
+            td.TEN_TIENDO_DA = item.TEN_TIENDO_DA;
+            td.DONVI_CHUTRI = item.DONVI_CHUTRI;
+            td.NGUOI_THUCHIEN = item.NGUOI_THUCHIEN;
+            td.TRANGTHAI_THUCHIEN = item.TRANGTHAI_THUCHIEN;
+            td.NGAY_HETHAN = item.NGAY_HETHAN;
+            td.GHICHU_HIENTRANG = item.GHICHU_HIENTRANG;
+            td.GHICHU_TONDONG = item.GHICHU_TONDONG;
+            td.STT = item.STT;
+            td.VTT = item.VTT;
+
+            return td;
         }
 
         [HttpPost]
@@ -875,11 +902,18 @@ namespace QLHD.Controllers
         {
             if (ModelState.IsValid)
             {
+                da.TRANGTHAI_DA = 2;        // đang thực hiện
                 db.QLDA_CNTT.Add(da);
                 db.SaveChanges();
 
+                // Thêm tiến độ
+                foreach (var item in lst)
+                {
+                    db.QLDA_CNTT_TIENDO.Add(ConvertToTDDA(item, da.DUAN_ID));
+                }
+                db.SaveChanges();
                 //Gọi proceduce generate ds tiến độ DA
-                db.FUNC_GEN_TIENDO_DA(da.DUAN_ID);
+                //db.FUNC_GEN_TIENDO_DA(da.DUAN_ID);
                 return RedirectToAction("DSDuAn", "HDCNTT");
             }
             else
@@ -1148,9 +1182,9 @@ namespace QLHD.Controllers
             // Cập nhật trễ hạn
             foreach (var item in dsTienTrinh)
             {
-                if(item.TRANGTHAI_THUCHIEN == 2 && item.NGAY_HETHAN < DateTime.Now)
+                if(item.TRANGTHAI_THUCHIEN != 3 && item.NGAY_HETHAN < DateTime.Now)
                 {
-                    item.TRANGTHAI_THUCHIEN = 3; 
+                    item.TRANGTHAI_THUCHIEN = 4; 
                 }
             }
             db.SaveChanges();  
