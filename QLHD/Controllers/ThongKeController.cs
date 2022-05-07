@@ -698,6 +698,37 @@ namespace QLHD.Controllers
             return RedirectToAction("ThongKe", "ketquathongke_HDCNTT", new { @HD = hopdong });
         }
 
-       
+        public ActionResult ExportTonDongDA(int idDA)
+        {
+            GridView gv = new GridView();
+            THANHVIEN user = db.THANHVIENs.SingleOrDefault(n => n.TENTRUYCAP == User.Identity.Name);
+
+            var tdda = db.QLDA_CNTT_TIENDO.Where(x => x.DUAN_ID == idDA).Select(m => new
+            {
+                TEN_DA = m.QLDA_CNTT.TEN_DA,
+                STT = m.STT,
+                TEN_TIENDO_DA = m.TEN_TIENDO_DA,
+                DONVI_CHUTRI = m.DONVI.TEN_DV,
+                NGUOI_THUCHIEN = m.THANHVIEN.TEN_THANHVIEN,
+                TON_DONG = m.GHICHU_TONDONG,
+                NGAY_HETHAN = m.NGAY_HETHAN
+            });
+
+            gv.DataSource = tdda.ToList();
+            gv.DataBind();
+            Response.ClearContent();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment; filename=dshd_" + System.DateTime.Now + ".xls");
+            Response.Write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />");
+            Response.ContentType = "application/ms-excel";
+            Response.Charset = "";
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter htw = new HtmlTextWriter(sw);
+            gv.RenderControl(htw);
+            Response.Output.Write(sw.ToString());
+            Response.Flush();
+            Response.End();
+            return RedirectToAction("HDCNTT", "ShowQuyTrinhDA");
+        }
     }
 }

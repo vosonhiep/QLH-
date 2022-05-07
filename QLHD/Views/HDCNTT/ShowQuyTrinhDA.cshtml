@@ -35,7 +35,12 @@
         <div class="clear-fix"></div>
         <div class="row">
             <div class="col-md-12">
-                <div class="col-md-10 text-center">@ViewBag.TEN_DUAN</div>
+                <div class="nav navbar-left">
+                    <a href="@Url.Action("ExportTonDongDA", "ThongKe", new { @idDA = ViewBag.idDA})" class="btn btn-primary btn-lg">
+                        Xuất tồn động
+                    </a>
+                </div>
+                @*<div class="col-md-10 text-center">@ViewBag.TEN_DUAN</div>*@
                 <div class="nav navbar-right">
                     <a href="@Url.Action("DSDuAn", "HDCNTT")" class="btn btn-default btn-lg">
                         Trờ về
