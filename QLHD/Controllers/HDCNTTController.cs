@@ -745,6 +745,28 @@ namespace QLHD.Controllers
                 return RedirectToAction("Login", "Account");
             }
             var duan = db.QLDA_CNTT.ToList().OrderByDescending(n => n.DUAN_ID);
+            
+            // Cập nhật tiến (trễ hạn) độ DA
+            foreach (var item in duan)
+            {
+                if(item.QLDA_CNTT_TIENDO.Count > 0)
+                {
+                    // Kiểm tra Số lượng tiến độ hoàn thành = Số lượng tiến độ dự án
+                    if(item.QLDA_CNTT_TIENDO.Count(x=>x.TRANGTHAI_THUCHIEN == 3) == item.QLDA_CNTT_TIENDO.Count)
+                    {
+                        item.TRANGTHAI_DA = 3;      // Dự án đã hoàn thành
+                    }
+                    else if (item.QLDA_CNTT_TIENDO.LastOrDefault().NGAY_HETHAN < DateTime.Now)      // tiến độ cuối cùng bị trễ => Dự án trễ hạn
+                    {
+                        item.TRANGTHAI_DA = 4;      // Dự án trễ hạn
+                    }
+                    else
+                    {
+                        item.TRANGTHAI_DA = 2;      // Dự án đang thực hiện
+                    }    
+                }
+            }
+            db.SaveChanges();
             ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
 
             int pageNumber = (page ?? 1);
@@ -776,64 +798,12 @@ namespace QLHD.Controllers
         [HttpPost]
         public ActionResult KetQuaTimKiemDA(FormCollection f, int? page)
         {
-            //String loaiTK = f["txtloaiTimKiem"].ToString();
-            //String tukhoa = f["txtSearch"].ToString();
-
-            //List<QLDA_CNTT> listKQTK = db.QLDA_CNTT.ToList();
-
-            //if (loaiTK == "1")
-            //{
-            //    listKQTK = db.QLDA_CNTT.Where(n => n.TEN_DA.Contains(tukhoa)).ToList();
-            //    ViewBag.tukhoa = tukhoa;
-            //}
-            //if (loaiTK == "2")
-            //{
-            //    listKQTK = db.QLDA_CNTT.Where(n => n.CHUDAUTU.Contains(tukhoa)).ToList();
-            //    ViewBag.tukhoa = tukhoa;
-            //}
-            //if (loaiTK == "3")
-            //{
-            //    int loaiDA = Int32.Parse(f["LOAI_DUAN_ID"].ToString());
-            //    listKQTK = db.QLDA_CNTT.Where(n => n.LOAI_DA == loaiDA).ToList();
-            //    ViewBag.tukhoa = tukhoa;
-            //}
-            //if (loaiTK == "4")
-            //{
-            //    int loaiHD = Int32.Parse(f["LOAI_HOPDONG_ID"].ToString());
-            //    listKQTK = db.QLDA_CNTT.Where(n => n.LOAI_HOPDONG_ID == loaiHD).ToList();
-            //    ViewBag.tukhoa = tukhoa;
-            //}
-            //if(loaiTK == "5")
-            //{
-            //    listKQTK = db.QLDA_CNTT.Where(n => (n.TEN_DA.Contains(tukhoa)) || (n.CHUDAUTU.Contains(tukhoa))).ToList();
-            //}
-
-            //int pageNumber = (page ?? 1);
-            //int pageSize = 9;
-            //if (listKQTK.Count == 0)
-            //{
-            //    ViewBag.ThongBao = "Không tìm thấy hợp đồng nào!!";
-            //    return View(listKQTK.OrderBy(n => n.DUAN_ID).ToPagedList(pageNumber, pageSize));
-            //}
-            //ViewBag.ThongBao = "Đã tìm thấy " + listKQTK.Count + " kết quả!";
-
-            //List<SelectListItem> items = new List<SelectListItem>();
-
-            //items.Add(new SelectListItem { Text = "--Chọn thông tin cần tìm--", Value = "0" });
-            //items.Add(new SelectListItem { Text = "Tên dự án", Value = "1", Selected = true });
-            //items.Add(new SelectListItem { Text = "Chủ đầu tư", Value = "2" });
-            //items.Add(new SelectListItem { Text = "Loại dự án", Value = "3" });
-            //items.Add(new SelectListItem { Text = "Loại hợp đồng", Value = "4" });
-            //items.Add(new SelectListItem { Text = "Khác", Value = "5" });
-            //ViewBag.loaiTK = items;
-
             string tenDA = f["TEN_DUAN"].ToString();
             string chuDT = f["CHU_DT"].ToString();
             int loaiDA = Int32.Parse(f["LOAI_DUAN_ID"].ToString());
             int TTDA = Int32.Parse(f["LOAITRANGTHAI_ID"].ToString());
             DateTime tungay = DateTime.Parse(f["TU_NGAY"].ToString());
             DateTime denngay = DateTime.Parse(f["DEN_NGAY"].ToString());
-
             List<QLDA_CNTT> listKQTK = db.QLDA_CNTT.ToList();
             if (tenDA != "")
             {
@@ -847,10 +817,10 @@ namespace QLHD.Controllers
             {
                 listKQTK = listKQTK.Where(n => n.LOAI_DA == loaiDA).ToList();
             }
-            //if (TTDA >= 0)
-            //{
-            //    listKQTK = listKQTK.Where(n => n.LOAI_DA == loaiDA).ToList();
-            //}
+            if (TTDA > 0)
+            {
+                listKQTK = listKQTK.Where(n => n.TRANGTHAI_DA == TTDA).ToList();
+            }
             listKQTK = listKQTK.Where(x => x.NGAY_START_DA >= tungay && x.NGAY_START_DA <= denngay).ToList();
 
             ViewBag.loaiHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
