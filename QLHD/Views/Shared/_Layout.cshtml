@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@ViewBag.Title - Quản lý hợp đồng</title>
+    <title>@ViewBag.Title - VNPT An Giang</title>
     <link href="~/Images/logo-vnpt.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="@Url.Content("~/Content/css/bootstrap.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/fonts/css/font-awesome.min.css")" rel="stylesheet" />
@@ -57,13 +57,6 @@
                     <!-- menu prile quick info -->
                     <div class="profile" onclick="location.href='@Url.Action("ThongTinCaNhan", "HeThong")';">
                         @Html.Action("avarta", "Partial")
-                        @*<div class="profile_pic">
-                                <img src="~/Images/user.png" alt="..." class="img-circle profile_img"/>
-                            </div>
-                            <div class="profile_info">
-                                <span>Xin chào,</span>
-                                <h2>@User.Identity.Name</h2>
-                            </div>*@
                     </div>
                     <!-- /menu prile quick info -->
 
@@ -86,15 +79,24 @@
             <div class="top_nav" style="margin-left:inherit">
                 <div class="nav_menu">
                     <nav class="" role="navigation">
-                        <div class="nav toggle">
+                        <div class="nav toggle" style="width: 230px">
                             <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                         </div>
                         <div class="nav navbar-nav navbar-center">
-                            <h3 class="tieude">
-                                Quản lý hợp đồng
-                            </h3>
+                            @if (@ViewBag.Title == "DSDuAn")
+                            {
+                                <h3 class="tieude" style="text-align:left;margin-left:2%">
+                                    Quản lý tiến độ dự án CNTT
+                                </h3>
+                            }
+                            else
+                            {
+                                <h3 class="tieude" style="text-align:left;margin-left:2%">
+                                    Quản lý Hợp đồng Doanh thu
+                                </h3>
+                            }
                         </div>
-                        <ul class="nav navbar-nav navbar-right" style="width: 230px">
+                        <ul class="nav navbar-nav navbar-right" style="width: 200px">
                             <li class="">
                                 @Html.Action("avarta2", "Partial")
 
@@ -112,9 +114,6 @@
                                     </li>
                                 </ul>
                             </li>
-
-
-
                         </ul>
                     </nav>
                 </div>
@@ -140,11 +139,7 @@
         </div>
 
     </div>
-
-
     <script src="~/Scripts/js/chartjs/chart.min.js"></script>
-
-
     <script src="~/Scripts/js/progressbar/bootstrap-progressbar.min.js"></script>
     <script src="~/Scripts/js/chartjs/chart.min.js"></script>
     <script src="~/Scripts/js/nicescroll/jquery.nicescroll.min.js"></script>
@@ -155,9 +150,9 @@
     <script src="~/Scripts/js/moris/raphael-min.js"></script>
     <script src="~/Scripts/js/moris/morris.js"></script>
     <script src="~/Scripts/js/bootstrap-multiselect.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="~/Scripts/numeric/jquery.number.min.js"></script>
     <script src="~/Scripts/DataTables/datatables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     @RenderSection("partial_script", required: false)
 </body>
 </html>

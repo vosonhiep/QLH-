@@ -131,7 +131,7 @@
                                         <label style="float: right">Đơn vị lập hợp đồng:</label>
                                     </div>
                                     <div class="col-md-5">
-                                        @Html.DropDownList("DONVI_ID", (IEnumerable<SelectListItem>)ViewBag.DONVI, "--Chọn--", new { @class = "form-control", required = "required" })
+                                        @Html.DropDownList("DONVI_ID", (IEnumerable<SelectListItem>)ViewBag.DONVI, "--Chọn--", new { @class = "form-control select2", required = "required" })
                                     </div>
                                 </div>
                             </div>
@@ -148,7 +148,7 @@
                             <div class="x_title">
                                 <h2>Bên thuê</h2>
                                 <div class="col-md-8" style="float:right">
-                                    @Html.DropDownList("BEN_THUE_ID", (IEnumerable<SelectListItem>)ViewBag.BENTHUEID, new { @class = "form-control", @id = "BEN_THUE" })
+                                    @Html.DropDownList("BEN_THUE_ID", (IEnumerable<SelectListItem>)ViewBag.BENTHUEID, new { @class = "form-control select2", @id = "BEN_THUE" })
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -229,7 +229,7 @@
                             <div class="x_title">
                                 <h2>Bên cho thuê</h2>
                                 <div class="col-md-8" style="float:right">
-                                    @Html.DropDownList("BEN_CHOTHUE_ID", (IEnumerable<SelectListItem>)ViewBag.BENTHUEID, new { @class = "form-control", @id = "BEN_CHOTHUE" })
+                                    @Html.DropDownList("BEN_CHOTHUE_ID", (IEnumerable<SelectListItem>)ViewBag.BENTHUEID, new { @class = "form-control select2", @id = "BEN_CHOTHUE" })
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
