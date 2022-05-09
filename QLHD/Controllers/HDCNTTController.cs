@@ -745,14 +745,14 @@ namespace QLHD.Controllers
                 return RedirectToAction("Login", "Account");
             }
             var duan = db.QLDA_CNTT.ToList().OrderByDescending(n => n.DUAN_ID);
-            
+
             // Cập nhật tiến (trễ hạn) độ DA
             foreach (var item in duan)
             {
-                if(item.QLDA_CNTT_TIENDO.Count > 0)
+                if (item.QLDA_CNTT_TIENDO.Count > 0)
                 {
                     // Kiểm tra Số lượng tiến độ hoàn thành = Số lượng tiến độ dự án
-                    if(item.QLDA_CNTT_TIENDO.Count(x=>x.TRANGTHAI_THUCHIEN == 3) == item.QLDA_CNTT_TIENDO.Count)
+                    if (item.QLDA_CNTT_TIENDO.Count(x => x.TRANGTHAI_THUCHIEN == 3) == item.QLDA_CNTT_TIENDO.Count)
                     {
                         item.TRANGTHAI_DA = 3;      // Dự án đã hoàn thành
                     }
@@ -763,7 +763,7 @@ namespace QLHD.Controllers
                     else
                     {
                         item.TRANGTHAI_DA = 2;      // Dự án đang thực hiện
-                    }    
+                    }
                 }
             }
             db.SaveChanges();
@@ -832,22 +832,22 @@ namespace QLHD.Controllers
         }
 
 
-        static List<DM_KHOITAO_TIENDO_DA> lst = null;
+        static List<DM_KHOITAO_TIENDO_DA> _lst = null;
         [HttpGet]
         public ActionResult CreateDuAn(int? page)
         {
             ViewBag.LOAIDA = new SelectList(listLoaiDA, "LOAI_DUAN_ID", "TEN_LOAI_DUAN");
             ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
-            lst = db.DM_KHOITAO_TIENDO_DA.OrderBy(x => x.TIENDO_DA_ID).ToList();
+            _lst = db.DM_KHOITAO_TIENDO_DA.OrderBy(x => x.TIENDO_DA_ID).ToList();
             var date = DateTime.Now;
-            foreach (var item in lst)
+            foreach (var item in _lst)
             {
                 item.NGAY_GIAO = date;
-                item.NGAY_HETHAN = date.AddDays(7);
+                item.NGAY_HETHAN = date.AddDays(item.SONGAY_THUCHIEN.Value);
                 date = item.NGAY_HETHAN.Value.AddDays(1);
             }
-            ViewBag.DSTD = lst;
-            return View();
+            ViewBag.DSTD = _lst;
+            return View(_lst);
         }
 
         public QLDA_CNTT_TIENDO ConvertToTDDA(DM_KHOITAO_TIENDO_DA item, int idDA)
@@ -868,7 +868,7 @@ namespace QLHD.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateDuAnPost(QLDA_CNTT da)
+        public ActionResult CreateDuAnPost(List<DM_KHOITAO_TIENDO_DA> lst, QLDA_CNTT da)
         {
             if (ModelState.IsValid)
             {
@@ -1152,12 +1152,12 @@ namespace QLHD.Controllers
             // Cập nhật trễ hạn
             foreach (var item in dsTienTrinh)
             {
-                if(item.TRANGTHAI_THUCHIEN != 3 && item.NGAY_HETHAN < DateTime.Now)
+                if (item.TRANGTHAI_THUCHIEN != 3 && item.NGAY_HETHAN < DateTime.Now)
                 {
-                    item.TRANGTHAI_THUCHIEN = 4; 
+                    item.TRANGTHAI_THUCHIEN = 4;
                 }
             }
-            db.SaveChanges();  
+            db.SaveChanges();
             return View(dsTienTrinh);
         }
 
