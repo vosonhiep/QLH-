@@ -63,6 +63,9 @@
                                                 Loại hợp đồng
                                             </th>
                                             <th>
+                                                Doanh thu dự kiến
+                                            </th>
+                                            <th>
                                                 Ngày bắt đầu
                                             </th>
                                             <th>
@@ -126,6 +129,11 @@
                                                         {
                                                             <p>Thuê và bán</p>
                                                         }
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="@Url.Action("ShowQuyTrinhDA", new { @maDA = item.DUAN_ID })">
+                                                        @item.DOANHTHU_DUKIEN
                                                     </a>
                                                 </td>
                                                 <td class="@(item.TRANGTHAI_DA == 3 ? "hoanthanh" : "") ">
