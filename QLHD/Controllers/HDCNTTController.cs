@@ -915,7 +915,7 @@ namespace QLHD.Controllers
             var da = db.QLDA_CNTT.Find(maDA);
 
             if (TryUpdateModel(da, "",
-                new string[] { "TEN_DA", "CHUDAUTU", "LOAI_DA", "LOAI_HOPDONG_ID", "NGAY_START_DA" }))
+                new string[] { "TEN_DA", "CHUDAUTU", "LOAI_DA", "LOAI_HOPDONG_ID", "NGAY_START_DA", "TRANGTHAI_DA", "DOANHTHU_DUKIEN" }))
             {
                 try
                 {

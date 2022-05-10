@@ -14,7 +14,7 @@ Yêu cầu điều chỉnh QLDA
 13.K Trạng thái thực hiện thể hiện thêm màu
 14.H Gán người thực hiện trong từng tiến độ cụ thể
 15.K Thêm danh mục "thí điểm"
-16.H Thêm doanh thu dự kiến trên ds DA (đang đợi DB)
+16.H Thêm doanh thu dự kiến trên ds DA (xong)
 17.(Không cần) Chuyển phần thêm DA thành poup
 18.H(TRÙNG 11-18) Thêm menu Hỗ trợ - chứa các file
 19.K Sửa tiêu đề QLHD -> QLDA
