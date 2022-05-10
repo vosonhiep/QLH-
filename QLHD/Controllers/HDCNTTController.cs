@@ -756,7 +756,7 @@ namespace QLHD.Controllers
                     {
                         item.TRANGTHAI_DA = 3;      // Dự án đã hoàn thành
                     }
-                    else if (item.QLDA_CNTT_TIENDO.LastOrDefault().NGAY_HETHAN < DateTime.Now)      // tiến độ cuối cùng bị trễ => Dự án trễ hạn
+                    else if (CheckTreHan(item, item.QLDA_CNTT_TIENDO.LastOrDefault()))      // tiến độ cuối cùng bị trễ => Dự án trễ hạn
                     {
                         item.TRANGTHAI_DA = 4;      // Dự án trễ hạn
                     }
@@ -775,6 +775,17 @@ namespace QLHD.Controllers
             return View(duan.ToPagedList(pageNumber, pageSize));
         }
 
+        public bool CheckTreHan(QLDA_CNTT da, QLDA_CNTT_TIENDO last)
+        {
+            foreach (var item in da.QLDA_CNTT_TIENDO)
+            {
+                if(item.NGAY_GIAO > last.NGAY_HETHAN)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public PartialViewResult partialSearchDA()
         {
             List<SelectListItem> items = new List<SelectListItem>();

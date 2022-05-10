@@ -19,7 +19,7 @@ Yêu cầu điều chỉnh QLDA
 18.H(TRÙNG 11-18) Thêm menu Hỗ trợ - chứa các file
 19.K Sửa tiêu đề QLHD -> QLDA
 20.K Căn chỉnh lại giao diện trang thống kê doanh thu CNTT
-21.H Thêm phần thống kê của dự án    (đang đợi DB)
+21.H Thêm phần thống kê của dự án    (đang đợi DB)	(quên mất tiêu rồi)
 22.H Thêm nút xuất tồn động, báo giá (anh Vinh) (tạm xong vì chưa có báo giá)
 23.H Thêm phần lọc theo thời gian (mặc định từ ngày đầu năm), trạng thái hợp đồng, dự án (anh Hồ)  (xong)ok
 24.H Thêm phần trạng thái dự án (đã thực hiện, đang thực hiện, ...) (xong)
