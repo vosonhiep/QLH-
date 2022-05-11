@@ -53,17 +53,11 @@
     
     <script>
         $(function () {
-            var array = @Html.Raw(Json.Encode(@ViewBag.LST_TDDA)); // @ViewBag.LST_TDDA;
-            //var gant_cha = [];
-            //var gant_sub = [];
-            //for (var i = 0; i < array.length;i++) {
-
-            //}
-            console.log(array);
+            var array = @Html.Raw(Json.Encode(@ViewBag.LST_TDDA));
             $(".gantt").gantt({
                 source: array,
                 navigate: "scroll",
-                scale: "weeks",
+                scale: "days",
                 maxScale: "months",
                 minScale: "days",
                 itemsPerPage: 30,

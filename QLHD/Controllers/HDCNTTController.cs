@@ -1251,10 +1251,19 @@ namespace QLHD.Controllers
                     //Hoan thanh
                     gantt_model.customClass = "ganttRed";
                 }
-                GANTT_SUB_MODEL[] arr_sub = {gantt_model};                
+                GANTT_SUB_MODEL[] arr_sub = {gantt_model};
+                var loai_tdda = "VNPT";
+                if (tiendo_da.VTT == true)
+                {
+                    loai_tdda = "VNPT";
+                }
+                else
+                {
+                    loai_tdda = "Khách hàng";
+                }
                 var gantt_arr = new
                 {
-                    name = " ",
+                    name = loai_tdda,
                     desc = tiendo_da.TEN_TIENDO_DA,
                     values = arr_sub,
                 };
