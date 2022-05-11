@@ -29,16 +29,14 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Quy trình hợp đồng</h3>
+                <h3 style="color:brown">Dự án: @ViewBag.TEN_DUAN</h3>
             </div>
         </div>
         <div class="clear-fix"></div>
         <div class="row">
             <div class="col-md-12">
                 <div class="nav navbar-left">
-                    <a href="@Url.Action("ExportTonDongDA", "ThongKe", new { @idDA = ViewBag.idDA})" class="btn btn-primary btn-lg">
-                        Xuất tồn động
-                    </a>
+                    
                 </div>
                 @*<div class="col-md-10 text-center">@ViewBag.TEN_DUAN</div>*@
                 <div class="nav navbar-right">
@@ -48,6 +46,12 @@
                 </div>
                 <div class="nav navbar-right">
                     <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addTDDA"><i class="fa fa-plus"></i>Thêm mới</button>
+                    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#show_gantt_TDDA">
+                        Sơ đồ Gantt
+                    </button>
+                    <a href="@Url.Action("ExportTonDongDA", "ThongKe", new { @idDA = ViewBag.idDA})" class="btn btn-primary btn-lg">
+                        Xuất tồn đọng
+                    </a>
                 </div>
 
             </div>
@@ -218,11 +222,12 @@
             </div>
         </div>
     </div>
+    <div id="view-show"></div>
+    @Html.Action("show_gantt_TDDA", "HDCNTT", new { @idDA = ViewBag.idDA })
     @Html.Action("addTDDA", "HDCNTT", new { @idDA = ViewBag.idDA })
-    @*@Html.Action("editTDDA", "HDCNTT", new { @idDA = ViewBag.idDA })*@
     <script type="text/javascript">
         $(document).ready(function () {
             $('.select2').select2();
-
-        })
+        });
     </script>
+

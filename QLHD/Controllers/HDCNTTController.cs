@@ -1182,6 +1182,35 @@ namespace QLHD.Controllers
             return File(fileInfo.file_base6, fileInfo.file_ext);
             //return RedirectToAction("Index");
         }
-
+        [HttpGet]
+        public ActionResult index2()
+        {           
+            return View();
+        }
+        [HttpGet]
+        public PartialViewResult show_gantt_TDDA(int? idDA)
+        {
+            ViewBag.TEN_DUAN = "";
+            ViewBag.IDDuAn = idDA;
+            var dsTienTrinh = db.QLDA_CNTT_TIENDO.Where(x => x.DUAN_ID == idDA).OrderBy(x => x.STT).ToList();
+            if (dsTienTrinh.Count() > 0)
+            {
+                ViewBag.TEN_DUAN = dsTienTrinh.Select(x => x.QLDA_CNTT.TEN_DA).FirstOrDefault();
+            }
+            List<String[]> chart_obj_lst = new List<String[]>();
+            foreach(QLDA_CNTT_TIENDO tiendo_da in dsTienTrinh)
+            {
+                String[] chart_obj_arr = new String[6];
+                chart_obj_arr[0] = " ";
+                chart_obj_arr[1] = "VNPT: báo giá";
+                chart_obj_arr[2] = "/Date(1320192000000)/";
+                chart_obj_arr[3] = "/Date(1322401600000)/";
+                chart_obj_arr[4] = "Requirement Gathering";
+                chart_obj_arr[5] = "ganttRed";
+                chart_obj_lst.Add(chart_obj_arr);
+            }
+            ViewBag.LST_TDDA = JsonConvert.SerializeObject(chart_obj_lst);
+            return PartialView();
+        }
     }
 }

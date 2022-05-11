@@ -1,0 +1,100 @@
+﻿@*@model QLHD.Models.QLDA_CNTT_TIENDO*@
+    @{
+        ViewBag.Title = "show_gantt_TDDA";
+    }
+    <head>
+        <title>jQuery.Gantt</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+        <link rel="stylesheet" href="~/Content/css/gantt/style.css" />
+        <style type="text/css">
+            body {
+                font-family: Helvetica, Arial, sans-serif;
+                font-size: 13px;
+                padding: 0 0 50px 0;
+            }
+
+            .contain {
+                width: 800px;
+                margin: 0 auto;
+            }
+
+            h1 {
+                margin: 40px 0 20px 0;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                padding-bottom: 3px;
+                border-bottom: 1px solid #DDD;
+                margin-top: 50px;
+                margin-bottom: 25px;
+            }
+
+            table th:first-child {
+                width: 150px;
+            }
+        </style>
+    </head>
+    <div class="modal fade" id="show_gantt_TDDA" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="width: 80%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" style="color:brown" id="myModalLabel">Sơ đồ GANTT: @ViewBag.TEN_DUAN</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="gantt"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script src="~/Scripts/gantt/jquery.fn.gantt.min.js"></script>
+    
+    <script>
+        //var lst_tdda = model;
+        //console.log();
+        $(function () {
+            console.log(JSON.stringify(@ViewBag.LST_TDDA));
+            $(".gantt").gantt({
+                source: [{
+                    name: "",
+                    desc: "",
+                    values: [{
+                        from: "",
+                        to: "/Date(1322401600000)/",
+                        label: "Requirement Gathering",
+                        customClass: "ganttRed"
+                    }]
+                }],
+                navigate: "scroll",
+                scale: "weeks",
+                maxScale: "months",
+                minScale: "days",
+                itemsPerPage: 10,
+                onItemClick: function (data) {
+                    /*alert("Item clicked - show some details");*/
+                },
+                onAddClick: function (dt, rowId) {
+                    /*alert("Empty space clicked - add an item!");*/
+                },
+                onRender: function () {
+                    if (window.console && typeof console.log === "function") {
+                        console.log("chart rendered");
+                    }
+                }
+            });
+
+            $(".gantt").popover({
+                selector: ".bar",
+                title: "I'm a popover",
+                content: "And I'm the content of said popover.",
+                trigger: "hover"
+            });
+
+            prettyPrint();
+
+        });
+    </script>
+
