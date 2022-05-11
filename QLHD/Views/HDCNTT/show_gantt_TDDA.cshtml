@@ -61,22 +61,12 @@
             //}
             console.log(array);
             $(".gantt").gantt({
-                //source: [{
-                //    name: "",
-                //    desc: "",
-                //    values: [{
-                //        from: "/Date(1322401600000)/",//not empty
-                //        to: "/Date(1322401600000)/",//not empty
-                //        label: "Requirement Gathering",
-                //        customClass: "ganttRed"
-                //    }]
-                //}],
                 source: array,
                 navigate: "scroll",
                 scale: "weeks",
                 maxScale: "months",
                 minScale: "days",
-                itemsPerPage: 10,
+                itemsPerPage: 30,
                 onItemClick: function (data) {
                     /*alert("Item clicked - show some details");*/
                 },

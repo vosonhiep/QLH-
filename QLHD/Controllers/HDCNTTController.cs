@@ -1210,7 +1210,8 @@ namespace QLHD.Controllers
 
         public static string ToMillisecondDate(DateTime dt)
         {
-            return "/Date(" + (dt.Subtract(DateTime.MinValue).TotalSeconds * 1000).ToString() + ")/";
+            DateTime StartTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)).Date;
+            return "/Date(" + ((dt.Date - StartTime.Date).TotalSeconds * 1000).ToString() + ")/";
         }
 
         [HttpGet]
