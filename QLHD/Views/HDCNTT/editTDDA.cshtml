@@ -89,9 +89,9 @@
                                         <label style="float: right">Ngày thực hiện thực tế:</label>
                                     </div>
                                     <div class="col-md-8">
-                                        @if (Model.NGAY_GIAO.HasValue)
+                                        @if (Model.NGAY_GIAO != null)
                                         {
-                                            <input type="datetime" id="NgayTH_@Model.TIENDO_DA_ID" class="form-control" name="NGAY_GIAO" value="@Model.NGAY_GIAO.Value.ToString("dd/MM/yyyy")" />
+                                            <input type="datetime" id="NgayTH_@Model.TIENDO_DA_ID" class="form-control" name="NGAY_GIAO" value="@Model.NGAY_GIAO.ToString("dd/MM/yyyy")" />
                                         }
                                         else
                                         {
@@ -107,9 +107,9 @@
                                         <label style="float: right">Ngày hết hạn:</label>
                                     </div>
                                     <div class="col-md-8">
-                                        @if (Model.NGAY_HETHAN.HasValue)
+                                        @if (Model.NGAY_HETHAN != null)
                                         {
-                                            <input type="datetime" class="form-control" id="NGAY_HETHAN" name="NGAY_HETHAN" value="@Model.NGAY_HETHAN.Value.ToString("dd/MM/yyyy")" required="required" />
+                                            <input type="datetime" class="form-control" id="NGAY_HETHAN" name="NGAY_HETHAN" value="@Model.NGAY_HETHAN.ToString("dd/MM/yyyy")" required="required" />
                                         }
                                         else
                                         {

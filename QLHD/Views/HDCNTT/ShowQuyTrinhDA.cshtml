@@ -111,7 +111,7 @@
                                         @*Ngày giao là Ngày thực hiện thực tế
 
                                         *@
-                                        @if ((item.NGAY_HETHAN.Value.Subtract(@DateTime.Today).Days < 7) && (item.TRANGTHAI_THUCHIEN == 2 || item.TRANGTHAI_THUCHIEN == 1))
+                                        @if ((item.NGAY_HETHAN.Subtract(@DateTime.Today).Days < 7) && (item.TRANGTHAI_THUCHIEN == 2 || item.TRANGTHAI_THUCHIEN == 1))
                                         {
                                             <img src='~/Images/warning_icon.png' id='warning_icon' class="img_done" />
                                         }
@@ -131,15 +131,15 @@
                                             {
                                                 <p>Ngày thực hiện thực tế: @item.NGAY_GIAO.Value.ToString("dd/MM/yyyy")</p>
                                             }*@
-                                        @if (item.NGAY_GIAO.HasValue)
+                                        @if (item.NGAY_GIAO != null)
                                         {
-                                            <p>Ngày thực hiện thực tế: @item.NGAY_GIAO.Value.ToString("dd/MM/yyyy")</p>
+                                            <p>Ngày thực hiện thực tế: @item.NGAY_GIAO.ToString("dd/MM/yyyy")</p>
                                         }
                                     </div>
                                     <div class="time" style="margin-left: -15%;">
-                                        @if (item.NGAY_HETHAN.HasValue)
+                                        @if (item.NGAY_HETHAN != null)
                                         {
-                                            <p>Ngày hết hạn: @item.NGAY_HETHAN.Value.ToString("dd/MM/yyyy")</p>
+                                            <p>Ngày hết hạn: @item.NGAY_HETHAN.ToString("dd/MM/yyyy")</p>
                                         }
 
                                     </div>
@@ -152,15 +152,15 @@
                                             {
                                                 <p>Ngày thực hiện thực tế:: @item.NGAY_GIAO.Value.ToString("dd/MM/yyyy")</p>
                                             }*@
-                                        @if (item.NGAY_GIAO.HasValue)
+                                        @if (item.NGAY_GIAO != null)
                                         {
-                                            <p>Ngày thực hiện thực tế: @item.NGAY_GIAO.Value.ToString("dd/MM/yyyy")</p>
+                                            <p>Ngày thực hiện thực tế: @item.NGAY_GIAO.ToString("dd/MM/yyyy")</p>
                                         }
                                     </div>
                                     <div class="time" style="margin-right: -12%;">
-                                        @if (item.NGAY_HETHAN.HasValue)
+                                        @if (item.NGAY_HETHAN != null)
                                         {
-                                            <p>Ngày hết hạn: @item.NGAY_HETHAN.Value.ToString("dd/MM/yyyy")</p>
+                                            <p>Ngày hết hạn: @item.NGAY_HETHAN.ToString("dd/MM/yyyy")</p>
                                         }
                                     </div>
                                 </div>
@@ -171,7 +171,7 @@
                                         3. Hoàn thành
                                         4. trễ hạn
                                     *@
-                                    @if ((item.NGAY_HETHAN.Value.Subtract(@DateTime.Today).Days < 7) && (item.TRANGTHAI_THUCHIEN == 2 || item.TRANGTHAI_THUCHIEN == 1))
+                                    @if ((item.NGAY_HETHAN.Subtract(@DateTime.Today).Days < 7) && (item.TRANGTHAI_THUCHIEN == 2 || item.TRANGTHAI_THUCHIEN == 1))
                                     {
                                         <img src='~/Images/warning_icon.png' id='warning_icon' class="img_done" />
                                     }
