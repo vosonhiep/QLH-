@@ -17,21 +17,31 @@ using System.IO;
 using QLHD.ViewModel;
 using Newtonsoft.Json;
 using QLHD.Utinity;
+using System.Web.Routing;
 
 namespace QLHD.Controllers
 {
     public class HDCNTTController : Controller
     {
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (SessionStore.users == null)
+            {
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Account", action = "Login" }));
+            }
+            base.OnActionExecuting(filterContext);
+        }
+
         // GET: /HDCNTT/
         QLHD2Entities db = new QLHD2Entities();
 
 
         public ActionResult Index(int? page)
         {
-            if (SessionStore.users == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            //if (SessionStore.users == null)
+            //{
+            //    return RedirectToAction("Login", "Account");
+            //}
             var hdCNTT = db.HOPDONG_DT_CNTT.ToList().OrderByDescending(n => n.HOPDONG_DT_CNTT_ID);
             ViewBag.BENTHUEID = new SelectList(db.DM_CHUTHE_HOPDONG.ToList().OrderBy(n => n.CHUTHE_HOPDONG_ID), "CHUTHE_HOPDONG_ID", "TEN_CHUTHE");
 
@@ -740,10 +750,10 @@ namespace QLHD.Controllers
         [HttpGet]
         public ActionResult DSDuAn(int? page)
         {
-            if (SessionStore.users == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            //if (SessionStore.users == null)
+            //{
+            //    return RedirectToAction("Login", "Account");
+            //}
             var duan = db.QLDA_CNTT.ToList().OrderByDescending(n => n.DUAN_ID);
 
             // Cập nhật tiến (trễ hạn) độ DA
