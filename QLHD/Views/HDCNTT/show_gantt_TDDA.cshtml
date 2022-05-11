@@ -56,18 +56,21 @@
         //var lst_tdda = model;
         //console.log();
         $(function () {
-            console.log(JSON.stringify(@ViewBag.LST_TDDA));
+
+            var array = @Html.Raw(Json.Encode(@ViewBag.LST_TDDA)); // @ViewBag.LST_TDDA;
+            console.log(array);
             $(".gantt").gantt({
-                source: [{
-                    name: "",
-                    desc: "",
-                    values: [{
-                        from: "",
-                        to: "/Date(1322401600000)/",
-                        label: "Requirement Gathering",
-                        customClass: "ganttRed"
-                    }]
-                }],
+                //source: [{
+                //    name: "",
+                //    desc: "",
+                //    values: [{
+                //        from: "",
+                //        to: "/Date(1322401600000)/",
+                //        label: "Requirement Gathering",
+                //        customClass: "ganttRed"
+                //    }]
+                //}],
+                source: array,
                 navigate: "scroll",
                 scale: "weeks",
                 maxScale: "months",

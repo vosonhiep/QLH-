@@ -1220,7 +1220,8 @@ namespace QLHD.Controllers
                 chart_obj_arr[5] = "ganttRed";
                 chart_obj_lst.Add(chart_obj_arr);
             }
-            ViewBag.LST_TDDA = JsonConvert.SerializeObject(chart_obj_lst);
+            // ViewBag.LST_TDDA = JsonConvert.SerializeObject(chart_obj_lst);
+            ViewBag.LST_TDDA = chart_obj_lst;
             return PartialView();
         }
     }
