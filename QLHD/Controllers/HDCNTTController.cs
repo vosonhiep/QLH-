@@ -25,8 +25,7 @@ namespace QLHD.Controllers
         // GET: /HDCNTT/
         QLHD2Entities db = new QLHD2Entities();
 
-
-        public ActionResult Index(int? page)
+    public ActionResult Index(int? page)
         {
             if (SessionStore.users == null)
             {
@@ -1208,19 +1207,40 @@ namespace QLHD.Controllers
             {
                 ViewBag.TEN_DUAN = dsTienTrinh.Select(x => x.QLDA_CNTT.TEN_DA).FirstOrDefault();
             }
-            List<String[]> chart_obj_lst = new List<String[]>();
+            List<Object> chart_obj_lst = new List<Object>();
+            int i = 0;
             foreach(QLDA_CNTT_TIENDO tiendo_da in dsTienTrinh)
             {
-                String[] chart_obj_arr = new String[6];
-                chart_obj_arr[0] = " ";
-                chart_obj_arr[1] = "VNPT: báo giá";
-                chart_obj_arr[2] = "/Date(1320192000000)/";
-                chart_obj_arr[3] = "/Date(1322401600000)/";
-                chart_obj_arr[4] = "Requirement Gathering";
-                chart_obj_arr[5] = "ganttRed";
-                chart_obj_lst.Add(chart_obj_arr);
+                GANTT_SUB_MODEL gantt_model = new GANTT_SUB_MODEL();
+
+                //gantt_model.from = "/Date(1320192000000)/";
+                //gantt_model.to = "/Date(1322401600000)/";
+                //gantt_model.label = "Requirement Gathering";
+                //gantt_model.customClass = "ganttRed";
+                //if(tiendo_da.NGAY_GIAO != null || tiendo_da.NGAY_HETHAN!= null)
+                //{
+                    gantt_model.from = "2009/07/12";
+                    gantt_model.to = "2009/07/12";
+                //}
+                //else
+                //{
+                //    gantt_model.from = DateTime.Now.ToString("yyyyMMddHHmmssffff");
+                //    gantt_model.to = DateTime.Now.ToString("yyyyMMddHHmmssffff");
+                //} 
+                
+                gantt_model.label = tiendo_da.TEN_TIENDO_DA;
+                gantt_model.customClass = "ganttRed";
+                GANTT_SUB_MODEL[] arr_sub = {gantt_model};                
+                var gantt_arr = new
+                {
+                    name = " ",
+                    desc = "VNPT: báo giá",
+                    values = arr_sub,
+                };
+                
+                chart_obj_lst.Add(gantt_arr);
+                i++;
             }
-            // ViewBag.LST_TDDA = JsonConvert.SerializeObject(chart_obj_lst);
             ViewBag.LST_TDDA = chart_obj_lst;
             return PartialView();
         }

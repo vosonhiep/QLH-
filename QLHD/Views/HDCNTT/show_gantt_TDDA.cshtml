@@ -1,5 +1,4 @@
-﻿@*@model QLHD.Models.QLDA_CNTT_TIENDO*@
-    @{
+﻿    @{
         ViewBag.Title = "show_gantt_TDDA";
     }
     <head>
@@ -53,19 +52,21 @@
     <script src="~/Scripts/gantt/jquery.fn.gantt.min.js"></script>
     
     <script>
-        //var lst_tdda = model;
-        //console.log();
         $(function () {
-
             var array = @Html.Raw(Json.Encode(@ViewBag.LST_TDDA)); // @ViewBag.LST_TDDA;
+            //var gant_cha = [];
+            //var gant_sub = [];
+            //for (var i = 0; i < array.length;i++) {
+
+            //}
             console.log(array);
             $(".gantt").gantt({
                 //source: [{
                 //    name: "",
                 //    desc: "",
                 //    values: [{
-                //        from: "",
-                //        to: "/Date(1322401600000)/",
+                //        from: "/Date(1322401600000)/",//not empty
+                //        to: "/Date(1322401600000)/",//not empty
                 //        label: "Requirement Gathering",
                 //        customClass: "ganttRed"
                 //    }]
