@@ -157,10 +157,10 @@
                                                         @Html.DisplayFor(x => Model[i].THANHVIEN.TEN_THANHVIEN)
                                                     </td>
                                                     <td class="col-md-1" style="text-align:center">
-                                                        @Html.TextBoxFor(x => Model[i].NGAY_GIAO, new { @class = "form-control", @type = "datetime", @Value = Model[i].NGAY_GIAO.Value.ToString("dd/MM/yyyy") })
+                                                        @Html.TextBoxFor(x => Model[i].NGAY_GIAO, new { @class = "form-control", @type = "datetime", @Value = Model[i].NGAY_GIAO.ToString("dd/MM/yyyy") })
                                                     </td>
                                                     <td>
-                                                        @Html.TextBoxFor(x => Model[i].NGAY_HETHAN, new { @class = "form-control", @type = "datetime", @Value = Model[i].NGAY_HETHAN.Value.ToString("dd/MM/yyyy") })
+                                                        @Html.TextBoxFor(x => Model[i].NGAY_HETHAN, new { @class = "form-control", @type = "datetime", @Value = Model[i].NGAY_HETHAN.ToString("dd/MM/yyyy") })
                                                     </td>
                                                     <td class="col-md-1" style="text-align:center; display:none">
                                                         @Html.TextBoxFor(x => Model[i].TRANGTHAI_THUCHIEN, new { @Value = Model[i].TRANGTHAI_THUCHIEN, @style = "display:none" })

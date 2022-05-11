@@ -864,7 +864,7 @@ namespace QLHD.Controllers
             {
                 item.NGAY_GIAO = date;
                 item.NGAY_HETHAN = date.AddDays(item.SONGAY_THUCHIEN.Value);
-                date = item.NGAY_HETHAN.Value.AddDays(1);
+                date = item.NGAY_HETHAN.AddDays(1);
             }
             ViewBag.DSTD = _lst;
             return View(_lst);
@@ -1207,6 +1207,12 @@ namespace QLHD.Controllers
         {           
             return View();
         }
+
+        public static string ToMillisecondDate(DateTime dt)
+        {
+            return "/Date(" + (dt.Subtract(DateTime.MinValue).TotalSeconds * 1000).ToString() + ")/";
+        }
+
         [HttpGet]
         public PartialViewResult show_gantt_TDDA(int? idDA)
         {
@@ -1222,29 +1228,33 @@ namespace QLHD.Controllers
             foreach(QLDA_CNTT_TIENDO tiendo_da in dsTienTrinh)
             {
                 GANTT_SUB_MODEL gantt_model = new GANTT_SUB_MODEL();
-
-                //gantt_model.from = "/Date(1320192000000)/";
-                //gantt_model.to = "/Date(1322401600000)/";
-                //gantt_model.label = "Requirement Gathering";
-                //gantt_model.customClass = "ganttRed";
-                //if(tiendo_da.NGAY_GIAO != null || tiendo_da.NGAY_HETHAN!= null)
-                //{
-                    gantt_model.from = "2009/07/12";
-                    gantt_model.to = "2009/07/12";
-                //}
-                //else
-                //{
-                //    gantt_model.from = DateTime.Now.ToString("yyyyMMddHHmmssffff");
-                //    gantt_model.to = DateTime.Now.ToString("yyyyMMddHHmmssffff");
-                //} 
-                
-                gantt_model.label = tiendo_da.TEN_TIENDO_DA;
-                gantt_model.customClass = "ganttRed";
+                gantt_model.from = ToMillisecondDate(tiendo_da.NGAY_GIAO).ToString();
+                gantt_model.to = ToMillisecondDate(tiendo_da.NGAY_HETHAN).ToString();
+                gantt_model.label = tiendo_da.THANHVIEN.TEN_THANHVIEN;
+                if(tiendo_da.TRANGTHAI_THUCHIEN == 1)
+                {
+                    //Chua thuc hien
+                    gantt_model.customClass = "ganttBlue";
+                }
+                else if(tiendo_da.TRANGTHAI_THUCHIEN == 2) {
+                    //Dang thuc hien
+                    gantt_model.customClass = "ganttOrange";
+                }
+                else if (tiendo_da.TRANGTHAI_THUCHIEN == 3)
+                {
+                    //Hoan thanh
+                    gantt_model.customClass = "ganttGreen";
+                }
+                else
+                {
+                    //Hoan thanh
+                    gantt_model.customClass = "ganttRed";
+                }
                 GANTT_SUB_MODEL[] arr_sub = {gantt_model};                
                 var gantt_arr = new
                 {
                     name = " ",
-                    desc = "VNPT: báo giá",
+                    desc = tiendo_da.TEN_TIENDO_DA,
                     values = arr_sub,
                 };
                 
