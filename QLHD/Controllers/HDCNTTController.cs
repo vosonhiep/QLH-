@@ -718,8 +718,8 @@ namespace QLHD.Controllers
 
         public static List<LOAITIENTRINH> listLoaiTienTrinh = new List<LOAITIENTRINH>()
             {
-                new LOAITIENTRINH(false, "Viễn thông"),
-                new LOAITIENTRINH(true, "Khách hàng")
+                new LOAITIENTRINH(true, "Viễn thông"),
+                new LOAITIENTRINH(false, "Khách hàng")
             };
 
         public static List<TRANGTHAI_TIENDO_DA> listTrangThai = new List<TRANGTHAI_TIENDO_DA>()
@@ -878,6 +878,7 @@ namespace QLHD.Controllers
             td.DONVI_CHUTRI = item.DONVI_CHUTRI;
             td.NGUOI_THUCHIEN = item.NGUOI_THUCHIEN;
             td.TRANGTHAI_THUCHIEN = item.TRANGTHAI_THUCHIEN;
+            td.NGAY_GIAO = item.NGAY_GIAO;
             td.NGAY_HETHAN = item.NGAY_HETHAN;
             td.GHICHU_HIENTRANG = item.GHICHU_HIENTRANG;
             td.GHICHU_TONDONG = item.GHICHU_TONDONG;
@@ -1033,7 +1034,7 @@ namespace QLHD.Controllers
         {
             QLDA_CNTT_TIENDO td = db.QLDA_CNTT_TIENDO.Where(x => x.DUAN_ID == idDA && x.TIENDO_DA_ID == idTD).FirstOrDefault();
 
-
+            var STT = td.STT;
             string fileContent = string.Empty;
             string fileContentType = string.Empty;
             if (upload != null && upload.ContentLength > 0)
@@ -1069,14 +1070,31 @@ namespace QLHD.Controllers
                 try
                 {
                     // Tăng STT lên 1 nếu bị trùng
-                    if (db.QLDA_CNTT_TIENDO.Where(x => x.STT == td.STT).FirstOrDefault() != null)
-                    {
-                        var lst = db.QLDA_CNTT_TIENDO.Where(x => x.STT >= td.STT && x.DUAN_ID == td.DUAN_ID).ToList();
-                        foreach (var item in lst)
-                        {
-                            item.STT += 1;
-                        }
-                    }
+                    //if (db.QLDA_CNTT_TIENDO.Where(x => x.STT == td.STT && td.STT != STT && x.DUAN_ID == td.DUAN_ID).FirstOrDefault() != null)
+                    //{
+                    //    var lst = db.QLDA_CNTT_TIENDO.Where(x => x.STT >= td.STT && x.TIENDO_DA_ID != td.TIENDO_DA_ID && x.DUAN_ID == td.DUAN_ID).ToList();
+                        
+                    //    foreach (var item in lst)
+                    //    {
+                    //        if (STT >= td.STT)
+                    //        {
+                    //            var temp = lst.SkipWhile(n => n.STT != item.STT).Skip(1).FirstOrDefault();
+                    //            if ((temp != null) && (item.STT + 1) != temp.STT)
+                    //            {
+                    //                item.STT += 1;
+                    //            }
+                    //            else
+                    //            {
+                    //                break;
+                    //            }
+                    //        }
+                    //        else
+                    //        {
+                    //            item.STT += 1;
+                    //        }
+                            
+                    //    }
+                    //}
 
                     db.SaveChanges();
 

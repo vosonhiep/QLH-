@@ -208,7 +208,7 @@
                                                     if (temp != null)
                                                     {
                                                         //Lấy obj chưa xuất hóa đơn mới nhất
-                                                        var TH_TT_VALUE = temp.NGAY_HETHAN.Value;
+                                                        var TH_TT_VALUE = temp.NGAY_HETHAN;
                                                         var TH_TT = TH_TT_VALUE.ToString("dd/MM/yyyy");
 
                                                         if (TH_TT_VALUE.Subtract(@DateTime.Today).Days < 7)
