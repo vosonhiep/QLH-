@@ -3,7 +3,9 @@
         ViewBag.Title = "CreateDuAn";
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
-
+    @{
+        var lst = Model.ToList();
+    }
     <div class="">
         <div class="page-title">
             <div class="title_left">
@@ -81,6 +83,9 @@
                                     <div class="col-md-3">
                                         <input type="date" class="form-control" id="NGAY_START_DA" name="NGAY_START_DA" required="required" />
                                     </div>
+                                    <div class="col-md-1">
+                                        <input type="button" class="btn btn-primary" value="Tạo tiến độ" id="generate" onclick="genTD()" />
+                                    </div>
                                 </div>
                             </div>
 
@@ -101,14 +106,16 @@
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Danh sách tiến độ dự án</h2>
+                            <div class="col-md-12">
+                                <h2 class="col-md-3" style="float: left">Danh sách tiến độ dự án</h2>
+                            </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
                             <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                 <div id="myTabContent" class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="hopdong-tab">
-                                        <table class=" col-md-12 table table-bordered table-striped table-hover">
+                                        <table id="tableTDDA" class=" col-md-12 table table-bordered table-striped table-hover">
                                             <tr class="noidung">
                                                 <th class="col-md-1" style="text-align:center">
                                                     STT
@@ -134,9 +141,11 @@
                                                 <th class="col-md-1" style="text-align: center; display: none">
                                                     VTT
                                                 </th>
+                                                <th class="col-md-1" style="text-align: center; display: none ">
+                                                    Số ngày thực hiện
+                                                </th>
                                                 @*<th class="col-md-2" style="text-align:center">Sửa|Xóa</th>*@
                                             </tr>
-
                                             @for (var i = 0; i < Model.Count(); i++)
                                             {
                                                 <tr class="noidunghd">
@@ -157,10 +166,10 @@
                                                         @Html.DisplayFor(x => Model[i].THANHVIEN.TEN_THANHVIEN)
                                                     </td>
                                                     <td class="col-md-1" style="text-align:center">
-                                                        @Html.TextBoxFor(x => Model[i].NGAY_GIAO, new { @class = "form-control", @type = "datetime", @Value = Model[i].NGAY_GIAO.ToString("dd/MM/yyyy") })
+                                                        @Html.TextBoxFor(x => Model[i].NGAY_GIAO, new { @class = "form-control", @type = "datetime", @Value = Model[i].NGAY_GIAO.ToString("dd/MM/yyyy"), @id = "NGAY_GIAO" + Model[i].TIENDO_DA_ID })
                                                     </td>
                                                     <td>
-                                                        @Html.TextBoxFor(x => Model[i].NGAY_HETHAN, new { @class = "form-control", @type = "datetime", @Value = Model[i].NGAY_HETHAN.ToString("dd/MM/yyyy") })
+                                                        @Html.TextBoxFor(x => Model[i].NGAY_HETHAN, new { @class = "form-control", @type = "datetime", @Value = Model[i].NGAY_HETHAN.ToString("dd/MM/yyyy"), @id = "NGAY_HETHAN" + Model[i].TIENDO_DA_ID })
                                                     </td>
                                                     <td class="col-md-1" style="text-align:center; display:none">
                                                         @Html.TextBoxFor(x => Model[i].TRANGTHAI_THUCHIEN, new { @Value = Model[i].TRANGTHAI_THUCHIEN, @style = "display:none" })
@@ -170,49 +179,12 @@
                                                         @Html.TextBoxFor(x => Model[i].VTT, new { @Value = Model[i].VTT, @style = "display:none" })
 
                                                     </td>
+                                                    <td class="col-md-1" style="text-align: center; display:none">
+                                                        @Html.TextBoxFor(x => Model[i].SONGAY_THUCHIEN, new { @Value = Model[i].SONGAY_THUCHIEN, @style = "display:none", @id = "SONGAY" + Model[i].TIENDO_DA_ID })
+
+                                                    </td>
                                                 </tr>
                                             }
-                                            @*
-                                                     @foreach (var item in Model)
-                                                {
-                                                    <tr class="noidunghd">
-                                                        <td class="col-md-1" style="text-align:center">
-                                                            @item.STT
-                                                        </td>
-                                                        <td class="col-md-4" style="text-align:center">
-                                                            @item.TEN_TIENDO_DA
-                                                        </td>
-                                                        <td class="col-md-1" style="text-align:center">
-                                                            @item.DONVI.TEN_DV
-                                                        </td>
-                                                        <td class="col-md-1" style="text-align:center">
-                                                            @item.THANHVIEN.TEN_THANHVIEN
-                                                        </td>
-                                                        <td class="col-md-1" style="text-align:center">
-                                                            @if (item.NGAY_GIAO.HasValue)
-                                                            {
-                                                                <input type="datetime" class="form-control" id="NGAY_GIAO" name="NGAY_GIAO" value="@item.NGAY_GIAO.Value.ToString("dd/MM/yyyy")" />
-                                                            }
-                                                            else
-                                                            {
-                                                                <input type="date" id="NGAY_GIAO" class="form-control" name="NGAY_GIAO" />
-                                                            }
-                                                        </td>
-                                                        <td class="col-md-1" style="text-align:center">
-                                                            @if (item.NGAY_HETHAN.HasValue)
-                                                            {
-                                                                <input type="datetime" class="form-control" id="NGAY_HETHAN" name="NGAY_HETHAN" value="@item.NGAY_HETHAN.Value.ToString("dd/MM/yyyy")" />
-                                                            }
-                                                            else
-                                                            {
-                                                                <input type="date" id="NGAY_HETHAN" class="form-control" name="NGAY_HETHAN" />
-                                                            }
-                                                        </td>
-                                                    </tr>
-                                                }
-
-                                            *@
-
                                         </table>
                                     </div>
                                 </div>
@@ -225,3 +197,19 @@
 
     </div>
 
+    <script type="text/javascript">
+        function genTD() {
+            var array = @Html.Raw(Json.Encode(@ViewBag.DS_NGAY_TD));
+            var date = new Date($('#NGAY_START_DA').val());
+            if (!Date.parse(date)) {
+                date = new Date;
+            }
+            for (var i = 0; i < array.length; i++) {
+                document.getElementById('NGAY_GIAO' + array[i].TIENDO_DA_ID).value = ('0' + date.getDate()).slice(-2) + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear();
+                date.setDate(date.getDate() + array[i].SONGAY_THUCHIEN);
+                document.getElementById('NGAY_HETHAN' + array[i].TIENDO_DA_ID).value = ('0' + date.getDate()).slice(-2) + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear();
+                date.setDate(date.getDate() + 1);
+            }
+
+        }
+    </script>
