@@ -422,6 +422,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLHDDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="test_folder\Class1.cs" />
     <Compile Include="Utinity\SessionStore.cs" />
     <Compile Include="ViewModel\LOAITIENTRINH.cs" />
     <Compile Include="ViewModel\LOAI_DUAN.cs" />
