@@ -26,12 +26,11 @@ namespace QLHD.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection f)
         {
-            db.Database.Connection.Open();
-            //String sTK = f["txtTaiKhoan"].ToString();
-            //String sMK = f["txtMatKhau"].ToString();
-            //String mkmd5 = changeMD5(sMK);
-            String sTK = "tranglh.agg";
-            String mkmd5 = "b346e4fff0b0403daaa83aee71f84390";
+            String sTK = f["txtTaiKhoan"].ToString();
+            String sMK = f["txtMatKhau"].ToString();
+            String mkmd5 = changeMD5(sMK);
+            //String sTK = "tranglh.agg";
+            //String mkmd5 = "b346e4fff0b0403daaa83aee71f84390";
             THANHVIEN tv = db.THANHVIENs.SingleOrDefault(n => n.TENTRUYCAP == sTK && n.MATKHAU == mkmd5);
             LICHSU_DANGNHAP lichsu = new LICHSU_DANGNHAP();
             if (tv != null)
@@ -54,7 +53,6 @@ namespace QLHD.Controllers
         }
         public ActionResult DangXuat()
         {
-            SessionStore.users = null;
             FormsAuthentication.SignOut();
 
             return RedirectToAction("Login", "Account");

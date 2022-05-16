@@ -35,7 +35,7 @@ namespace QLHD.Controllers
         // GET: /HDCNTT/
         QLHD2Entities db = new QLHD2Entities();
 
-        public ActionResult Index(int? page)
+    public ActionResult Index(int? page)
         {
             //if (SessionStore.users == null)
             //{
@@ -51,6 +51,7 @@ namespace QLHD.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult KetQuaTimKiem(FormCollection f, int? page)
         {
             String loaiTK = f["txtloaiTimKiem"].ToString();
@@ -220,7 +221,7 @@ namespace QLHD.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         [ValidateInput(false)]
         public ActionResult EditHDCNTTPost(int? HDCNTT_ID, HttpPostedFileBase upload)
         {
@@ -315,6 +316,7 @@ namespace QLHD.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult XacNhanXoaHDCNTT(int HDCNTT_ID)
         {
             HOPDONG_DT_CNTT HDCNTT = db.HOPDONG_DT_CNTT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID);
@@ -537,6 +539,7 @@ namespace QLHD.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult EditTienDoTTPost(int idHDCNTT, int idTD, HttpPostedFileBase upload)
         {
             DT_CNTT_TIENDO_TT td = db.DT_CNTT_TIENDO_TT.Where(x => x.HOPDONG_DT_CNTT_ID == idHDCNTT && x.TIENDO_TT_ID == idTD).FirstOrDefault();
@@ -597,6 +600,7 @@ namespace QLHD.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult DeleteTienDoTTPost(int HDCNTT_ID, int TIENDO_ID)
         {
             DT_CNTT_TIENDO_TT thanhtoan = db.DT_CNTT_TIENDO_TT.SingleOrDefault(n => n.HOPDONG_DT_CNTT_ID == HDCNTT_ID && n.TIENDO_TT_ID == TIENDO_ID);
@@ -747,6 +751,7 @@ namespace QLHD.Controllers
             };
 
         [HttpGet]
+        [ValidateInput(false)]
         public ActionResult DSDuAn(int? page)
         {
             //if (SessionStore.users == null)
@@ -788,7 +793,7 @@ namespace QLHD.Controllers
         {
             foreach (var item in da.QLDA_CNTT_TIENDO)
             {
-                if (item.NGAY_GIAO > last.NGAY_HETHAN)
+                if(item.NGAY_GIAO > last.NGAY_HETHAN)
                 {
                     return true;
                 }
@@ -816,6 +821,7 @@ namespace QLHD.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult KetQuaTimKiemDA(FormCollection f, int? page)
         {
             string tenDA = f["TEN_DUAN"].ToString();
@@ -866,7 +872,7 @@ namespace QLHD.Controllers
                 item.NGAY_HETHAN = date.AddDays(item.SONGAY_THUCHIEN.Value);
                 date = item.NGAY_HETHAN.AddDays(1);
             }
-            
+
             List<Object> ngay_td_lst = new List<Object>();
             foreach (var item in _lst)
             {
@@ -903,6 +909,7 @@ namespace QLHD.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult CreateDuAnPost(List<DM_KHOITAO_TIENDO_DA> lst, QLDA_CNTT da)
         {
             if (ModelState.IsValid)
@@ -942,6 +949,7 @@ namespace QLHD.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EditDAPost(int? maDA)
         {
             ViewBag.LOAIDA = new SelectList(listLoaiDA, "LOAI_DUAN_ID", "TEN_LOAI_DUAN");
@@ -979,6 +987,7 @@ namespace QLHD.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult CreateTienDoDAPost(QLDA_CNTT_TIENDO tdda, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
@@ -1043,6 +1052,7 @@ namespace QLHD.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         //[ValidateAntiForgeryToken]
         public ActionResult editTDDAPost(int idDA, int idTD, HttpPostedFileBase upload)
         {
@@ -1087,7 +1097,7 @@ namespace QLHD.Controllers
                     //if (db.QLDA_CNTT_TIENDO.Where(x => x.STT == td.STT && td.STT != STT && x.DUAN_ID == td.DUAN_ID).FirstOrDefault() != null)
                     //{
                     //    var lst = db.QLDA_CNTT_TIENDO.Where(x => x.STT >= td.STT && x.TIENDO_DA_ID != td.TIENDO_DA_ID && x.DUAN_ID == td.DUAN_ID).ToList();
-
+                        
                     //    foreach (var item in lst)
                     //    {
                     //        if (STT >= td.STT)
@@ -1106,7 +1116,7 @@ namespace QLHD.Controllers
                     //        {
                     //            item.STT += 1;
                     //        }
-
+                            
                     //    }
                     //}
 
@@ -1137,6 +1147,7 @@ namespace QLHD.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult XacNhanXoaTDDA(int idDA, int idTD)
         {
             QLDA_CNTT_TIENDO td = db.QLDA_CNTT_TIENDO.SingleOrDefault(n => n.DUAN_ID == idDA && n.TIENDO_DA_ID == idTD);
@@ -1166,6 +1177,7 @@ namespace QLHD.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult XacNhanXoaDA(int maDA)
         {
             QLDA_CNTT da = db.QLDA_CNTT.SingleOrDefault(n => n.DUAN_ID == maDA);
@@ -1236,7 +1248,7 @@ namespace QLHD.Controllers
         }
         [HttpGet]
         public ActionResult index2()
-        {
+        {           
             return View();
         }
 
@@ -1258,19 +1270,18 @@ namespace QLHD.Controllers
             }
             List<Object> chart_obj_lst = new List<Object>();
             int i = 0;
-            foreach (QLDA_CNTT_TIENDO tiendo_da in dsTienTrinh)
+            foreach(QLDA_CNTT_TIENDO tiendo_da in dsTienTrinh)
             {
                 GANTT_SUB_MODEL gantt_model = new GANTT_SUB_MODEL();
                 gantt_model.from = ToMillisecondDate(tiendo_da.NGAY_GIAO).ToString();
                 gantt_model.to = ToMillisecondDate(tiendo_da.NGAY_HETHAN).ToString();
                 gantt_model.label = tiendo_da.THANHVIEN.TEN_THANHVIEN;
-                if (tiendo_da.TRANGTHAI_THUCHIEN == 1)
+                if(tiendo_da.TRANGTHAI_THUCHIEN == 1)
                 {
                     //Chua thuc hien
                     gantt_model.customClass = "ganttBlue";
                 }
-                else if (tiendo_da.TRANGTHAI_THUCHIEN == 2)
-                {
+                else if(tiendo_da.TRANGTHAI_THUCHIEN == 2) {
                     //Dang thuc hien
                     gantt_model.customClass = "ganttOrange";
                 }
@@ -1284,7 +1295,7 @@ namespace QLHD.Controllers
                     //Hoan thanh
                     gantt_model.customClass = "ganttRed";
                 }
-                GANTT_SUB_MODEL[] arr_sub = { gantt_model };
+                GANTT_SUB_MODEL[] arr_sub = {gantt_model};
                 var loai_tdda = "VNPT";
                 if (tiendo_da.VTT == true)
                 {
@@ -1300,45 +1311,12 @@ namespace QLHD.Controllers
                     desc = tiendo_da.TEN_TIENDO_DA,
                     values = arr_sub,
                 };
-
+                
                 chart_obj_lst.Add(gantt_arr);
                 i++;
             }
             ViewBag.LST_TDDA = chart_obj_lst;
             return PartialView();
         }
-
-        [HttpPost]
-        public JsonResult GenTDDA(int ngay, int thang, int nam)
-        {
-            var date = new DateTime(nam, thang, ngay);
-            foreach (var item in _lst)
-            {
-                item.NGAY_GIAO = date;
-                item.NGAY_HETHAN = date.AddDays(item.SONGAY_THUCHIEN.Value);
-                date = item.NGAY_HETHAN.AddDays(1);
-            }
-            var listTDDA = (from obj in _lst
-                            select
-                            new
-                            {
-                                TIENDO_DA_ID = obj.TIENDO_DA_ID,
-                                TEN_TIENDO_DA = obj.TEN_TIENDO_DA,
-                                DONVI_CHUTRI = obj.DONVI_CHUTRI,
-                                NGUOI_THUCHIEN = obj.NGUOI_THUCHIEN,
-                                TRANGTHAI_THUCHIEN = obj.TRANGTHAI_THUCHIEN,
-                                NGAY_GIAO = obj.NGAY_GIAO,
-                                NGAY_HETHAN = obj.NGAY_HETHAN,
-                                FILE_ID = obj.FILE_ID,
-                                GHICHU_HIENTRANG = obj.GHICHU_HIENTRANG,
-                                GHICHU_TONDONG = obj.GHICHU_TONDONG,
-                                STT = obj.STT,
-                                VTT = obj.VTT,
-                                SONGAY_THUCHIEN = obj.SONGAY_THUCHIEN,
-                            });
-            return Json(new { error = "", data = listTDDA }, JsonRequestBehavior.AllowGet);
-
-        }
-
     }
 }
