@@ -294,7 +294,13 @@
     <Compile Include="Models\DM_CHUTHE_HOPDONG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DM_KHOITAO_TIENDO_DA.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DM_LOAI_HOPDONG.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DM_NHOM_HANGHOA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DM_VANBAN.cs">
@@ -369,6 +375,9 @@
     <Compile Include="Models\PL_HD_DOANHTHU_CNTT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\proc_thongke_dt_thang_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\QLDA_CNTT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -424,10 +433,12 @@
     </Compile>
     <Compile Include="test_folder\Class1.cs" />
     <Compile Include="Utinity\SessionStore.cs" />
+    <Compile Include="ViewModel\GANTT_SUB_MODEL.cs" />
     <Compile Include="ViewModel\LOAITIENTRINH.cs" />
     <Compile Include="ViewModel\LOAI_DUAN.cs" />
     <Compile Include="ViewModel\TIENDO_Model.cs" />
     <Compile Include="ViewModel\TIENTRINH_Model.cs" />
+    <Compile Include="ViewModel\TRANGTHAI_DUAN.cs" />
     <Compile Include="ViewModel\TRANGTHAI_HOADON.cs" />
     <Compile Include="ViewModel\TRANGTHAI_THANHTOAN.cs" />
     <Compile Include="ViewModel\TRANGTHAI_TIENDO_DA.cs" />
@@ -704,6 +715,7 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Properties\PublishProfiles\KhangNQ.pubxml" />
     <None Include="QLHDDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>

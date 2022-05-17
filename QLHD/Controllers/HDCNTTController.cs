@@ -35,7 +35,7 @@ namespace QLHD.Controllers
         // GET: /HDCNTT/
         QLHD2Entities db = new QLHD2Entities();
 
-    public ActionResult Index(int? page)
+        public ActionResult Index(int? page)
         {
             //if (SessionStore.users == null)
             //{
@@ -266,11 +266,11 @@ namespace QLHD.Controllers
             }
             THANHVIEN user = db.THANHVIENs.SingleOrDefault(n => n.TENTRUYCAP == User.Identity.Name);
             int id_taikhoan = user.ID_THANHVIEN;
-            if (TryUpdateModel(HDCNTT, "",
+            var rs = TryUpdateModel(HDCNTT, "",
                 new string[] {"TEN_DUAN", "TEN_GOITHAU", "LOAI_HOPDONG_ID", "TEN_HOPDONG", "CHUKY_ID", "HTTT_ID", "SO_HD", "NGAY_HD", "BEN_THUE_ID",
                             "BEN_CHOTHUE_ID", "GIATRI_PHANCUNG_HD", "GIATRI_DICHVU_HD", "GIATRI_TAMUNG",
                             "NGAY_HIEULUC_HD", "NGAY_BBNT", "GIATRI_BLTHHD", "NGAY_BLTHHD", "THOIGIAN_BLTHHD", "NGAY_HETHAN_BLTHHD",
-                            "GHICHU", "DONVI_ID", "THANG", "VAT", "SO_CHUKY", "DUAN_ID"}))
+                            "GHICHU", "DONVI_ID", "THANG", "VAT", "SO_CHUKY", "DUAN_ID"});
             {
                 try
                 {
@@ -282,9 +282,9 @@ namespace QLHD.Controllers
                 {
                     //Log the error (uncomment dex variable name and add a line here to write a log.
                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                    return RedirectToAction("EditHDCNTT", new { HDCNTT_ID = HDCNTT.HOPDONG_DT_CNTT_ID });
                 }
             }
-            return View(HDCNTT);
         }
 
         /// <summary>
@@ -573,23 +573,22 @@ namespace QLHD.Controllers
                 }
             }
 
-            if (TryUpdateModel(td, "",
+            var rs = TryUpdateModel(td, "",
                    new string[] { "DOT_TT", "GIATRI_TT", "THOIGIAN_TT", "THOIHAN_TT", "SO_HOADON",
-                                   "NGAY_HOADON", "TRANGTHAI_XUAT_HOADON", "TRANGTHAI_TT", "FILE", "GHICHU"}))
+                                   "NGAY_HOADON", "TRANGTHAI_XUAT_HOADON", "TRANGTHAI_TT", "FILE", "GHICHU"});
             {
                 try
                 {
                     db.SaveChanges();
-
                     return RedirectToAction("EditHDCNTT", "HDCNTT", new { @HDCNTT_ID = td.HOPDONG_DT_CNTT_ID });
                 }
                 catch (RetryLimitExceededException /* dex */)
                 {
                     //Log the error (uncomment dex variable name and add a line here to write a log.
                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                    return RedirectToAction("EditHDCNTT", new { idHDCNTT = td.HOPDONG_DT_CNTT_ID, TIENDO_ID = td.TIENDO_TT_ID });
                 }
             }
-            return View(td);
         }
 
         [HttpGet]
@@ -793,7 +792,7 @@ namespace QLHD.Controllers
         {
             foreach (var item in da.QLDA_CNTT_TIENDO)
             {
-                if(item.NGAY_GIAO > last.NGAY_HETHAN)
+                if (item.NGAY_GIAO > last.NGAY_HETHAN)
                 {
                     return true;
                 }
@@ -912,25 +911,34 @@ namespace QLHD.Controllers
         [ValidateInput(false)]
         public ActionResult CreateDuAnPost(List<DM_KHOITAO_TIENDO_DA> lst, QLDA_CNTT da)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 da.TRANGTHAI_DA = 2;        // đang thực hiện
                 db.QLDA_CNTT.Add(da);
-                db.SaveChanges();
-
-                // Thêm tiến độ
-                foreach (var item in lst)
+                var result = db.SaveChanges();
+                if (result == 1)
                 {
-                    db.QLDA_CNTT_TIENDO.Add(ConvertToTDDA(item, da.DUAN_ID));
+                    // Thêm tiến độ
+                    foreach (var item in lst)
+                    {
+                        db.QLDA_CNTT_TIENDO.Add(ConvertToTDDA(item, da.DUAN_ID));
+                    }
+                    db.SaveChanges();
+                    //Gọi proceduce generate ds tiến độ DA
+                    //db.FUNC_GEN_TIENDO_DA(da.DUAN_ID);
+                    return RedirectToAction("DSDuAn", "HDCNTT");
                 }
-                db.SaveChanges();
-                //Gọi proceduce generate ds tiến độ DA
-                //db.FUNC_GEN_TIENDO_DA(da.DUAN_ID);
-                return RedirectToAction("DSDuAn", "HDCNTT");
-            }
-            else
-                ViewBag.baoloi = "Lưu không thành công!";
-            return View();
+                else
+                {
+                    return View();
+                }
+            //}
+            //else
+            //{
+            //    ViewBag.baoloi = "Lưu không thành công!";
+            //    return View();
+            //}
+
         }
 
         [HttpGet]
@@ -956,9 +964,10 @@ namespace QLHD.Controllers
             ViewBag.LOAIHD = new SelectList(db.DM_LOAI_HOPDONG.ToList().OrderBy(n => n.LOAI_HOPDONG_ID), "LOAI_HOPDONG_ID", "TEN_LOAI_HOPDONG");
 
             var da = db.QLDA_CNTT.Find(maDA);
+            //var da = db.QLDA_CNTT.Find(duan.DUAN_ID);
 
-            if (TryUpdateModel(da, "",
-                new string[] { "TEN_DA", "CHUDAUTU", "LOAI_DA", "LOAI_HOPDONG_ID", "NGAY_START_DA", "TRANGTHAI_DA", "DOANHTHU_DUKIEN" }))
+            var rs = TryUpdateModel(da, "",
+                new string[] { "TEN_DA", "CHUDAUTU", "LOAI_DA", "LOAI_HOPDONG_ID", "NGAY_START_DA", "TRANGTHAI_DA", "DOANHTHU_DUKIEN" });
             {
                 try
                 {
@@ -971,9 +980,9 @@ namespace QLHD.Controllers
                 {
                     //Log the error (uncomment dex variable name and add a line here to write a log.
                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                    return RedirectToAction("EditDA", new { maDA = da.DUAN_ID });
                 }
             }
-            return View(da);
         }
 
         [HttpGet]
@@ -1057,6 +1066,7 @@ namespace QLHD.Controllers
         public ActionResult editTDDAPost(int idDA, int idTD, HttpPostedFileBase upload)
         {
             QLDA_CNTT_TIENDO td = db.QLDA_CNTT_TIENDO.Where(x => x.DUAN_ID == idDA && x.TIENDO_DA_ID == idTD).FirstOrDefault();
+            //QLDA_CNTT_TIENDO td = db.QLDA_CNTT_TIENDO.Where(x => x.DUAN_ID == tdda.DUAN_ID && x.TIENDO_DA_ID == tdda.TIENDO_DA_ID).FirstOrDefault();
 
             var STT = td.STT;
             string fileContent = string.Empty;
@@ -1087,9 +1097,9 @@ namespace QLHD.Controllers
                 }
             }
 
-            if (TryUpdateModel(td, "",
+            var rs = TryUpdateModel(td, "",
                    new string[] { "TEN_TIENDO_DA", "DONVI_CHUTRI", "NGUOI_THUCHIEN", "TRANGTHAI_THUCHIEN", "NGAY_GIAO",
-                                   "NGAY_HETHAN", "FILE_ID", "GHICHU_HIENTRANG", "GHICHU_TONDONG", "STT", "VTT"}))
+                                   "NGAY_HETHAN", "FILE_ID", "GHICHU_HIENTRANG", "GHICHU_TONDONG", "STT", "VTT"});
             {
                 try
                 {
@@ -1097,7 +1107,7 @@ namespace QLHD.Controllers
                     //if (db.QLDA_CNTT_TIENDO.Where(x => x.STT == td.STT && td.STT != STT && x.DUAN_ID == td.DUAN_ID).FirstOrDefault() != null)
                     //{
                     //    var lst = db.QLDA_CNTT_TIENDO.Where(x => x.STT >= td.STT && x.TIENDO_DA_ID != td.TIENDO_DA_ID && x.DUAN_ID == td.DUAN_ID).ToList();
-                        
+
                     //    foreach (var item in lst)
                     //    {
                     //        if (STT >= td.STT)
@@ -1116,7 +1126,7 @@ namespace QLHD.Controllers
                     //        {
                     //            item.STT += 1;
                     //        }
-                            
+
                     //    }
                     //}
 
@@ -1128,9 +1138,9 @@ namespace QLHD.Controllers
                 {
                     //Log the error (uncomment dex variable name and add a line here to write a log.
                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                    return RedirectToAction("editTDDA", new { idDA = td.DUAN_ID, idTD = td.TIENDO_DA_ID });
                 }
             }
-            return View(td);
         }
 
         [HttpGet]
@@ -1248,7 +1258,7 @@ namespace QLHD.Controllers
         }
         [HttpGet]
         public ActionResult index2()
-        {           
+        {
             return View();
         }
 
@@ -1270,19 +1280,20 @@ namespace QLHD.Controllers
             }
             List<Object> chart_obj_lst = new List<Object>();
             int i = 0;
-            foreach(QLDA_CNTT_TIENDO tiendo_da in dsTienTrinh)
+            foreach (QLDA_CNTT_TIENDO tiendo_da in dsTienTrinh)
             {
                 GANTT_SUB_MODEL gantt_model = new GANTT_SUB_MODEL();
                 gantt_model.from = ToMillisecondDate(tiendo_da.NGAY_GIAO).ToString();
                 gantt_model.to = ToMillisecondDate(tiendo_da.NGAY_HETHAN).ToString();
                 gantt_model.label = tiendo_da.THANHVIEN.TEN_THANHVIEN;
-                if(tiendo_da.TRANGTHAI_THUCHIEN == 1)
+                if (tiendo_da.TRANGTHAI_THUCHIEN == 1)
                 {
                     //Chua thuc hien
                     gantt_model.customClass = "ganttBlue";
                 }
-                else if(tiendo_da.TRANGTHAI_THUCHIEN == 2) {
-                    //Dang thuc hien
+                else if (tiendo_da.TRANGTHAI_THUCHIEN == 2)
+                {
+                    //Dang thuc hienct
                     gantt_model.customClass = "ganttOrange";
                 }
                 else if (tiendo_da.TRANGTHAI_THUCHIEN == 3)
@@ -1295,7 +1306,7 @@ namespace QLHD.Controllers
                     //Hoan thanh
                     gantt_model.customClass = "ganttRed";
                 }
-                GANTT_SUB_MODEL[] arr_sub = {gantt_model};
+                GANTT_SUB_MODEL[] arr_sub = { gantt_model };
                 var loai_tdda = "VNPT";
                 if (tiendo_da.VTT == true)
                 {
@@ -1311,7 +1322,7 @@ namespace QLHD.Controllers
                     desc = tiendo_da.TEN_TIENDO_DA,
                     values = arr_sub,
                 };
-                
+
                 chart_obj_lst.Add(gantt_arr);
                 i++;
             }
