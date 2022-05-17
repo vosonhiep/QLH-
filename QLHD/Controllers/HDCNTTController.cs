@@ -151,46 +151,54 @@ namespace QLHD.Controllers
             ViewBag.NamHD = new SelectList(db.NAM_HD.ToList().OrderByDescending(n => n.NAM_HD_ID), "NAM_HD_ID", "NAM");
             ViewBag.THOIHAN_TT = new SelectList(db.THOIHAN_TT.ToList().OrderBy(n => n.THOIHAN_TT_ID), "THOIHAN_TT_ID", "TEN_THOIHAN_TT");
             ViewBag.DUAN = new SelectList(db.QLDA_CNTT.ToList().OrderByDescending(n => n.NGAY_START_DA), "DUAN_ID", "TEN_DA");
-            if (ModelState.IsValid)
+            //if (ModelState.IsValid)
+            //{
+            string fileContent = string.Empty;
+            string fileContentType = string.Empty;
+            if (upload != null && upload.ContentLength > 0)
             {
-                string fileContent = string.Empty;
-                string fileContentType = string.Empty;
-                if (upload != null && upload.ContentLength > 0)
+                //start test luu file to DB
+                // Converting to bytes.  
+                byte[] uploadedFile = new byte[upload.InputStream.Length];
+                upload.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
+
+                // Initialization.  
+                fileContent = Convert.ToBase64String(uploadedFile);
+                fileContentType = upload.ContentType;
+
+                // Saving info.
+                TBL_FILE newFile = new TBL_FILE();
+                newFile.file_id = 0;
+                newFile.file_name = upload.FileName;
+                newFile.file_ext = fileContentType;
+                newFile.file_base6 = fileContent;
+                this.db.TBL_FILE.Add(newFile);
+                int flag = db.SaveChanges();
+                //end test luu file to DB
+                if (flag == 1)
                 {
-                    //start test luu file to DB
-                    // Converting to bytes.  
-                    byte[] uploadedFile = new byte[upload.InputStream.Length];
-                    upload.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
-
-                    // Initialization.  
-                    fileContent = Convert.ToBase64String(uploadedFile);
-                    fileContentType = upload.ContentType;
-
-                    // Saving info.
-                    TBL_FILE newFile = new TBL_FILE();
-                    newFile.file_id = 0;
-                    newFile.file_name = upload.FileName;
-                    newFile.file_ext = fileContentType;
-                    newFile.file_base6 = fileContent;
-                    this.db.TBL_FILE.Add(newFile);
-                    int flag = db.SaveChanges();
-                    //end test luu file to DB
-                    if (flag == 1)
-                    {
-                        hopdong.FILE_ID = newFile.file_id;
-                        hopdong.FILE = newFile.file_name;
-                    }
+                    hopdong.FILE_ID = newFile.file_id;
+                    hopdong.FILE = newFile.file_name;
                 }
+            }
 
-                THANHVIEN user = db.THANHVIENs.SingleOrDefault(n => n.TENTRUYCAP == User.Identity.Name);
+            THANHVIEN user = db.THANHVIENs.SingleOrDefault(n => n.TENTRUYCAP == User.Identity.Name);
 
-                hopdong.USER = user.TENTRUYCAP;
-                db.HOPDONG_DT_CNTT.Add(hopdong);
-                db.SaveChanges();
+            hopdong.USER = user.TENTRUYCAP;
+            db.HOPDONG_DT_CNTT.Add(hopdong);
+            var rs = db.SaveChanges();
+            if (rs == 1)
+            {
                 return RedirectToAction("Index", "HDCNTT");
             }
-            else ViewBag.baoloi = "Lưu không thành công!";
-            return View();
+            else
+            {
+                return View();
+            }
+
+            //}
+            //else ViewBag.baoloi = "Lưu không thành công!";
+            //return View();
         }
 
         /// <summary>
@@ -913,25 +921,25 @@ namespace QLHD.Controllers
         {
             //if (ModelState.IsValid)
             //{
-                da.TRANGTHAI_DA = 2;        // đang thực hiện
-                db.QLDA_CNTT.Add(da);
-                var result = db.SaveChanges();
-                if (result == 1)
+            da.TRANGTHAI_DA = 2;        // đang thực hiện
+            db.QLDA_CNTT.Add(da);
+            var result = db.SaveChanges();
+            if (result == 1)
+            {
+                // Thêm tiến độ
+                foreach (var item in lst)
                 {
-                    // Thêm tiến độ
-                    foreach (var item in lst)
-                    {
-                        db.QLDA_CNTT_TIENDO.Add(ConvertToTDDA(item, da.DUAN_ID));
-                    }
-                    db.SaveChanges();
-                    //Gọi proceduce generate ds tiến độ DA
-                    //db.FUNC_GEN_TIENDO_DA(da.DUAN_ID);
-                    return RedirectToAction("DSDuAn", "HDCNTT");
+                    db.QLDA_CNTT_TIENDO.Add(ConvertToTDDA(item, da.DUAN_ID));
                 }
-                else
-                {
-                    return View();
-                }
+                db.SaveChanges();
+                //Gọi proceduce generate ds tiến độ DA
+                //db.FUNC_GEN_TIENDO_DA(da.DUAN_ID);
+                return RedirectToAction("DSDuAn", "HDCNTT");
+            }
+            else
+            {
+                return View();
+            }
             //}
             //else
             //{
@@ -999,53 +1007,58 @@ namespace QLHD.Controllers
         [ValidateInput(false)]
         public ActionResult CreateTienDoDAPost(QLDA_CNTT_TIENDO tdda, HttpPostedFileBase upload)
         {
-            if (ModelState.IsValid)
+            //if (ModelState.IsValid)
+            //{
+            string fileContent = string.Empty;
+            string fileContentType = string.Empty;
+            if (upload != null && upload.ContentLength > 0)
             {
-                string fileContent = string.Empty;
-                string fileContentType = string.Empty;
-                if (upload != null && upload.ContentLength > 0)
+                //start test luu file to DB
+                // Converting to bytes.  
+                byte[] uploadedFile = new byte[upload.InputStream.Length];
+                upload.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
+
+                // Initialization.  
+                fileContent = Convert.ToBase64String(uploadedFile);
+                fileContentType = upload.ContentType;
+
+                // Saving info.
+                TBL_FILE newFile = new TBL_FILE();
+                newFile.file_id = 0;
+                newFile.file_name = upload.FileName;
+                newFile.file_ext = fileContentType;
+                newFile.file_base6 = fileContent;
+                this.db.TBL_FILE.Add(newFile);
+                int flag = db.SaveChanges();
+                //end test luu file to DB
+                if (flag == 1)
                 {
-                    //start test luu file to DB
-                    // Converting to bytes.  
-                    byte[] uploadedFile = new byte[upload.InputStream.Length];
-                    upload.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
-
-                    // Initialization.  
-                    fileContent = Convert.ToBase64String(uploadedFile);
-                    fileContentType = upload.ContentType;
-
-                    // Saving info.
-                    TBL_FILE newFile = new TBL_FILE();
-                    newFile.file_id = 0;
-                    newFile.file_name = upload.FileName;
-                    newFile.file_ext = fileContentType;
-                    newFile.file_base6 = fileContent;
-                    this.db.TBL_FILE.Add(newFile);
-                    int flag = db.SaveChanges();
-                    //end test luu file to DB
-                    if (flag == 1)
-                    {
-                        tdda.FILE_ID = newFile.file_id;
-                    }
+                    tdda.FILE_ID = newFile.file_id;
                 }
-
-                tdda.TRANGTHAI_THUCHIEN = 2;
-                db.QLDA_CNTT_TIENDO.Add(tdda);
-
-                // Tăng STT lên 1 nếu bị trùng
-                if (db.QLDA_CNTT_TIENDO.Where(x => x.STT == tdda.STT).FirstOrDefault() != null)
-                {
-                    var lst = db.QLDA_CNTT_TIENDO.Where(x => x.STT >= tdda.STT && x.DUAN_ID == tdda.DUAN_ID).ToList();
-                    foreach (var item in lst)
-                    {
-                        item.STT += 1;
-                    }
-                }
-                db.SaveChanges();
-                return RedirectToAction("ShowQuyTrinhDA", "HDCNTT", new { maDA = tdda.DUAN_ID });
             }
 
-            return View();
+            tdda.TRANGTHAI_THUCHIEN = 2;
+            db.QLDA_CNTT_TIENDO.Add(tdda);
+
+            // Tăng STT lên 1 nếu bị trùng
+            if (db.QLDA_CNTT_TIENDO.Where(x => x.STT == tdda.STT).FirstOrDefault() != null)
+            {
+                var lst = db.QLDA_CNTT_TIENDO.Where(x => x.STT >= tdda.STT && x.DUAN_ID == tdda.DUAN_ID).ToList();
+                foreach (var item in lst)
+                {
+                    item.STT += 1;
+                }
+            }
+            var rs = db.SaveChanges();
+            if (rs == 1)
+            {
+                return RedirectToAction("ShowQuyTrinhDA", "HDCNTT", new { maDA = tdda.DUAN_ID });
+            }
+            else
+            {
+                return View();
+
+            }
         }
 
         [HttpGet]
