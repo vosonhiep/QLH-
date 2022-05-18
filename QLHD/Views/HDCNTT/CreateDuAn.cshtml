@@ -148,42 +148,53 @@
                                             </tr>
                                             @for (var i = 0; i < Model.Count(); i++)
                                             {
-                                                <tr class="noidunghd">
-                                                    <td class="col-md-1" style="text-align:center">
-                                                        @Html.TextBoxFor(x => Model[i].STT, new { @Value = Model[i].STT, @style = "display:none" })
-                                                        @Html.DisplayFor(x => Model[i].STT)
-                                                    </td>
-                                                    <td class="col-md-4" style="text-align:center">
-                                                        @Html.TextBoxFor(x => Model[i].TEN_TIENDO_DA, new { @Value = Model[i].TEN_TIENDO_DA, @style = "display:none" })
-                                                        @Html.DisplayFor(x => Model[i].TEN_TIENDO_DA)
-                                                    </td>
-                                                    <td class="col-md-1" style="text-align:center">
-                                                        @Html.TextBoxFor(x => Model[i].DONVI_CHUTRI, new { @Value = Model[i].DONVI_CHUTRI, @style = "display:none" })
-                                                        @Html.DisplayFor(x => Model[i].DONVI.TEN_DV)
-                                                    </td>
-                                                    <td class="col-md-1" style="text-align:center">
-                                                        @Html.TextBoxFor(x => Model[i].NGUOI_THUCHIEN, new { @Value = Model[i].NGUOI_THUCHIEN, @style = "display:none" })
-                                                        @Html.DisplayFor(x => Model[i].THANHVIEN.TEN_THANHVIEN)
-                                                    </td>
-                                                    <td class="col-md-1" style="text-align:center">
-                                                        @Html.TextBoxFor(x => Model[i].NGAY_GIAO, new { @class = "form-control", @type = "datetime", @Value = Model[i].NGAY_GIAO.ToString("dd/MM/yyyy"), @id = "NGAY_GIAO" + Model[i].TIENDO_DA_ID })
-                                                    </td>
-                                                    <td>
-                                                        @Html.TextBoxFor(x => Model[i].NGAY_HETHAN, new { @class = "form-control", @type = "datetime", @Value = Model[i].NGAY_HETHAN.ToString("dd/MM/yyyy"), @id = "NGAY_HETHAN" + Model[i].TIENDO_DA_ID })
-                                                    </td>
-                                                    <td class="col-md-1" style="text-align:center; display:none">
-                                                        @Html.TextBoxFor(x => Model[i].TRANGTHAI_THUCHIEN, new { @Value = Model[i].TRANGTHAI_THUCHIEN, @style = "display:none" })
+                                        <tr class="noidunghd">
+                                            <td class="col-md-1" style="text-align:center">
+                                                @Html.TextBoxFor(x => Model[i].STT, new { @Value = Model[i].STT, @style = "display:none" })
+                                                @Html.DisplayFor(x => Model[i].STT)
+                                            </td>
+                                            <td class="col-md-4" style="text-align:center">
+                                                @Html.TextBoxFor(x => Model[i].TEN_TIENDO_DA, new { @Value = Model[i].TEN_TIENDO_DA, @style = "display:none" })
+                                                @Html.DisplayFor(x => Model[i].TEN_TIENDO_DA)
+                                            </td>
+                                            <td class="col-md-1" style="text-align:center">
+                                                @Html.TextBoxFor(x => Model[i].DONVI_CHUTRI, new { @Value = Model[i].DONVI_CHUTRI, @style = "display:none" })
+                                                @Html.DisplayFor(x => Model[i].DONVI.TEN_DV)
+                                            </td>
+                                            <td class="col-md-1" style="text-align:center">
+                                                @Html.TextBoxFor(x => Model[i].NGUOI_THUCHIEN, new { @Value = Model[i].NGUOI_THUCHIEN, @style = "display:none" })
+                                                @Html.DisplayFor(x => Model[i].THANHVIEN.TEN_THANHVIEN)
+                                            </td>
+                                            <td class="col-md-1" style="text-align:center">
+                                                <input type="datetime" class="form-control" id="NGAY_GIAO_TEMP_@Model[i].TIENDO_DA_ID" name="NGAY_GIAO_TEMP" value="@Model[i].NGAY_GIAO.ToString("dd/MM/yyyy")" />
+                                                @*@Html.TextBoxFor(x => Model[i].NGAY_GIAO, new { @name = "NGAY_GIAO_TEMP_", @class = "form-control", @type = "datetime", @Value = Model[i].NGAY_GIAO.ToString("dd/MM/yyyy"), @id = "NGAY_GIAO_TEMP" + Model[i].TIENDO_DA_ID })*@
 
-                                                    </td>
-                                                    <td class="col-md-1" style="text-align: center; display: none">
-                                                        @Html.TextBoxFor(x => Model[i].VTT, new { @Value = Model[i].VTT, @style = "display:none" })
+                                            </td>
+                                            <td class="col-md-1" style="text-align:center">
+                                                <input type="datetime" class="form-control" id="NGAY_HETHAN_TEMP_@Model[i].TIENDO_DA_ID" name="NGAY_HETHAN_TEMP" value="@Model[i].NGAY_HETHAN.ToString("dd/MM/yyyy")" />
+                                                @*@Html.TextBoxFor(x => Model[i].NGAY_HETHAN, new { @name = "NGAY_HETHAN_TEMP", @class = "form-control", @type = "datetime", @Value = Model[i].NGAY_HETHAN.ToString("dd/MM/yyyy"), @id = "NGAY_HETHAN_TEMP" + Model[i].TIENDO_DA_ID })*@
+                                            </td>
+                                            <td class="col-md-1" style="text-align:center; display:none">
+                                                @Html.TextBoxFor(x => Model[i].TRANGTHAI_THUCHIEN, new { @Value = Model[i].TRANGTHAI_THUCHIEN, @style = "display:none" })
 
-                                                    </td>
-                                                    <td class="col-md-1" style="text-align: center; display:none">
-                                                        @Html.TextBoxFor(x => Model[i].SONGAY_THUCHIEN, new { @Value = Model[i].SONGAY_THUCHIEN, @style = "display:none", @id = "SONGAY" + Model[i].TIENDO_DA_ID })
+                                            </td>
+                                            <td class="col-md-1" style="text-align: center; display: none">
+                                                @Html.TextBoxFor(x => Model[i].VTT, new { @Value = Model[i].VTT, @style = "display:none" })
 
-                                                    </td>
-                                                </tr>
+                                            </td>
+                                            <td class="col-md-1" style="text-align: center; display:none">
+                                                @Html.TextBoxFor(x => Model[i].SONGAY_THUCHIEN, new { @Value = Model[i].SONGAY_THUCHIEN, @style = "display:none", @id = "SONGAY" + Model[i].TIENDO_DA_ID })
+
+                                            </td>
+                                            <td class="col-md-1" style="text-align: center; display: none">
+                                                @*@Html.TextBoxFor(m => Model[i].NGAY_GIAO, "{0:dd/MM/yyyy}", new { @class = "form-control", @id = "NGAY_GIAO" + Model[i].TIENDO_DA_ID })*@
+                                                @Html.TextBoxFor(x => Model[i].NGAY_GIAO, new {@name = "NGAY_GIAO", @class = "form-control", @type = "datetime", @Value = Model[i].NGAY_GIAO.ToString("dd/MM/yyyy"), @id = "NGAY_GIAO" + Model[i].TIENDO_DA_ID })
+
+                                            </td>
+                                            <td class="col-md-1" style="text-align: center; display: none">
+                                                @Html.TextBoxFor(x => Model[i].NGAY_HETHAN, new {@name = "NGAY_HETHAN", @class = "form-control", @type = "datetime", @Value = Model[i].NGAY_HETHAN.ToString("dd/MM/yyyy"), @id = "NGAY_HETHAN" + Model[i].TIENDO_DA_ID })
+                                            </td>
+                                        </tr>
                                             }
                                         </table>
                                     </div>
@@ -205,9 +216,11 @@
                 date = new Date;
             }
             for (var i = 0; i < array.length; i++) {
-                document.getElementById('NGAY_GIAO' + array[i].TIENDO_DA_ID).value = ('0' + date.getDate()).slice(-2) + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear();
+                document.getElementById('NGAY_GIAO_TEMP_' + array[i].TIENDO_DA_ID).value = ('0' + date.getDate()).slice(-2) + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear();
+                document.getElementById('NGAY_GIAO' + array[i].TIENDO_DA_ID).value = date.getFullYear() + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2);
                 date.setDate(date.getDate() + array[i].SONGAY_THUCHIEN);
-                document.getElementById('NGAY_HETHAN' + array[i].TIENDO_DA_ID).value = ('0' + date.getDate()).slice(-2) + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear();
+                document.getElementById('NGAY_HETHAN_TEMP_' + array[i].TIENDO_DA_ID).value = ('0' + date.getDate()).slice(-2) + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear();
+                document.getElementById('NGAY_HETHAN' + array[i].TIENDO_DA_ID).value = date.getFullYear() + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2);
                 date.setDate(date.getDate() + 1);
             }
 
